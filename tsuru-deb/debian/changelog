@@ -1,5 +1,7 @@
 tsuru (0.8.4-4ppa1~precise1) precise; urgency=high
 
+  * Final release of the 0.8.4 version in the PPA.
+
  -- Francisco Souza <fss@corp.globo.com>  Fri, 01 Oct 2013 18:37:00 -0300
 
 tsuru (0.8.4-2ppa1~precise1) precise; urgency=high
