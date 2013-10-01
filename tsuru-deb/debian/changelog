@@ -1,3 +1,9 @@
+tsuru (0.8.4-2ppa1~precise1) precise; urgency=high
+
+  * Fix Build-Deps on package description.
+
+ -- Francisco Souza <fss@corp.globo.com>  Fri, 27 Sep 2013 15:53:00 -0300
+
 tsuru (0.8.4-1ppa1~precise1) precise; urgency=low
 
   * Update Tsuru to the last version.
