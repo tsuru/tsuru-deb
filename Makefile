@@ -5,7 +5,7 @@ clean:
 	git clean -dfX
 
 download:
-	GOPATH=$$PWD go get -u -d github.com/globocom/tsuru/cmd/tsuru
+	GOPATH=$$PWD go get -u -d github.com/globocom/tsuru/cmd/...
 
 _build: download
 	debuild --no-tgz-check -S -sa
