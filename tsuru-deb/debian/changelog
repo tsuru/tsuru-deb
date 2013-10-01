@@ -1,8 +1,12 @@
+tsuru (0.8.4-4ppa1~precise1) precise; urgency=high
+
+ -- Francisco Souza <fss@corp.globo.com>  Fri, 01 Oct 2013 18:37:00 -0300
+
 tsuru (0.8.4-2ppa1~precise1) precise; urgency=high
 
   * Fix Build-Deps on package description.
 
- -- Francisco Souza <fss@corp.globo.com>  Fri, 27 Sep 2013 15:53:00 -0300
+ -- Francisco Souza <fss@corp.globo.com>  Tue, 01 Oct 2013 18:00:00 -0300
 
 tsuru (0.8.4-1ppa1~precise1) precise; urgency=low
 
