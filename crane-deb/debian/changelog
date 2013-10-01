@@ -1,0 +1,5 @@
+crane (0.5.1-1ppa1~precise1) precise; urgency=low
+
+  * First release of the deb package.
+
+ -- Francisco Souza <fss@corp.globo.com>  Fri, 01 Oct 2013 18:50:00 -0300

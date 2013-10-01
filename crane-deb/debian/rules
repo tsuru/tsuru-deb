@@ -1,0 +1,35 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+export GOPATH=$(CURDIR)
+
+PKGDIR=debian/crane
+VERSION:=0.5.1
+
+%:
+	dh $@ 
+
+clean:
+	dh_clean
+	rm -rf $(GOPATH)/bin/* $(GOPATH)/pkg/*
+
+binary-arch: clean
+	dh_prep
+	dh_installdirs
+	go install github.com/globocom/tsuru/cmd/crane
+	mkdir -p $(PKGDIR)/usr/bin
+	mkdir -p $(PKGDIR)/etc/bash-completion.d
+	cp $(GOPATH)/bin/* $(PKGDIR)/usr/bin/
+	cp $(GOPATH)/src/github.com/globocom/tsuru/misc/bash-completion.d/crane $(PKGDIR)/etc/bash-completion.d
+	dh_strip
+	dh_compress
+	dh_fixperms
+	dh_installdeb
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb
+
+binary: binary-arch
