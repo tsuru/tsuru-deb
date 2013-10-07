@@ -1,0 +1,14 @@
+Source: tsr-api
+Section: devel
+Priority: extra
+Maintainer: Globo.com <tsuru@corp.globo.com>
+Build-Depends: debhelper (>= 7.0.50~), golang (>= 2:1.1.1~), mercurial (>= 2.0.2-1~), bzr (>= 2.5.1-0~), git (>= 1:1.7.9.5~)
+Standards-Version: 3.9.3
+Homepage: http://tsuru.io
+
+Package: tsr-api
+Architecture: amd64
+Depends: ${misc:Depends}
+Description: tsuru is the command line interface for the tsuru server
+ Tsuru is an open source platform as a service software. This package installs
+ the client used by application developers to communicate with tsuru server.

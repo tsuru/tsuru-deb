@@ -1,0 +1,33 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+export GOPATH=$(CURDIR)
+
+PKGDIR=debian/tsr
+VERSION:=0.2.0
+
+%:
+	dh $@ 
+
+clean:
+	dh_clean
+	rm -rf $(GOPATH)/bin/* $(GOPATH)/pkg/*
+
+binary-arch: clean
+	dh_prep
+	dh_installdirs
+	go install github.com/globocom/tsuru/cmd/tsr
+	mkdir -p $(PKGDIR)/usr/bin
+	cp $(GOPATH)/bin/* $(PKGDIR)/usr/bin/
+	dh_strip
+	dh_compress
+	dh_fixperms
+	dh_installdeb
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb
+
+binary: binary-arch

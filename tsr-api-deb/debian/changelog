@@ -1,0 +1,5 @@
+tsuru (0.2.0-1ppa1~precise1) precise; urgency=low
+
+  * First version of the package in the PPA.
+
+ -- Francisco Souza <fss@corp.globo.com>  Fri, 06 Oct 2013 10:09:00 -0300
