@@ -1,0 +1,95 @@
+listen: "0.0.0.0:8080"
+
+# Uncomment the following lines to enable HTTPS on Tsuru. You will need the
+# paths to the certificate and key files.
+#
+# use-tls: true
+# tls-cert-file: /path/to/cert.pem
+# tls-key-file: /path/to/key.pem
+
+# Database configuration. Tsuru API needs a MongoDB server. By default, it will
+# connect on localhost, in the default port, and use the database "tsuru".
+# Uncomment and customize the lines below to change these values.
+#
+# database:
+#   url: 127.0.0.1:27017
+#   name: tsuru
+
+# Git configuration. These settings refer to Gandalf, the git management tool
+# used by Tsuru.
+#
+#   * unit-repo: it's the path where Tsuru will clone app code in units. This
+#                value should not change after its initial definition.
+#   * api-server: HTTP URL where Gandalf is accessible. Tsuru will use this URL
+#                 to create users and repositories.
+#   * rw-host: rw-host is the host string that will be used for reading and
+#              writing in Git repositories. It will be used to build the SSH
+#              URL for the git repository, and need to be accessible from the
+#              internet.
+#   * ro-host: ro-host is the host string that will be used for reading data
+#              from Git repositories. It will be used to build the read-only
+#              URL for the repository. This host need to be accessible from
+#              units. You may use the private IP of the Gandalf host.
+git:
+  unit-repo: /home/application/current
+  api-server: http://127.0.0.1:8000
+  rw-host: my.gandalf.domain
+  ro-host: 10.10.10.10
+
+# S3 Bucket support. When this flag is defined as true, Tsuru will create a S3
+# bucket per application. Bucket creation depends on AWS settings (next
+# section).
+#
+# bucket-support: false
+
+# AWS configuration. Tsuru communicates with AWS to manage user credentials on
+# IAM, load balancers on ELB and buckets on S3.
+#
+# Uncomment these settings if you want to create S3 buckets and manage ELB
+# instances per app.
+#
+# aws:
+#   access-key-id: access-id-here
+#   secret-access-key: secret-very-secret
+#   ec2:
+#     endpoint: https://ec2.us-east-1.amazonaws.com
+#   iam:
+#     endpoint: https://iam.amazonaws.com/
+#   s3:
+#     region-name: us-west-1
+#     endpoint: https://ec2.us-west-1.amazonaws.com
+#     bucketEndpoint: https://s3-us-west-1.amazonaws.com
+#     location-constraint: true
+#     lowercase-bucket: true
+
+# Authentication configuration.
+#
+#    * token-expire-days: this option controls the time (in days) for a token
+#                         to expire.
+#    * hash-cost: Tsuru uses bcrypt for password hashing, here you can control
+#                 the cost of the hashing.
+#    * user-registration: by default, users are not able to register themselves
+#                         in Tsuru server (via the "user-create" command).
+#                         Changing this options to true enables the user-create
+#                         command.
+#
+# auth:
+#   token-expire-days: 7
+#   hash-cost: 10
+#   user-registration: false
+
+provisioner: juju
+juju:
+  bucket: juju-bucket
+  charms-path: /home/charms
+  units-collection: juju_units
+  elb-collection: juju_load_balancers
+  use-elb: false
+  elb-endpoint: https://elasticloadbalancing.amazonaws.com
+  elb-avail-zones:
+    - us-west-1a
+queue-server: "127.0.0.1:11300"
+admin-team: admin
+quota:
+  units-per-app: 4
+  apps-per-user: 2
