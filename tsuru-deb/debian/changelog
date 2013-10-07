@@ -1,8 +1,15 @@
+tsuru (0.8.4-6ppa1~precise1) precise; urgency=low
+
+  * New version for all Ubuntu versions.
+
+ -- Francisco Souza <fss@corp.globo.com>  Fri, 07 Oct 2013 12:56:00 -0300
+
 tsuru (0.8.4-5ppa1~precise1) precise; urgency=high
 
   * Add release name to package name.
 
  -- Francisco Souza <fss@corp.globo.com>  Fri, 01 Oct 2013 18:37:00 -0300
+
 tsuru (0.8.4-4ppa1~precise1) precise; urgency=high
 
   * Final release of the 0.8.4 version in the PPA.
