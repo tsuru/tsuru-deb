@@ -1,4 +1,4 @@
-tsuru (0.2.0-1ppa1~precise1) precise; urgency=low
+tsr-api (0.2.0-1ppa1~precise1) precise; urgency=low
 
   * First version of the package in the PPA.
 
