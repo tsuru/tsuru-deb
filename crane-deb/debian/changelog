@@ -1,3 +1,9 @@
+crane (0.5.1-2ppa1~precise1) precise; urgency=low
+
+  * New version for all Ubuntu releases.
+
+ -- Francisco Souza <fss@corp.globo.com>  Fri, 07 Oct 2013 12:56:00 -0300
+
 crane (0.5.1-1ppa1~precise1) precise; urgency=low
 
   * First release of the deb package.
