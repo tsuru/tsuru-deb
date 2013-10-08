@@ -6,7 +6,7 @@
 
 export GOPATH=$(CURDIR)
 
-PKGDIR=debian/tsr
+PKGDIR=debian/tsr-api
 VERSION:=0.2.0
 
 %:
