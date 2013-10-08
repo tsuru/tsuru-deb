@@ -21,6 +21,8 @@ binary-arch: clean
 	dh_installdirs
 	go install github.com/globocom/tsuru/cmd/tsr
 	mkdir -p $(PKGDIR)/usr/bin
+	mkdir -p $(PKGDIR)/etc/tsuru
+	cp $(GOPATH)/etc/tsuru.conf.yaml $(PKGDIR)/etc/tsuru/tsuru.conf
 	cp $(GOPATH)/bin/* $(PKGDIR)/usr/bin/
 	dh_strip
 	dh_compress
