@@ -1,0 +1,13 @@
+limit nofile 10000 10000
+
+kill timeout 180
+
+start on runlevel [2345]
+stop on runlevel [06]
+
+script
+  CONFIG_FILE="/etc/tsuru/tsuru.conf"
+  TSR_API_ENABLED="yes"
+  if [ -f /etc/default/tsr-api ]; then . /etc/default/tsr-api; fi
+  if [ "x$TSR_API_ENABLED" = "xyes" ]; then exec /usr/bin/tsr api --config=${CONFIG_FILE}; fi
+end script

@@ -20,10 +20,11 @@ binary-arch: clean
 	dh_prep
 	dh_installdirs
 	go install github.com/globocom/tsuru/cmd/tsr
-	mkdir -p $(PKGDIR)/usr/bin
-	mkdir -p $(PKGDIR)/etc/tsuru
+	mkdir -p $(PKGDIR)/usr/bin $(PKGDIR)/etc/tsuru $(PKGDIR)/etc/default $(PKGDIR)/etc/init
 	cp $(GOPATH)/etc/tsuru.conf.yaml $(PKGDIR)/etc/tsuru/tsuru.conf
 	cp $(GOPATH)/bin/* $(PKGDIR)/usr/bin/
+	cp $(GOPATH)/etc/tsr-api.default $(PKGDIR)/etc/default/tsr-api
+	cp $(GOPATH)/etc/tsr-api.upstart $(PKGDIR)/etc/init/tsr-api.conf
 	dh_strip
 	dh_compress
 	dh_fixperms
