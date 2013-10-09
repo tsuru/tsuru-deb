@@ -5,6 +5,9 @@ kill timeout 180
 start on runlevel [2345]
 stop on runlevel [06]
 
+setuid tsuru
+setgid tsuru
+
 script
   CONFIG_FILE="/etc/tsuru/tsuru.conf"
   TSR_API_ENABLED="yes"
