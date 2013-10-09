@@ -1,0 +1,19 @@
+tsuru-server (0.2.0-3ppa1~precise1) precise; urgency=low
+
+  * Rename the package.
+  * Now packing tsuru API and collector. It's the same executable, but with two
+    upstart jobs.
+
+ -- Francisco Souza <fss@corp.globo.com>  Fri, 09 Oct 2013 10:49:00 -0300
+
+tsuru-server (0.2.0-2ppa1~precise1) precise; urgency=low
+
+  * Final version of the package.
+
+ -- Francisco Souza <fss@corp.globo.com>  Fri, 08 Oct 2013 17:10:00 -0300
+
+tsuru-server (0.2.0-1ppa1~precise1) precise; urgency=low
+
+  * First version of the package in the PPA.
+
+ -- Francisco Souza <fss@corp.globo.com>  Fri, 06 Oct 2013 10:09:00 -0300

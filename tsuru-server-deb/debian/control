@@ -1,4 +1,4 @@
-Source: tsr-api
+Source: tsuru-server
 Section: devel
 Priority: extra
 Maintainer: Globo.com <tsuru@corp.globo.com>
@@ -6,9 +6,10 @@ Build-Depends: debhelper (>= 7.0.50~), golang (>= 2:1.1.1~), mercurial (>= 2.0.2
 Standards-Version: 3.9.3
 Homepage: http://tsuru.io
 
-Package: tsr-api
+Package: tsuru-server
 Architecture: amd64
 Depends: ${misc:Depends}
-Description: tsr-api is the HTTP API server for the Tsuru PaaS
- Tsuru is an open source platform as a service software. This package installs
- the client used by application developers to communicate with tsuru server.
+Description: tsuru-server is the server side of the Tsuru PaaS.
+ This package includes two services: Tsuru API and Tsuru collector. Both jobs
+ are disabled by default, to enable any of them, edit the file
+ /etc/default/tsuru-server.

@@ -6,7 +6,7 @@
 
 export GOPATH=$(CURDIR)
 
-PKGDIR=debian/tsr-api
+PKGDIR=debian/tsuru-server
 VERSION:=0.2.0
 
 %:
@@ -23,8 +23,9 @@ binary-arch: clean
 	mkdir -p $(PKGDIR)/usr/bin $(PKGDIR)/etc/tsuru $(PKGDIR)/etc/default $(PKGDIR)/etc/init
 	cp $(GOPATH)/etc/tsuru.conf.yaml $(PKGDIR)/etc/tsuru/tsuru.conf
 	cp $(GOPATH)/bin/* $(PKGDIR)/usr/bin/
-	cp $(GOPATH)/etc/tsr-api.default $(PKGDIR)/etc/default/tsr-api
-	cp $(GOPATH)/etc/tsr-api.upstart $(PKGDIR)/etc/init/tsr-api.conf
+	cp $(GOPATH)/etc/tsuru-server.default $(PKGDIR)/etc/default/tsuru-server
+	cp $(GOPATH)/etc/tsuru-server-api.upstart $(PKGDIR)/etc/init/tsuru-server-api.conf
+	cp $(GOPATH)/etc/tsuru-server-collector.upstart $(PKGDIR)/etc/init/tsuru-server-collector.conf
 	dh_strip
 	dh_compress
 	dh_fixperms
