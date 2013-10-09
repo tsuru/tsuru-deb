@@ -6,3 +6,7 @@ src
 *.build
 *.dsc
 *.upload
+*.deb
+*.log
+*.substvars
+*/debian/files
