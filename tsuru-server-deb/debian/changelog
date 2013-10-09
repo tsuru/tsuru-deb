@@ -1,3 +1,9 @@
+tsuru-server (0.2.0-4ppa1~precise1) precise; urgency=low
+
+  * Use unprivileged user for running upstart jobs.
+
+ -- Francisco Souza <fss@corp.globo.com>  Fri, 09 Oct 2013 16:51:00 -0300
+
 tsuru-server (0.2.0-3ppa1~precise1) precise; urgency=low
 
   * Rename the package.
