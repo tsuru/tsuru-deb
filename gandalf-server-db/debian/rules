@@ -1,0 +1,37 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+export GOPATH=$(CURDIR)
+
+PKGDIR=debian/gandalf-server
+VERSION:=0.2.0
+
+%:
+	dh $@ 
+
+clean:
+	dh_clean
+	rm -rf $(GOPATH)/bin/* $(GOPATH)/pkg/*
+
+binary-arch: clean
+	dh_prep
+	dh_installdirs
+	go install github.com/globocom/gandalf/webserver github.com/globocom/gandalf/bin
+	mkdir -p $(PKGDIR)/usr/bin $(PKGDIR)/etc/init $(PKGDIR)/var/lib/gandalf/repositories
+	cp $(GOPATH)/bin/webserver $(PKGDIR)/usr/bin/gandalf-server
+	cp $(GOPATH)/bin/bin $(PKGDIR)/usr/bin/gandalf-ssh
+	cp $(GOPATH)/etc/gandalf.conf.yaml $(PKGDIR)/etc/gandalf-server.conf
+	cp $(GOPATH)/etc/gandalf-server.upstart $(PKGDIR)/etc/init/gandalf-server.conf
+	cp $(GOPATH)/etc/git-daemon.upstart $(PKGDIR)/etc/init/git-daemon.conf
+	dh_strip
+	dh_compress
+	dh_fixperms
+	dh_installdeb
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb
+
+binary: binary-arch

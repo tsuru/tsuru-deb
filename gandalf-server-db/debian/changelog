@@ -1,0 +1,5 @@
+gandalf-server (0.1.0-1ppa1~precise1) precise; urgency=low
+
+  * Initial version of the package.
+
+ -- Francisco Souza <fss@corp.globo.com>  Fri, 09 Oct 2013 14:05:00 -0300

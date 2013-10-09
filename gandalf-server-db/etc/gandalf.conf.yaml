@@ -1,0 +1,27 @@
+bin-path: /usr/bin/gandalf-ssh
+
+# MongoDB connection settings. By default, Gandalf will connect on localhost
+# using the "gandalf" database. Uncomment and change to customize.
+#
+# database:
+#   url: 127.0.0.1:27017
+#   name: gandalf
+
+# Git configuration. 
+#
+# The template is a bare template. For more details, check git-init(1) man
+# page.
+git:
+  bare:
+    location: /var/lib/gandalf/repositories
+#    template: /home/git/bare-template
+
+# Host is the host used to build repositories URL. If you want Gandalf to be
+# accessible from other hosts, you need to change this option.
+host: localhost
+
+# Address that the Gandalf API server will bind.
+bind: localhost:8000
+
+# User that manages repositories in the file system.
+uid: git

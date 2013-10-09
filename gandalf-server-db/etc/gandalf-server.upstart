@@ -1,0 +1,10 @@
+limit nofile 10000 10000
+
+kill timeout 180
+
+start on runlevel [2345]
+stop on runlevel [06]
+
+respawn
+exec start-stop-daemon --start --chuid git --exec /usr/bin/gandalf-server -- -config=/etc/gandalf-server.conf
+post-stop exec sleep 5
