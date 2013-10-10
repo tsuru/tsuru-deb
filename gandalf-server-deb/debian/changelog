@@ -1,5 +1,11 @@
+gandalf-server (0.1.1-1ppa1~precise1) precise; urgency=high
+
+  * Support for the "bind" setting (instead of webserver:port)
+
+ -- Francisco Souza <fss@corp.globo.com> Thu, 10 Oct 2013 11:20:00 -3000
+
 gandalf-server (0.1.0-1ppa1~precise1) precise; urgency=low
 
   * Initial version of the package.
 
- -- Francisco Souza <fss@corp.globo.com>  Fri, 09 Oct 2013 14:05:00 -0300
+ -- Francisco Souza <fss@corp.globo.com> Wed, 09 Oct 2013 14:05:00 -0300
