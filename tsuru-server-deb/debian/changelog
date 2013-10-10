@@ -1,3 +1,9 @@
+tsuru-server (0.2.0-5ppa1~precise1) precise; urgency=high
+
+  * Fix postinst script.
+
+ -- Francisco Souza <fss@corp.globo.com>  Thu, 10 Oct 2013 14:56:00 -0300
+
 tsuru-server (0.2.0-4ppa1~precise1) precise; urgency=low
 
   * Use unprivileged user for running upstart jobs.
