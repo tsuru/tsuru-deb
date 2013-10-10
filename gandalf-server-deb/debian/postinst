@@ -4,7 +4,7 @@ getent passwd $user > /dev/null 2>&1 || exists=false
 if ! $exists
 then
 	echo "Creating user \"$user\" within group \"$user\""...
-	useradd -mU git
+	useradd -mU $user
 fi
 mkdir -p /home/git/.ssh
 touch /home/git/.ssh/authorized_keys
