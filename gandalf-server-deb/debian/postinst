@@ -1,1 +1,13 @@
-useradd -MU git
+user="git"
+exists=true
+getent passwd $user || exists=false
+if ! $exists
+then
+	echo "Creating user \"$user\" within group \"$user\""...
+	useradd -mU git
+fi
+mkdir -p /home/git/.ssh
+touch /home/git/.ssh/authorized_keys
+chown -R git:git /home/git/.ssh
+chmod 700 /home/git/.ssh
+chmod 600 /home/git/.ssh/authorized_keys
