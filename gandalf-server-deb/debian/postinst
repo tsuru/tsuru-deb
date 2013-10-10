@@ -1,6 +1,6 @@
 user="git"
 exists=true
-getent passwd $user || exists=false
+getent passwd $user > /dev/null 2>&1 || exists=false
 if ! $exists
 then
 	echo "Creating user \"$user\" within group \"$user\""...
