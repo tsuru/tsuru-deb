@@ -1,3 +1,9 @@
+gandalf-server (0.1.1-2ppa1~precise1) precise; urgency=low
+
+  * Improve postinst script
+
+ -- Francisco Souza <fss@corp.globo.com> Thu, 10 Oct 2013 11:38:00 -3000
+
 gandalf-server (0.1.1-1ppa1~precise1) precise; urgency=high
 
   * Support for the "bind" setting (instead of webserver:port)
