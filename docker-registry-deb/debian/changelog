@@ -1,5 +1,11 @@
+docker-registry (0.1.0-2ppa1~precise1) precise; urgency=low
+
+  * New version of the package
+
+ -- Francisco Souza <fss@corp.globo.com>  Fri, 11 Oct 2013 17:17:00 -0300
+
 docker-registry (0.1.0-1ppa1~precise1) precise; urgency=low
 
-  * Fix postinst script.
+  * First time ever packaging docker-registry.
 
  -- Francisco Souza <fss@corp.globo.com>  Fri, 11 Oct 2013 15:47:00 -0300
