@@ -24,6 +24,9 @@ gandalf-server:
 	cd gandalf-server-deb && GOPATH=$$PWD go get -u -d github.com/globocom/gandalf/...
 	make TARGET=$@ _do
 
+docker-registry:
+	make TARGET=$@ _do
+
 %:
 	make -C $@-deb -f ../Makefile download
 	make TARGET=$@ _do
