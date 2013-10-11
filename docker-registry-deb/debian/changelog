@@ -1,0 +1,5 @@
+docker-registry (0.1.0-1ppa1~precise1) precise; urgency=low
+
+  * Fix postinst script.
+
+ -- Francisco Souza <fss@corp.globo.com>  Fri, 11 Oct 2013 15:47:00 -0300

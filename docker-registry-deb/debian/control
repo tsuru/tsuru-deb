@@ -1,0 +1,13 @@
+Source: docker-registry
+Section: devel
+Priority: extra
+Maintainer: Globo.com <tsuru@corp.globo.com>
+Build-Depends: debhelper (>= 7.0.50~), golang (>= 2:1.1.1~), git (>= 1:1.7.9.5~)
+Standards-Version: 3.9.3
+Homepage: http://docker.io
+
+Package: docker-registry
+Architecture: amd64
+Depends: ${misc:Depends}
+Description: Go implementation of the Docker Registry.
+ Docker registry stores Docker images.

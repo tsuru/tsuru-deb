@@ -1,0 +1,34 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+export GOPATH=$(CURDIR)
+
+PKGDIR=debian/docker-registry
+VERSION:=0.2.0
+
+%:
+	dh $@ 
+
+clean:
+	dh_clean
+	rm -rf $(GOPATH)/bin/* $(GOPATH)/pkg/*
+
+binary-arch: clean
+	dh_prep
+	dh_installdirs
+	go get github.com/dotcloud/docker-registry/contrib/golang_impl
+	mkdir -p $(PKGDIR)/usr/bin $(PKGDIR)/etc/init $(PKGDIR)/var/lib/docker-registry
+	cp $(GOPATH)/bin/golang_impl $(PKGDIR)/usr/bin/docker-registry
+	cp $(GOPATH)/etc/docker-registry.upstart $(PKGDIR)/etc/init/docker-registry.conf
+	dh_strip
+	dh_compress
+	dh_fixperms
+	dh_installdeb
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb
+
+binary: binary-arch
