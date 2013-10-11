@@ -178,11 +178,13 @@ git:
 #     user: ubuntu
 #     sshd-path: /usr/sbin/sshd
 
-# The address of the queue server (beanstalkd).
+# The address of the queue server (beanstalkd). By default, it's
+# 127.0.0.1:11300. Uncomment and change for connecting in a different
+# Beanstalkd instance.
 #
 # queue-server: "127.0.0.1:11300"
 
-# The name of the admin team. When ommited, no team will be able to administrate Tsuru.:w
+# The name of the admin team. When ommited, no team will be able to administrate Tsuru.
 # 
 # admin-team: admin
 
