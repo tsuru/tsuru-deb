@@ -19,7 +19,7 @@ clean:
 binary-arch: clean
 	dh_prep
 	dh_installdirs
-	go get github.com/dotcloud/docker-registry/contrib/golang_impl
+	go install github.com/dotcloud/docker-registry/contrib/golang_impl
 	mkdir -p $(PKGDIR)/usr/bin $(PKGDIR)/etc/init $(PKGDIR)/var/lib/docker-registry
 	cp $(GOPATH)/bin/golang_impl $(PKGDIR)/usr/bin/docker-registry
 	cp $(GOPATH)/etc/docker-registry.upstart $(PKGDIR)/etc/init/docker-registry.conf
