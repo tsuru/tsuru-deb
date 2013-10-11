@@ -1,3 +1,9 @@
+docker-registry (0.1.0-3ppa1~precise1) precise; urgency=high
+
+  * Fix build process
+
+ -- Francisco Souza <fss@corp.globo.com>  Fri, 11 Oct 2013 17:28:00 -0300
+
 docker-registry (0.1.0-2ppa1~precise1) precise; urgency=low
 
   * New version of the package
