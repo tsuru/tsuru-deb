@@ -1,3 +1,9 @@
+nodejs (0.8.25-2ppa1~precise1) precise; urgency=low
+
+  * Fix binary distribution.
+
+ -- Francisco Souza <fss@corp.globo.com>  Mon, 14 Oct 2013 15:31:00 -0300
+
 nodejs (0.8.25-1ppa1~precise1) precise; urgency=low
 
   * First version of the package.
