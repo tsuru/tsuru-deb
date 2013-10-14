@@ -1,0 +1,9 @@
+{
+    "node": true,
+    "strict": true,
+    "curly": true,
+    "newcap": true,
+    "eqeqeq": true,
+    "noempty": true,
+    "white": true
+}

@@ -1,0 +1,10 @@
+limit nofile 10000 10000
+
+kill timeout 180
+
+start on runlevel [2345]
+stop on runlevel [06]
+
+respawn
+exec /usr/bin/hipache --config /etc/hipache.conf
+post-stop exec sleep 5

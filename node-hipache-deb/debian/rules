@@ -1,0 +1,32 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+PKGDIR=debian/node-hipache
+VERSION:=0.2.3
+
+%:
+	dh $@ 
+
+clean:
+	dh_clean
+
+binary-arch: clean
+	dh_prep
+	dh_installdirs
+	mkdir -p $(PKGDIR)/usr/bin $(PKGDIR)/usr/lib/node_modules/hipache $(PKGDIR)/etc/init $(PKGDIR)/var/log/hipache
+	cp -r $(CURDIR)/node_modules/hipache/* $(PKGDIR)/usr/lib/node_modules/hipache/
+	cd $(PKGDIR)/usr/bin && ln -s ../lib/node_modules/hipache/bin/hipache hipache
+	cp $(CURDIR)/etc/hipache.upstart $(PKGDIR)/etc/init/hipache.conf
+	cp $(CURDIR)/etc/hipache.conf.json $(PKGDIR)/etc/hipache.conf
+	dh_strip
+	dh_compress
+	dh_fixperms
+	dh_installdeb
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb
+
+binary: binary-arch

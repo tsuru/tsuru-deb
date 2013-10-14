@@ -1,0 +1,5 @@
+node-hipache (0.2.3-1ppa1~precise1) precise; urgency=low
+
+  * First version of the package.
+
+ -- Francisco Souza <fss@corp.globo.com>  Mon, 14 Oct 2013 16:15:00 -0300
