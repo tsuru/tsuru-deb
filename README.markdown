@@ -16,4 +16,4 @@ For instance:
 	% make tsuru
 
 Makefile doesn't contain any rule for generating binary packages, just source
-packages. You can build a binary package invoking ``debuild directly``.
+packages. You can build a binary package invoking ``debuild`` directly.
