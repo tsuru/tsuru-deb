@@ -1,3 +1,9 @@
+crane (0.5.1-3ppa1~precise1) precise; urgency=low
+
+  * Build no multiple architectures.
+
+ -- Francisco Souza <fss@corp.globo.com>  Mon, 14 Oct 2013 14:30:00 -0300
+
 crane (0.5.1-2ppa1~precise1) precise; urgency=low
 
   * New version for all Ubuntu releases.
