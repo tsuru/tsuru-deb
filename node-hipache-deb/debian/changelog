@@ -1,3 +1,10 @@
+node-hipache (0.2.3-2ppa1~precise1) precise; urgency=low
+
+  * Use amd64 as architecture. We need to use that because hipache depends on
+    node.js, and node.js builds only on adm64.
+
+ -- Francisco Souza <fss@corp.globo.com>  Mon, 14 Oct 2013 16:46:00 -0300
+
 node-hipache (0.2.3-1ppa1~precise1) precise; urgency=low
 
   * First version of the package.

@@ -7,7 +7,7 @@ Standards-Version: 3.9.3
 Homepage: https://github.com/dotcloud/hipache
 
 Package: node-hipache
-Architecture: all
+Architecture: amd64
 Depends: ${misc:Depends}, nodejs (>= 0.8.25~)
 Description: Hipache is a distributed HTTP(S) proxy
  Hipache is a distributed proxy designed to route high volumes of http and
