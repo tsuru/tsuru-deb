@@ -1,3 +1,9 @@
+tsuru (0.8.4-7ppa1~precise1) precise; urgency=low
+
+  * Support any architecture.
+
+ -- Francisco Souza <fss@corp.globo.com>  Mon, 14 Oct 2013 14:11:00 -0300
+
 tsuru (0.8.4-6ppa1~precise1) precise; urgency=low
 
   * New version for all Ubuntu versions.

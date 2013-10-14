@@ -7,7 +7,7 @@ Standards-Version: 3.9.3
 Homepage: http://tsuru.io
 
 Package: tsuru
-Architecture: amd64
+Architecture: any
 Depends: ${misc:Depends}
 Description: tsuru is the command line interface for the tsuru server
  Tsuru is an open source platform as a service software. This package installs
