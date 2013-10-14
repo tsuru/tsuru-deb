@@ -24,6 +24,9 @@ gandalf-server:
 	cd gandalf-server-deb && GOPATH=$$PWD go get -u -d github.com/globocom/gandalf/...
 	make TARGET=$@ _do
 
+nodejs:
+	make TARGET=$@ _do
+
 docker-registry:
 	cd docker-registry-deb && GOPATH=$$PWD go get -d github.com/dotcloud/docker-registry/contrib/golang_impl
 	make TARGET=$@ _do
