@@ -1,3 +1,9 @@
+gandalf-server (0.1.2-3ppa1~precise1) precise; urgency=low
+
+  * Add healthcheck URL.
+
+ -- Francisco Souza <fss@corp.globo.com> Mon, 14 Oct 2013 17:17:00 -3000
+
 gandalf-server (0.1.1-3ppa1~precise1) precise; urgency=low
 
   * Omit output from postinst script.
