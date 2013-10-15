@@ -1,3 +1,9 @@
+tsuru-server (0.2.2-1ppa1~precise1) precise; urgency=low
+
+  * Change default sshd-path (issue #564).
+
+ -- Francisco Souza <fss@corp.globo.com>  Tue, 15 Oct 2013 17:25:00 -0300
+
 tsuru-server (0.2.1-1ppa1~precise1) precise; urgency=low
 
   * Add healthcheck URL to the API.
