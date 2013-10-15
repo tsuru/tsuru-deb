@@ -1,3 +1,9 @@
+tsuru-server (0.2.1-1ppa1~precise1) precise; urgency=low
+
+  * Add healthcheck URL to the API.
+
+ -- Francisco Souza <fss@corp.globo.com>  Mon, 14 Oct 2013 17:21:00 -0300
+
 tsuru-server (0.2.0-5ppa1~precise1) precise; urgency=high
 
   * Fix postinst script.
