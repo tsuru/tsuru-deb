@@ -1,0 +1,13 @@
+user="dsagent"
+exists=true
+getent passwd $user > /dev/null 2>&1 || exists=false
+if ! $exists
+then
+	echo "Creating user \"$user\" within group \"$user\""...
+	useradd -mUd /var/lib/$user $user
+	mkdir /var/lib/$user/.ssh
+	ssh-keygen -t rsa -b 4096 -N "" -f /var/lib/$user/.ssh/id_rsa
+	chown -R $user:$user /var/lib/$user/.ssh
+fi
+echo "Edit the file /etc/default/tsuru-docker-ssh-agent for user and private key configuration"
+start tsuru-docker-ssh-agent

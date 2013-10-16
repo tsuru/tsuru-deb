@@ -1,0 +1,3 @@
+LISTEN=0.0.0.0:4545
+USER=ubuntu
+PRIVATE_KEY=/var/lib/dsagent/.ssh/id_dsa

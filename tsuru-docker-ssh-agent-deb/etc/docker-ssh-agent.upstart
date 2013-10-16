@@ -1,0 +1,16 @@
+limit nofile 10000 10000
+
+kill timeout 180
+
+start on runlevel [2345]
+stop on runlevel [06]
+
+respawn
+
+setuid dsagent
+setgid dsagent
+
+script
+  . /etc/default/tsuru-docker-ssh-agent
+  exec /usr/bin/tsr docker-ssh-agent -l $LISTEN -u $USER -k $PRIVATE_KEY
+end script

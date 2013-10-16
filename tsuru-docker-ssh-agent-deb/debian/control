@@ -1,0 +1,14 @@
+Source: tsuru-docker-ssh-agent
+Section: devel
+Priority: extra
+Maintainer: Globo.com <tsuru@corp.globo.com>
+Build-Depends: debhelper (>= 7.0.50~), golang (>= 2:1.1.1~), mercurial (>= 2.0.2-1~), bzr (>= 2.5.1-0~), git (>= 1:1.7.9.5~)
+Standards-Version: 3.9.3
+Homepage: http://tsuru.io
+
+Package: tsuru-docker-ssh-agent
+Architecture: amd64
+Depends: ${misc:Depends}
+Description: Docker SSH agent runs commands on Docker containers via SSH
+ This agent exposes an HTTP API for running commands on Docker containers via
+ SSH.
