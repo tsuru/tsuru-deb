@@ -1,0 +1,17 @@
+limit nofile 10000 10000
+
+kill timeout 180
+
+start on runlevel [2345]
+stop on runlevel [06]
+
+respawn
+
+setuid dsagent
+setgid dsagent
+
+script
+  TSR_SSH_AGENT_ENABLED="yes"
+  if [ -f /etc/default/tsuru-server ]; then . /etc/default/tsuru-server; fi
+  if [ "x$TSR_SSH_AGENT_ENABLED" = "xyes" ]; then exec /usr/bin/tsr docker-ssh-agent -l $TSR_SSH_AGENT_LISTEN -u $TSR_SSH_AGENT_USER -k $TSR_SSH_AGENT_PRIVATE_KEY; fi
+end script

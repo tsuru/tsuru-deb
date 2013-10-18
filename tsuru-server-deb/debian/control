@@ -10,6 +10,6 @@ Package: tsuru-server
 Architecture: amd64
 Depends: ${misc:Depends}
 Description: tsuru-server is the server side of the Tsuru PaaS.
- This package includes two services: Tsuru API and Tsuru collector. Both jobs
- are disabled by default, to enable any of them, edit the file
+ This package includes three services: Tsuru API, Tsuru collector and Tsuru SSH
+ agent. All jobs are disabled by default, to enable any of them, edit the file
  /etc/default/tsuru-server.

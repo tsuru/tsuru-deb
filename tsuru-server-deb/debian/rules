@@ -26,6 +26,7 @@ binary-arch: clean
 	cp $(GOPATH)/etc/tsuru-server.default $(PKGDIR)/etc/default/tsuru-server
 	cp $(GOPATH)/etc/tsuru-server-api.upstart $(PKGDIR)/etc/init/tsuru-server-api.conf
 	cp $(GOPATH)/etc/tsuru-server-collector.upstart $(PKGDIR)/etc/init/tsuru-server-collector.conf
+	cp $(GOPATH)/etc/tsuru-ssh-agent.upstart $(PKGDIR)/etc/init/tsuru-ssh-agent.conf
 	dh_strip
 	dh_compress
 	dh_fixperms

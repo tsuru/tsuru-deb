@@ -1,5 +1,0 @@
-tsuru-docker-ssh-agent (0.1.0-1ppa1~precise1) precise; urgency=low
-
-  * First version of the package.
-
- -- Francisco Souza <fss@corp.globo.com>  Wed, 16 Oct 2013 14:13:00 -0300
