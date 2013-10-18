@@ -1,3 +1,13 @@
+tsuru-server (0.2.3-1ppa1~precise1) precise; urgency=low
+
+  * provision/docker: User and private key on SSH handler
+  * db: fix connection leakage in the database management package
+  * services: physical removal of services (issue #569)
+  * app: fix bug related to the new "unreachable" state and the queue handler
+  * Include a new daemon in the package: tsuru-ssh-agent
+
+ -- Francisco Souza <fss@corp.globo.com>  Fri, 18 Oct 2013 11:24:00 -0300
+
 tsuru-server (0.2.2-1ppa1~precise1) precise; urgency=low
 
   * Change default sshd-path (issue #564).
