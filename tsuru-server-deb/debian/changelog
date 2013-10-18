@@ -1,3 +1,9 @@
+tsuru-server (0.2.4-1ppa1~precise1) precise; urgency=high
+
+  * make database:url and database:name really optional settings
+
+ -- Francisco Souza <fss@corp.globo.com>  Fri, 18 Oct 2013 14:41:00 -0300
+
 tsuru-server (0.2.3-1ppa1~precise1) precise; urgency=low
 
   * provision/docker: User and private key on SSH handler
