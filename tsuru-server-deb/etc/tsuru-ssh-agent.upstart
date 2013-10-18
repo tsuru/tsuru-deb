@@ -7,8 +7,8 @@ stop on runlevel [06]
 
 respawn
 
-setuid dsagent
-setgid dsagent
+setuid tsuru
+setgid tsuru
 
 script
   TSR_SSH_AGENT_ENABLED="yes"
