@@ -1,3 +1,9 @@
+tsuru-server (0.2.4-2ppa1~precise1) precise; urgency=low
+
+  * disable SSH agent by default
+
+ -- Francisco Souza <fss@corp.globo.com>  Mon, 21 Oct 2013 14:56:00 -0300
+
 tsuru-server (0.2.4-1ppa1~precise1) precise; urgency=high
 
   * make database:url and database:name really optional settings
