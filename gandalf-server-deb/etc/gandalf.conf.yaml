@@ -16,6 +16,11 @@ git:
     location: /var/lib/gandalf/repositories
 #    template: /home/git/bare-template
 
+# Path to the authorized_keys file.
+#
+# Keys added to Gandalf will get marshaled in this file.
+authorized-keys-path: /home/git/.ssh/authorized_keys
+
 # Host is the host used to build repositories URL. If you want Gandalf to be
 # accessible from other hosts, you need to change this option.
 host: localhost

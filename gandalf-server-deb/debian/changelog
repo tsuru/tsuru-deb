@@ -1,3 +1,10 @@
+gandalf-server (0.2.0-1ppa1~precise1) precise; urgency=low
+
+  * Add a new configuration parameter, for the authorized_keys file (issue
+    #90).
+
+ -- Francisco Souza <fss@corp.globo.com> Wed, 23 Oct 2013 17:56:00 -3000
+
 gandalf-server (0.1.2-3ppa1~precise1) precise; urgency=low
 
   * Add healthcheck URL.
