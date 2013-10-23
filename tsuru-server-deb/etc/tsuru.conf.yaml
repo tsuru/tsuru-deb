@@ -1,5 +1,7 @@
 listen: "0.0.0.0:8080"
 
+host: http://localhost:8080
+
 # Uncomment the following lines to enable HTTPS on Tsuru. You will need the
 # paths to the certificate and key files.
 #
@@ -157,6 +159,7 @@ git:
 # hipache:
 #   domain: cloud.company.com
 # docker:
+#   registry: docker-registry.company.com
 #   servers:
 #     - http://localhost:4243
 #   collection: docker
