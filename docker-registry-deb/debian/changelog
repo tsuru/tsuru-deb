@@ -1,3 +1,9 @@
+docker-registry (0.1.1-1ppa1~precise1) precise; urgency=high
+
+  * Use docker-registry from fsouza's fork.
+
+ -- Francisco Souza <fss@corp.globo.com>  Thu, 24 Oct 2013 18:32:00 -0300
+
 docker-registry (0.1.0-3ppa1~precise1) precise; urgency=high
 
   * Fix build process
