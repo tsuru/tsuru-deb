@@ -31,7 +31,7 @@ node-hipache:
 	make TARGET=$@ _do
 
 docker-registry:
-	cd docker-registry-deb && GOPATH=$$PWD go get -d github.com/dotcloud/docker-registry/contrib/golang_impl
+	cd docker-registry-deb && GOPATH=$$PWD go get -d github.com/fsouza/docker-registry/contrib/golang_impl
 	make TARGET=$@ _do
 
 %:
