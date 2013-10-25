@@ -1,3 +1,11 @@
+tsuru-server (0.2.6-1ppa1~precise1) precise; urgency=high
+
+  * provision/docker: fix bug in startInBackground
+  * queue/beanstalk: wait 5 seconds before dialing to beanstalk in case of
+    failures (issue #538).
+
+ -- Francisco Souza <fss@corp.globo.com>  Fri, 25 Oct 2013 17:22:00 -0300
+
 tsuru-server (0.2.5-1ppa1~precise1) precise; urgency=low
 
   * Don't use multiLocker on quota package.
