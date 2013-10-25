@@ -1,3 +1,9 @@
+gandalf-server (0.2.0-2ppa1~precise1) precise; urgency=low
+
+  * Fix postinst script.
+
+ -- Francisco Souza <fss@corp.globo.com> Fri, 25 Oct 2013 11:35:00 -3000
+
 gandalf-server (0.2.0-1ppa1~precise1) precise; urgency=low
 
   * Add a new configuration parameter, for the authorized_keys file (issue
