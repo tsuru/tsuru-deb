@@ -23,7 +23,7 @@ binary-arch: clean
 	mkdir -p $(PKGDIR)/usr/bin $(PKGDIR)/etc/init $(PKGDIR)/var/lib/gandalf/repositories
 	cp $(GOPATH)/bin/webserver $(PKGDIR)/usr/bin/gandalf-server
 	cp $(GOPATH)/bin/bin $(PKGDIR)/usr/bin/gandalf-ssh
-	cp $(GOPATH)/etc/gandalf.conf.yaml $(PKGDIR)/etc/gandalf-server.conf
+	cp $(GOPATH)/etc/gandalf.conf.yaml $(PKGDIR)/etc/gandalf.conf
 	cp $(GOPATH)/etc/gandalf-server.upstart $(PKGDIR)/etc/init/gandalf-server.conf
 	cp $(GOPATH)/etc/git-daemon.upstart $(PKGDIR)/etc/init/git-daemon.conf
 	dh_strip
