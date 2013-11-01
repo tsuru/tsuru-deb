@@ -10,5 +10,6 @@ dot_ssh=/home/${user}/.ssh
 mkdir -p $dot_ssh
 touch ${dot_ssh}/authorized_keys
 chown ${user}:${user} $dot_ssh ${dot_ssh}/authorized_keys
+chown -R ${user}:${user} /var/lib/gandalf
 chmod 700 $dot_ssh
 chmod 644 ${dot_ssh}/authorized_keys
