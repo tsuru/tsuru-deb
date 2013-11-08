@@ -1,3 +1,10 @@
+tsuru-server (0.2.8-1ppa1~precise1) precise; urgency=high
+
+  * [Bugfix] Fix unit IP when adding new units in Docker provisioner
+  * Add godep support in the package
+
+ -- Francisco Souza <fss@corp.globo.com>  Fri, 08 Nov 2013 16:23:00 -0200
+
 tsuru-server (0.2.7-1ppa1~precise1) precise; urgency=low
 
   * Support for log levels (issue #115)

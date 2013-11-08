@@ -7,7 +7,7 @@
 export GOPATH=$(CURDIR)
 
 PKGDIR=debian/tsuru-server
-VERSION:=0.2.7
+VERSION:=0.2.8
 
 %:
 	dh $@ 
