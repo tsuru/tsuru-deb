@@ -8,7 +8,8 @@ clean:
 	git clean -dfX
 
 download:
-	GOPATH=$$PWD go get -u -d github.com/globocom/tsuru/cmd/...
+	GOPATH=$$PWD go get -u -d github.com/globocom/tsuru/...
+	GOPATH=$$PWD cd src/github.com/globocom/tsuru && godep restore ./...
 
 _build:
 	sed -i.bkp -e 's/$(DEFINED_VERSION)/$(VERSION)/g' debian/changelog
