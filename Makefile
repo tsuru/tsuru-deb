@@ -1,6 +1,8 @@
 DEFINED_VERSION=precise
 VERSIONS="precise quantal raring saucy"
 
+GOPATH=$(shell echo $$PWD)
+
 all:
 	@exit 0
 
@@ -16,8 +18,9 @@ local_setup:
 	rm -rf /tmp/gopath
 
 download:
-	GOPATH=$$PWD go get -u -d github.com/globocom/tsuru/...
-	GOPATH=$$PWD cd src/github.com/globocom/tsuru && godep restore ./...
+	export GOPATH=$$PWD && go get -u -d github.com/globocom/tsuru/...
+	export GOPATH=$$PWD && cd src/github.com/globocom/tsuru && godep restore ./...
+	rm -rf src/github.com/globocom/tsuru/src
 
 _build:
 	sed -i.bkp -e 's/$(DEFINED_VERSION)/$(VERSION)/g' debian/changelog
