@@ -1,3 +1,15 @@
+tsuru-server (0.2.7-1ppa1~precise1) precise; urgency=low
+
+  * Support for log levels (issue #115)
+  * Optimize the logs collection on MongoDB with two indices (ascending and
+    descending order on date)
+  * Fix race condition on collector (issue #586)
+  * Make collector ticker time configurable (issue #579)
+  * Don't block on unit-remove (issue #580)
+  * Improve error logging on queue handler
+
+ -- Francisco Souza <fss@corp.globo.com>  Fri, 08 Nov 2013 14:56:00 -0200
+
 tsuru-server (0.2.6-1ppa1~precise1) precise; urgency=high
 
   * provision/docker: fix bug in startInBackground
