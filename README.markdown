@@ -10,6 +10,15 @@ You can use these packages on Ubuntu via [Tsuru ppa](https://launchpad.net/~tsur
 
 ##Building locally
 
+###Dependencies
+
+In order to install the necessary dependencies, on Ubuntu, run with a sudoer
+user:
+
+	% make local_setup
+
+###Building packages
+
 In order to build a source package locally, just run ``make <package-name>``.
 For instance:
 
