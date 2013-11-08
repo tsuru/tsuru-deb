@@ -7,6 +7,14 @@ all:
 clean:
 	git clean -dfX
 
+local_setup:
+	sudo apt-add-repository -y ppa:juju/golang
+	sudo apt-get install golang -y
+	mkdir /tmp/gopath
+	GOPATH=/tmp/gopath go get github.com/kr/godep
+	sudo mv /tmp/gopath/bin/godep /usr/bin
+	rm -rf /tmp/gopath
+
 download:
 	GOPATH=$$PWD go get -u -d github.com/globocom/tsuru/...
 	GOPATH=$$PWD cd src/github.com/globocom/tsuru && godep restore ./...
