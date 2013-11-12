@@ -7,7 +7,7 @@
 export GOPATH=$(CURDIR)
 
 PKGDIR=debian/tsuru-mongoapi
-VERSION:=0.1.0
+VERSION:=0.1.1
 
 %:
 	dh $@ 
@@ -19,6 +19,7 @@ clean:
 binary-arch: clean
 	dh_prep
 	dh_installdirs
+	cd $(GOPATH)/src/github.com/globocom/mongoapi && git checkout $(VERSION)
 	go install github.com/globocom/mongoapi
 	mkdir -p $(PKGDIR)/usr/bin $(PKGDIR)/etc/init $(PKGDIR)/etc/default
 	cp $(GOPATH)/bin/mongoapi $(PKGDIR)/usr/bin/tsuru-mongoapi
