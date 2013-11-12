@@ -2,7 +2,7 @@ gandalf-server (0.2.0-4ppa1~precise1) precise; urgency=low
 
   * [Package] fix user creation (use --system).
 
- -- Francisco Souza <fss@corp.globo.com> Tue, 12 Nov 2013 15:42:00 -0200
+ -- Francisco Souza <fss@corp.globo.com>  Tue, 12 Nov 2013 15:42:00 -0200
 
 gandalf-server (0.2.0-3ppa1~precise1) precise; urgency=high
 
@@ -11,47 +11,47 @@ gandalf-server (0.2.0-3ppa1~precise1) precise; urgency=high
     configuration file path.
   * Fix permission in the repositories path.
 
- -- Francisco Souza <fss@corp.globo.com> Fri, 01 Nov 2013 16:03:00 -0200
+ -- Francisco Souza <fss@corp.globo.com>  Fri, 01 Nov 2013 16:03:00 -0200
 
 gandalf-server (0.2.0-2ppa1~precise1) precise; urgency=low
 
   * Fix postinst script.
 
- -- Francisco Souza <fss@corp.globo.com> Fri, 25 Oct 2013 11:35:00 -0300
+ -- Francisco Souza <fss@corp.globo.com>  Fri, 25 Oct 2013 11:35:00 -0300
 
 gandalf-server (0.2.0-1ppa1~precise1) precise; urgency=low
 
   * Add a new configuration parameter, for the authorized_keys file (issue
     #90).
 
- -- Francisco Souza <fss@corp.globo.com> Wed, 23 Oct 2013 17:56:00 -0300
+ -- Francisco Souza <fss@corp.globo.com>  Wed, 23 Oct 2013 17:56:00 -0300
 
 gandalf-server (0.1.2-3ppa1~precise1) precise; urgency=low
 
   * Add healthcheck URL.
 
- -- Francisco Souza <fss@corp.globo.com> Mon, 14 Oct 2013 17:17:00 -0300
+ -- Francisco Souza <fss@corp.globo.com>  Mon, 14 Oct 2013 17:17:00 -0300
 
 gandalf-server (0.1.1-3ppa1~precise1) precise; urgency=low
 
   * Omit output from postinst script.
 
- -- Francisco Souza <fss@corp.globo.com> Thu, 10 Oct 2013 14:55:00 -0300
+ -- Francisco Souza <fss@corp.globo.com>  Thu, 10 Oct 2013 14:55:00 -0300
 
 gandalf-server (0.1.1-2ppa1~precise1) precise; urgency=low
 
   * Improve postinst script
 
- -- Francisco Souza <fss@corp.globo.com> Thu, 10 Oct 2013 11:38:00 -0300
+ -- Francisco Souza <fss@corp.globo.com>  Thu, 10 Oct 2013 11:38:00 -0300
 
 gandalf-server (0.1.1-1ppa1~precise1) precise; urgency=high
 
   * Support for the "bind" setting (instead of webserver:port)
 
- -- Francisco Souza <fss@corp.globo.com> Thu, 10 Oct 2013 11:20:00 -0300
+ -- Francisco Souza <fss@corp.globo.com>  Thu, 10 Oct 2013 11:20:00 -0300
 
 gandalf-server (0.1.0-1ppa1~precise1) precise; urgency=low
 
   * Initial version of the package.
 
- -- Francisco Souza <fss@corp.globo.com> Wed, 09 Oct 2013 14:05:00 -0300
+ -- Francisco Souza <fss@corp.globo.com>  Wed, 09 Oct 2013 14:05:00 -0300
