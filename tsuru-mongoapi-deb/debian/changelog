@@ -1,5 +1,11 @@
+tsuru-mongoapi (0.1.0-2ppa1~precise1) precise; urgency=low
+
+  * Fix the package name in build process.
+
+ -- Francisco Souza <fss@corp.globo.com>  Tue, 12 Nov 2013 10:12:00 -0200
+
 tsuru-mongoapi (0.1.0-1ppa1~precise1) precise; urgency=low
 
   * First version of the package
 
- -- Francisco Souza <fss@corp.globo.com> Tue, 12 Nov 2013 09:32:00 -0200
+ -- Francisco Souza <fss@corp.globo.com>  Tue, 12 Nov 2013 09:32:00 -0200
