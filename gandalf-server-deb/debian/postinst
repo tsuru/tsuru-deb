@@ -4,7 +4,7 @@ getent passwd $user > /dev/null 2>&1 || exists=false
 if ! $exists
 then
 	echo "Creating user \"$user\" within group \"$user\""...
-	useradd -mU $user
+	useradd -m --system $user
 fi
 dot_ssh=/home/${user}/.ssh
 mkdir -p $dot_ssh
