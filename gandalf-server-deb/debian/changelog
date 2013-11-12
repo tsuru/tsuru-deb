@@ -1,3 +1,9 @@
+gandalf-server (0.2.0-4ppa1~precise1) precise; urgency=low
+
+  * [Package] fix user creation (use --system).
+
+ -- Francisco Souza <fss@corp.globo.com> Tue, 12 Nov 2013 15:42:00 -0200
+
 gandalf-server (0.2.0-3ppa1~precise1) precise; urgency=high
 
   * Write the configuration file to /etc/gandalf.conf instead of
