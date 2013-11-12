@@ -19,7 +19,7 @@ clean:
 binary-arch: clean
 	dh_prep
 	dh_installdirs
-	go install github.com/globocom/gandalf/mongoapi
+	go install github.com/globocom/mongoapi
 	mkdir -p $(PKGDIR)/usr/bin $(PKGDIR)/etc/init $(PKGDIR)/etc/default
 	cp $(GOPATH)/bin/mongoapi $(PKGDIR)/usr/bin/tsuru-mongoapi
 	cp $(GOPATH)/etc/tsuru-mongoapi.default $(PKGDIR)/etc/default/tsuru-mongoapi
