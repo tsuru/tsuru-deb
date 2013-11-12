@@ -1,3 +1,9 @@
+tsuru-mongoapi (0.1.1-1ppa1~precise1) precise; urgency=high
+
+  * Bugfix: fix race condition in Bind and Unbind handlers
+
+ -- Francisco Souza <fss@corp.globo.com>  Tue, 12 Nov 2013 18:59:00 -0200
+
 tsuru-mongoapi (0.1.0-3ppa1~precise1) precise; urgency=low
 
   * [Package] Fix user creation (use --system)
