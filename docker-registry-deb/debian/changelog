@@ -1,3 +1,10 @@
+docker-registry (0.1.1-2ppa1~precise1) precise; urgency=low
+
+  * [Package] Run docker-registry with custom user
+  * [Package] Don't try to bind on port 80 by default
+
+ -- Francisco Souza <fss@corp.globo.com>  Tue, 12 Nov 2013 15:56:00 -0200
+
 docker-registry (0.1.1-1ppa1~precise1) precise; urgency=high
 
   * Use docker-registry from fsouza's fork.
