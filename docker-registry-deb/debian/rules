@@ -7,7 +7,7 @@
 export GOPATH=$(CURDIR)
 
 PKGDIR=debian/docker-registry
-VERSION:=0.1.0
+VERSION:=0.1.1
 
 %:
 	dh $@ 
@@ -20,9 +20,10 @@ binary-arch: clean
 	dh_prep
 	dh_installdirs
 	go install github.com/fsouza/docker-registry/contrib/golang_impl
-	mkdir -p $(PKGDIR)/usr/bin $(PKGDIR)/etc/init $(PKGDIR)/var/lib/docker-registry $(PKGDIR)/var/run/registry
+	mkdir -p $(PKGDIR)/usr/bin $(PKGDIR)/etc/default $(PKGDIR)/etc/init $(PKGDIR)/var/lib/docker-registry $(PKGDIR)/var/run/registry
 	cp $(GOPATH)/bin/golang_impl $(PKGDIR)/usr/bin/docker-registry
 	cp $(GOPATH)/etc/docker-registry.upstart $(PKGDIR)/etc/init/docker-registry.conf
+	cp $(GOPATH)/etc/docker-registry.default $(PKGDIR)/etc/default/docker-registry
 	dh_strip
 	dh_compress
 	dh_fixperms
