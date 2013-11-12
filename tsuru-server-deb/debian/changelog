@@ -1,3 +1,9 @@
+tsuru-server (0.2.8-3ppa1~precise1) precise; urgency=low
+
+  * [Package] Fix user creation (use --system)
+
+ -- Francisco Souza <fss@corp.globo.com>  Tue, 12 Nov 2013 15:42:00 -0200
+
 tsuru-server (0.2.8-2ppa1~precise1) precise; urgency=high
 
   * [Package] Fix godep integration
