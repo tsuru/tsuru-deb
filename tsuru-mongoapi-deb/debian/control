@@ -1,0 +1,14 @@
+Source: tsuru-mongoapi
+Section: devel
+Priority: extra
+Maintainer: Globo.com <tsuru@corp.globo.com>
+Build-Depends: debhelper (>= 7.0.50~), golang (>= 2:1.1.1~), bzr (>= 2.5.1-0~), git (>= 1:1.7.9.5~)
+Standards-Version: 3.9.3
+Homepage: https://github.com/globocom/mongoapi
+
+Package: tsuru-mongoapi
+Architecture: any
+Depends: ${misc:Depends}
+Description: mongoapi is a MongoDB service API for the Tsuru PaaS
+ It provides basic operations for managing MongoDB instances and binding to
+ Tsuru applications, implementing the service API for Tsuru.

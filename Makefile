@@ -33,7 +33,7 @@ _do:
 	make clean
 
 gandalf-server:
-	cd gandalf-server-deb && GOPATH=$$PWD go get -u -d github.com/globocom/gandalf/...
+	cd gandalf-server-deb && GOPATH=$$PWD go get -d github.com/globocom/gandalf/...
 	make TARGET=$@ _do
 
 nodejs:
@@ -44,6 +44,10 @@ node-hipache:
 
 docker-registry:
 	cd docker-registry-deb && GOPATH=$$PWD go get -d github.com/fsouza/docker-registry/contrib/golang_impl
+	make TARGET=$@ _do
+
+tsuru-mongoapi:
+	cd tsuru-mongoapi-deb && GOPATH=$$PWD go get -d github.com/globocom/mongoapi
 	make TARGET=$@ _do
 
 %:

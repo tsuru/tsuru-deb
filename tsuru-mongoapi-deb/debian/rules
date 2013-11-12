@@ -1,0 +1,35 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+export GOPATH=$(CURDIR)
+
+PKGDIR=debian/tsuru-mongoapi
+VERSION:=0.1.0
+
+%:
+	dh $@ 
+
+clean:
+	dh_clean
+	rm -rf $(GOPATH)/bin/* $(GOPATH)/pkg/*
+
+binary-arch: clean
+	dh_prep
+	dh_installdirs
+	go install github.com/globocom/gandalf/mongoapi
+	mkdir -p $(PKGDIR)/usr/bin $(PKGDIR)/etc/init $(PKGDIR)/etc/default
+	cp $(GOPATH)/bin/mongoapi $(PKGDIR)/usr/bin/tsuru-mongoapi
+	cp $(GOPATH)/etc/tsuru-mongoapi.default $(PKGDIR)/etc/default/tsuru-mongoapi
+	cp $(GOPATH)/etc/tsuru-mongoapi.upstart $(PKGDIR)/etc/init/tsuru-mongoapi.conf
+	dh_strip
+	dh_compress
+	dh_fixperms
+	dh_installdeb
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb
+
+binary: binary-arch

@@ -1,0 +1,19 @@
+limit nofile 10000 10000
+
+kill timeout 180
+
+start on runlevel [2345]
+stop on runlevel [06]
+
+respawn
+
+setuid mongoapi
+setgid mongoapi
+
+post-stop exec sleep 5
+
+script
+  TSURU_MONGOAPI_ENABLED="no"
+  if [ -f /etc/default/tsuru-mongoapi ]; then . /etc/default/tsuru-mongoapi; fi
+  if [ "x$TSURU_MONGOAPI_ENABLED" = "xyes" ]; then exec /usr/bin/tsuru-mongoapi; fi
+end script
