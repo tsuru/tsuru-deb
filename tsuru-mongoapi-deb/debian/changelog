@@ -1,3 +1,10 @@
+tsuru-mongoapi (0.1.1-3ppa1~precise1) precise; urgency=low
+
+  * Fix /etc/default/tsuru-mongoapi file. In order to read the environment
+    variables in the mongoapi process, we need to export them.
+
+ -- Francisco Souza <fss@corp.globo.com>  Wed, 13 Nov 2013 10:53:00 -0200
+
 tsuru-mongoapi (0.1.1-2ppa1~precise1) precise; urgency=high
 
   * Bugfix: fix the package, don't do the git checkout thing in the build
