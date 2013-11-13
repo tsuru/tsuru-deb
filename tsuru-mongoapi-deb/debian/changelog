@@ -1,3 +1,9 @@
+tsuru-mongoapi (0.2.0-1ppa1~precise1) precise; urgency=low
+
+  * Remove all binds from the database when removing the instance.
+
+ -- Francisco Souza <fss@corp.globo.com>  Wed, 13 Nov 2013 17:37:00 -0200
+
 tsuru-mongoapi (0.1.1-3ppa1~precise1) precise; urgency=low
 
   * Fix /etc/default/tsuru-mongoapi file. In order to read the environment
