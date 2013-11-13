@@ -1,10 +1,13 @@
 TSURU_MONGOAPI_ENABLED=no
 
-MONGODB_URI=localhost:27017
-MONGOAPI_DBNAME=tsuru_mongoapi
+export MONGODB_URI=localhost:27017
+export MONGOAPI_DBNAME=tsuru_mongoapi
 
 # Uncomment to define the public URI
-# MONGODB_PUBLIC_URI=public_ip:public_port
+# export MONGODB_PUBLIC_URI=public_ip:public_port
+
+# Uncomment to customize the listen address
+# export MONGODB_API_LISTEN=:3333
 
 # Uncomment and set the replica set name to enable replica set support.
-# MONGODB_REPLICA_SET=rs1
+# export MONGODB_REPLICA_SET=rs1
