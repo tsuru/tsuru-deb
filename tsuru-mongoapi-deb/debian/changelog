@@ -1,3 +1,10 @@
+tsuru-mongoapi (0.1.1-2ppa1~precise1) precise; urgency=high
+
+  * Bugfix: fix the package, don't do the git checkout thing in the build
+    machine
+
+ -- Francisco Souza <fss@corp.globo.com>  Wed, 13 Nov 2013 10:06:00 -0200
+
 tsuru-mongoapi (0.1.1-1ppa1~precise1) precise; urgency=high
 
   * Bugfix: fix race condition in Bind and Unbind handlers
