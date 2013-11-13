@@ -2,7 +2,7 @@ Source: docker-registry
 Section: devel
 Priority: extra
 Maintainer: Globo.com <tsuru@corp.globo.com>
-Build-Depends: debhelper (>= 7.0.50~), golang (>= 2:1.1.1~), git (>= 1:1.7.9.5~)
+Build-Depends: debhelper (>= 7.0.50~), golang (>= 2:1.1.1~)
 Standards-Version: 3.9.3
 Homepage: http://docker.io
 
