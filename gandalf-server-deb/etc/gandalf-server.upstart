@@ -8,5 +8,5 @@ stop on runlevel [06]
 respawn
 setuid git
 setgid git
-exec /usr/bin/gandalf-server -config=/etc/gandalf-server.conf
+exec /usr/bin/gandalf-server -config=/etc/gandalf.conf
 post-stop exec sleep 5

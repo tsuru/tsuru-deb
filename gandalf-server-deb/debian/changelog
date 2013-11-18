@@ -1,3 +1,9 @@
+gandalf-server (0.2.0-5ppa1~precise1) precise; urgency=high
+
+  * [Package] fix config path.
+
+ -- Andrews Medina <andrews@corp.globo.com>  Tue, 18 Nov 2013 13:27:00 -0200
+
 gandalf-server (0.2.0-4ppa1~precise1) precise; urgency=low
 
   * [Package] fix user creation (use --system).
