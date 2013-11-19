@@ -11,7 +11,7 @@ clean:
 
 local_setup:
 	sudo apt-add-repository -y ppa:juju/golang
-	sudo apt-get install golang -y
+	sudo apt-get install golang debhelper devscripts -y
 	mkdir /tmp/gopath
 	GOPATH=/tmp/gopath go get github.com/kr/godep
 	sudo mv /tmp/gopath/bin/godep /usr/bin
