@@ -1,3 +1,9 @@
+tsuru-server (0.2.11ppa1~precise1) precise; urgency=high
+
+  * [Bugfix] Fix save unit don't lose app data.
+
+ -- Andrews Medina <andrews@corp.globo.com>  Tue, 25 Nov 2013 17:14:00 -0200
+
 tsuru-server (0.2.10ppa1~precise1) precise; urgency=high
 
   * [Bugfix] Service add is atomic (issue #601)
