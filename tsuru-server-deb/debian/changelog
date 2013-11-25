@@ -1,3 +1,10 @@
+tsuru-server (0.2.10ppa1~precise1) precise; urgency=high
+
+  * [Bugfix] Service add is atomic (issue #601)
+  * [Bugfix] Fix the way to bind units on deploy (issue #613)
+
+ -- Andrews Medina <andrews@corp.globo.com>  Tue, 25 Nov 2013 12:00:00 -0200
+
 tsuru-server (0.2.9-1ppa1~precise1) precise; urgency=high
 
   * [Bugfix] Fix method GetUnits in App
