@@ -1,3 +1,9 @@
+tsuru-server (0.2.12ppa1~precise1) precise; urgency=high
+
+  * flatten: remove read from buffer.
+
+ -- Andrews Medina <andrews@corp.globo.com>  Tue, 26 Nov 2013 11:10:00 -0200
+
 tsuru-server (0.2.11ppa1~precise1) precise; urgency=high
 
   * [Bugfix] Fix save unit don't lose app data.
