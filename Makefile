@@ -11,26 +11,31 @@ clean:
 
 local_setup:
 	sudo apt-add-repository -y ppa:juju/golang
-	sudo apt-get install golang debhelper devscripts -y
+	sudo apt-get install golang debhelper devscripts git mercurial -y
 	mkdir /tmp/gopath
 	GOPATH=/tmp/gopath go get github.com/kr/godep
 	sudo mv /tmp/gopath/bin/godep /usr/bin
 	rm -rf /tmp/gopath
 
 download:
-	export GOPATH=$$PWD && go get -u -d github.com/globocom/tsuru/...
-	export GOPATH=$$PWD && cd src/github.com/globocom/tsuru && godep restore ./...
+	if [ ! $$TAG ]; then TAG="master"; fi
+	export GOPATH=$$PWD && go get -v -u -d github.com/globocom/tsuru/...
+	export GOPATH=$$PWD && cd src/github.com/globocom/tsuru && git checkout $$TAG && godep restore ./...
 	rm -rf src/github.com/globocom/tsuru/src
+
+upload:
+	for file in *.changes; do debsign $$file; done; unset file
+	for file in *.dsc; do debsign $$file; done; unset file
+	for file in *.changes; do dput ppa:tsuru/ppa $$file; done
+	make clean
 
 _build:
 	sed -i.bkp -e 's/$(DEFINED_VERSION)/$(VERSION)/g' debian/changelog
-	debuild --no-tgz-check -S -sa
+	debuild --no-tgz-check -S -sa -us -uc
 	mv debian/changelog.bkp debian/changelog
 
 _do:
 	for version in "$(VERSIONS)"; do make VERSION=$$version CMD=$(TARGET) -C $(TARGET)-deb -f ../Makefile _build; done
-	for file in *.changes; do dput ppa:tsuru/ppa $$file; done
-	make clean
 
 gandalf-server:
 	cd gandalf-server-deb && GOPATH=$$PWD go get -d github.com/globocom/gandalf/...
