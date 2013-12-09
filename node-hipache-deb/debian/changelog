@@ -1,3 +1,9 @@
+node-hipache (0.2.3-4ppa1~precise1) precise; urgency=medium
+
+  * Redis master/slave patch
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Mon, 09 Dec 2013 10:52:46 -0200
+
 node-hipache (0.2.3-3ppa1~precise1) precise; urgency=low
 
   * Remove Dotcloud logo from HTML file for "No application configured" error.
