@@ -25,9 +25,7 @@ download:
 
 upload:
 	for file in *.changes; do debsign $$file; done; unset file
-	for file in *.dsc; do debsign $$file; done; unset file
 	for file in *.changes; do dput ppa:tsuru/ppa $$file; done
-	make clean
 
 _build:
 	sed -i.bkp -e 's/$(DEFINED_VERSION)/$(VERSION)/g' debian/changelog
