@@ -1,0 +1,54 @@
+Index: lxc-docker-0.7.1/Makefile
+===================================================================
+--- lxc-docker-0.7.1.orig/Makefile	2013-12-06 20:42:14.000000000 -0200
++++ lxc-docker-0.7.1/Makefile	2013-12-11 13:51:23.065076140 -0200
+@@ -1,26 +1,23 @@
+-.PHONY: all binary build default doc shell test
+-
+-DOCKER_RUN_DOCKER := docker run -rm -i -t -privileged -e TESTFLAGS -v $(CURDIR)/bundles:/go/src/github.com/dotcloud/docker/bundles docker
+-
+-default: binary
+-
+-all: build
+-	$(DOCKER_RUN_DOCKER) hack/make.sh
+-
+-binary: build
+-	$(DOCKER_RUN_DOCKER) hack/make.sh binary
+-
+-doc:
+-	docker build -t docker-docs docs && docker run -p 8000:8000 docker-docs
+-
+-test: build
+-	$(DOCKER_RUN_DOCKER) hack/make.sh test
+-
+-shell: build
+-	$(DOCKER_RUN_DOCKER) bash
+-
+-build: bundles
+-	docker build -t docker .
+-
+-bundles:
+-	mkdir bundles
++# Ubuntu package Makefile
++#
++# Dependencies:  debhelper autotools-dev devscripts golang-stable
++# Notes:
++# Use 'make ubuntu' to create the ubuntu package and push it to stating PPA by
++# default. To push to production, set PUBLISH_PPA=1 before doing 'make ubuntu'
++# GPG_KEY environment variable needs to contain a GPG private key for package
++# to be signed and uploaded to docker PPA. If GPG_KEY is not defined,
++# make ubuntu will create docker package and exit with status code 2
++
++PKG_NAME=lxc-docker
++
++all:
++	# Compile docker. Used by dpkg-buildpackage.
++	cd docker && GOPATH=${CURDIR} CGO_ENABLED=0 go build -a -ldflags '-d -w'
++
++install:
++	# Used by dpkg-buildpackage
++	mkdir -p ${DESTDIR}/usr/bin
++	mkdir -p ${DESTDIR}/etc/init
++	mkdir -p ${DESTDIR}/DEBIAN
++	install -m 0755 docker/docker ${DESTDIR}/usr/bin
++	install -o root -m 0644 debian/docker.upstart ${DESTDIR}/etc/init/docker.conf

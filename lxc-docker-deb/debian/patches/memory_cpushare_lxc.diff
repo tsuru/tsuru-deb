@@ -1,0 +1,24 @@
+Index: lxc-docker-0.7.1/lxc_template.go
+===================================================================
+--- lxc-docker-0.7.1.orig/lxc_template.go	2013-12-06 20:42:14.000000000 -0200
++++ lxc-docker-0.7.1/lxc_template.go	2013-12-11 13:38:17.285060133 -0200
+@@ -125,16 +125,12 @@
+ {{end}}
+ 
+ # limits
+-{{if .Config.Memory}}
+-lxc.cgroup.memory.limit_in_bytes = {{.Config.Memory}}
+-lxc.cgroup.memory.soft_limit_in_bytes = {{.Config.Memory}}
++lxc.cgroup.memory.limit_in_bytes = 268435456 
++lxc.cgroup.memory.soft_limit_in_bytes = 268435456
+ {{with $memSwap := getMemorySwap .Config}}
+ lxc.cgroup.memory.memsw.limit_in_bytes = {{$memSwap}}
+ {{end}}
+-{{end}}
+-{{if .Config.CpuShares}}
+-lxc.cgroup.cpu.shares = {{.Config.CpuShares}}
+-{{end}}
++lxc.cgroup.cpu.shares = 460
+ 
+ {{if (getHostConfig .).LxcConf}}
+ {{range $pair := (getHostConfig .).LxcConf}}

@@ -20,9 +20,10 @@ user:
 ###Building packages
 
 In order to build a source package locally, just run ``make <package-name>``.
-For instance:
+You could also use an additional "TAG" env var to use one specific git release.
+If omitted, master branch will be used.  For instance:
 
-	% make tsuru
+	% TAG=0.2.12 make tsuru
 
 Makefile doesn't contain any rule for generating binary packages, just source
 packages. You can build a binary package invoking ``debuild`` directly.
