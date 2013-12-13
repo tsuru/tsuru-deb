@@ -1,10 +1,17 @@
-tsuru-server (0.2.13ppa1~precise1ubuntu1) precise; urgency=medium
+tsuru-server (0.2.12-0ubuntu1ppa1~precise1) precise; urgency=low
+
+  * Fixing package - using quilt instead native format
+  * Patching redis IdleTimeout
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Fri, 13 Dec 2013 10:45:36 -0200
+
+tsuru-server (0.2.12ppa1~precise1ubuntu1) precise; urgency=medium
 
   * fixing launchpad old 0.2.13 broken package 
 
  -- Paulo Sousa <paulo.sousa@corp.globo.com>  Tue, 10 Dec 2013 10:26:16 -0200
 
-tsuru-server (0.2.13ppa1~precise1) precise; urgency=medium
+tsuru-server (0.2.12ppa1~precise1) precise; urgency=medium
 
   * fixed TSR_SSH_AGENT_USER default value.
 

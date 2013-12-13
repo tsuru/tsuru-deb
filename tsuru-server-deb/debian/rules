@@ -7,7 +7,6 @@
 export GOPATH=$(CURDIR)
 
 PKGDIR=debian/tsuru-server
-VERSION:=0.2.8
 
 %:
 	dh $@ 
@@ -21,12 +20,12 @@ binary-arch: clean
 	dh_installdirs
 	go install github.com/globocom/tsuru/cmd/tsr
 	mkdir -p $(PKGDIR)/usr/bin $(PKGDIR)/etc/tsuru $(PKGDIR)/etc/default $(PKGDIR)/etc/init
-	cp $(GOPATH)/etc/tsuru.conf.yaml $(PKGDIR)/etc/tsuru/tsuru.conf
-	cp $(GOPATH)/bin/* $(PKGDIR)/usr/bin/
-	cp $(GOPATH)/etc/tsuru-server.default $(PKGDIR)/etc/default/tsuru-server
-	cp $(GOPATH)/etc/tsuru-server-api.upstart $(PKGDIR)/etc/init/tsuru-server-api.conf
-	cp $(GOPATH)/etc/tsuru-server-collector.upstart $(PKGDIR)/etc/init/tsuru-server-collector.conf
-	cp $(GOPATH)/etc/tsuru-ssh-agent.upstart $(PKGDIR)/etc/init/tsuru-ssh-agent.conf
+	cp $(GOPATH)/debian/etc/tsuru.conf.yaml $(PKGDIR)/etc/tsuru/tsuru.conf
+	cp -v $(GOPATH)/bin/* $(PKGDIR)/usr/bin/
+	dh_installinit --no-start --name=tsuru-server-api
+	dh_installinit --no-start --name=tsuru-server-collector
+	dh_installinit --no-start --name=tsuru-ssh-agent
+	dh_installinit --no-start --name=tsuru-server
 	dh_strip
 	dh_compress
 	dh_fixperms

@@ -19,11 +19,19 @@ user:
 
 ###Building packages
 
-In order to build a source package locally, just run ``make <package-name>``.
-You could also use an additional "TAG" env var to use one specific git release.
-If omitted, master branch will be used.  For instance:
+In order to build a source package locally, just run ``TAG=<release> make <package-name>``.
+You should use an additional "TAG" env var to use one specific git release. For instance:
 
-	% TAG=0.2.12 make tsuru
+	% TAG=0.2.12 make tsuru-server
 
-Makefile doesn't contain any rule for generating binary packages, just source
-packages. You can build a binary package invoking ``debuild`` directly.
+####Generating binary packages
+
+To create binary packages, you gonna need cowbuilder - an wrapper with super
+powers to pbuilder, already installed with ``local_setup`` target. Just run:
+
+	% make cowbuilder_create
+
+It will create all releases environments supported by tsuru team. After that,
+to build all packages just run:
+
+	% make cowbuilder_build

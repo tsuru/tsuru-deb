@@ -27,13 +27,13 @@ cowbuilder_create:
 	for version in $(VERSIONS); do cowbuilder-dist $$version create ; done
 
 cowbuilder_build:
-	if [ -f ppa.sh ]; then rm ppa.sh; fi
+	if [ -f /tmp/ppa.sh ]; then rm /tmp/ppa.sh; fi
 	echo "/usr/bin/apt-get install -y python-software-properties software-properties-common" >> ppa.sh
-	echo "/usr/bin/add-apt-repository -y ppa:tsuru/ppa" >> ppa.sh
-	echo "/usr/bin/add-apt-repository -y ppa:tsuru/lvm2" >> ppa.sh
-	echo "/usr/bin/add-apt-repository -y ppa:tsuru/golang" >> ppa.sh
+	echo "/usr/bin/add-apt-repository -y ppa:tsuru/ppa" >> /tmp/ppa.sh
+	echo "/usr/bin/add-apt-repository -y ppa:tsuru/lvm2" >> /tmp/ppa.sh
+	echo "/usr/bin/add-apt-repository -y ppa:tsuru/golang" >> /tmp/ppa.sh
 	for version in $(VERSIONS); do \
-	    cowbuilder-dist $$version execute --save --override-config ppa.sh && \
+	    cowbuilder-dist $$version execute --save --override-config /tmp/ppa.sh && \
 	    cowbuilder-dist $$version update --override-config && \
 	    cowbuilder-dist $$version build --override-config *$${version}*.dsc; \
 	done
@@ -44,9 +44,16 @@ upload:
 
 _download:
 	if [ ! $$TAG ]; then echo "TAG env var must be set... use: TAG=<value> make $(TARGET)"; exit 1; fi
-	export GOPATH=$$PWD && go get -v -u -d github.com/globocom/tsuru/...
-	export GOPATH=$$PWD && cd src/github.com/globocom/tsuru && git checkout $$TAG && godep restore ./...
-	rm -rf src/github.com/globocom/tsuru/src
+	if [ -d $(TARGET)-$$TAG ]; then rm -rf $(TARGET)-$$TAG; fi
+	if [ -f $(TARGET)_$${TAG}.orig.tar.gz ]; then rm $(TARGET)_$${TAG}.orig.tar.gz; fi
+	mkdir $(TARGET)-$$TAG
+	pushd . && cd $(TARGET)-$$TAG && pushd . \
+	export GOPATH=$$PWD && go get -v -d -u github.com/dotcloud/tar && go get -v -u -d github.com/globocom/tsuru/... && \
+	export GOPATH=$$PWD && cd src/github.com/globocom/tsuru && git checkout $$TAG && godep restore ./... && \
+	rm -rf src/github.com/globocom/tsuru/src && \
+	popd && find . \( -iname ".git*" -o -iname "*.bzr" -o -iname "*.hg" \)  && \
+	popd && tar zcvf $(TARGET)_$${TAG}.orig.tar.gz $(TARGET)-$$TAG
+	rm -rf $(TARGET)-$$TAG
 
 _build:
 	if [ -f debian/changelog.bkp ]; then rm debian/changelog.bkp; fi
@@ -93,5 +100,5 @@ golang:
 	make TARGET=$@ _do
 
 %:
-	make TARGET=$@ -C $@-deb -f ../Makefile _download
-	make TARGET=$@ _do
+	make TARGET=$@ _download
+	#make TARGET=$@ _do

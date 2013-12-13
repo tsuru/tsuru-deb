@@ -1,0 +1,26 @@
+Index: tsuru-server-0.2.12/src/github.com/globocom/docker-cluster/storage/redis.go
+===================================================================
+--- tsuru-server-0.2.12.orig/src/github.com/globocom/docker-cluster/storage/redis.go	2013-12-13 10:42:04.380557705 -0200
++++ tsuru-server-0.2.12/src/github.com/globocom/docker-cluster/storage/redis.go	2013-12-13 13:48:49.309125250 -0200
+@@ -122,6 +122,8 @@
+ 			}
+ 		}
+ 		return conn, nil
+-	}, 10)
++	}, 5)
++	pool.IdleTimeout = 180e9
++	pool.MaxActive = 10
+ 	return &redisStorage{pool: pool, prefix: prefix}
+ }
+Index: tsuru-server-0.2.12/src/github.com/globocom/tsuru/router/hipache/router.go
+===================================================================
+--- tsuru-server-0.2.12.orig/src/github.com/globocom/tsuru/router/hipache/router.go	2013-12-13 10:41:54.600557210 -0200
++++ tsuru-server-0.2.12/src/github.com/globocom/tsuru/router/hipache/router.go	2013-12-13 13:45:49.521116143 -0200
+@@ -41,6 +41,7 @@
+ 			return redis.Dial("tcp", srv)
+ 		}, 10)
+ 	}
++	pool.IdleTimeout = 180e9
+ 	return pool.Get()
+ }
+ 
