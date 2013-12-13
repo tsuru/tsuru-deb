@@ -47,11 +47,11 @@ _download:
 	if [ -d $(TARGET)-$$TAG ]; then rm -rf $(TARGET)-$$TAG; fi
 	if [ -f $(TARGET)_$${TAG}.orig.tar.gz ]; then rm $(TARGET)_$${TAG}.orig.tar.gz; fi
 	mkdir $(TARGET)-$$TAG
-	pushd . && cd $(TARGET)-$$TAG && pushd . \
+	pushd . && cd $(TARGET)-$$TAG && pushd . && \
 	export GOPATH=$$PWD && go get -v -d -u github.com/dotcloud/tar && go get -v -u -d github.com/globocom/tsuru/... && \
 	export GOPATH=$$PWD && cd src/github.com/globocom/tsuru && git checkout $$TAG && godep restore ./... && \
 	rm -rf src/github.com/globocom/tsuru/src && \
-	popd && find . \( -iname ".git*" -o -iname "*.bzr" -o -iname "*.hg" \)  && \
+	popd && find . \( -iname ".git*" -o -iname "*.bzr" -o -iname "*.hg" \) | xargs rm -rf \{} && \
 	popd && tar zcvf $(TARGET)_$${TAG}.orig.tar.gz $(TARGET)-$$TAG
 	rm -rf $(TARGET)-$$TAG
 
@@ -101,4 +101,4 @@ golang:
 
 %:
 	make TARGET=$@ _download
-	#make TARGET=$@ _do
+	make TARGET=$@ _do
