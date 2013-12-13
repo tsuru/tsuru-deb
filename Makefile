@@ -28,7 +28,7 @@ cowbuilder_create:
 
 cowbuilder_build:
 	if [ -f /tmp/ppa.sh ]; then rm /tmp/ppa.sh; fi
-	echo "/usr/bin/apt-get install -y python-software-properties software-properties-common" >> ppa.sh
+	echo "/usr/bin/apt-get install -y python-software-properties software-properties-common" >> /tmp/ppa.sh
 	echo "/usr/bin/add-apt-repository -y ppa:tsuru/ppa" >> /tmp/ppa.sh
 	echo "/usr/bin/add-apt-repository -y ppa:tsuru/lvm2" >> /tmp/ppa.sh
 	echo "/usr/bin/add-apt-repository -y ppa:tsuru/golang" >> /tmp/ppa.sh
