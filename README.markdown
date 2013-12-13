@@ -35,3 +35,11 @@ It will create all releases environments supported by tsuru team. After that,
 to build all packages just run:
 
 	% make cowbuilder_build
+
+####Uploading packages
+
+To sign and upload packages to you own PPA, just use:
+
+	% PPA="tsuru/ppa" make upload
+
+It will sign all packages builded and upload to a custom PPA defined on PPA env var

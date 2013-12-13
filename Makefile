@@ -39,8 +39,9 @@ cowbuilder_build:
 	done
 	
 upload:
+	if [ ! $$PPA ]; then echo "PPA env var must be set to upload packages... use: PPA=<value> make upload"; exit 1; fi
 	for file in *.changes; do debsign $$file; done; unset file
-	for file in *.changes; do dput ppa:tsuru/ppa $$file; done
+	for file in *.changes; do dput ppa:$$PPA $$file; done
 
 _download:
 	if [ ! $$TAG ]; then echo "TAG env var must be set... use: TAG=<value> make $(TARGET)"; exit 1; fi
