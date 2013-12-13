@@ -2,7 +2,7 @@ Index: lxc-docker-0.7.1/Makefile
 ===================================================================
 --- lxc-docker-0.7.1.orig/Makefile	2013-12-06 20:42:14.000000000 -0200
 +++ lxc-docker-0.7.1/Makefile	2013-12-11 13:51:23.065076140 -0200
-@@ -1,26 +1,23 @@
+@@ -1,26 +1,19 @@
 -.PHONY: all binary build default doc shell test
 -
 -DOCKER_RUN_DOCKER := docker run -rm -i -t -privileged -e TESTFLAGS -v $(CURDIR)/bundles:/go/src/github.com/dotcloud/docker/bundles docker
@@ -30,20 +30,17 @@ Index: lxc-docker-0.7.1/Makefile
 -bundles:
 -	mkdir bundles
 +# Ubuntu package Makefile
-+#
-+# Dependencies:  debhelper autotools-dev devscripts golang-stable
-+# Notes:
-+# Use 'make ubuntu' to create the ubuntu package and push it to stating PPA by
-+# default. To push to production, set PUBLISH_PPA=1 before doing 'make ubuntu'
-+# GPG_KEY environment variable needs to contain a GPG private key for package
-+# to be signed and uploaded to docker PPA. If GPG_KEY is not defined,
-+# make ubuntu will create docker package and exit with status code 2
 +
++VERSION=$(shell cat ./VERSION)
++GITCOMMIT=$(shell cat ./VERSION)
 +PKG_NAME=lxc-docker
++LDFLAGS='-X main.GITCOMMIT "$(GITCOMMIT)" -X main.VERSION "$(VERSION)" -w
++LDFLAGS_STATIC=-X github.com/dotcloud/docker/utils.IAMSTATIC true -linkmode external -extldflags "-lpthread -static -Wl,--unresolved-symbols=ignore-in-object-files"'
++BUILDFLAGS=-tags netgo
 +
 +all:
 +	# Compile docker. Used by dpkg-buildpackage.
-+	cd docker && GOPATH=${CURDIR} CGO_ENABLED=0 go build -a -ldflags '-d -w'
++	cd docker && CGO_ENABLED=0 GOPATH=${CURDIR} go build -a -ldflags $(LDFLAGS) $(LDFLAGS_STATIC) $(BUILDFLAGS)
 +
 +install:
 +	# Used by dpkg-buildpackage

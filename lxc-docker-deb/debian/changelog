@@ -1,4 +1,4 @@
-lxc-docker (0.7.1) precise; urgency=medium
+lxc-docker (0.7.1-0ubuntu1ppa1~precise1) precise; urgency=medium
 
   * Bump to version 0.7.1
 

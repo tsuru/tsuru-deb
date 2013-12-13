@@ -1,6 +1,7 @@
 DEFINED_VERSION=precise
 VERSIONS=precise quantal raring saucy
 SHELL=/bin/bash
+
 comma:= ,
 empty:= 
 space:= $(empty) $(empty)
@@ -15,7 +16,7 @@ clean:
 	git clean -dfX
 
 local_setup:
-	sudo apt-add-repository -y ppa:juju/golang
+	sudo apt-add-repository -y ppa:tsuru/golang
 	sudo apt-get install golang debhelper devscripts git mercurial ubuntu-dev-tools cowbuilder -y
 	mkdir /tmp/gopath
 	GOPATH=/tmp/gopath go get github.com/kr/godep
@@ -30,7 +31,7 @@ cowbuilder_build:
 	echo "/usr/bin/apt-get install -y python-software-properties software-properties-common" >> ppa.sh
 	echo "/usr/bin/add-apt-repository -y ppa:tsuru/ppa" >> ppa.sh
 	echo "/usr/bin/add-apt-repository -y ppa:tsuru/lvm2" >> ppa.sh
-	echo "/usr/bin/add-apt-repository -y ppa:juju/golang" >> ppa.sh
+	echo "/usr/bin/add-apt-repository -y ppa:tsuru/golang" >> ppa.sh
 	for version in $(VERSIONS); do \
 	    cowbuilder-dist $$version execute --save --override-config ppa.sh && \
 	    cowbuilder-dist $$version update --override-config && \
@@ -42,7 +43,7 @@ upload:
 	for file in *.changes; do dput ppa:tsuru/ppa $$file; done
 
 _download:
-	if [ ! $$TAG ]; then TAG="master"; fi
+	if [ ! $$TAG ]; then echo "TAG env var must be set... use: TAG=<value> make $(TARGET)"; exit 1; fi
 	export GOPATH=$$PWD && go get -v -u -d github.com/globocom/tsuru/...
 	export GOPATH=$$PWD && cd src/github.com/globocom/tsuru && git checkout $$TAG && godep restore ./...
 	rm -rf src/github.com/globocom/tsuru/src
@@ -88,9 +89,9 @@ lxc-docker:
 
 golang:
 	if [ -f golang_1.2.orig.tar.gz ]; then rm golang_1.2.orig.tar.gz; fi
-	curl -L -o golang_1.2.orig.tar.gz https://launchpad.net/ubuntu/trusty/+source/golang/2:1.2-1ubuntu1/+files/golang_1.2.orig.tar.gz
+	curl -L -o golang_1.2.orig.tar.gz https://go.googlecode.com/files/go1.2.src.tar.gz
 	make TARGET=$@ _do
 
 %:
-	make -C $@-deb -f ../Makefile _download
+	make TARGET=$@ -C $@-deb -f ../Makefile _download
 	make TARGET=$@ _do
