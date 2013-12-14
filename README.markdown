@@ -31,14 +31,14 @@ powers to pbuilder, already installed with ``local_setup`` target. Just run:
 
 	% make cowbuilder_create
 
-It will create all releases environments supported by tsuru team. After that,
+It will create all ubuntu releases environments supported by Tsuru team. After that,
 to build all packages just run:
 
 	% make cowbuilder_build
 
 ####Uploading packages
 
-To sign and upload packages to you own PPA, just use:
+To sign and upload packages to your own PPA, just use:
 
 	% PPA="tsuru/ppa" make upload
 
