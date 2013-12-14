@@ -2,7 +2,7 @@ Index: lxc-docker-0.7.1/Makefile
 ===================================================================
 --- lxc-docker-0.7.1.orig/Makefile	2013-12-06 20:42:14.000000000 -0200
 +++ lxc-docker-0.7.1/Makefile	2013-12-11 13:51:23.065076140 -0200
-@@ -1,26 +1,19 @@
+@@ -1,26 +1,22 @@
 -.PHONY: all binary build default doc shell test
 -
 -DOCKER_RUN_DOCKER := docker run -rm -i -t -privileged -e TESTFLAGS -v $(CURDIR)/bundles:/go/src/github.com/dotcloud/docker/bundles docker
@@ -34,13 +34,15 @@ Index: lxc-docker-0.7.1/Makefile
 +VERSION=$(shell cat ./VERSION)
 +GITCOMMIT=$(shell cat ./VERSION)
 +PKG_NAME=lxc-docker
-+LDFLAGS='-X main.GITCOMMIT "$(GITCOMMIT)" -X main.VERSION "$(VERSION)" -w
-+LDFLAGS_STATIC=-X github.com/dotcloud/docker/utils.IAMSTATIC true -linkmode external -extldflags "-lpthread -static -Wl,--unresolved-symbols=ignore-in-object-files"'
++LDFLAGS=-X main.GITCOMMIT $(GITCOMMIT) -X main.VERSION $(VERSION) -w
++LDFLAGS_STATIC=-X github.com/dotcloud/docker/utils.IAMSTATIC true -linkmode external -extldflags "-lpthread -static -Wl,--unresolved-symbols=ignore-in-object-files
 +BUILDFLAGS=-tags netgo
 +
 +all:
 +	# Compile docker. Used by dpkg-buildpackage.
-+	cd docker && CGO_ENABLED=0 GOPATH=${CURDIR} go build -a -ldflags $(LDFLAGS) $(LDFLAGS_STATIC) $(BUILDFLAGS)
++	CGO_ENABLED=0 GOPATH=${CURDIR} go build -a -o dockerinit-$(VERSION) -ldflags "$(LDFLAGS) -d" $(BUILDFLAGS) ./dockerinit && \
++	ln -sf dockerinit-$(VERSION) dockerinit && \
++	GOPATH=${CURDIR} DOCKER_INITSHA1="$$(sha1sum dockerinit-$(VERSION) | cut -d' ' -f1)" go build -o docker/docker -ldflags "$(LDFLAGS) -X github.com/dotcloud/docker/utils.INITSHA1 \"$$DOCKER_INITSHA1\"" $(BUILDFLAGS) ./docker
 +
 +install:
 +	# Used by dpkg-buildpackage
