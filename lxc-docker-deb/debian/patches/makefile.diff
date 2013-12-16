@@ -2,7 +2,7 @@ Index: lxc-docker-0.7.1/Makefile
 ===================================================================
 --- lxc-docker-0.7.1.orig/Makefile	2013-12-06 20:42:14.000000000 -0200
 +++ lxc-docker-0.7.1/Makefile	2013-12-11 13:51:23.065076140 -0200
-@@ -1,26 +1,22 @@
+@@ -1,26 +1,23 @@
 -.PHONY: all binary build default doc shell test
 -
 -DOCKER_RUN_DOCKER := docker run -rm -i -t -privileged -e TESTFLAGS -v $(CURDIR)/bundles:/go/src/github.com/dotcloud/docker/bundles docker
@@ -40,14 +40,15 @@ Index: lxc-docker-0.7.1/Makefile
 +
 +all:
 +	# Compile docker. Used by dpkg-buildpackage.
-+	CGO_ENABLED=0 GOPATH=${CURDIR} go build -a -o dockerinit-$(VERSION) -ldflags "$(LDFLAGS) -d" $(BUILDFLAGS) ./dockerinit && \
-+	ln -sf dockerinit-$(VERSION) dockerinit && \
-+	GOPATH=${CURDIR} DOCKER_INITSHA1="$$(sha1sum dockerinit-$(VERSION) | cut -d' ' -f1)" go build -o docker/docker -ldflags "$(LDFLAGS) -X github.com/dotcloud/docker/utils.INITSHA1 \"$$DOCKER_INITSHA1\"" $(BUILDFLAGS) ./docker
++	CGO_ENABLED=0 GOPATH=${CURDIR} go build -a -o dockerinit/dockerinit -ldflags "$(LDFLAGS) -d" $(BUILDFLAGS) ./dockerinit && \
++	export DOCKER_INITSHA1="$$(sha1sum dockerinit/dockerinit | cut -d' ' -f1)" && \
++	GOPATH=${CURDIR} go build -o docker/docker -ldflags "$(LDFLAGS) -X github.com/dotcloud/docker/utils.INITSHA1 \"$$DOCKER_INITSHA1\"" $(BUILDFLAGS) ./docker
 +
 +install:
 +	# Used by dpkg-buildpackage
 +	mkdir -p ${DESTDIR}/usr/bin
 +	mkdir -p ${DESTDIR}/etc/init
++	mkdir -p ${DESTDIR}/usr/libexec/docker
 +	mkdir -p ${DESTDIR}/DEBIAN
 +	install -m 0755 docker/docker ${DESTDIR}/usr/bin
-+	install -o root -m 0644 debian/docker.upstart ${DESTDIR}/etc/init/docker.conf
++	install -m 0755 dockerinit/dockerinit ${DESTDIR}/usr/libexec/docker
