@@ -1,3 +1,9 @@
+lvm2 (2.02.103-1ubuntu1ppa3~precise1) precise; urgency=high
+
+  * Removing clvm support
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Mon, 16 Dec 2013 18:09:30 -0200
+
 lvm2 (2.02.103-1ubuntu1ppa2~precise1) precise; urgency=low
 
   * Only build clvm with corosync support - compatible with saucy release 

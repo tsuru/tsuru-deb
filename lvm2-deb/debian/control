@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Ubuntu Core Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 XSBC-Original-Maintainer: Debian LVM Team <pkg-lvm-maintainers@lists.alioth.debian.org>
 Uploaders: Bastian Blank <waldi@debian.org>
-Build-Depends: debhelper (>> 4.2), automake, libcorosync-dev, libdlm-dev (>> 2), libreadline-dev, libselinux1-dev, libudev-dev, pkg-config, quilt
+Build-Depends: debhelper (>> 4.2), automake, libdlm-dev (>> 2), libreadline-dev, libselinux1-dev, libudev-dev, pkg-config, quilt
 Standards-Version: 3.7.3
 Homepage: http://sources.redhat.com/lvm2/
 Vcs-Svn: svn://svn.debian.org/pkg-lvm/lvm2/trunk/
@@ -36,16 +36,6 @@ Description: The Linux Logical Volume Manager
  by grouping arbitrary disks into volume groups. The total capacity of
  volume groups can be allocated to logical volumes, which are accessed as
  regular block devices.
-
-Package: clvm
-Priority: extra
-Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, lvm2 (= ${binary:Version}), lsb-base, corosync | cman
-Description: Cluster LVM Daemon for lvm2
- This package provides the clustering interface for lvm2, when used with
- Red Hat's "cman" or corosync based (eg Pacemaker) cluster infrastructure.
- It allows logical volumes to be created on shared storage devices
- (eg Fibre Channel, or iSCSI).
 
 Package: libdevmapper-dev
 Section: libdevel

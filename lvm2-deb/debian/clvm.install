@@ -1,3 +1,0 @@
-usr/sbin/clvmd
-usr/share/man/man8/clvmd*
-usr/lib/ocf/resource.d/lvm2/clvmd
