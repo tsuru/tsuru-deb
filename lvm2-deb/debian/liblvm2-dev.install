@@ -1,0 +1,5 @@
+usr/include/lvm2app.h
+usr/include/lvm2cmd.h
+usr/lib/liblvm2app.so
+usr/lib/liblvm2cmd.so
+usr/lib/pkgconfig/lvm2app.pc

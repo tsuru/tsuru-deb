@@ -1,0 +1,11 @@
+# Udev rules for LVM.
+# See /usr/share/doc/lvm2/README.udev for further information.
+
+ENV{DM_UDEV_RULES}=="", GOTO="persistent_storage_lvm_end"
+ENV{DM_UUID}!="LVM-?*", GOTO="persistent_storage_lvm_end"
+ENV{DM_UDEV_DISABLE_SUBSYSTEM_RULES_FLAG}!="", GOTO="persistent_storage_lvm_end"
+ENV{DM_UDEV_DISABLE_DISK_RULES_FLAG}!="", GOTO="persistent_storage_lvm_end"
+
+ENV{DM_VG_NAME}=="?*", ENV{DM_LV_NAME}=="?*", ENV{DM_LV_LAYER}=="", SYMLINK+="$env{DM_VG_NAME}/$env{DM_LV_NAME}"
+
+LABEL="persistent_storage_lvm_end"

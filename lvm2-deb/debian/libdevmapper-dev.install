@@ -1,0 +1,5 @@
+usr/include/libdevmapper.h
+usr/include/libdevmapper-event.h
+usr/lib/libdevmapper.so
+usr/lib/pkgconfig/devmapper.pc
+usr/lib/pkgconfig/devmapper-event.pc

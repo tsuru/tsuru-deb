@@ -1,0 +1,9 @@
+# Bourne shell compatible script, sourced by /etc/init.d/clvm to set
+# additional arguments for clvmd.
+
+# Startup timeout: 
+CLVMDTIMEOUT=20
+
+# Volume groups to activate on startup:
+# LVM_VGS="cluster_vg1 cluster_vg2"
+

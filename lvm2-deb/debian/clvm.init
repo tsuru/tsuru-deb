@@ -1,0 +1,145 @@
+#!/bin/sh
+#
+### BEGIN INIT INFO
+# Provides:          clvm
+# Required-Start:    $remote_fs lvm2 cman
+# Required-Stop:     $remote_fs lvm2 cman
+# Default-Start:     S
+# Default-Stop:      0 6
+# Short-Description: start and stop the lvm cluster locking daemon
+### END INIT INFO
+#
+# Author: Frederik Schüler <fs@debian.org>
+# based on the old clvm init script from etch
+# and the clvmd init script from RHEL5
+
+PATH=/sbin:/usr/sbin:/bin:/usr/bin
+DESC="Cluster LVM Daemon"
+NAME=clvm
+DAEMON=/usr/sbin/clvmd
+SCRIPTNAME=/etc/init.d/clvm
+
+[ -x $DAEMON ] || exit 0
+
+. /lib/init/vars.sh
+
+. /lib/lsb/init-functions
+
+if [ ! -f /etc/cluster/cluster.conf ]; then
+	log_failure_msg "clvmd: cluster not configured. Aborting."
+	exit 0
+fi
+
+if ! cman_tool status >/dev/null 2>&1; then
+	log_failure_msg "clvmd: cluster is not running. Aborting."
+	exit 0
+fi
+
+CLVMDTIMEOUT=20
+
+# Read configuration variable file if it is present
+[ -r /etc/default/$NAME ] && . /etc/default/$NAME
+
+DAEMON_OPTS="-T$CLVMDTIMEOUT"
+
+do_start()
+{
+	if [ ! -d "/var/run/lvm" ]; then
+        	mkdir /var/run/lvm
+	fi
+	start-stop-daemon --start --quiet --exec $DAEMON -- $DAEMON_OPTS || status="$?"
+	# flush cache
+	vgscan > /dev/null 2>&1 
+	return $status
+}
+
+do_activate()
+{
+	if [ -n "$LVM_VGS" ] ; then
+		log_action_msg  "Activating VGs $LVM_VGS"
+		vgchange -ayl $LVM_VGS || return $?
+	else
+		log_action_msg  "Activating all VGs"
+		vgchange -ayl || return $?
+	fi
+}
+
+do_deactivate()
+{
+	if [ -n "$LVM_VGS" ] ; then
+		vgs="$LVM_VGS"
+	else
+		# Hack to only deactivate clustered volumes
+		vgs=$(vgdisplay -C -o vg_name,vg_attr --noheadings 2> /dev/null | awk '($2 ~ /.....c/) {print $1}')
+	fi
+
+	[ "$vgs" ] || return 0
+
+	vgchange -anl $vgs || return $?
+}
+
+do_stop()
+{
+	start-stop-daemon --stop --quiet --name clvmd
+	status=$?
+	return $status
+}
+
+case "$1" in
+  	start)
+		# start the daemon...
+		log_daemon_msg "Starting $DESC" "$NAME"
+		do_start
+		status=$?
+		case "$status" in
+			0) log_end_msg 0 ;;
+			1) log_action_msg " already running" ; log_end_msg 0 ;;
+			*) log_end_msg 1 ;;
+		esac
+		# and activate clustered volume groups
+		do_activate
+		status=$?
+		exit $status
+	;;
+	stop)
+		# deactivate volumes...
+		log_daemon_msg "Deactivating VG $vg:"
+		do_deactivate
+		status=$?
+		case "$status" in
+			0) log_end_msg 0 ;;
+			1) log_end_msg 0 ;;
+			*) log_end_msg 1 ;;
+		esac
+		# and stop the daemon
+		log_daemon_msg "Stopping $DESC" "$NAME"
+		do_stop
+		status=$?
+		case "$status" in
+			0) log_end_msg 0 ; exit 0 ;;
+			1) log_end_msg 0 ; exit 0 ;;
+			*) log_end_msg 1 ; exit $status ;;
+		esac
+	;;
+	restart|force-reload)
+		$0 stop
+		sleep 1
+		$0 start
+	;;
+	status)
+		pid=$( pidof $DAEMON )
+		if [ -n "$pid" ] ; then
+			log_action_msg "$DESC is running" 
+		else
+			log_action_msg "$DESC is not running"
+			exit 3
+		fi
+		exit 0
+	;;
+	*)
+		echo "Usage: $SCRIPTNAME {start|stop|restart|force-reload|status}" >&2
+		exit 1
+	;;
+esac
+
+exit 0

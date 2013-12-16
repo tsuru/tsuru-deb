@@ -1,0 +1,56 @@
+#!/bin/sh
+### BEGIN INIT INFO
+# Provides:          lvm2 lvm
+# Required-Start:    mountdevsubfs udev
+# Required-Stop:
+# Should-Start:      mdadm-raid cryptdisks-early multipath-tools-boot
+# Should-Stop:       umountroot mdadm-raid
+# X-Start-Before:    checkfs mountall
+# X-Stop-After:      umountfs
+# Default-Start:     S
+# Default-Stop:      0 6
+### END INIT INFO
+
+SCRIPTNAME=/etc/init.d/lvm2
+
+. /lib/lsb/init-functions
+
+[ -x /sbin/vgchange ] || exit 0
+
+do_start()
+{
+	modprobe dm-mod 2> /dev/null || :
+	/sbin/vgscan --ignorelockingfailure --mknodes || :
+	/sbin/vgchange -aly --ignorelockingfailure || return 2
+}
+
+do_stop()
+{
+	/sbin/vgchange -aln --ignorelockingfailure || return 2
+}
+
+case "$1" in
+  start)
+	log_begin_msg "Setting up LVM Volume Groups"
+	do_start
+	case "$?" in
+		0|1) log_end_msg 0 ;;
+		2) log_end_msg 1 ;;
+	esac
+	;;
+  stop)
+	log_begin_msg "Shutting down LVM Volume Groups"
+	do_stop
+	case "$?" in
+		0|1) log_end_msg 0 ;;
+		2) log_end_msg 1 ;;
+	esac
+	;;
+  restart|force-reload)
+	;;
+  *)
+	echo "Usage: $SCRIPTNAME {start|stop}" >&2
+	exit 3
+	;;
+esac
+

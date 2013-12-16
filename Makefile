@@ -84,6 +84,7 @@ tsuru-mongoapi:
 	make TARGET=$@ _do
 
 lxc-docker:
+	if [ ! $$TAG ]; then echo "TAG env var must be set... use: TAG=<value> make $(TARGET)"; exit 1; fi
 	if [ -d lxc-docker-$$TAG ]; then rm -rf lxc-docker-$$TAG; fi 
 	if [ -d docker-$$TAG ]; then rm -rf docker-$$TAG; fi
 	curl -L -o lxc-docker-$$TAG.orig.tar.gz https://github.com/dotcloud/docker/archive/v$$TAG.tar.gz
@@ -91,8 +92,15 @@ lxc-docker:
 	mv docker-$$TAG lxc-docker-$$TAG
 	pushd . && cd lxc-docker-$$TAG && GOPATH=$$PWD go get -d -v -u github.com/dotcloud/docker/... && popd
 	pushd . && cd lxc-docker-$$TAG/src/github.com/dotcloud/docker && git fetch --tags && git checkout v$$TAG && popd
+	pushd . && cd lxc-docker-$$TAG && find . \( -iname ".git*" -o -iname "*.bzr" -o -iname "*.hg" \) | xargs rm -rf \{} && popd
 	tar zcvf lxc-docker_$$TAG.orig.tar.gz lxc-docker-$$TAG
 	rm -rf lxc-docker-$$TAG
+	make TARGET=$@ _do
+
+lvm2:
+	if [ ! $$TAG ]; then echo "TAG env var must be set... use: TAG=<value> make $(TARGET)"; exit 1; fi
+	if [ -f lvm2_$${TAG//_/.}.orig.tar.gz ]; then rm lvm2_$${TAG//_/.}.orig.tar.gz; fi
+	curl -L -o lvm2_$${TAG//_/.}.orig.tar.gz https://git.fedorahosted.org/cgit/lvm2.git/snapshot/lvm2-$$TAG.tar.gz
 	make TARGET=$@ _do
 
 golang:

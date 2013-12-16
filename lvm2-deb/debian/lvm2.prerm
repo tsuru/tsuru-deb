@@ -1,0 +1,13 @@
+#!/bin/sh
+
+set -e
+
+case "$1" in
+    remove)
+        vgcfgbackup >/dev/null 2>&1 || :
+    ;;
+esac
+
+#DEBHELPER#
+
+exit 0

@@ -1,0 +1,23 @@
+This is the cluster LVM daemon for LVM2.
+
+In conjunction with the Red Hat cluster infrastructure (cman & dlm) it
+will allow LVM volumes on shared storage to be managed from a central
+point. If you also want to share data you should also look at GFS.
+
+Only "normal" block devices may be shared. At present, snapshots and
+mirroring are not cluster aware. So, if you want to snapshot a volume
+is is VERY IMPORTANT that not only the snapshot device but also the origin
+device be activated on one node only.
+
+clvmd should be run on all nodes in the cluster, unless this is the case
+commands will fail as the integrity of the LVM metadata cannot be assured.
+
+In order to make normal lvm2 cluster-aware it is necessary to edit the
+configuration file /etc/lvm/lvm.conf as follows:
+
+in the global{} section:
+  locking_type = 3
+
+
+Patrick Caulfield <patrick@debian.org>
+24th December 2004

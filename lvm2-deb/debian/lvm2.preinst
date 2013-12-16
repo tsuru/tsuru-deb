@@ -1,0 +1,24 @@
+#!/bin/sh
+
+set -e
+
+case "$1" in
+    upgrade)
+        if dpkg --compare-versions "$2" lt 2.02.39-5; then
+            if [ -L /lib/lvm-default ]; then
+                rm -f /lib/lvm-default
+            fi
+            rm -f /etc/lvm/.cache
+        fi
+        if dpkg --compare-versions "$2" lt 2.02.51-1; then
+            if [ -e /etc/init.d/lvm ]; then
+                rm -f /etc/init.d/lvm
+            fi
+            update-rc.d lvm remove >/dev/null || :
+        fi
+    ;;
+esac
+
+#DEBHELPER#
+
+exit 0

@@ -1,0 +1,13 @@
+The udev rules included in lvm2 are responsible for setting up the devices
+in /dev/$VG and also provides some environment variables for use by later
+rules:
+
+* DM_VG_NAME
+  Volume group name
+* DM_LV_NAME
+  Logical volume name
+* DM_LV_LAYER
+  Logical volume layer (blank if not set)
+
+The rules included in dmsetup are responsible for the core device mapper
+support, see /usr/share/doc/dmsetup/README.udev for further information.

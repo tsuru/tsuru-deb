@@ -1,0 +1,10 @@
+../../tree/lvm2/* /
+etc/lvm/lvm.conf
+sbin/fsadm
+sbin/lv*
+sbin/pv*
+sbin/vg*
+usr/share/man/man8/lv*
+usr/share/man/man8/pv*
+usr/share/man/man8/vg*
+usr/share/man/man5

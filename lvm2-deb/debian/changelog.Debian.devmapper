@@ -1,0 +1,517 @@
+devmapper (2:1.02.27-4) unstable; urgency=low
+
+  * Set link priority to 100 for dmraid devices. (closes: #498838)
+
+ -- Bastian Blank <waldi@debian.org>  Wed, 01 Oct 2008 16:14:32 +0200
+
+devmapper (2:1.02.27-3) unstable; urgency=low
+
+  * Fix jump to undefined label in udev rules. (closes: #491107)
+
+ -- Bastian Blank <waldi@debian.org>  Thu, 17 Jul 2008 11:14:48 +0200
+
+devmapper (2:1.02.27-2) unstable; urgency=low
+
+  * Update dmsetup export patch to export target types. (closes: #486780)
+  * Add udev rules to dmsetup. (closes: #455746)
+
+ -- Bastian Blank <waldi@debian.org>  Wed, 16 Jul 2008 00:00:31 +0200
+
+devmapper (2:1.02.27-1) unstable; urgency=low
+
+  * New upstream version. (closes: #488981)
+  * Update dm_report symbols.
+  * Only ignore known VCS dirs. (closes: #482744)
+
+ -- Bastian Blank <waldi@debian.org>  Sun, 06 Jul 2008 15:07:56 +0200
+
+devmapper (2:1.02.26-1) unstable; urgency=low
+
+  * New upstream version.
+  * Update symbols files.
+  * Update dmsetup export patch.
+
+ -- Bastian Blank <waldi@debian.org>  Sun, 22 Jun 2008 10:54:09 +0200
+
+devmapper (2:1.02.25-1) unstable; urgency=low
+
+  * New upstream version.
+
+ -- Bastian Blank <waldi@debian.org>  Sun, 18 May 2008 14:34:03 +0200
+
+devmapper (2:1.02.24-4) unstable; urgency=low
+
+  * Add symbols file for libdevmapper1.02.
+  * Add modified version of atomic device creation patch. (closes: #455745)
+  * Add modified version of dmsetup export patch. (closes: #434241)
+
+ -- Bastian Blank <waldi@debian.org>  Mon, 10 Mar 2008 22:16:48 +0100
+
+devmapper (2:1.02.24-3) unstable; urgency=low
+
+  * Always export selinux function.
+
+ -- Bastian Blank <waldi@debian.org>  Tue, 08 Jan 2008 16:45:10 +0000
+
+devmapper (2:1.02.24-2) unstable; urgency=low
+
+  * Build depend against automake.
+
+ -- Bastian Blank <waldi@debian.org>  Wed, 02 Jan 2008 18:42:07 +0000
+
+devmapper (2:1.02.24-1) unstable; urgency=low
+
+  * New upstream version. (closes: #457972)
+  * Use linux-2.6 style orig handling.
+  * Reduce linked libs to minimum.
+  * Remove init script. (closes: #361358, #375340, #384900, #419958)
+  * Cleanup udeb relations. (closes: #419604)
+  * Fix pkgconfig file for static linking. (closes: #390243)
+  * Supply proper --host and --build args to configure. (closes: #451136)
+  * Fix copyright file.
+  * Update standards version to 3.7.3, no changes.
+
+ -- Bastian Blank <waldi@debian.org>  Wed, 02 Jan 2008 14:42:20 +0000
+
+devmapper (2:1.02.20-2) unstable; urgency=low
+
+  * Add version to shlibs. (closes: #431735)
+  * Woraround kernel headers.
+
+ -- Bastian Blank <waldi@debian.org>  Fri,  6 Jul 2007 08:40:12 +0000
+
+devmapper (2:1.02.20-1) unstable; urgency=low
+
+  * New upstream version.
+    - Fix include guards. (closes: #426900)
+
+ -- Bastian Blank <waldi@debian.org>  Fri, 22 Jun 2007 11:14:47 +0000
+
+devmapper (2:1.02.18-1) unstable; urgency=low
+
+  * New upstream version.
+  * Bump abiname.
+
+ -- Bastian Blank <waldi@debian.org>  Sun,  8 Apr 2007 17:52:34 +0000
+
+devmapper (2:1.02.12-1) unstable; urgency=low
+
+  * New upstream version.
+    - Don't suspend device which is already suspended.
+
+ -- Bastian Blank <waldi@debian.org>  Sat,  2 Dec 2006 16:54:38 +0000
+
+devmapper (2:1.02.08-1) unstable; urgency=medium
+
+  * New upstream version.
+    - Fix corelog segment line. (closes: #376283)
+
+ -- Bastian Blank <waldi@debian.org>  Tue,  8 Aug 2006 22:05:44 +0000
+
+devmapper (2:1.02.07-1) unstable; urgency=low
+
+  * New upstream version.
+  * Update priorities to match overrides.
+  * Acknowledge NMU. (closes: #316883, #329409, #341901, #342455)
+
+ -- Bastian Blank <waldi@debian.org>  Sat, 10 Jun 2006 21:20:43 +0000
+
+devmapper (2:1.02.05-2.1) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * Set default device modes to 0, 6, 0660, according to the decision
+    of the technical committee,
+    http://lists.debian.org/debian-ctte/2006/04/msg00033.html
+    Closes: #316883, #329409, #341901, #342455
+    LVM devices are created with root:disk ownership and 0660 permissions,
+    which is used by all other disk block devices.  This allows backups
+    of LVM logical volumes with tools such as amanda, which run as user
+    backup, a member of the disk group.
+    Thanks for Roger Leigh for preparing the patch.
+
+ -- Andreas Barth <aba@not.so.argh.org>  Sun,  4 Jun 2006 20:15:33 +0200
+
+devmapper (2:1.02.05-2) unstable; urgency=low
+
+  * Generate udeb shlibs entries. (closes: #356906)
+  * Set default device modes to 0, 6, 0644. (closes: #304476)
+
+ -- Bastian Blank <waldi@debian.org>  Sat, 13 May 2006 14:44:47 +0000
+
+devmapper (2:1.02.05-1) unstable; urgency=low
+
+  * New upstram version.
+  * Install pkgconfig file. (closes: #355927)
+
+ -- Bastian Blank <waldi@debian.org>  Fri,  5 May 2006 20:40:42 +0000
+
+devmapper (2:1.02.03-1) unstable; urgency=low
+
+  * New upstram version. 
+  * Make device modes overridable.
+
+ -- Bastian Blank <waldi@debian.org>  Sun, 12 Feb 2006 11:45:49 +0100
+
+devmapper (2:1.02.02-1) unstable; urgency=low
+
+  * New upstram version. 
+    - Use names instead of numbers in messages when ioctls fail.
+      (closes: #341452)
+
+ -- Bastian Blank <waldi@debian.org>  Fri, 02 Dec 2005 20:16:55 +0100
+
+devmapper (2:1.02.00-1) unstable; urgency=low
+
+  * New upstream version. (closes: #338947)
+
+ -- Bastian Blank <waldi@debian.org>  Thu, 24 Nov 2005 20:07:41 +0100
+
+devmapper (2:1.01.05-1) unstable; urgency=low
+
+  * Readd init script to load the device-mapper module.
+    (closes: #330549, #315161, #298406)
+
+ -- Bastian Blank <waldi@debian.org>  Thu, 29 Sep 2005 18:58:31 +0200
+
+devmapper (2:1.01.04-2) unstable; urgency=low
+
+  * Enable selinux support for debs. (closes: #323022)
+  * Change optimization for udebs. (closes: #314360)
+
+ -- Bastian Blank <waldi@debian.org>  Sun, 14 Aug 2005 11:14:54 +0200
+
+devmapper (2:1.01.04-1) unstable; urgency=low
+
+  * New upstream version.
+  * Explicitly disable selinux support. (blocked by #322891)
+
+ -- Bastian Blank <waldi@debian.org>  Sat, 13 Aug 2005 13:16:31 +0200
+
+devmapper (2:1.01.03-1) unstable; urgency=low
+
+  * New upstream version.
+  * Remove init script, libdevmapper creates the device themself.
+
+ -- Bastian Blank <waldi@debian.org>  Sun, 19 Jun 2005 13:41:08 +0200
+
+devmapper (2:1.01.00-4) unstable; urgency=low
+
+  * Build static libs.
+  * Remove the wrong dh_python call.
+
+ -- Bastian Blank <waldi@debian.org>  Mon, 14 Mar 2005 19:43:32 +0100
+
+devmapper (2:1.01.00-3) unstable; urgency=low
+
+  * Don't longer use cdbs.
+  * Remove many cruft.
+
+ -- Bastian Blank <waldi@debian.org>  Mon, 14 Mar 2005 13:55:47 +0100
+
+devmapper (2:1.01.00-2) unstable; urgency=high
+
+  * New maintainer.
+  * Fix initscript links. (closes: #299013)
+
+ -- Bastian Blank <waldi@debian.org>  Fri, 11 Mar 2005 08:29:31 +0100
+
+devmapper (2:1.01.00-1) unstable; urgency=low
+
+  * New upstream
+  * Set permission on control device to 0660
+    Closes: #294260
+
+ -- Patrick Caulfield <patrick@debian.org>  Mon, 14 Feb 2005 09:20:23 +0000
+
+devmapper (2:1.00.19-4) unstable; urgency=low
+
+  * Cope with single/multiple spaces in "ls" output when checking device.
+    Closes: #273273
+    
+ -- Patrick Caulfield <patrick@debian.org>  Sun, 17 Oct 2004 11:01:00 +0100
+
+devmapper (2:1.00.19-3) unstable; urgency=low
+
+  * Remove kernel-patch-devmapper as it is now incorporated in the
+    Debian kernel.
+    Closes: #262347, #272384
+  * Remove XSI:ism (what ever that is) from init script.
+    Closes: #258853 
+  
+ -- Patrick Caulfield <patrick@debian.org>  Mon, 20 Sep 2004 08:01:42 +0100
+
+devmapper (2:1.00.19-2) unstable; urgency=low
+
+  * Don't error on startup of /dev/mapper directory does not exist.
+    Closes: #259314
+
+ -- Patrick Caulfield <patrick@debian.org>  Thu, 15 Jul 2004 11:52:38 +0100
+
+devmapper (2:1.00.19-1) unstable; urgency=low
+
+  * New upstream version(s). Closes: #257958
+  * Don't build debian-speciif patches as dm is now in the Debian kernels
+    Closes: #247004, #252168
+  * Don't recreate /dev/mapper/control if it hasn't changed.
+    Closes: #257106
+  * Add dmsetup udeb
+    Closes: #241385
+
+ -- Patrick Caulfield <patrick@debian.org>  Wed,  7 Jul 2004 14:42:34 +0100
+
+devmapper (2:1.00.17-5) unstable; urgency=low
+
+  * Take over maintainership.
+  * recreate the /dev/mapper/control device at each reboot in case
+    the minor number changes. Closes: #236735
+
+ -- Patrick Caulfield <patrick@debian.org>  Tue,  1 Jun 2004 11:13:55 +0100
+
+devmapper (2:1.00.17-4) unstable; urgency=low
+
+  * The DAM-approval-process-sucks release.
+  * Fix missing autoconf build-dep (closes: #249476).
+
+ -- Andres Salomon <dilinger@voxel.net>  Mon, 17 May 2004 22:35:26 -0400
+
+devmapper (2:1.00.17-3) unstable; urgency=low
+
+  * Fix autoconf check for selinux build environment (closes: #248656).
+
+ -- Andres Salomon <dilinger@voxel.net>  Mon, 17 May 2004 03:20:52 -0400
+
+devmapper (2:1.00.17-2) unstable; urgency=low
+
+  * Add a little blurb about the removal of VFS locking patch in
+    README.Debian.  By popular request.
+  * Have libdevmapper1.00-udeb provide libdevmapper1.00 (closes: #248238).
+
+ -- Andres Salomon <dilinger@voxel.net>  Mon, 10 May 2004 02:07:12 -0400
+
+devmapper (2:1.00.17-1) unstable; urgency=low
+
+  * New upstream release.
+  * Update kernel patches, ensure VFS lock patch is applied
+    (closes: #245748).
+  * Move dmsetup binary into /sbin (closes: #247053).
+  * Add 002-lfs.patch; compile w/ -D_FILE_OFFSET_BITS=64.
+
+ -- Andres Salomon <dilinger@voxel.net>  Sat, 01 May 2004 23:55:01 -0400
+
+devmapper (2:1.00.15-1) unstable; urgency=low
+
+  * New upstream release (closes: #242514).
+  * Update copyright file.
+  * Drop 2.4.22 kernel patch.  This rids us of the need for a separate
+    VFS-lock patch.
+  * Add 2.4.25 kernel patch (closes: #241097).
+  * Add init script for libdevmapper (closes: #233624).
+  * Doc updates, cleanups, and added a README.Debian (closes: #234488).
+  * Update kernel headers to 2.4.25.
+
+ -- Andres Salomon <dilinger@voxel.net>  Thu, 08 Apr 2004 03:16:45 -0400
+
+devmapper (2:1.00.07-4) unstable; urgency=low
+
+  * Acknowledge NMU.
+  * Add udeb for debian-installer.
+  * Add 2.4.24 devmapper patch, taken from Joe Thornber's 2.4.23-pre7 patch.
+    Note that this also includes the VFS-locking patch.  (Closes: #228017)
+  * Add 2.4.24 devmapper patch for Debian; this one is based on the normal
+    2.4.24 patch, but applies to Debian's 2.4.24-2 kernel.  (Closes: #230015)
+  * Drop 2.4.20 and 2.4.21 patches; those kernels are deprecated and
+    insecure.  (Closes: #205862)
+  * Add versioned build-dep for cdbs.
+
+ -- Andres Salomon <dilinger@voxel.net>  Sat, 14 Feb 2004 18:56:08 -0500
+
+devmapper (2:1.00.07-3.1) unstable; urgency=low
+
+  * Non-maintainer upload
+  * Include VFS-lock patch (Closes: #224829)
+
+ -- Matt Zimmerman <mdz@debian.org>  Mon, 22 Dec 2003 13:28:25 -0800
+
+devmapper (2:1.00.07-3) unstable; urgency=low
+
+  * Add explicit dependency upon linux-kernel-headers.  (Closes: #223629)
+  * Build-depend upon autotools-dev so that cdbs can find an
+    updated config.{sub,guess}.  (Closes: #223697)
+
+ -- Andres Salomon <dilinger@voxel.net>  Sun, 14 Dec 2003 19:30:54 -0500
+
+devmapper (2:1.00.07-2) unstable; urgency=low
+
+  * Enable v1 ioctls compatibility.  (Closes: #223414)
+
+ -- Andres Salomon <dilinger@voxel.net>  Tue, 09 Dec 2003 10:36:38 -0500
+
+devmapper (2:1.00.07-1) unstable; urgency=low
+
+  * New upstream release.
+  * Remove 001-2.4.22-dm1.patch (now included upstream).
+  * Change kernel-patch-device-mapper's arch type to all; thanks to
+    Philipp Matthias Hahn for pointing this out.  (Closes: #216187)
+  * Tell cdbs the proper directory for config.{sub,guess}.
+
+ -- Andres Salomon <dilinger@voxel.net>  Sun, 30 Nov 2003 01:50:06 -0500
+
+devmapper (2:1.00.05-3) unstable; urgency=low
+
+  * Fix problem w/ dm patch on sparc64.  (Closes: #213446)
+  * Update standards-version.
+  * Remove CFLAGS patch, as cdbs now doesn't clobber CFLAGS (yay!).
+
+ -- Andres Salomon <dilinger@voxel.net>  Wed, 15 Oct 2003 00:57:12 -0400
+
+devmapper (2:1.00.05-2) unstable; urgency=low
+
+  * Fix PIC problem due to cdbs clobbering CFLAGS.  (Closes: #212023)
+
+ -- Andres Salomon <dilinger@voxel.net>  Sat, 27 Sep 2003 16:00:59 -0400
+
+devmapper (2:1.00.05-1) unstable; urgency=low
+
+  * New upstream version.
+  * Change build system to use cdbs.
+  * Add 2.4.22 device-mapper patch.  (Closes: #210447)
+  * Add versioned build-dep for dh-kpatches (see bug #204160).
+
+ -- Andres Salomon <dilinger@voxel.net>  Thu, 18 Sep 2003 01:00:28 -0400
+
+devmapper (2:1.00.03-1) unstable; urgency=low
+
+  * New upstream version.
+
+ -- Andres Salomon <dilinger@voxel.net>  Fri, 22 Aug 2003 00:50:48 -0400
+
+devmapper (2:1.00.02-2) unstable; urgency=low
+
+  * Add epoch.
+  * Fix typo in description.  (Closes: #202727)
+
+ -- Andres Salomon <dilinger@voxel.net>  Sat, 19 Jul 2003 19:32:37 -0400
+
+devmapper (1.00.02-1) unstable; urgency=low
+
+  * New upstream version.
+  * Update standards-version.
+
+ -- Andres Salomon <dilinger@voxel.net>  Sat, 19 Jul 2003 19:32:37 -0400
+
+devmapper (1.00.02rc3-1) unstable; urgency=low
+
+  * New upstream version.
+
+ -- Andres Salomon <dilinger@voxel.net>  Mon, 14 Jul 2003 00:50:42 -0400
+
+devmapper (1.00.01rc2-1) unstable; urgency=low
+
+  * New upstream version.
+  * Update kernel patch, headers, and header scripts; 2.4.20 and 2.4.21 patches are now
+    included.
+  * New 1.00 SONAME, updated lib accordingly.
+
+ -- Andres Salomon <dilinger@voxel.net>  Wed, 09 Jul 2003 01:12:50 -0400
+
+devmapper (0.96.08-1) unstable; urgency=low
+
+  * New upstream version.
+  * Update maintainer email address.
+  * Rename libdevmapper0 to match SONAME.  (Closes: #197438)
+  * Remove libdevmapper modutils dependency and lvm2 postinst stuff; working
+    towards a proper lvm2/lvm10/dm relationship.  (Closes: #194907)
+  * Update kernel patch and headers; 2.4.19 and 2.4.20 patches are now
+    included.
+  * Update standards-version and libdevmapper-dev's section.
+  * Change SONAME stuff to work around ldconfig weirdness, and various
+    other fixes.
+
+ -- Andres Salomon <dilinger@voxel.net>  Sat, 07 Jun 2003 18:00:03 -0400
+
+devmapper (0.96.07-1) unstable; urgency=low
+
+  * New upstream version.  (Closes: #171671)
+  * Char signedness assumption fixed.  (Closes: #163825)
+  * Remove types.h inclusion fix from 2.4.19 kernel patch; committed upstream.
+  * debian/copyright fix to appease lintian.
+
+ -- Andres Salomon <dilinger@mp3revolution.net>  Mon,  9 Dec 2002 02:16:28 -0400
+
+devmapper (0.96.04-2) unstable; urgency=low
+
+  * Make the new version of dh-kpatches happy.  (Closes: #160927)
+  * Make header-update makefile rule consistent w/ my other packages, and
+    update headers for good measure.
+
+ -- Andres Salomon <dilinger@mp3revolution.net>  Sat, 21 Sep 2002 17:29:07 -0400
+
+devmapper (0.96.04-1) unstable; urgency=low
+
+  * New upstream release (Beta5).
+  * Update kernel headers to 2.4.19.
+  * Update kpatch to 2.4.19.
+
+ -- Andres Salomon <dilinger@mp3revolution.net>  Thu, 15 Aug 2002 00:26:20 -0400
+
+devmapper (0.95.07-3) unstable; urgency=low
+
+  * Move libdevmapper0 libs to /lib.  (Closes: #146237)
+  * Remove dependency on fileutils, to shut lintian up.
+
+ -- Andres Salomon <dilinger@mp3revolution.net>  Sun, 12 May 2002 03:20:54 -0500
+
+devmapper (0.95.07-2) unstable; urgency=low
+
+  * Fix link error on hppa, due to lack of -fPIC.  (Closes: #144792)
+  * Fix postinst error in libdevmapper0.  (Closes: #144889)
+  * Updated depends (removed patch, bzip2, added modutils, fileutils).
+
+ -- Andres Salomon <dilinger@mp3revolution.net>  Sun, 28 Apr 2002 14:26:59 -0500
+
+devmapper (0.95.07-1) unstable; urgency=low
+
+  * New release (Beta2).
+  * Remove 2.4.16 and 2.4.17 patches from kpatches.
+  * Reworked the build system to supply its own headers, instead of
+    depending upon kernel-source packages.  Makes building much faster.
+  * Added scripts/ directory, and scripts to keep kernel headers up-to-date.
+
+ -- Andres Salomon <dilinger@mp3revolution.net>  Thu, 25 Apr 2002 01:01:41 -0500
+
+devmapper (0.95.06-1) unstable; urgency=low
+
+  * New release.
+
+ -- Andres Salomon <dilinger@mp3revolution.net>  Wed,  3 Apr 2002 00:02:12 -0500
+
+devmapper (0.95.05-1) unstable; urgency=low
+
+  * New release; ext3 support and 2.4.18 patches now included.
+  * Drop the cvs<date> suffix from version.
+
+ -- Andres Salomon <dilinger@mp3revolution.net>  Fri, 15 Mar 2002 01:03:25 -0500
+
+devmapper (0.95.03cvs20020306-1) unstable; urgency=low
+
+  * New Release.
+  * Convert from debian native package.
+
+ -- Andres Salomon <dilinger@mp3revolution.net>  Wed,  6 Mar 2002 00:29:39 -0500
+
+devmapper (0.95.02cvs20020304) unstable; urgency=low
+
+  * CVS update.
+  * Renamed libdevmapper package to libdevmapper0.
+  * Added postinst script for creating devmapper control device.
+
+ -- Andres Salomon <dilinger@mp3revolution.net>  Mon,  4 Mar 2002 02:23:48 -0500
+
+devmapper (0.95.02cvs20020218) unstable; urgency=low
+
+  * Initial Release.
+  * device-mapper broken up into libdevmapper1, libdevmapper-dev,
+    dmsetup, and kernel-patch-device-mapper.
+
+ -- Andres Salomon <dilinger@mp3revolution.net>  Mon, 18 Feb 2002 15:46:08 -0500
+

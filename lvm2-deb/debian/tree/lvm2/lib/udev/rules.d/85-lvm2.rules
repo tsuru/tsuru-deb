@@ -1,0 +1,6 @@
+# This file causes block devices with LVM signatures to be automatically
+# added to their volume group.
+# See udev(8) for syntax
+
+SUBSYSTEM=="block", ACTION=="add|change", ENV{ID_FS_TYPE}=="lvm*|LVM*", \
+	RUN+="watershed sh -c '/sbin/lvm vgscan; /sbin/lvm vgchange -a y'"

@@ -1,3 +1,11 @@
+tsuru-server (0.3.0-0ubuntu1ppa1~precise1) precise; urgency=medium
+
+  * New upstream release - 0.3.0
+  * Fixing upstart scripts - respawn
+  * tsuru-server depends lxc-docker
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Mon, 16 Dec 2013 15:14:40 -0200
+
 tsuru-server (0.2.12-0ubuntu1ppa1~precise1) precise; urgency=low
 
   * Fixing package - using quilt instead native format
