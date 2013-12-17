@@ -8,7 +8,7 @@ Homepage: http://tsuru.io
 
 Package: tsuru-server
 Architecture: amd64
-Depends: ${misc:Depends}, lxc-docker (>= 0.7.0)
+Depends: ${misc:Depends}
 Description: tsuru-server is the server side of the Tsuru PaaS.
  This package includes three services: Tsuru API, Tsuru collector and Tsuru SSH
  agent. All jobs are disabled by default, to enable any of them, edit the file
