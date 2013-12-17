@@ -2,13 +2,13 @@ Source: lxc-docker
 Section: misc
 Priority: extra
 Maintainer: Daniel Mizyrycki <daniel@dotcloud.com>
-Build-Depends: debhelper,autotools-dev,devscripts,golang (>= 2:1.2),git,mercurial,libdevmapper-dev (>= 2:1.02.82-2.02.103),libsqlite3-dev,libsqlite3-0
+Build-Depends: debhelper,autotools-dev,devscripts,golang (>= 2:1.2),git,mercurial,libdevmapper-dev (>= 2:1.02.82),libsqlite3-dev,libsqlite3-0
 Standards-Version: 3.9.3
 Homepage: http://github.com/dotcloud/docker
 
 Package: lxc-docker
 Architecture: linux-any
-Depends: ${misc:Depends},${shlibs:Depends},lxc,bsdtar,aufs-tools,libdevmapper1.02.1 (>=2:1.02.82-2.02.103),libsqlite3-0
+Depends: ${misc:Depends},${shlibs:Depends},lxc,bsdtar,aufs-tools,libdevmapper1.02.1 (>=2:1.02.82),libsqlite3-0
 Conflicts: docker
 Description: lxc-docker is a Linux container runtime
  Docker complements LXC with a high-level API which operates at the process

@@ -1,3 +1,9 @@
+lxc-docker (0.7.1-0ubuntu1ppa2~precise1) precise; urgency=low
+
+  * Fixing libdevmapper-dev and libdevmapper version on build and runtime dependency
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Tue, 17 Dec 2013 08:48:18 -0200
+
 lxc-docker (0.7.1-0ubuntu1ppa1~precise1) precise; urgency=medium
 
   * Bump to version 0.7.1
