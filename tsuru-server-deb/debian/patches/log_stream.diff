@@ -1,0 +1,31 @@
+Index: tsuru-server-0.3.0/src/github.com/globocom/tsuru/provision/docker/docker.go
+===================================================================
+--- tsuru-server-0.3.0.orig/src/github.com/globocom/tsuru/provision/docker/docker.go	2013-12-17 09:15:15.000000000 -0200
++++ tsuru-server-0.3.0/src/github.com/globocom/tsuru/provision/docker/docker.go	2013-12-19 23:01:52.962265127 -0200
+@@ -230,14 +230,14 @@
+ 		return "", err
+ 	}
+ 	c := pipeline.Result().(container)
+-	_, err = dockerCluster().WaitContainer(c.ID)
++	err = c.logs(w)
+ 	if err != nil {
+-		log.Errorf("Process failed for container %q: %s", c.ID, err)
++		log.Errorf("error on get logs for container %s - %s", c.ID, err)
+ 		return "", err
+ 	}
+-	err = c.logs(w)
++	_, err = dockerCluster().WaitContainer(c.ID)
+ 	if err != nil {
+-		log.Errorf("error on get logs for container %s - %s", c.ID, err)
++		log.Errorf("Process failed for container %q: %s", c.ID, err)
+ 		return "", err
+ 	}
+ 	imageId, err = c.commit()
+@@ -381,6 +381,7 @@
+ 		OutputStream: w,
+ 		ErrorStream:  w,
+ 		RawTerminal:  false,
++		Stream:       true,
+ 	}
+ 	err := dockerCluster().AttachToContainer(opts)
+ 	if err != nil {

@@ -1,3 +1,10 @@
+tsuru-server (0.3.0-0ubuntu1ppa3~precise1) precise; urgency=high
+
+  * [PATCH] docker: enabling streaming and logging before wait. Issue #600
+  * Fixing dependencies - libsqlite3-0, libdevmapper1.02.1, openssh-client
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Thu, 19 Dec 2013 23:10:43 -0200
+
 tsuru-server (0.3.0-0ubuntu1ppa2~precise1) precise; urgency=high
 
   * Removing wrong dependency - lxc-docker
