@@ -66,7 +66,8 @@ _do:
 	for version in $(VERSIONS); do make VERSION=$$version CMD=$(TARGET) -C $(TARGET)-deb -f ../Makefile _build; done
 
 gandalf-server:
-	cd gandalf-server-deb && GOPATH=$$PWD go get -d github.com/globocom/gandalf/...
+	if [ ! $$TAG ]; then echo "TAG env var must be set... use: TAG=<value> make $(TARGET)"; exit 1; fi
+	cd gandalf-server-deb && GOPATH=$$PWD go get -v -u -d github.com/globocom/gandalf/... && 
 	make TARGET=$@ _do
 
 nodejs:
