@@ -17,7 +17,7 @@ clean:
 
 local_setup:
 	sudo apt-add-repository -y ppa:tsuru/golang
-	sudo apt-get install golang debhelper devscripts git mercurial ubuntu-dev-tools cowbuilder -y
+	sudo apt-get install golang debhelper devscripts git mercurial ubuntu-dev-tools cowbuilder gnupg-agent -y
 	mkdir /tmp/gopath
 	GOPATH=/tmp/gopath go get github.com/kr/godep
 	sudo mv /tmp/gopath/bin/godep /usr/bin
@@ -40,19 +40,17 @@ cowbuilder_build:
 	
 upload:
 	if [ ! $$PPA ]; then echo "PPA env var must be set to upload packages... use: PPA=<value> make upload"; exit 1; fi
-	for file in *.changes; do debsign $$file; done; unset file
+	eval $$(gpg-agent --daemon) && for file in *.changes; do debsign $$file; done; unset file
 	for file in *.changes; do dput ppa:$$PPA $$file; done
 
-_download:
+_pre_tarball:
 	if [ ! $$TAG ]; then echo "TAG env var must be set... use: TAG=<value> make $(TARGET)"; exit 1; fi
 	if [ -d $(TARGET)-$$TAG ]; then rm -rf $(TARGET)-$$TAG; fi
 	if [ -f $(TARGET)_$${TAG}.orig.tar.gz ]; then rm $(TARGET)_$${TAG}.orig.tar.gz; fi
 	mkdir $(TARGET)-$$TAG
-	pushd . && cd $(TARGET)-$$TAG && pushd . && \
-	export GOPATH=$$PWD && go get -v -d -u github.com/dotcloud/tar && go get -v -u -d github.com/globocom/tsuru/... && \
-	export GOPATH=$$PWD && cd src/github.com/globocom/tsuru && git checkout $$TAG && godep restore ./... && \
-	rm -rf src/github.com/globocom/tsuru/src && \
-	popd && find . \( -iname ".git*" -o -iname "*.bzr" -o -iname "*.hg" \) | xargs rm -rf \{} && \
+
+_post_tarball:
+	pushd . && cd $(TARGET)-$(TAG) && find . \( -iname ".git*" -o -iname "*.bzr" -o -iname "*.hg" \) | xargs rm -rf \{} && \
 	popd && tar zcvf $(TARGET)_$${TAG}.orig.tar.gz $(TARGET)-$$TAG
 	rm -rf $(TARGET)-$$TAG
 
@@ -64,6 +62,16 @@ _build:
 
 _do:
 	for version in $(VERSIONS); do make VERSION=$$version CMD=$(TARGET) -C $(TARGET)-deb -f ../Makefile _build; done
+
+tsuru-server:
+	@make TAG=$$TAG TARGET=$@ _pre_tarball
+	pushd . && cd tsuru-server-$$TAG && pushd . && \
+	export GOPATH=$$PWD && go get -v -d -u github.com/dotcloud/tar && go get -v -u -d github.com/globocom/tsuru/... && \
+	export GOPATH=$$PWD && cd src/github.com/globocom/tsuru && git checkout $$TAG && godep restore ./... && \
+	rm -rf src/github.com/globocom/tsuru/src && \
+	popd
+	make TAG=$$TAG TARGET=$@ _post_tarball
+	make TARGET=$@ _do
 
 gandalf-server:
 	if [ ! $$TAG ]; then echo "TAG env var must be set... use: TAG=<value> make $(TARGET)"; exit 1; fi
@@ -107,8 +115,4 @@ lvm2:
 golang:
 	if [ -f golang_1.2.orig.tar.gz ]; then rm golang_1.2.orig.tar.gz; fi
 	curl -L -o golang_1.2.orig.tar.gz https://go.googlecode.com/files/go1.2.src.tar.gz
-	make TARGET=$@ _do
-
-%:
-	make TARGET=$@ _download
 	make TARGET=$@ _do
