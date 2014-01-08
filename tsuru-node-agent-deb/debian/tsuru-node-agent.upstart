@@ -10,4 +10,7 @@ respawn
 setuid tsuru
 setgid tsuru
 
-exec /usr/bin/tsuru-node-agent docker-ssh-agent
+script
+  if [ -f /etc/default/tsuru-node-agent ]; then . /etc/default/tsuru-node-agent; fi
+  if [ "x$TSR_SSH_AGENT_ENABLED" = "xyes" ]; then exec /usr/bin/tsuru-node-agent docker-ssh-agent -l $TSR_SSH_AGENT_LISTEN -u $TSR_SSH_AGENT_USER -k $TSR_SSH_AGENT_PRIVATE_KEY; fi
+end script

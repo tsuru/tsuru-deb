@@ -22,6 +22,9 @@ binary-arch:
 	dh_testdir
 	dh_testroot
 	dh_prep
+	dh_installdirs
+	dh_install
+	dh_installinit --no-start --name=tsuru-node-agent
 	dh_strip
 	dh_compress
 	dh_fixperms
