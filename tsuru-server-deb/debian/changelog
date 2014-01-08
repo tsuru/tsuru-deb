@@ -1,8 +1,8 @@
-tsuru-server (0.3.1ubuntu1ppa4~precise1) precise; urgency=medium
+tsuru-server (0.3.1-0ubuntu1ppa1~precise1) precise; urgency=medium
 
   * Fixed environment variables injection on build.
 
- -- Andrews Medina <andrews@corp.globo.com>  Fri, 8 Dec 2014 11:55:00 -0200
+ -- Andrews Medina <andrews@corp.globo.com>  Fri, 8 Dec 2014 13:45:00 -0200
 
 tsuru-server (0.3.0-0ubuntu1ppa4~precise1) precise; urgency=medium
 
