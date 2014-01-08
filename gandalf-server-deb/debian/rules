@@ -7,7 +7,6 @@
 export GOPATH=$(CURDIR)
 
 PKGDIR=debian/gandalf-server
-VERSION:=0.2.0
 
 %:
 	dh $@ 

@@ -1,0 +1,5 @@
+tsuru-node-agent (0.1-0ubuntu1ppa1~saucy1) saucy; urgency=medium
+
+  * First package version of tsuru-node-agent
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Fri, 03 Jan 2014 10:55:28 -0200

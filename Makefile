@@ -64,18 +64,29 @@ _do:
 	for version in $(VERSIONS); do make VERSION=$$version CMD=$(TARGET) -C $(TARGET)-deb -f ../Makefile _build; done
 
 tsuru-server:
-	@make TAG=$$TAG TARGET=$@ _pre_tarball
+	make TAG=$$TAG TARGET=$@ _pre_tarball
 	pushd . && cd tsuru-server-$$TAG && pushd . && \
-	export GOPATH=$$PWD && go get -v -d -u github.com/dotcloud/tar && go get -v -u -d github.com/globocom/tsuru/... && \
+	export GOPATH=$$PWD go get -v -d -u github.com/dotcloud/tar && go get -v -u -d github.com/globocom/tsuru/... && \
 	export GOPATH=$$PWD && cd src/github.com/globocom/tsuru && git checkout $$TAG && godep restore ./... && \
-	rm -rf src/github.com/globocom/tsuru/src && \
-	popd
+	rm -rf src/github.com/globocom/tsuru/src && popd
+	make TAG=$$TAG TARGET=$@ _post_tarball
+	make TARGET=$@ _do
+
+tsuru-node-agent:
+	make TAG=$$TAG TARGET=$@ _pre_tarball
+	pushd . && cd tsuru-node-agent-$$TAG && pushd . && \
+	export GOPATH=$$PWD && go get -v -u -d github.com/globocom/tsuru-node-agent/... && \
+	export GOPATH=$$PWD && cd src/github.com/globocom/tsuru-node-agent && git checkout $$TAG && godep restore ./... && \
+	rm -rf src/github.com/globocom/tsuru-node-agent/src && popd
 	make TAG=$$TAG TARGET=$@ _post_tarball
 	make TARGET=$@ _do
 
 gandalf-server:
-	if [ ! $$TAG ]; then echo "TAG env var must be set... use: TAG=<value> make $(TARGET)"; exit 1; fi
-	cd gandalf-server-deb && GOPATH=$$PWD go get -v -u -d github.com/globocom/gandalf/... && 
+	make TAG=$$TAG TARGET=$@ _pre_tarball
+	pushd . && cd gandalf-server-$$TAG && pushd . && \
+	export GOPATH=$$PWD go get -v -u -d github.com/globocom/gandalf/... && cd src/github.com/globocom/gandalf && \
+	git checkout $$TAG && godep restore ./... && popd
+	make TAG=$$TAG TARGET=$@ _post_tarball
 	make TARGET=$@ _do
 
 nodejs:

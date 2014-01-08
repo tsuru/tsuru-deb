@@ -1,0 +1,13 @@
+limit nofile 10000 10000
+
+kill timeout 180
+
+start on runlevel [2345]
+stop on runlevel [06]
+
+respawn
+
+setuid tsuru
+setgid tsuru
+
+exec /usr/bin/tsuru-node-agent docker-ssh-agent
