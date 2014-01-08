@@ -18,7 +18,7 @@ clean:
 local_setup:
 	sudo apt-add-repository -y ppa:tsuru/golang
 	sudo apt-get install golang debhelper devscripts git mercurial ubuntu-dev-tools cowbuilder gnupg-agent -y
-	mkdir /tmp/gopath
+	if [ ! -d /tmp/gopath ]; then mkdir /tmp/gopath; fi
 	GOPATH=/tmp/gopath go get github.com/kr/godep
 	sudo mv /tmp/gopath/bin/godep /usr/bin
 	rm -rf /tmp/gopath
@@ -28,6 +28,7 @@ cowbuilder_create:
 
 cowbuilder_build:
 	if [ -f /tmp/ppa.sh ]; then rm /tmp/ppa.sh; fi
+	echo "/usr/bin/apt-get update" >> /tmp/ppa.sh
 	echo "/usr/bin/apt-get install -y python-software-properties software-properties-common" >> /tmp/ppa.sh
 	echo "/usr/bin/add-apt-repository -y ppa:tsuru/ppa" >> /tmp/ppa.sh
 	echo "/usr/bin/add-apt-repository -y ppa:tsuru/lvm2" >> /tmp/ppa.sh
@@ -35,7 +36,7 @@ cowbuilder_build:
 	for version in $(VERSIONS); do \
 	    cowbuilder-dist $$version execute --save --override-config /tmp/ppa.sh && \
 	    cowbuilder-dist $$version update --override-config && \
-	    cowbuilder-dist $$version build --override-config *$${version}*.dsc; \
+	    cowbuilder-dist $$version build *$${version}*.dsc; \
 	done
 	
 upload:
