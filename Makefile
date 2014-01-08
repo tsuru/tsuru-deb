@@ -66,7 +66,7 @@ _do:
 tsuru-server:
 	make TAG=$$TAG TARGET=$@ _pre_tarball
 	pushd . && cd tsuru-server-$$TAG && pushd . && \
-	export GOPATH=$$PWD go get -v -d -u github.com/dotcloud/tar && go get -v -u -d github.com/globocom/tsuru/... && \
+	export GOPATH=$$PWD && go get -v -d -u github.com/dotcloud/tar && go get -v -u -d github.com/globocom/tsuru/... && \
 	export GOPATH=$$PWD && cd src/github.com/globocom/tsuru && git checkout $$TAG && godep restore ./... && \
 	rm -rf src/github.com/globocom/tsuru/src && popd
 	make TAG=$$TAG TARGET=$@ _post_tarball
