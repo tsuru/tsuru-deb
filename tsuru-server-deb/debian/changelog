@@ -1,3 +1,9 @@
+tsuru-server (0.3.1ubuntu1ppa4~precise1) precise; urgency=medium
+
+  * Fixed environment variables injection on build.
+
+ -- Andrews Medina <andrews@corp.globo.com>  Fri, 8 Dec 2014 11:55:00 -0200
+
 tsuru-server (0.3.0-0ubuntu1ppa4~precise1) precise; urgency=medium
 
   * Change tsuru-server package to multi-package (tsuru-server and tsuru)
