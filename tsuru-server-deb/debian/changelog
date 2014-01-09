@@ -1,3 +1,15 @@
+tsuru-server (0.3.1-1ubuntu1ppa2~precise1) precise; urgency=high
+
+  * [PATCH] Reducing max deploy number 
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Thu, 09 Jan 2014 14:58:41 -0200
+
+tsuru-server (0.3.1-1ubuntu1ppa1~precise1) precise; urgency=high
+
+  * Bump to fix tsuru client version
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Thu, 09 Jan 2014 13:41:33 -0200
+
 tsuru-server (0.3.1-0ubuntu1ppa1~precise1) precise; urgency=medium
 
   * Fixed environment variables injection on build.
