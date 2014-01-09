@@ -9,6 +9,12 @@ pipe:= \|
 
 GOPATH=$(shell echo $$PWD)
 
+ifdef DEBEMAIL
+	debsign_opt := "-e$$DEBEMAIL"
+else
+	debsign_opt := ""
+endif
+
 all:
 	@exit 0
 
@@ -44,7 +50,7 @@ cowbuilder_build:
 	
 upload:
 	if [ ! $$PPA ]; then echo "PPA env var must be set to upload packages... use: PPA=<value> make upload"; exit 1; fi
-	eval $$(gpg-agent --daemon) && for file in *.changes; do debsign $$file; done; unset file
+	eval $$(gpg-agent --daemon) && for file in *.changes; do debsign $(debsign_opt) $$file; done; unset file
 	for file in *.changes; do dput ppa:$$PPA $$file; done
 
 _pre_tarball:
