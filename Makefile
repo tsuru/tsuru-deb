@@ -24,9 +24,6 @@ local_setup:
 	rm -rf /tmp/gopath
 
 cowbuilder_create:
-	for version in $(VERSIONS); do cowbuilder-dist $$version create ; done
-
-cowbuilder_build:
 	if [ -f /tmp/ppa.sh ]; then rm /tmp/ppa.sh; fi
 	echo "/usr/bin/apt-get update" >> /tmp/ppa.sh
 	echo "/usr/bin/apt-get install -y python-software-properties software-properties-common" >> /tmp/ppa.sh
@@ -34,8 +31,14 @@ cowbuilder_build:
 	echo "/usr/bin/add-apt-repository -y ppa:tsuru/lvm2" >> /tmp/ppa.sh
 	echo "/usr/bin/add-apt-repository -y ppa:tsuru/golang" >> /tmp/ppa.sh
 	for version in $(VERSIONS); do \
+	    cowbuilder-dist $$version create && \
 	    cowbuilder-dist $$version execute --save --override-config /tmp/ppa.sh && \
-	    cowbuilder-dist $$version update --override-config && \
+	    cowbuilder-dist $$version update --override-config; \
+	done
+	rm /tmp/ppa.sh
+
+cowbuilder_build:
+	for version in $(VERSIONS); do \
 	    cowbuilder-dist $$version build *$${version}*.dsc; \
 	done
 	
