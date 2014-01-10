@@ -12,5 +12,5 @@ setgid tsuru
 
 script
   if [ -f /etc/default/tsuru-node-agent ]; then . /etc/default/tsuru-node-agent; fi
-  if [ "x$TSR_SSH_AGENT_ENABLED" = "xyes" ]; then exec /usr/bin/tsuru-node-agent docker-ssh-agent -l $TSR_SSH_AGENT_LISTEN -u $TSR_SSH_AGENT_USER -k $TSR_SSH_AGENT_PRIVATE_KEY; fi
+  if [ "x$NODE_AGENT_SSH_AGENT_ENABLED" = "xyes" ]; then exec /usr/bin/tsuru-node-agent docker-ssh-agent -l $NODE_AGENT_SSH_AGENT_LISTEN -u $NODE_AGENT_SSH_AGENT_USER -k $NODE_AGENT_SSH_AGENT_PRIVATE_KEY; fi
 end script

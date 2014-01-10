@@ -1,3 +1,9 @@
+tsuru-node-agent (0.1-0ubuntu1ppa3~precise1) precise; urgency=medium
+
+  * Change default and upstart vars to something more meaningfully
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Fri, 10 Jan 2014 10:00:27 -0200
+
 tsuru-node-agent (0.1-0ubuntu1ppa2~precise1) precise; urgency=low
 
   * Fix postinst - create ssh keys for tsuru user
