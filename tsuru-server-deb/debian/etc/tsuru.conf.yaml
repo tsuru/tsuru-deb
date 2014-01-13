@@ -126,8 +126,8 @@ git:
 # clustered environment, so there are some settings related to the scheduling
 # of containers in the cluster.
 #
-#    * servers: list of docker servers. Used in non-seggregated mode (see
-#               seggregate for more details).
+#    * servers: list of docker servers. Used in non-segregated mode (see
+#               segregate for more details).
 #    * collection: name of the database collection that Docker provisioner will
 #                  use to store information about containers in the cluster.
 #    * repository-namespace: the namespace to use in Docker images. For
@@ -137,11 +137,11 @@ git:
 #    * deploy-cmd: command to run every time user runs deploy. When using
 #                  Tsuru's default images, just uncomment the line.
 #    * ssh-agent-port: the port where Docker SSH agent runs on Docker nodes.
-#    * seggregate: indicates whether tsuru should use a scheduler that
-#                  seggregates containers among Docker nodes. When using this
+#    * segregate: indicates whether tsuru should use a scheduler that
+#                  segregates containers among Docker nodes. When using this
 #                  scheduler, each team will have a group of Docker nodes and
 #                  Tsuru will spawn new containers for that team only on these
-#                  nodes. This scheduler can be used to seggregate subnets per
+#                  nodes. This scheduler can be used to segregate subnets per
 #                  team.
 #    * scheduler: configuration for the scheduler. In order to make the
 #                  cluster run faster, it's recommended to use the Redis
@@ -167,7 +167,7 @@ git:
 #   router: hipache
 #   deploy-cmd: /var/lib/tsuru/deploy
 #   ssh-agent-port: 4545
-#   seggregate: false
+#   segregate: false
 #   scheduler:
 #     redis-server: 127.0.0.1:6379
 #     redis-prefix: docker-cluster
