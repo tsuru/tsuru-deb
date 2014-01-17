@@ -8,7 +8,6 @@
 
 # Uncomment this to turn on verbose mode.
 export DH_VERBOSE=1
-export DESTDIR=$(CURDIR)/debian/tmp
 
 %:
 	dh $@
@@ -21,32 +20,17 @@ build:
 
 # Add here commands to install the package into debian/testpack.
 # Build architecture-independent files here.
-binary-indep: build install
+binary-indep:
+binary-arch:
 	dh_testdir
 	dh_testroot
-	dh_installchangelogs -i
-	dh_installdocs -i --all CHANGELOG.md
-	dh_installexamples -i
-	dh_install -i --sourcedir=$(DESTDIR) --list-missing
-	dh_installman -i
-	dh_lintian -i
-	dh_link -i
-	dh_compress -i
-	dh_fixperms -i
-	dh_installdeb -i
-	dh_gencontrol -i
-	dh_md5sums -i
-	dh_builddeb -i
-
-binary-arch: build install
-	dh_testdir
-	dh_testroot
+	dh_prep
+	dh_installdirs
 	dh_installchangelogs -a
 	dh_installdocs -a --all CHANGELOG.md
 	dh_installexamples -a
-	dh_install -a --sourcedir=$(DESTDIR) --list-missing
+	dh_install
 	dh_installlogrotate -a
-	#upstart job files for binary package ceph
 	dh_installinit --no-start --name=docker
 	dh_installman -a
 	dh_lintian -a

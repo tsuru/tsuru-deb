@@ -1,7 +1,7 @@
-Index: lxc-docker-0.7.1/lxc_template.go
+Index: lxc-docker-0.7.1/src/github.com/dotcloud/docker/lxc_template.go
 ===================================================================
---- lxc-docker-0.7.1.orig/lxc_template.go	2013-12-06 20:42:14.000000000 -0200
-+++ lxc-docker-0.7.1/lxc_template.go	2013-12-11 13:38:17.285060133 -0200
+--- lxc-docker-0.7.1.orig/src/github.com/dotcloud/docker/lxc_template.go	2013-12-06 20:42:14.000000000 -0200
++++ lxc-docker-0.7.1/src/github.com/dotcloud/docker/lxc_template.go	2013-12-11 13:38:17.285060133 -0200
 @@ -125,16 +125,12 @@
  {{end}}
  

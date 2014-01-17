@@ -1,3 +1,10 @@
+lxc-docker (0.7.1-0ubuntu1ppa3~precise1) precise; urgency=medium
+
+  * Applying memory/cpu patch to proper file 
+  * Cleanup on package structure
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Thu, 16 Jan 2014 09:16:05 -0200
+
 lxc-docker (0.7.1-0ubuntu1ppa2~precise1) precise; urgency=low
 
   * Fixing libdevmapper-dev and libdevmapper version on build and runtime dependency
