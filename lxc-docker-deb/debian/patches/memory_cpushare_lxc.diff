@@ -1,20 +1,11 @@
 Index: lxc-docker-0.7.1/src/github.com/dotcloud/docker/lxc_template.go
 ===================================================================
---- lxc-docker-0.7.1.orig/src/github.com/dotcloud/docker/lxc_template.go	2013-12-06 20:42:14.000000000 -0200
-+++ lxc-docker-0.7.1/src/github.com/dotcloud/docker/lxc_template.go	2013-12-11 13:38:17.285060133 -0200
-@@ -125,16 +125,12 @@
- {{end}}
- 
- # limits
--{{if .Config.Memory}}
--lxc.cgroup.memory.limit_in_bytes = {{.Config.Memory}}
--lxc.cgroup.memory.soft_limit_in_bytes = {{.Config.Memory}}
-+lxc.cgroup.memory.limit_in_bytes = 268435456 
-+lxc.cgroup.memory.soft_limit_in_bytes = 268435456
- {{with $memSwap := getMemorySwap .Config}}
+--- lxc-docker-0.7.1.orig/src/github.com/dotcloud/docker/lxc_template.go	2013-12-16 15:03:32.000000000 -0200
++++ lxc-docker-0.7.1/src/github.com/dotcloud/docker/lxc_template.go	2014-01-17 14:36:10.257688903 -0200
+@@ -132,9 +132,7 @@
  lxc.cgroup.memory.memsw.limit_in_bytes = {{$memSwap}}
  {{end}}
--{{end}}
+ {{end}}
 -{{if .Config.CpuShares}}
 -lxc.cgroup.cpu.shares = {{.Config.CpuShares}}
 -{{end}}
