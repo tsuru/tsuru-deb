@@ -1,3 +1,9 @@
+tsuru-server (0.3.2-0ubuntu1ppa1~precise1) precise; urgency=low
+
+  * New upstream release - 0.3.2
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Tue, 21 Jan 2014 13:08:07 -0200
+
 tsuru-server (0.3.1-1ubuntu1ppa2~precise1) precise; urgency=high
 
   * [PATCH] Reducing max deploy number 
