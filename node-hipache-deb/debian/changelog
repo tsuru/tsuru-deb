@@ -1,3 +1,10 @@
+node-hipache (0.2.5-0ppa1~precise1) precise; urgency=medium
+
+  * New upstream release
+  * Applying syslog patch
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Fri, 24 Jan 2014 11:52:40 -0200
+
 node-hipache (0.2.3-5ppa1~precise1) precise; urgency=low
 
   * Applying redis patch manually instead using quilt

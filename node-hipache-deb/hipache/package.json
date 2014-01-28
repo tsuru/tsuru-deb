@@ -1,0 +1,47 @@
+{
+    "name" : "hipache",
+    "version" : "0.2.5",
+    "description" : "Complete high-scaled reverse-proxy solution",
+    "keywords": [
+        "reverse",
+        "proxy",
+        "http",
+        "http-proxy"
+    ],
+    "main" : "./bin/hipache",
+    "bin": {
+        "hipache": "./bin/hipache"
+    },
+    "directories" : {
+        "lib" : "./lib"
+    },
+    "dependencies" : {
+        "read-installed" : "0.2.2",
+        "http-proxy" : "git+https://github.com/samalba/node-http-proxy.git",
+        "redis" : "0.8.x",
+        "lru-cache": "2.2.x",
+        "optimist": "0.3.x",
+        "node-syslog": "1.1.7"
+    },
+    "scripts" : {
+        "start" : "node bin/hipache",
+        "test" : "nodeunit test/test_*.js",
+        "jshint": "jshint --config jshint.json -- bin/hipache lib/*.js"
+    },
+    "engines" : {
+        "node" : ">= 0.8.0"
+    },
+    "engineStrict": true,
+    "author" : {
+        "name" : "Samuel Alba",
+        "email" : "sam.alba@gmail.com",
+        "url" : "http://www.dotcloud.com/"
+    },
+    "maintainer" : [
+        "Sam Alba <sam.alba@gmail.com>"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "http://github.com/dotcloud/hipache.git"
+    }
+}

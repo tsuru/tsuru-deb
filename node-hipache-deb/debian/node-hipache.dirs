@@ -1,0 +1,4 @@
+usr/bin
+usr/lib/node_modules/hipache
+etc
+var/log/hipache

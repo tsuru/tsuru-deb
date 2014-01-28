@@ -1,0 +1,14 @@
+{
+    "server": {
+        "debug": true,
+        "port": 1080,
+        "workers": 2,
+        "accessLogMode" : "syslog",
+        "maxSockets": 100,
+        "deadBackendTTL": 30,
+        "tcpTimeout": 5,
+        "retryOnError": 0,
+        "deadBackendOn500": true,
+        "httpKeepAlive": false
+    }
+}
