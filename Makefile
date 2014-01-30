@@ -1,5 +1,5 @@
 DEFINED_VERSION=precise
-VERSIONS=precise quantal raring saucy
+VERSIONS=precise quantal saucy
 SHELL=/bin/bash
 
 comma:= ,
