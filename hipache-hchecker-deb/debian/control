@@ -1,0 +1,15 @@
+Source: hipache-hchecker
+Section: devel
+Priority: extra
+Maintainer: Globo.com <tsuru@corp.globo.com>
+Build-Depends: debhelper (>= 7.0.50~), golang (>= 2:1.1.1~)
+Standards-Version: 3.9.3
+Homepage: https://github.com/morpheu/hipache-hchecker
+
+Package: hipache-hchecker
+Architecture: i386 amd64
+Depends: ${misc:Depends}
+Description: Hipache Health-Checker.
+ This is an active health-checker for the Hipache proxy solution. The checker
+ will check the backends at a regular interval and it will update Hipache's
+ Redis to mark them as dead (or alive) almost instantly.

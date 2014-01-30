@@ -1,0 +1,15 @@
+limit nofile 10000 10000
+
+kill timeout 180
+
+start on runlevel [2345]
+stop on runlevel [06]
+
+respawn
+post-stop exec sleep 5
+
+script
+  TSR_SSH_AGENT_ENABLED="no"
+  if [ -f /etc/default/hipache-hchecker ]; then . /etc/default/hipache-hchecker; fi
+  if [ "x$HCHECKER_ENABLED" = "xyes" ]; then exec /usr/bin/hipache-hchecker -connect=$HCHECKER_CONNECT_TIMEOUT -io=$HCHECKER_IO_TIMEOUT -interval=$HCHECKER_CHECK_INTERVAL -method=$HCHECKER_HTTP_METHOD -redis=$HCHECKER_REDIS_SERVER -redis_suffix=$HCHECKER_REDIS_KEY_SUFFIX -uri=$HCKECHER_URI ; fi
+end script

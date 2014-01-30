@@ -94,7 +94,15 @@ tsuru-node-agent:
 gandalf-server:
 	make TAG=$$TAG TARGET=$@ _pre_tarball
 	pushd . && cd gandalf-server-$$TAG && pushd . && \
-	export GOPATH=$$PWD go get -v -u -d github.com/globocom/gandalf/... && cd src/github.com/globocom/gandalf && \
+	export GOPATH=$$PWD && go get -v -u -d github.com/globocom/gandalf/... && cd src/github.com/globocom/gandalf && \
+	git checkout $$TAG && godep restore ./... && popd
+	make TAG=$$TAG TARGET=$@ _post_tarball
+	make TARGET=$@ _do
+
+hipache-hchecker:
+	make TAG=$$TAG TARGET=$@ _pre_tarball
+	pushd . && cd hipache-hchecker-$$TAG && pushd . && \
+	export GOPATH=$$PWD && go get -v -u -d github.com/morpheu/hipache-hchecker/... && cd src/github.com/morpheu/hipache-hchecker && \
 	git checkout $$TAG && godep restore ./... && popd
 	make TAG=$$TAG TARGET=$@ _post_tarball
 	make TARGET=$@ _do
