@@ -74,6 +74,7 @@ Worker.prototype.runServer = function (config) {
     var proxyErrorHandler = function (err, req, res) {
         if (err.code === 'ECONNREFUSED' ||
                 err.code === 'ETIMEDOUT' ||
+                err.code === 'ECONNRESET' ||
                 req.error !== undefined) {
             // This backend is dead
             var backendId = req.meta.backendId;

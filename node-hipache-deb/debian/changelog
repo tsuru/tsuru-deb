@@ -1,3 +1,9 @@
+node-hipache (0.2.5-0ppa2~precise1) precise; urgency=medium
+
+  * ECONNRESET handle as dead-backend
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Thu, 30 Jan 2014 18:09:03 -0200
+
 node-hipache (0.2.5-0ppa1~precise1) precise; urgency=medium
 
   * New upstream release
