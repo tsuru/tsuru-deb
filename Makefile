@@ -22,7 +22,10 @@ clean:
 	git clean -dfX
 
 local_setup:
+	sudo apt-get update
+	sudo apt-get install -y python-software-properties
 	sudo apt-add-repository -y ppa:tsuru/golang
+	sudo apt-get update
 	sudo apt-get install golang debhelper devscripts git mercurial ubuntu-dev-tools cowbuilder gnupg-agent -y
 	if [ ! -d /tmp/gopath ]; then mkdir /tmp/gopath; fi
 	GOPATH=/tmp/gopath go get github.com/kr/godep
