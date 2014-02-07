@@ -1,3 +1,9 @@
+hipache-hchecker (0.2.4.1-0ubuntu1ppa1~precise1) precise; urgency=medium
+
+  * Change redis module to redigo // Implementing connection pool
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Thu, 06 Feb 2014 11:03:38 -0200
+
 hipache-hchecker (0.2.4-0ubuntu1ppa1~precise1) precise; urgency=medium
 
   * First package release

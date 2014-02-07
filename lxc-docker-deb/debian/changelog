@@ -1,60 +1,66 @@
-lxc-docker (0.7.1-0ubuntu1ppa4~saucy1) saucy; urgency=medium
+lxc-docker (0.7.1-0ubuntu1ppa5~precise1) precise; urgency=high
+
+  * [Fix] Add RWMutex lock into TruncIndex to fix race condition
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Fri, 07 Feb 2014 14:22:11 -0200
+
+lxc-docker (0.7.1-0ubuntu1ppa4~precise1) precise; urgency=medium
 
   * Removing cpu/memory limit on docker 
 
  -- Paulo Sousa <paulo.sousa@corp.globo.com>  Fri, 17 Jan 2014 14:18:11 -0200
 
-lxc-docker (0.7.1-0ubuntu1ppa3~saucy1) saucy; urgency=medium
+lxc-docker (0.7.1-0ubuntu1ppa3~precise1) precise; urgency=medium
 
   * Applying memory/cpu patch to proper file 
   * Cleanup on package structure
 
  -- Paulo Sousa <paulo.sousa@corp.globo.com>  Thu, 16 Jan 2014 09:16:05 -0200
 
-lxc-docker (0.7.1-0ubuntu1ppa2~saucy1) saucy; urgency=low
+lxc-docker (0.7.1-0ubuntu1ppa2~precise1) precise; urgency=low
 
   * Fixing libdevmapper-dev and libdevmapper version on build and runtime dependency
 
  -- Paulo Sousa <paulo.sousa@corp.globo.com>  Tue, 17 Dec 2013 08:48:18 -0200
 
-lxc-docker (0.7.1-0ubuntu1ppa1~saucy1) saucy; urgency=medium
+lxc-docker (0.7.1-0ubuntu1ppa1~precise1) precise; urgency=medium
 
   * Bump to version 0.7.1
 
  -- Paulo Sousa <paulo.sousa@corp.globo.com>  Wed, 11 Dec 2013 11:42:58 -0200
 
-lxc-docker (0.6.3-1ubuntu5) saucy; urgency=medium
+lxc-docker (0.6.3-1ubuntu5) precise; urgency=medium
 
   * Fixating cpu.shares on docker lxc template
 
  -- Paulo Sousa <paulo.sousa@corp.globo.com>  Wed, 04 Dec 2013 11:47:27 -0200
 
-lxc-docker (0.6.3-1ubuntu4) saucy; urgency=medium
+lxc-docker (0.6.3-1ubuntu4) precise; urgency=medium
 
   * Replacing postinst and postrm for dh_installinit 
 
  -- Paulo Sousa <paulo.sousa@corp.globo.com>  Thu, 28 Nov 2013 15:09:16 -0200
 
-lxc-docker (0.6.3-1ubuntu3) saucy; urgency=medium
+lxc-docker (0.6.3-1ubuntu3) precise; urgency=medium
 
   * Fixing memory limit per container to 256Mb
 
  -- Paulo Sousa <paulo.sousa@corp.globo.com>  Thu, 28 Nov 2013 14:27:26 -0200
 
-lxc-docker (0.6.3-1ubuntu2) saucy; urgency=medium
+lxc-docker (0.6.3-1ubuntu2) precise; urgency=medium
 
   * Adding Makefile on top src upstream dir 
   * Create fake src structure to avoid external packages issues
 
  -- Paulo Sousa <paulo.sousa@corp.globo.com>  Sat, 16 Nov 2013 23:36:10 -0200
 
-lxc-docker (0.6.3-1ubuntu1) saucy; urgency=medium
+lxc-docker (0.6.3-1ubuntu1) precise; urgency=medium
 
   * Change build dep - golang-stable -> golang
 
  -- Paulo Sousa <paulo.sousa@corp.globo.com>  Sat, 16 Nov 2013 21:53:07 -0200
 
-lxc-docker (0.6.3-1) saucy; urgency=low
+lxc-docker (0.6.3-1) precise; urgency=low
   * Packaging: Update tar vendor dependency
   - Client: Fix detach issue
   - Runtime: Only copy and change permissions on non-bindmount volumes
@@ -69,7 +75,7 @@ lxc-docker (0.6.3-1) saucy; urgency=low
 
  -- dotCloud <ops@dotcloud.com>  Mon, 23 Sep 2013 00:00:00 -0700
 
-lxc-docker (0.6.2-1) saucy; urgency=low
+lxc-docker (0.6.2-1) precise; urgency=low
   + Hack: Vendor all dependencies
   + Builder: Add -rm option in order to remove intermediate containers
   + Runtime: Add domainname support
@@ -90,7 +96,7 @@ lxc-docker (0.6.2-1) saucy; urgency=low
 
  -- dotCloud <ops@dotcloud.com>  Tue, 17 Sep 2013 00:00:00 -0700
 
-lxc-docker (0.6.1-1) saucy; urgency=low
+lxc-docker (0.6.1-1) precise; urgency=low
   * Registry: Pass "meta" headers in API calls to the registry
   - Packaging: Use correct upstart script with new build tool
   - Packaging: Use libffi-dev, don't build it from sources
@@ -98,7 +104,7 @@ lxc-docker (0.6.1-1) saucy; urgency=low
 
  -- dotCloud <ops@dotcloud.com>  Fri, 23 Aug 2013 00:00:00 -0700
 
-lxc-docker (0.6.0-1) saucy; urgency=low
+lxc-docker (0.6.0-1) precise; urgency=low
   - Runtime: Load authConfig only when needed and fix useless WARNING
   + Runtime: Add lxc-conf flag to allow custom lxc options
   - Runtime: Fix race conditions in parallel pull
@@ -194,7 +200,7 @@ lxc-docker (0.6.0-1) saucy; urgency=low
 
  -- dotCloud <ops@dotcloud.com>  Thu, 22 Aug 2013 00:00:00 -0700
 
-lxc-docker (0.5.3-1) saucy; urgency=low
+lxc-docker (0.5.3-1) precise; urgency=low
   * Runtime: Use docker group for socket permissions
   - Runtime: Spawn shell within upstart script
   - Builder: Make sure ENV instruction within build perform a commit each time
@@ -203,14 +209,14 @@ lxc-docker (0.5.3-1) saucy; urgency=low
 
  -- dotCloud <ops@dotcloud.com>  Tue, 13 Aug 2013 00:00:00 -0700
 
-lxc-docker (0.5.2-1) saucy; urgency=low
+lxc-docker (0.5.2-1) precise; urgency=low
   * Builder: Forbid certain paths within docker build ADD
   - Runtime: Change network range to avoid conflict with EC2 DNS
   * API: Change daemon to listen on unix socket by default
 
  -- dotCloud <ops@dotcloud.com>  Thu, 08 Aug 2013 00:00:00 -0700
 
-lxc-docker (0.5.1-1) saucy; urgency=low
+lxc-docker (0.5.1-1) precise; urgency=low
   + API: Docker client now sets useragent (RFC 2616)
   + Runtime: Add `ps` args to `docker top`
   + Runtime: Add support for container ID files (pidfile like)
@@ -231,7 +237,7 @@ lxc-docker (0.5.1-1) saucy; urgency=low
 
  -- dotCloud <ops@dotcloud.com>  Tue, 30 Jul 2013 00:00:00 -0700
 
-lxc-docker (0.5.0-1) saucy; urgency=low
+lxc-docker (0.5.0-1) precise; urgency=low
   + Runtime: List all processes running inside a container with 'docker top'
   + Runtime: Host directories can be mounted as volumes with 'docker run -v'
   + Runtime: Containers can expose public UDP ports (eg, '-p 123/udp')
@@ -246,14 +252,14 @@ lxc-docker (0.5.0-1) saucy; urgency=low
 
  -- dotCloud <ops@dotcloud.com>  Wed, 17 Jul 2013 00:00:00 -0700
 
-lxc-docker (0.4.8-1) saucy; urgency=low
+lxc-docker (0.4.8-1) precise; urgency=low
   + Builder: New build operation ENTRYPOINT adds an executable entry point to the container.
   - Runtime: Fix a bug which caused 'docker run -d' to no longer print the container ID.
   - Tests: Fix issues in the test suite
 
  -- dotCloud <ops@dotcloud.com>  Mon, 01 Jul 2013 00:00:00 -0700
 
-lxc-docker (0.4.7-1) saucy; urgency=low
+lxc-docker (0.4.7-1) precise; urgency=low
   * Registry: easier push/pull to a custom registry
   * Remote API: the progress bar updates faster when downloading and uploading large files
   - Remote API: fix a bug in the optional unix socket transport
@@ -267,12 +273,12 @@ lxc-docker (0.4.7-1) saucy; urgency=low
 
  -- dotCloud <ops@dotcloud.com>  Fri, 28 Jun 2013 00:00:00 -0700
 
-lxc-docker (0.4.6-1) saucy; urgency=low
+lxc-docker (0.4.6-1) precise; urgency=low
   - Runtime: fix a bug which caused creation of empty images (and volumes) to crash.
 
  -- dotCloud <ops@dotcloud.com>  Sat, 22 Jun 2013 00:00:00 -0700
 
-lxc-docker (0.4.5-1) saucy; urgency=low
+lxc-docker (0.4.5-1) precise; urgency=low
   + Builder: 'docker build git://URL' fetches and builds a remote git repository
   * Runtime: 'docker ps -s' optionally prints container size
   * Tests: Improved and simplified
@@ -281,12 +287,12 @@ lxc-docker (0.4.5-1) saucy; urgency=low
 
  -- dotCloud <ops@dotcloud.com>  Fri, 21 Jun 2013 00:00:00 -0700
 
-lxc-docker (0.4.4-1) saucy; urgency=low
+lxc-docker (0.4.4-1) precise; urgency=low
   - Builder: fix a regression introduced in 0.4.3 which caused builds to fail on new clients.
 
  -- dotCloud <ops@dotcloud.com>  Wed, 19 Jun 2013 00:00:00 -0700
 
-lxc-docker (0.4.3-1) saucy; urgency=low
+lxc-docker (0.4.3-1) precise; urgency=low
   + Builder: ADD of a local file will detect tar archives and unpack them
   * Runtime: Remove bsdtar dependency
   * Runtime: Add unix socket and multiple -H support
@@ -308,12 +314,12 @@ lxc-docker (0.4.3-1) saucy; urgency=low
 
  -- dotCloud <ops@dotcloud.com>  Wed, 19 Jun 2013 00:00:00 -0700
 
-lxc-docker (0.4.2-1) saucy; urgency=low
+lxc-docker (0.4.2-1) precise; urgency=low
   - Packaging: Bumped version to work around an Ubuntu bug
 
  -- dotCloud <ops@dotcloud.com>  Mon, 17 Jun 2013 00:00:00 -0700
 
-lxc-docker (0.4.1-1) saucy; urgency=low
+lxc-docker (0.4.1-1) precise; urgency=low
   + Remote Api: Add flag to enable cross domain requests
   + Remote Api/Client: Add images and containers sizes in docker ps and docker images
   + Runtime: Configure dns configuration host-wide with 'docker -d -dns'
@@ -332,14 +338,14 @@ lxc-docker (0.4.1-1) saucy; urgency=low
 
  -- dotCloud <ops@dotcloud.com>  Mon, 17 Jun 2013 00:00:00 -0700
 
-lxc-docker (0.4.0-1) saucy; urgency=low
+lxc-docker (0.4.0-1) precise; urgency=low
   + Introducing Builder: 'docker build' builds a container, layer by layer, from a source repository containing a Dockerfile
   + Introducing Remote API: control Docker programmatically using a simple HTTP/json API
   * Runtime: various reliability and usability improvements
 
  -- dotCloud <ops@dotcloud.com>  Mon, 03 Jun 2013 00:00:00 -0700
 
-lxc-docker (0.3.4-1) saucy; urgency=low
+lxc-docker (0.3.4-1) precise; urgency=low
   + Builder: 'docker build' builds a container, layer by layer, from a source repository containing a Dockerfile
   + Builder: 'docker build -t FOO' applies the tag FOO to the newly built container.
   + Runtime: interactive TTYs correctly handle window resize
@@ -350,13 +356,13 @@ lxc-docker (0.3.4-1) saucy; urgency=low
 
  -- dotCloud <ops@dotcloud.com>  Thu, 30 May 2013 00:00:00 -0700
 
-lxc-docker (0.3.3-1) saucy; urgency=low
+lxc-docker (0.3.3-1) precise; urgency=low
   - Registry: Fix push regression
   - Various bugfixes
 
  -- dotCloud <ops@dotcloud.com>  Thu, 23 May 2013 00:00:00 -0700
 
-lxc-docker (0.3.2-1) saucy; urgency=low
+lxc-docker (0.3.2-1) precise; urgency=low
   * Runtime: Store the actual archive on commit
   * Registry: Improve the checksum process
   * Registry: Use the size to have a good progress bar while pushing
@@ -365,7 +371,7 @@ lxc-docker (0.3.2-1) saucy; urgency=low
 
  -- dotCloud <ops@dotcloud.com>  Thu, 09 May 2013 00:00:00 -0700
 
-lxc-docker (0.3.1-1) saucy; urgency=low
+lxc-docker (0.3.1-1) precise; urgency=low
   + Builder: Implement the autorun capability within docker builder
   + Builder: Add caching to docker builder
   + Builder: Add support for docker builder with native API as top level command
@@ -392,7 +398,7 @@ lxc-docker (0.3.1-1) saucy; urgency=low
 
  -- dotCloud <ops@dotcloud.com>  Wed, 08 May 2013 00:00:00 -0700
 
-lxc-docker (0.3.0-1) saucy; urgency=low
+lxc-docker (0.3.0-1) precise; urgency=low
   + Registry: Implement the new registry
   + Documentation: new example: sharing data between 2 couchdb databases
   - Runtime: Fix the command existance check
@@ -403,7 +409,7 @@ lxc-docker (0.3.0-1) saucy; urgency=low
 
  -- dotCloud <ops@dotcloud.com>  Mon, 06 May 2013 00:00:00 -0700
 
-lxc-docker (0.2.2-1) saucy; urgency=low
+lxc-docker (0.2.2-1) precise; urgency=low
   + Support for data volumes ('docker run -v=PATH')
   + Share data volumes between containers ('docker run -volumes-from')
   + Improved documentation
@@ -412,7 +418,7 @@ lxc-docker (0.2.2-1) saucy; urgency=low
 
  -- dotCloud <ops@dotcloud.com>  Fri, 03 May 2013 00:00:00 -0700
 
-lxc-docker (0.2.1-1) saucy; urgency=low
+lxc-docker (0.2.1-1) precise; urgency=low
   + 'docker commit -run' bundles a layer with default runtime options: command, ports etc.
   * Improve install process on Vagrant
   + New Dockerfile operation: "maintainer"
@@ -424,7 +430,7 @@ lxc-docker (0.2.1-1) saucy; urgency=low
 
  -- dotCloud <ops@dotcloud.com>  Wed, 01 May 2013 00:00:00 -0700
 
-lxc-docker (0.2.0-1) saucy; urgency=low
+lxc-docker (0.2.0-1) precise; urgency=low
   - Runtime: ghost containers can be killed and waited for
   * Documentation: update install intructions
   - Packaging: fix Vagrantfile
@@ -434,7 +440,7 @@ lxc-docker (0.2.0-1) saucy; urgency=low
 
  -- dotCloud <ops@dotcloud.com>  Tue, 23 Apr 2013 00:00:00 -0700
 
-lxc-docker (0.1.8-1) saucy; urgency=low
+lxc-docker (0.1.8-1) precise; urgency=low
   - Dynamically detect cgroup capabilities
   - Issue stability warning on kernels <3.8
   - 'docker push' buffers on disk instead of memory
@@ -445,7 +451,7 @@ lxc-docker (0.1.8-1) saucy; urgency=low
 
  -- dotCloud <ops@dotcloud.com>  Mon, 22 Apr 2013 00:00:00 -0700
 
-lxc-docker (0.1.7-1) saucy; urgency=low
+lxc-docker (0.1.7-1) precise; urgency=low
   - Container ports are available on localhost
   - 'docker ps' shows allocated TCP ports
   - Contributors can run 'make hack' to start a continuous integration VM
@@ -454,12 +460,12 @@ lxc-docker (0.1.7-1) saucy; urgency=low
 
  -- dotCloud <ops@dotcloud.com>  Thu, 18 Apr 2013 00:00:00 -0700
 
-lxc-docker (0.1.6-1) saucy; urgency=low
+lxc-docker (0.1.6-1) precise; urgency=low
   - Record the author an image with 'docker commit -author'
 
  -- dotCloud <ops@dotcloud.com>  Wed, 17 Apr 2013 00:00:00 -0700
 
-lxc-docker (0.1.5-1) saucy; urgency=low
+lxc-docker (0.1.5-1) precise; urgency=low
   - Disable standalone mode
   - Use a custom DNS resolver with 'docker -d -dns'
   - Detect ghost containers
@@ -474,7 +480,7 @@ lxc-docker (0.1.5-1) saucy; urgency=low
 
  -- dotCloud <ops@dotcloud.com>  Wed, 17 Apr 2013 00:00:00 -0700
 
-lxc-docker (0.1.4-1) saucy; urgency=low
+lxc-docker (0.1.4-1) precise; urgency=low
   - Full support for TTY emulation
   - Detach from a TTY session with the escape sequence `C-p C-q`
   - Various bugfixes and stability improvements
@@ -483,7 +489,7 @@ lxc-docker (0.1.4-1) saucy; urgency=low
 
  -- dotCloud <ops@dotcloud.com>  Tue, 09 Apr 2013 00:00:00 -0700
 
-lxc-docker (0.1.3-1) saucy; urgency=low
+lxc-docker (0.1.3-1) precise; urgency=low
   - Choose TCP frontend port with '-p :PORT'
   - Layer format is versioned
   - Major reliability improvements to the process manager
@@ -491,7 +497,7 @@ lxc-docker (0.1.3-1) saucy; urgency=low
 
  -- dotCloud <ops@dotcloud.com>  Thu, 04 Apr 2013 00:00:00 -0700
 
-lxc-docker (0.1.2-1) saucy; urgency=low
+lxc-docker (0.1.2-1) precise; urgency=low
   - Set container hostname with 'docker run -h'
   - Selective attach at run with 'docker run -a [stdin[,stdout[,stderr]]]'
   - Various bugfixes and stability improvements
@@ -502,7 +508,7 @@ lxc-docker (0.1.2-1) saucy; urgency=low
 
  -- dotCloud <ops@dotcloud.com>  Wed, 03 Apr 2013 00:00:00 -0700
 
-lxc-docker (0.1.1-1) saucy; urgency=low
+lxc-docker (0.1.1-1) precise; urgency=low
   - Display shorthand IDs for convenience
   - Stabilize process management
   - Layers can include a commit message
@@ -515,7 +521,7 @@ lxc-docker (0.1.1-1) saucy; urgency=low
 
  -- dotCloud <ops@dotcloud.com>  Sun, 31 Mar 2013 00:00:00 -0700
 
-lxc-docker (0.1.0-1) saucy; urgency=low
+lxc-docker (0.1.0-1) precise; urgency=low
   - First release
   - Implement registry in order to push/pull images
   - TCP port allocation
