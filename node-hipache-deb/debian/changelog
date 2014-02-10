@@ -1,9 +1,21 @@
-node-hipache (0.2.5-0ppa3~precise1) precise; urgency=low
+node-hipache (0.2.5-0ppa6~precise1) precise; urgency=low
 
   * Change build depends - nodejs version
   * Node modules not pre-build anymore
 
  -- Paulo Sousa <paulo.sousa@corp.globo.com>  Tue, 11 Feb 2014 15:00:32 -0200
+
+node-hipache (0.2.5-0ppa5~precise1) precise; urgency=high
+
+  * Fix versioning in nodejs dependency
+
+ -- Francisco Souza <fss@corp.globo.com>  Thu, 06 Feb 2014 16:42:00 -0200
+
+node-hipache (0.2.5-0ppa4~precise1) precise; urgency=low
+
+  * Pin nodejs version
+
+ -- Francisco Souza <fss@corp.globo.com>  Thu, 06 Feb 2014 10:21:16 -0200
 
 node-hipache (0.2.5-0ppa2~precise1) precise; urgency=medium
 
