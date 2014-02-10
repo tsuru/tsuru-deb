@@ -1,3 +1,10 @@
+node-hipache (0.2.5-0ppa3~precise1) precise; urgency=low
+
+  * Change build depends - nodejs version
+  * Node modules not pre-build anymore
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Tue, 11 Feb 2014 15:00:32 -0200
+
 node-hipache (0.2.5-0ppa2~precise1) precise; urgency=medium
 
   * ECONNRESET handle as dead-backend
