@@ -2,7 +2,7 @@ Source: node-hipache
 Section: devel
 Priority: extra
 Maintainer: Globo.com <tsuru@corp.globo.com>
-Build-Depends: debhelper (>= 7.0.50~), npm | nodejs (>= 0.8.25~), git
+Build-Depends: debhelper (>= 7.0.50~), npm (>> 1.2.0) | nodejs (>= 0.8.25~)
 Standards-Version: 3.9.3
 Homepage: https://github.com/dotcloud/hipache
 
