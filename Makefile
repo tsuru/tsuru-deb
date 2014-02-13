@@ -40,9 +40,9 @@ cowbuilder_create:
 	echo "/usr/bin/add-apt-repository -y ppa:tsuru/lvm2" >> /tmp/ppa.sh
 	echo "/usr/bin/add-apt-repository -y ppa:tsuru/golang" >> /tmp/ppa.sh
 	for version in $(VERSIONS); do \
-	    cowbuilder-dist $$version create && \
-	    cowbuilder-dist $$version execute --save --override-config /tmp/ppa.sh && \
-	    cowbuilder-dist $$version update --override-config; \
+	    cowbuilder-dist $$version create --updates-only && \
+	    cowbuilder-dist $$version execute --save --override-config --updates-only /tmp/ppa.sh && \
+	    cowbuilder-dist $$version update --override-config --updates-only; \
 	done
 	rm /tmp/ppa.sh
 
