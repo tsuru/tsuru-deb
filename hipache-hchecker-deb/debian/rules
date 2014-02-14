@@ -6,17 +6,14 @@
 
 export GOPATH=$(CURDIR)
 
-%:
-	dh $@ 
-
 clean:
 	dh_clean
 	rm -rf $(GOPATH)/bin/* $(GOPATH)/pkg/*
 
-build:
+build-stamp:
 	go install github.com/morpheu/hipache-hchecker
 
-binary-arch:
+binary-stamp:
 	dh_prep
 	dh_installdirs
 	dh_install
@@ -29,4 +26,10 @@ binary-arch:
 	dh_md5sums
 	dh_builddeb
 
-binary: binary-arch
+build: build-arch build-indep
+build-arch: build-stamp
+build-indep: build-stamp
+
+binary: binary-arch binary-indep
+binary-arch: binary-stamp
+binary-indep: binary-stamp
