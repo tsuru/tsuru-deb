@@ -1,0 +1,29 @@
+Index: node-v0.10.25/deps/npm/bin/npm
+===================================================================
+--- node-v0.10.25.orig/deps/npm/bin/npm	2014-01-23 03:05:51.000000000 -0200
++++ node-v0.10.25/deps/npm/bin/npm	2014-02-16 00:36:18.610427137 -0300
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ 
+-basedir=`dirname "$0"`
++basedir="/usr/lib"
+ 
+ case `uname` in
+     *CYGWIN*) basedir=`cygpath -w "$basedir"`;;
+@@ -9,5 +9,5 @@
+ if [ -x "$basedir/node.exe" ]; then
+   "$basedir/node.exe" "$basedir/node_modules/npm/bin/npm-cli.js" "$@"
+ else
+-  node "$basedir/node_modules/npm/bin/npm-cli.js" "$@"
++  nodejs "$basedir/node_modules/npm/bin/npm-cli.js" "$@"
+ fi
+Index: node-v0.10.25/deps/npm/bin/npm-cli.js
+===================================================================
+--- node-v0.10.25.orig/deps/npm/bin/npm-cli.js	2014-01-23 03:05:51.000000000 -0200
++++ node-v0.10.25/deps/npm/bin/npm-cli.js	2014-02-16 00:36:45.858428562 -0300
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env node
++#!/usr/bin/nodejs
+ ;(function () { // wrapper in case we're in module_context mode
+ 
+ // windows: running "npm blah" in this folder will invoke WSH, not node.

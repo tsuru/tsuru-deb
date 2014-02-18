@@ -2,13 +2,13 @@ Source: node-hipache
 Section: devel
 Priority: extra
 Maintainer: Globo.com <tsuru@corp.globo.com>
-Build-Depends: debhelper (>= 7.0.50~), npm (>> 1.2.0) | nodejs (>= 0.8.25~)
+Build-Depends: debhelper (>= 7.0.50~), nodejs (>= 0.10.25)
 Standards-Version: 3.9.3
 Homepage: https://github.com/dotcloud/hipache
 
 Package: node-hipache
 Architecture: amd64
-Depends: ${misc:Depends}, nodejs (<= 0.8.26~)
+Depends: ${misc:Depends}, nodejs-legacy (>= 0.10.25)
 Description: Hipache is a distributed HTTP(S) proxy
  Hipache is a distributed proxy designed to route high volumes of http and
  websocket traffic to unusually large numbers of virtual hosts, in a highly

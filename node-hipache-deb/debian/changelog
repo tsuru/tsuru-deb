@@ -1,6 +1,6 @@
 node-hipache (0.2.5-0ppa11~precise1) precise; urgency=medium
 
-  * Fix hipache http-proxy version - should be 0.9.x
+  * Refresh hipache dependencies and nodejs version
 
  -- Paulo Sousa <paulo.sousa@corp.globo.com>  Thu, 13 Feb 2014 18:51:08 -0200
 
