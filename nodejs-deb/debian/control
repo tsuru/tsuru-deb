@@ -76,8 +76,8 @@ Package: nodejs-legacy
 Priority: extra
 Architecture: all
 Depends: ${misc:Depends},
- nodejs (>= 0.6.19~dfsg1-3~)
-Conflicts: node, npm
+ nodejs (>= 0.10.25-0ubuntu1ppa3)
+Conflicts: node, npm, nodejs (<< 0.10.25)
 Description: evented I/O for V8 javascript (legacy symlink)
  Node.js is a platform built on Chrome's JavaScript runtime for easily
  building fast, scalable network applications. Node.js uses an

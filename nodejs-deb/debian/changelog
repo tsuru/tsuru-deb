@@ -1,3 +1,15 @@
+nodejs (0.10.25-0ubuntu1ppa4~precise1) precise; urgency=medium
+
+  * Fix nodejs dependency on nodejs-legacy 
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Tue, 18 Feb 2014 14:21:51 -0300
+
+nodejs (0.10.25-0ubuntu1ppa3~precise1) precise; urgency=medium
+
+  * Fix conflict on nodejs-legacy with nodejs
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Tue, 18 Feb 2014 14:03:37 -0300
+
 nodejs (0.10.25-0ubuntu1ppa2~precise1) precise; urgency=medium
 
   * Fix nodejs symlinks
