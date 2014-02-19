@@ -11,5 +11,5 @@ post-stop exec sleep 5
 script
   TSR_SSH_AGENT_ENABLED="no"
   if [ -f /etc/default/hipache-hchecker ]; then . /etc/default/hipache-hchecker; fi
-  if [ "x$HCHECKER_ENABLED" = "xyes" ]; then exec /usr/bin/hipache-hchecker -connect=$HCHECKER_CONNECT_TIMEOUT -io=$HCHECKER_IO_TIMEOUT -interval=$HCHECKER_CHECK_INTERVAL -method=$HCHECKER_HTTP_METHOD -redis=$HCHECKER_REDIS_SERVER -redis_suffix=$HCHECKER_REDIS_KEY_SUFFIX -uri=$HCKECHER_URI ; fi
+  if [ "x$HCHECKER_ENABLED" = "xyes" ]; then exec /usr/bin/hipache-hchecker -connect=$HCHECKER_CONNECT_TIMEOUT -io=$HCHECKER_IO_TIMEOUT -interval=$HCHECKER_CHECK_INTERVAL -method=$HCHECKER_HTTP_METHOD -redis=$HCHECKER_REDIS_SERVER -redis_suffix=$HCHECKER_REDIS_KEY_SUFFIX -redis_idle_timeout=$HCHECKER_REDIS_IDLE_TIMEOUT -redis_max_idle=$HCHECKER_REDIS_MAX_IDLE -uri=$HCKECHER_URI ; fi
 end script
