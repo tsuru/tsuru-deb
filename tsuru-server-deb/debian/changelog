@@ -1,3 +1,9 @@
+tsuru-server (0.3.4-0ubuntu1ppa4~precise1) precise; urgency=medium
+
+  * Fix tsuru client package
+
+ -- Francisco Souza <fss@corp.globo.com>  Thu, 20 Feb 2014 13:49:04 -0300
+
 tsuru-server (0.3.4-0ubuntu1ppa3~precise1) precise; urgency=medium
 
   * Fixing package for the new upstream release
