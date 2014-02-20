@@ -1,6 +1,12 @@
-tsuru-server (0.3.4-0ubuntu1ppa1~precise1ubuntu1) precise; urgency=high
+tsuru-server (0.3.4-0ubuntu1ppa3~precise1) precise; urgency=medium
 
- * New upstream release - 0.3.3
+  * Fixing package for the new upstream release
+
+ -- Francisco Souza <fss@corp.globo.com>  Thu, 20 Feb 2014 10:12:51 -0300
+
+tsuru-server (0.3.4-0ubuntu1ppa1~precise1) precise; urgency=high
+
+ * New upstream release - 0.3.4
 
  -- Francisco Souza <fss@corp.globo.com>  Wed, 19 Feb 2014 17:24:12 -0300
 
