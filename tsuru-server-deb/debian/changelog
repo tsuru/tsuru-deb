@@ -1,3 +1,15 @@
+tsuru-server (0.3.6-0ubuntu1ppa1~precise1) precise; urgency=medium
+
+  * New upstream release - 0.3.6
+
+ -- Andrews Medina <andrews@corp.globo.com>  Fri, 21 Feb 2014 16:51:00 -0300
+
+tsuru-server (0.3.5-0ubuntu1ppa1~precise1) precise; urgency=high
+
+  * New upstream release - 0.3.5
+
+ -- Francisco Souza <fss@corp.globo.com>  Thu, 20 Feb 2014 17:20:18 -0300
+
 tsuru-server (0.3.4-0ubuntu1ppa4~precise1) precise; urgency=medium
 
   * Fix tsuru client package
