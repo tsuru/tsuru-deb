@@ -10,7 +10,7 @@ clean:
 	dh_clean
 
 build-stamp:
-	cd hipache && npm install --cache-min 999999999 --optional --no-registry --fetch-retries 0 --fetch-retry-factor 0 --fetch-retry-mintimeout 1 --fetch-retry-maxtimeout 2
+	cd hipache && npm install --nodedir=/usr/include/nodejs --cache-min 999999999 --optional --no-registry --fetch-retries 0 --fetch-retry-factor 0 --fetch-retry-mintimeout 1 --fetch-retry-maxtimeout 2
 
 binary-stamp:
 	dh_testdir

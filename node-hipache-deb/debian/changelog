@@ -1,3 +1,22 @@
+node-hipache (0.2.5-0ppa14~precise1) precise; urgency=medium
+
+  * Removing garbage node_modules dir
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Fri, 21 Feb 2014 11:53:51 -0300
+
+node-hipache (0.2.5-0ppa13~precise1) precise; urgency=medium
+
+  * Needs nodejs-legacy on build deps
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Thu, 20 Feb 2014 13:55:23 -0300
+
+node-hipache (0.2.5-0ppa12~precise1) precise; urgency=medium
+
+  * Update http-proxy
+  * ECONNRESET should not be handled as dead-backend
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Thu, 20 Feb 2014 13:31:13 -0300
+
 node-hipache (0.2.5-0ppa11~precise1) precise; urgency=medium
 
   * Refresh hipache dependencies and nodejs version
