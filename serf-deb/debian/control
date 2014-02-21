@@ -1,0 +1,17 @@
+Source: serf
+Section: devel
+Priority: extra
+Maintainer: Globo.com <tsuru@corp.globo.com>
+Build-Depends: debhelper (>= 7.0.50~), golang (>= 2:1.2)
+Standards-Version: 3.9.3
+Homepage: http://github.com/globocom/serf
+
+Package: serf
+Architecture: amd64 i386
+Depends: ${misc:Depends}
+Description: Serf is a decentralized solution for service discovery and orchestration.
+ Serf is an efficient and lightweight gossip protocol is used to communicate with other
+ nodes. Serf can detect node failures and notify the rest of the cluster. An
+ event system is built on top of Serf, letting you use Serf's gossip protocol to
+ propagate events such as deploys, configuration changes, etc. Serf is
+ completely masterless with no single point of failure.

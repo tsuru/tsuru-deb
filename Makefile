@@ -94,6 +94,14 @@ tsuru-node-agent:
 	make TAG=$$TAG TARGET=$@ _post_tarball
 	make TARGET=$@ _do
 
+serf:
+	make TAG=$$TAG TARGET=$@ _pre_tarball
+	pushd . && cd serf-$$TAG && pushd . && \
+	export GOPATH=$$PWD && go get -v -u -d github.com/hashicorp/serf/... && \
+	export GOPATH=$$PWD && cd src/github.com/hashicorp/serf && git checkout v$$TAG && popd
+	make TAG=$$TAG TARGET=$@ _post_tarball
+	make TARGET=$@ _do
+
 gandalf-server:
 	make TAG=$$TAG TARGET=$@ _pre_tarball
 	pushd . && cd gandalf-server-$$TAG && pushd . && \

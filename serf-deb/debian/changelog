@@ -1,0 +1,5 @@
+serf (0.4.1-0ubuntu1ppa1~precise1) precise; urgency=low
+
+  * Initial release.
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Fri, 21 Feb 2014 17:21:47 -0300
