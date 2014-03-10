@@ -3,7 +3,7 @@ Upstream-Name: crane
 Source: https://github.com/globocom/tsuru
 
 Files: *
-Copyright: 2013, Globo.com
+Copyright: 2014, Globo.com
 License: BSD
 
 Files: debian/*

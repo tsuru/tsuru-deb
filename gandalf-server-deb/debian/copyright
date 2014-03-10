@@ -3,7 +3,7 @@ Upstream-Name: gandalf-server
 Source: https://github.com/globocom/gandalf
 
 Files: *
-Copyright: 2013, Globo.com
+Copyright: 2014, Globo.com
 License: BSD
 
 Files: debian/*
