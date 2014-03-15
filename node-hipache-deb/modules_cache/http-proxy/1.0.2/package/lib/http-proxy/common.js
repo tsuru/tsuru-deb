@@ -42,8 +42,16 @@ common.setupOutgoing = function(outgoing, options, req, forward) {
     outgoing.rejectUnauthorized = (typeof options.secure === "undefined") ? true : options.secure;
   }
 
+  if (options.agent) {
+    outgoing.agent = options.agent;
+  } else {
+    outgoing.agent = false;
+    // If we have no agent for sharing connections, we should not keep the
+    // connection alive.
+    if (outgoing.headers)
+      outgoing.headers.connection = 'close';
+  }
 
-  outgoing.agent = options.agent || false;
   outgoing.path = url.parse(req.url).path;
   return outgoing;
 };
