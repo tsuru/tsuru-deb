@@ -69,17 +69,8 @@ function Worker(config) {
 }
 
 Worker.prototype.runServer = function (config) {
-    var options = {};
-    if (config.httpKeepAlive !== true) {
-        // Disable the http Agent of the http-proxy library so we force
-        // the proxy to close the connection after each request to the backend
-        options.agent = false;
-    }
-    var proxy = httpProxy.createProxyServer(options);
-    http.globalAgent.maxSockets = config.maxSockets;
-    https.globalAgent.maxSockets = config.maxSockets;
+    httpProxy.setMaxSockets(config.maxSockets);
 
-    // Handler called when an error is triggered while proxying a request
     var proxyErrorHandler = function (err, req, res) {
         if (err.code === 'ECONNREFUSED' ||
                 err.code === 'ETIMEDOUT' ||
@@ -123,7 +114,6 @@ Worker.prototype.runServer = function (config) {
         req.emit('retry');
     }.bind(this);
 
-    // Handler called at the begining of the proxying
     var startHandler = function (req, res) {
         var remoteAddr = getRemoteAddress(req);
 
@@ -356,6 +346,8 @@ Worker.prototype.runServer = function (config) {
 
         // Proxy the HTTP request
         var proxyRequest = function () {
+            var buffer = httpProxy.buffer(req);
+
             this.cache.getBackendFromHostHeader(req.headers.host, function (err, code, backend) {
                 if (err) {
                     return errorMessage(res, err, code);
@@ -369,17 +361,20 @@ Worker.prototype.runServer = function (config) {
                 };
                 // Proxy the request to the backend
                 res.timer.startBackend = Date.now();
-                proxy.emit('start', req, res);
-                proxy.web(req, res, {
+                var proxy = new httpProxy.HttpProxy({
                     target: {
                         host: backend.hostname,
                         port: backend.port
                     },
-                    xfwd: false
+                    enable: {
+                        xforward: false
+                    }
                 });
+                proxy.on('proxyError', proxyErrorHandler);
+                proxy.on('start', startHandler);
+                proxy.proxyRequest(req, res, buffer);
             });
         }.bind(this);
-        // Configure the retryOnError
         if (config.retryOnError) {
             req.on('retry', function () {
                 log('Retrying on ' + req.headers.host);
@@ -390,18 +385,23 @@ Worker.prototype.runServer = function (config) {
     }.bind(this);
 
     var wsRequestHandler = function (req, socket, head) {
+        var buffer = httpProxy.buffer(socket);
+
         this.cache.getBackendFromHostHeader(req.headers.host, function (err, code, backend) {
+            var proxy;
+
             if (err) {
                 log('proxyWebSocketRequest: ' + err);
                 return;
             }
             // Proxy the WebSocket request to the backend
-            proxy.ws(req, socket, head, {
+            proxy = new httpProxy.HttpProxy({
                 target: {
                     host: backend.hostname,
                     port: backend.port
                 }
             });
+            proxy.proxyWebSocketRequest(req, socket, head, buffer);
         });
     }.bind(this);
 
@@ -436,9 +436,13 @@ Worker.prototype.runServer = function (config) {
         });
     };
 
-    // Set proxy handlers
-    proxy.on('error', proxyErrorHandler);
-    proxy.on('start', startHandler);
+    if (config.httpKeepAlive !== true) {
+        // Disable the http Agent of the http-proxy library so we force
+        // the proxy to close the connection after each request to the backend
+        httpProxy._getAgent = function () {
+            return false;
+        };
+    }
 
     // Ipv4
     if (config.address) {
