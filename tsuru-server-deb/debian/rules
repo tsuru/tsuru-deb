@@ -12,7 +12,7 @@ PKGDIR=debian/tsuru-server
 VERSION_COMPLETE := $(shell dpkg-parsechangelog | sed -ne 's,^Version: *\(.*\)$$,\1,p')
 VERSION_UPSTREAM := $(shell echo "$(VERSION_COMPLETE)" | sed -e 's,^[0-9]*:,,' -e 's,-[^-]*$$,,')
 VERSION_DEBIAN := $(shell echo "$(VERSION_COMPLETE)" | sed -e 's,^[^-]*-,,')
-TSURU_CLIENT_VERSION_FILE = "src/github.com/globocom/tsuru/cmd/tsuru/main.go"
+TSURU_CLIENT_VERSION_FILE = "src/github.com/tsuru/tsuru/cmd/tsuru/main.go"
 TSURU_CLIENT_VERSION := $(shell sed -ne 's,^[\ \t]\+version\ =\ "\([^"]\+\)".*$$,\1,p' $(TSURU_CLIENT_VERSION_FILE))
 TSURU_CLIENT_VERSION_DEBIAN = $(TSURU_CLIENT_VERSION)-$(VERSION_DEBIAN)
 
@@ -22,8 +22,8 @@ clean:
 	rm -rf $(GOPATH)/bin/* $(GOPATH)/pkg/*
 
 build:
-	go install github.com/globocom/tsuru/cmd/tsr
-	go install github.com/globocom/tsuru/cmd/tsuru
+	go install github.com/tsuru/tsuru/cmd/tsr
+	go install github.com/tsuru/tsuru/cmd/tsuru
 
 install-base-prep:
 	dh_testdir

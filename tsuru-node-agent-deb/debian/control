@@ -4,7 +4,7 @@ Priority: extra
 Maintainer: Globo.com <tsuru@corp.globo.com>
 Build-Depends: debhelper (>= 7.0.50~), golang (>= 2:1.2)
 Standards-Version: 3.9.3
-Homepage: http://github.com/globocom/tsuru-node-agent
+Homepage: http://github.com/tsuru/tsuru-node-agent
 
 Package: tsuru-node-agent
 Architecture: amd64 i386

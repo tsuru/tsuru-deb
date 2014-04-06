@@ -79,18 +79,18 @@ _do:
 tsuru-server:
 	make TAG=$$TAG TARGET=$@ _pre_tarball
 	pushd . && cd tsuru-server-$$TAG && pushd . && \
-	export GOPATH=$$PWD && go get -v -u -d github.com/globocom/tsuru/... && \
-	export GOPATH=$$PWD && cd src/github.com/globocom/tsuru && git checkout $$TAG && godep restore ./... && \
-	rm -rf src/github.com/globocom/tsuru/src && popd
+	export GOPATH=$$PWD && go get -v -u -d github.com/tsuru/tsuru/... && \
+	export GOPATH=$$PWD && cd src/github.com/tsuru/tsuru && git checkout $$TAG && godep restore ./... && \
+	rm -rf src/github.com/tsuru/tsuru/src && popd
 	make TAG=$$TAG TARGET=$@ _post_tarball
 	make TARGET=$@ _do
 
 tsuru-node-agent:
 	make TAG=$$TAG TARGET=$@ _pre_tarball
 	pushd . && cd tsuru-node-agent-$$TAG && pushd . && \
-	export GOPATH=$$PWD && go get -v -u -d github.com/globocom/tsuru-node-agent/... && \
-	export GOPATH=$$PWD && cd src/github.com/globocom/tsuru-node-agent && git checkout $$TAG && godep restore ./... && \
-	rm -rf src/github.com/globocom/tsuru-node-agent/src && popd
+	export GOPATH=$$PWD && go get -v -u -d github.com/tsuru/tsuru-node-agent/... && \
+	export GOPATH=$$PWD && cd src/github.com/tsuru/tsuru-node-agent && git checkout $$TAG && godep restore ./... && \
+	rm -rf src/github.com/tsuru/tsuru-node-agent/src && popd
 	make TAG=$$TAG TARGET=$@ _post_tarball
 	make TARGET=$@ _do
 

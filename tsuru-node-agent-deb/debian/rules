@@ -15,7 +15,7 @@ clean:
 	rm -rf $(GOPATH)/bin/* $(GOPATH)/pkg/*
 
 build:
-	go install github.com/globocom/tsuru-node-agent
+	go install github.com/tsuru/tsuru-node-agent
 
 binary-indep:
 binary-arch:
