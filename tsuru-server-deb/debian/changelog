@@ -1,3 +1,9 @@
+tsuru-server (0.3.11-0ubuntu1ppa1~precise1) precise; urgency=medium
+
+  * New upstream release - 0.3.11
+
+ -- Andrews Medina <andrews@corp.globo.com>  Sun, 7 Apr 2014 23:38:00 -0300
+
 tsuru-server (0.3.10-0ubuntu1ppa1~precise1) precise; urgency=high
 
   * New upstream release - 0.3.10
