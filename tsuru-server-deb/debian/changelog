@@ -1,3 +1,9 @@
+tsuru-server (0.3.12-0ubuntu1ppa2~precise1) precise; urgency=medium
+
+  * Fix tsuru client version bump 
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Wed, 09 Apr 2014 14:56:00 -0300
+
 tsuru-server (0.3.12-0ubuntu1ppa1~precise1) precise; urgency=medium
 
   * New upstream release - 0.3.12
