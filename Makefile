@@ -1,5 +1,5 @@
 DEFINED_VERSION=precise
-VERSIONS=precise quantal saucy
+VERSIONS=precise quantal saucy trusty
 SHELL=/bin/bash
 
 comma:= ,

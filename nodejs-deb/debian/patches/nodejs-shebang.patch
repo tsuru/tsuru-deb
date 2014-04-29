@@ -73,33 +73,6 @@ diff -urN nodejs-0.8.0/deps/npm/test/packages/npm-test-dir-bin/bin/dir-bin nodej
 -#!/usr/bin/env node
 +#!/usr/bin/env nodejs
  console.log('ok')
-diff -urN nodejs-0.8.0/tools/blog/generate.js nodejs-0.8.0.orig/tools/blog/generate.js
---- nodejs-0.8.0/tools/blog/generate.js	2012-06-27 20:17:00.000000000 +0000
-+++ nodejs-0.8.0.orig/tools/blog/generate.js	2012-06-25 14:37:20.000000000 +0000
-@@ -1,4 +1,4 @@
--#!/usr/bin/env node
-+#!/usr/bin/env nodejs
- var fs = require('fs');
- var marked = require('marked');
- var mkdirp = require('mkdirp');
-diff -urN nodejs-0.8.0/tools/blog/node_modules/marked/bin/marked nodejs-0.8.0.orig/tools/blog/node_modules/marked/bin/marked
---- nodejs-0.8.0/tools/blog/node_modules/marked/bin/marked	2012-06-27 20:17:00.000000000 +0000
-+++ nodejs-0.8.0.orig/tools/blog/node_modules/marked/bin/marked	2012-06-25 14:37:20.000000000 +0000
-@@ -1,4 +1,4 @@
--#!/usr/bin/env node
-+#!/usr/bin/env nodejs
- 
- /**
-  * Marked CLI
-diff -urN nodejs-0.8.0/tools/blog/node_modules/semver/bin/semver nodejs-0.8.0.orig/tools/blog/node_modules/semver/bin/semver
---- nodejs-0.8.0/tools/blog/node_modules/semver/bin/semver	2012-06-27 20:17:00.000000000 +0000
-+++ nodejs-0.8.0.orig/tools/blog/node_modules/semver/bin/semver	2012-06-25 14:37:20.000000000 +0000
-@@ -1,4 +1,4 @@
--#!/usr/bin/env node
-+#!/usr/bin/env nodejs
- // Standalone semver comparison program.
- // Exits successfully and prints matching version(s) if
- // any supplied version is valid and passes all tests.
 diff -urN nodejs-0.8.0/tools/doc/node_modules/marked/bin/marked nodejs-0.8.0.orig/tools/doc/node_modules/marked/bin/marked
 --- nodejs-0.8.0/tools/doc/node_modules/marked/bin/marked	2012-06-27 20:17:00.000000000 +0000
 +++ nodejs-0.8.0.orig/tools/doc/node_modules/marked/bin/marked	2012-06-25 14:37:20.000000000 +0000
