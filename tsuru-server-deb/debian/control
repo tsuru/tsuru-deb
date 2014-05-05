@@ -20,3 +20,10 @@ Depends: ${misc:Depends}
 Description: tsuru is the command line interface for the tsuru server
  Tsuru is an open source platform as a service software. This package installs
  the client used by application developers to communicate with tsuru server.
+
+Package: tsuru-admin
+Architecture: amd64 i386
+Depends: ${misc:Depends}
+Description: tsuru-admin is the command line interface for tsuru server admins
+ Tsuru is an open source platform as a service software. This package installs
+ the client used by cloud admininstrators to communicate with tsuru server.
