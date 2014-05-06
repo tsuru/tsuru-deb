@@ -1,5 +1,0 @@
-tsuru-admin (0.2.1-1ppa1~precise1) precise; urgency=low
-
-  * First version of the package.
-
- -- Francisco Souza <fss@corp.globo.com>  Tue, 15 Oct 2013 15:33:00 -0300
