@@ -1,3 +1,9 @@
+tsuru-server (0.4.0-2~precise1) precise; urgency=medium
+
+  * Adding tsuru api admin upstart 
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Wed, 07 May 2014 10:40:02 -0300
+
 tsuru-server (0.4.0-1~precise1) precise; urgency=medium
 
   * Removing libdevmapper-dev build dependency
