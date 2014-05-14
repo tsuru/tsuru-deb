@@ -1,3 +1,15 @@
+hipache-hchecker (0.2.4.2-0ubuntu1ppa1~precise1) precise; urgency=medium
+
+  * New upstream release
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Wed, 19 Feb 2014 15:31:07 -0300
+
+hipache-hchecker (0.2.4.1-0ubuntu1ppa2~precise1) precise; urgency=medium
+
+  * Fix debian/rules targets
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Thu, 13 Feb 2014 19:17:12 -0200
+
 hipache-hchecker (0.2.4.1-0ubuntu1ppa1~precise1) precise; urgency=medium
 
   * Change redis module to redigo // Implementing connection pool

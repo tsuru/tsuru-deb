@@ -1,0 +1,3 @@
+bin/gandalf-ssh usr/bin
+bin/gandalf-server usr/bin
+debian/etc/gandalf.conf etc

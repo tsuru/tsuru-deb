@@ -1,3 +1,94 @@
+tsuru-server (0.4.0-2~precise1) precise; urgency=medium
+
+  * Adding tsuru api admin upstart 
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Wed, 07 May 2014 10:40:02 -0300
+
+tsuru-server (0.4.0-1~precise1) precise; urgency=medium
+
+  * Removing libdevmapper-dev build dependency
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Tue, 06 May 2014 10:46:02 -0300
+
+tsuru-server (0.4.0-0~precise1) precise; urgency=medium
+
+  * New upstream release
+  * Generate tsuru-admin package
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Mon, 05 May 2014 18:18:41 -0300
+
+tsuru-server (0.3.12-0ubuntu1ppa2~precise1) precise; urgency=medium
+
+  * Fix tsuru client version bump 
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Wed, 09 Apr 2014 14:56:00 -0300
+
+tsuru-server (0.3.12-0ubuntu1ppa1~precise1) precise; urgency=medium
+
+  * New upstream release - 0.3.12
+
+ -- Andrews Medina <andrews@corp.globo.com>  Sun, 8 Apr 2014 16:04:00 -0300
+
+tsuru-server (0.3.11-0ubuntu1ppa1~precise1) precise; urgency=medium
+
+  * New upstream release - 0.3.11
+
+ -- Andrews Medina <andrews@corp.globo.com>  Sun, 7 Apr 2014 23:38:00 -0300
+
+tsuru-server (0.3.10-0ubuntu1ppa1~precise1) precise; urgency=high
+
+  * New upstream release - 0.3.10
+
+ -- Francisco Souza <fss@corp.globo.com>  Tue, 25 Mar 2014 22:58:36 -0300
+
+tsuru-server (0.3.9-0ubuntu1ppa1~precise1) precise; urgency=medium
+
+  * New upstream release - 0.3.9
+
+ -- Andrews Medina <andrews@corp.globo.com>  Sun, 23 Mar 2014 00:57:00 -0300
+
+tsuru-server (0.3.8-0ubuntu1ppa1~precise1) precise; urgency=medium
+
+  * New upstream reloas - 0.3.8
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Mon, 17 Mar 2014 16:30:33 -0300
+
+tsuru-server (0.3.7-0ubuntu1ppa1~precise1) precise; urgency=medium
+
+  * New upstream release - 0.3.7
+
+ -- Francisco Souza <fss@corp.globo.com>  Fri, 07 Mar 2014 19:11:11 -0300
+
+tsuru-server (0.3.6-0ubuntu1ppa1~precise1) precise; urgency=medium
+
+  * New upstream release - 0.3.6
+
+ -- Andrews Medina <andrews@corp.globo.com>  Fri, 21 Feb 2014 16:51:00 -0300
+
+tsuru-server (0.3.5-0ubuntu1ppa1~precise1) precise; urgency=high
+
+  * New upstream release - 0.3.5
+
+ -- Francisco Souza <fss@corp.globo.com>  Thu, 20 Feb 2014 17:20:18 -0300
+
+tsuru-server (0.3.4-0ubuntu1ppa4~precise1) precise; urgency=medium
+
+  * Fix tsuru client package
+
+ -- Francisco Souza <fss@corp.globo.com>  Thu, 20 Feb 2014 13:49:04 -0300
+
+tsuru-server (0.3.4-0ubuntu1ppa3~precise1) precise; urgency=medium
+
+  * Fixing package for the new upstream release
+
+ -- Francisco Souza <fss@corp.globo.com>  Thu, 20 Feb 2014 10:12:51 -0300
+
+tsuru-server (0.3.4-0ubuntu1ppa1~precise1) precise; urgency=high
+
+ * New upstream release - 0.3.4
+
+ -- Francisco Souza <fss@corp.globo.com>  Wed, 19 Feb 2014 17:24:12 -0300
+
 tsuru-server (0.3.3-0ubuntu1ppa2~precise1) precise; urgency=medium
 
   * New upstream release - 0.3.3

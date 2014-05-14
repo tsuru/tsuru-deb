@@ -12,9 +12,12 @@ PKGDIR=debian/tsuru-server
 VERSION_COMPLETE := $(shell dpkg-parsechangelog | sed -ne 's,^Version: *\(.*\)$$,\1,p')
 VERSION_UPSTREAM := $(shell echo "$(VERSION_COMPLETE)" | sed -e 's,^[0-9]*:,,' -e 's,-[^-]*$$,,')
 VERSION_DEBIAN := $(shell echo "$(VERSION_COMPLETE)" | sed -e 's,^[^-]*-,,')
-TSURU_CLIENT_VERSION_FILE = "src/github.com/globocom/tsuru/cmd/tsuru/main.go"
+TSURU_CLIENT_VERSION_FILE = "src/github.com/tsuru/tsuru/cmd/tsuru/main.go"
 TSURU_CLIENT_VERSION := $(shell sed -ne 's,^[\ \t]\+version\ =\ "\([^"]\+\)".*$$,\1,p' $(TSURU_CLIENT_VERSION_FILE))
 TSURU_CLIENT_VERSION_DEBIAN = $(TSURU_CLIENT_VERSION)-$(VERSION_DEBIAN)
+TSURU_ADMIN_VERSION_FILE = "src/github.com/tsuru/tsuru/cmd/tsuru-admin/main.go"
+TSURU_ADMIN_VERSION := $(shell sed -ne 's,^[\ \t]\+version\ =\ "\([^"]\+\)".*$$,\1,p' $(TSURU_ADMIN_VERSION_FILE))
+TSURU_ADMIN_VERSION_DEBIAN = $(TSURU_ADMIN_VERSION)-$(VERSION_DEBIAN)
 
 clean:
 	dh_testdir
@@ -22,8 +25,9 @@ clean:
 	rm -rf $(GOPATH)/bin/* $(GOPATH)/pkg/*
 
 build:
-	go install github.com/globocom/tsuru/cmd/tsr
-	go install github.com/globocom/tsuru/cmd/tsuru
+	go install github.com/tsuru/tsuru/cmd/tsr
+	go install github.com/tsuru/tsuru/cmd/tsuru
+	go install github.com/tsuru/tsuru/cmd/tsuru-admin
 
 install-base-prep:
 	dh_testdir
@@ -45,6 +49,7 @@ install_tsuru-server:
 	dh_installdirs
 	dh_install
 	dh_installinit --no-start --name=tsuru-server-api
+	dh_installinit --no-start --name=tsuru-server-admin
 	dh_installinit --no-start --name=tsuru-server-collector
 	dh_installinit --no-start --name=tsuru-ssh-agent
 	dh_installinit --no-start --name=tsuru-server
@@ -58,8 +63,15 @@ install_tsuru:
 	dh_install
 	+$(MAKE_SELF) install-base GENCONTROL_ARGS="-v$(TSURU_CLIENT_VERSION_DEBIAN)"
 
+install_tsuru-admin: export DH_OPTIONS = -ptsuru-admin
+install_tsuru-admin:
+	+$(MAKE_SELF) install-base-prep
+	dh_installdirs
+	dh_install
+	+$(MAKE_SELF) install-base GENCONTROL_ARGS="-v$(TSURU_ADMIN_VERSION_DEBIAN)"
+
 binary-indep:
-binary-arch: $(addprefix install_, tsuru-server tsuru)
+binary-arch: $(addprefix install_, tsuru-server tsuru tsuru-admin)
 binary: binary-indep binary-arch
 
 .PHONY: build clean binary-indep binary-arch binary install configure

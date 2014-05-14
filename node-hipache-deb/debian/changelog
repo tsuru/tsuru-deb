@@ -1,3 +1,60 @@
+node-hipache (0.2.5-0ppa17~precise1) precise; urgency=high
+
+  * Revert http-proxy to 0.10.x - fix websocket and Connection:keep-alive problem
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Tue, 18 Mar 2014 17:50:05 -0300
+
+node-hipache (0.2.5-0ppa16~precise1) precise; urgency=medium
+
+  * Fix patch node-http-proxy Connection:keep-alive without agent 
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Fri, 14 Mar 2014 20:52:00 -0300
+
+node-hipache (0.2.5-0ppa15~precise1) precise; urgency=high
+
+  * [PATCH] Fix node-http-proxy Connection:keep-alive without agent
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Mon, 17 Mar 2014 14:20:26 -0300
+
+node-hipache (0.2.5-0ppa14~precise1) precise; urgency=medium
+
+  * Removing garbage node_modules dir
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Fri, 21 Feb 2014 11:53:51 -0300
+
+node-hipache (0.2.5-0ppa13~precise1) precise; urgency=medium
+
+  * Needs nodejs-legacy on build deps
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Thu, 20 Feb 2014 13:55:23 -0300
+
+node-hipache (0.2.5-0ppa12~precise1) precise; urgency=medium
+
+  * Update http-proxy
+  * ECONNRESET should not be handled as dead-backend
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Thu, 20 Feb 2014 13:31:13 -0300
+
+node-hipache (0.2.5-0ppa11~precise1) precise; urgency=medium
+
+  * Refresh hipache dependencies and nodejs version
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Thu, 13 Feb 2014 18:51:08 -0200
+
+node-hipache (0.2.5-0ppa10~precise1) precise; urgency=medium
+
+  * Fix rules targets
+  * Fixing build dependencies ... again ;(
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Thu, 13 Feb 2014 17:40:59 -0200
+
+node-hipache (0.2.5-0ppa6~precise1) precise; urgency=low
+
+  * Change build depends - nodejs version
+  * Node modules not pre-build anymore
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Tue, 11 Feb 2014 15:00:32 -0200
+
 node-hipache (0.2.5-0ppa5~precise1) precise; urgency=high
 
   * Fix versioning in nodejs dependency

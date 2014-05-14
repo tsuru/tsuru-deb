@@ -3,20 +3,22 @@
 
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
-
-%:
-	dh $@
+export npm_config_cache=$(CURDIR)/modules_cache
 
 clean:
 	dh_testdir
 	dh_clean
 
-binary-arch:
+build-stamp:
+	cd hipache && npm install --nodedir=/usr/include/nodejs --cache-min 999999999 --optional --no-registry --fetch-retries 0 --fetch-retry-factor 0 --fetch-retry-mintimeout 1 --fetch-retry-maxtimeout 2
+
+binary-stamp:
 	dh_testdir
 	dh_testroot
 	dh_prep
 	dh_installdirs
 	dh_install
+	dh_installchangelogs -a
 	dh_link
 	dh_installinit --no-start --name=hipache
 	dh_strip
@@ -27,4 +29,10 @@ binary-arch:
 	dh_md5sums
 	dh_builddeb
 
-binary: binary-arch
+build: build-arch build-indep
+build-arch: build-stamp
+build-indep: build-stamp
+
+binary: binary-arch binary-indep
+binary-arch: binary-stamp
+binary-indep: binary-stamp
