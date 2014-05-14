@@ -107,6 +107,7 @@ git:
 #
 # provisioner: juju
 # juju:
+#   bootstrap-collection: juju_bootstrap
 #   charms-path: /home/charms
 #   units-collection: juju_units
 #   use-elb: false
