@@ -154,5 +154,5 @@ lvm2:
 
 golang:
 	if [ -f golang_1.2.orig.tar.gz ]; then rm golang_1.2.orig.tar.gz; fi
-	curl -L -o golang_1.2.orig.tar.gz https://go.googlecode.com/files/go1.2.src.tar.gz
+	curl -L -o golang_1.2.orig.tar.gz http://go.googlecode.com/files/go1.2.src.tar.gz
 	make TARGET=$@ _do
