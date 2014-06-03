@@ -125,7 +125,10 @@ node-hipache:
 	make TARGET=$@ _do
 
 docker-registry:
-	cd docker-registry-deb && GOPATH=$$PWD go get -d github.com/fsouza/docker-registry/contrib/golang_impl
+	make TAG=$$TAG TARGET=$@ _pre_tarball
+	pushd . && cd docker-registry-$$TAG && pushd . && \
+	export GOPATH=$$PWD && go get -v -u -d github.com/fsouza/docker-registry/contrib/golang_impl && cd src/github.com/fsouza/docker-registry/contrib/golang_impl && git checkout $$TAG && popd
+	make TAG=$$TAG TARGET=$@ _post_tarball
 	make TARGET=$@ _do
 
 tsuru-mongoapi:

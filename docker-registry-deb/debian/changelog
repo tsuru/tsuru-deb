@@ -1,3 +1,9 @@
+docker-registry (0.1.1-3~precise1) precise; urgency=medium
+
+  * Update package structure
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Tue, 03 Jun 2014 10:31:56 -0300
+
 docker-registry (0.1.1-2ppa1~precise1) precise; urgency=low
 
   * [Package] Run docker-registry with custom user
