@@ -3,14 +3,13 @@
 
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
-export npm_config_cache=$(CURDIR)/modules_cache
 
 clean:
 	dh_testdir
 	dh_clean
 
 build-stamp:
-	cd hipache && npm install --nodedir=/usr/include/nodejs --cache-min 999999999 --optional --no-registry --fetch-retries 0 --fetch-retry-factor 0 --fetch-retry-mintimeout 1 --fetch-retry-maxtimeout 2
+	cd hipache && npm install --production --cache $(CURDIR)/modules_cache --no-registry --nodedir=/usr/include/nodejs
 
 binary-stamp:
 	dh_testdir

@@ -1,3 +1,21 @@
+node-hipache (0.2.5-3~precise1) precise; urgency=medium
+
+  * Remove node_modules 
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Mon, 02 Jun 2014 19:40:36 -0300
+
+node-hipache (0.2.5-2~precise1) precise; urgency=medium
+
+  * Update modules 
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Mon, 02 Jun 2014 19:24:01 -0300
+
+node-hipache (0.2.5-1~precise1) precise; urgency=medium
+
+  * Fix npm install params
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Mon, 02 Jun 2014 15:34:02 -0300
+
 node-hipache (0.2.5-0ppa17~precise1) precise; urgency=high
 
   * Revert http-proxy to 0.10.x - fix websocket and Connection:keep-alive problem

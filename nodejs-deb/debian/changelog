@@ -1,40 +1,52 @@
-nodejs (0.10.26.1-0ubuntu1ppa1~trusty1) trusty; urgency=medium
+nodejs (0.10.26.3-0ubuntu1ppa1~precise1) precise; urgency=medium
+
+  * Downgrade npm to 1.4.10 
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Mon, 02 Jun 2014 20:09:49 -0300
+
+nodejs (0.10.26.2-0ubuntu1ppa1~precise1) precise; urgency=medium
+
+  * Upgrade npm to 1.4.13
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Mon, 02 Jun 2014 17:32:50 -0300
+
+nodejs (0.10.26.1-0ubuntu1ppa1~precise1) precise; urgency=medium
 
   * Upgrade npm to 1.4.7
 
  -- Paulo Sousa <paulo.sousa@corp.globo.com>  Mon, 28 Apr 2014 10:17:11 -0300
 
-nodejs (0.10.26-0ubuntu1ppa1~trusty1) trusty; urgency=medium
+nodejs (0.10.26-0ubuntu1ppa1~precise1) precise; urgency=medium
 
   * New upstream release
 
  -- Paulo Sousa <paulo.sousa@corp.globo.com>  Fri, 25 Apr 2014 14:28:17 -0300
 
-nodejs (0.10.25-0ubuntu1ppa5~trusty1) trusty; urgency=medium
+nodejs (0.10.25-0ubuntu1ppa5~precise1) precise; urgency=medium
 
   * Fix nodejs-dev - missing v8 headers
 
  -- Paulo Sousa <paulo.sousa@corp.globo.com>  Thu, 20 Feb 2014 17:00:58 -0300
 
-nodejs (0.10.25-0ubuntu1ppa4~trusty1) trusty; urgency=medium
+nodejs (0.10.25-0ubuntu1ppa4~precise1) precise; urgency=medium
 
   * Fix nodejs dependency on nodejs-legacy 
 
  -- Paulo Sousa <paulo.sousa@corp.globo.com>  Tue, 18 Feb 2014 14:21:51 -0300
 
-nodejs (0.10.25-0ubuntu1ppa3~trusty1) trusty; urgency=medium
+nodejs (0.10.25-0ubuntu1ppa3~precise1) precise; urgency=medium
 
   * Fix conflict on nodejs-legacy with nodejs
 
  -- Paulo Sousa <paulo.sousa@corp.globo.com>  Tue, 18 Feb 2014 14:03:37 -0300
 
-nodejs (0.10.25-0ubuntu1ppa2~trusty1) trusty; urgency=medium
+nodejs (0.10.25-0ubuntu1ppa2~precise1) precise; urgency=medium
 
   * Fix nodejs symlinks
 
  -- Paulo Sousa <paulo.sousa@corp.globo.com>  Tue, 18 Feb 2014 10:25:23 -0300
 
-nodejs (0.10.25-0ubuntu1ppa1~trusty1) trusty; urgency=medium
+nodejs (0.10.25-0ubuntu1ppa1~precise1) precise; urgency=medium
 
   * Backported to older ubuntu releases.
   * Building V8 as static - avoid more backports packages betwen releases.

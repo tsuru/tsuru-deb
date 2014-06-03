@@ -326,12 +326,10 @@ HttpProxy.prototype.proxyRequest = function (req, res, buffer) {
     }
 
     // Set the headers of the client response
-    if (res.sentHeaders !== true) {
-        Object.keys(response.headers).forEach(function (key) {
-            res.setHeader(key, response.headers[key]);
-        });
-        res.writeHead(response.statusCode);
-    }
+    Object.keys(response.headers).forEach(function (key) {
+      res.setHeader(key, response.headers[key]);
+    });
+    res.writeHead(response.statusCode);
 
     function ondata(chunk) {
       if (res.writable) {
