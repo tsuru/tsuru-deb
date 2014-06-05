@@ -1,3 +1,10 @@
+lvm2 (2.02.103-1ubuntu1ppa4~precise1) precise; urgency=medium
+
+  * Bump to support trusty release
+  * [PATCH] Replace CPPFunction with rl_completion_func_t
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Thu, 05 Jun 2014 10:55:18 -0300
+
 lvm2 (2.02.103-1ubuntu1ppa3~precise1) precise; urgency=high
 
   * Removing clvm support

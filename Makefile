@@ -1,5 +1,5 @@
 DEFINED_VERSION=precise
-VERSIONS=precise quantal saucy trusty
+VERSIONS=precise saucy trusty
 SHELL=/bin/bash
 
 comma:= ,
@@ -142,7 +142,7 @@ lxc-docker:
 	curl -L -o lxc-docker-$$TAG.orig.tar.gz https://github.com/dotcloud/docker/archive/v$$TAG.tar.gz
 	tar zxvf lxc-docker-$$TAG.orig.tar.gz && rm lxc-docker-$$TAG.orig.tar.gz
 	mv docker-$$TAG lxc-docker-$$TAG
-	pushd . && cd lxc-docker-$$TAG && GOPATH=$$PWD go get -d -v -u github.com/dotcloud/docker/... && popd
+	pushd . && cd lxc-docker-$$TAG && GOPATH=$$PWD go get -d -v -u github.com/dotcloud/docker/docker... && popd
 	pushd . && cd lxc-docker-$$TAG/src/github.com/dotcloud/docker && git fetch --tags && git checkout v$$TAG && popd
 	pushd . && cd lxc-docker-$$TAG && find . \( -iname ".git*" -o -iname "*.bzr" -o -iname "*.hg" \) | xargs rm -rf \{} && popd
 	tar zcvf lxc-docker_$$TAG.orig.tar.gz lxc-docker-$$TAG

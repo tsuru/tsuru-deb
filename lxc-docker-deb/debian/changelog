@@ -1,29 +1,35 @@
-lxc-docker (0.7.1-0ubuntu1ppa5~precise1) precise; urgency=high
+lxc-docker (0.11.1-0~precise) precise; urgency=medium
+
+  * New upstream release 
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Wed, 04 Jun 2014 10:23:24 -0300
+
+lxc-docker (0.7.1-0ubuntu1ppa5~precise) precise; urgency=high
 
   * [Fix] Add RWMutex lock into TruncIndex to fix race condition
 
  -- Paulo Sousa <paulo.sousa@corp.globo.com>  Fri, 07 Feb 2014 14:22:11 -0200
 
-lxc-docker (0.7.1-0ubuntu1ppa4~precise1) precise; urgency=medium
+lxc-docker (0.7.1-0ubuntu1ppa4~precise) precise; urgency=medium
 
   * Removing cpu/memory limit on docker 
 
  -- Paulo Sousa <paulo.sousa@corp.globo.com>  Fri, 17 Jan 2014 14:18:11 -0200
 
-lxc-docker (0.7.1-0ubuntu1ppa3~precise1) precise; urgency=medium
+lxc-docker (0.7.1-0ubuntu1ppa3~precise) precise; urgency=medium
 
   * Applying memory/cpu patch to proper file 
   * Cleanup on package structure
 
  -- Paulo Sousa <paulo.sousa@corp.globo.com>  Thu, 16 Jan 2014 09:16:05 -0200
 
-lxc-docker (0.7.1-0ubuntu1ppa2~precise1) precise; urgency=low
+lxc-docker (0.7.1-0ubuntu1ppa2~precise) precise; urgency=low
 
   * Fixing libdevmapper-dev and libdevmapper version on build and runtime dependency
 
  -- Paulo Sousa <paulo.sousa@corp.globo.com>  Tue, 17 Dec 2013 08:48:18 -0200
 
-lxc-docker (0.7.1-0ubuntu1ppa1~precise1) precise; urgency=medium
+lxc-docker (0.7.1-0ubuntu1ppa1~precise) precise; urgency=medium
 
   * Bump to version 0.7.1
 

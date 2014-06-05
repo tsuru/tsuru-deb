@@ -1,2 +1,2 @@
-docker/docker usr/bin
-dockerinit/dockerinit usr/libexec/docker
+debian/bin/docker usr/bin
+debian/bin/dockerinit usr/libexec/docker

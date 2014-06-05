@@ -8,39 +8,46 @@
 
 # Uncomment this to turn on verbose mode.
 export DH_VERBOSE=1
+# Tell dh-golang where this package lives upstream
+export DH_GOPKG := github.com/dotcloud/docker
+# Tell dh-golang that we DO need subpackages
+export DH_GOLANG_INSTALL_ALL := 1
 
-%:
-	dh $@
+# temporary build path (see http://golang.org/doc/code.html#GOPATH)
+export GOPATH := $(CURDIR)
 
-build:
-	dh_testdir
-	dh_auto_configure
-	dh_auto_build
-	dh_auto_test
+DOCKER_VERSION = $(shell cat VERSION)
+export DOCKER_GITCOMMIT := $(shell awk '/^$(DOCKER_VERSION):/ { print $$2 }' debian/upstream-version-gitcommits)
 
-# Add here commands to install the package into debian/testpack.
-# Build architecture-independent files here.
-binary-indep:
-binary-arch:
-	dh_testdir
-	dh_testroot
+clean:
+	dh_clean
+	rm -rf $(GOPATH)/bin/* $(GOPATH)/pkg/*
+
+build-stamp:
+	@bash -c '{ [ "$$DOCKER_GITCOMMIT" ]; } || { echo; echo "error: missing DOCKER_GITCOMMIT - see debian/upstream-version-gitcommits"; echo; exit 2; } >&2'
+	./hack/make.sh dynbinary
+	mkdir -p debian/bin
+	mv bundles/${DOCKER_VERSION}/dynbinary/docker-${DOCKER_VERSION} debian/bin/docker
+	mv bundles/${DOCKER_VERSION}/dynbinary/dockerinit-${DOCKER_VERSION} debian/bin/dockerinit
+
+binary-stamp:
 	dh_prep
 	dh_installdirs
-	dh_installchangelogs -a
-	dh_installdocs -a --all CHANGELOG.md
-	dh_installexamples -a
 	dh_install
-	dh_installlogrotate -a
+	dh_installdocs -a --all CHANGELOG.md
 	dh_installinit --no-start --name=docker
-	dh_installman -a
-	dh_lintian -a
-	dh_link -a
-	dh_compress -a
-	dh_fixperms -a
-	dh_installdeb -a
-	dh_shlibdeps -a
-	dh_gencontrol -a
-	dh_md5sums -a
-	dh_builddeb -a
+	dh_strip
+	dh_compress
+	dh_fixperms
+	dh_installdeb
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb
 
-binary: binary-indep binary-arch        
+build: build-arch build-indep
+build-arch: build-stamp
+build-indep: build-stamp
+
+binary: binary-arch binary-indep
+binary-arch: binary-stamp
+binary-indep: binary-stamp
