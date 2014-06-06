@@ -16,19 +16,19 @@ pre-start script
 end script
 
 script
+/bin/bash -- <<'EOF'
         if [ -f /etc/default/serf ]; then
                 . /etc/default/serf
                 declare -A SERF_OPTIONS
                 SERF_OPTIONS=([SERF_DISCOVER]="-discover" [SERF_EVENT_HANDLER]="-event-handler" [SERF_ENCRYPT]="-encrypt")
                 for CONF in SERF_DISCOVER SERF_EVENT_HANDLER SERF_ENCRYPT; do
-                        set -x
                         if [ "${!CONF}" != "" ]; then
-                        set +x
                                 SERF_ARGS="$SERF_ARGS ${SERF_OPTIONS[$CONF]}=${!CONF}"
                         fi
                 done
         fi
 	exec $SERF agent -protocol 3 $SERF_ARGS -config-dir=$SERF_CFG_FOLDER >> $SERF_LOG 2>&1
+EOF
 end script
 
 post-stop exec sleep 10  # Wait ten seconds before respawn attempts.

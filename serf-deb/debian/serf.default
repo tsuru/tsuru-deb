@@ -1,0 +1,10 @@
+# Discover provides a cluster name, which is used with mDNS to automatically
+# discover Serf peers. Requires multicasting support to use
+#SERF_DISCOVER="your_cluster_name"
+
+# Adds an event handler that Serf will invoke for events.
+#SERF_EVENT_HANDLER="your_event_handler_script.sh"
+
+# Specifies the secret key to use for encryption of Serf network traffic. The
+# easiest way to create an encryption key is to use 'serf keygen'
+#SERF_ENCRYPT="your_encrypt_key"

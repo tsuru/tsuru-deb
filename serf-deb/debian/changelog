@@ -1,3 +1,9 @@
+serf (0.4.1-0ubuntu1ppa3~precise1) precise; urgency=medium
+
+  * Adding default script 
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Fri, 06 Jun 2014 17:36:44 -0300
+
 serf (0.4.1-0ubuntu1ppa2~precise1) precise; urgency=medium
 
   * Fix upstart and add default script
