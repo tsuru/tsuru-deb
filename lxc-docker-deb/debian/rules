@@ -36,13 +36,16 @@ binary-stamp:
 	dh_install
 	dh_installdocs -a --all CHANGELOG.md
 	dh_installinit --no-start --name=docker
-	dh_strip
 	dh_compress
 	dh_fixperms
 	dh_installdeb
 	dh_gencontrol
 	dh_md5sums
 	dh_builddeb
+
+override_dh_strip:
+	# the SHA1 of dockerinit is important: don't strip it
+	# also, Go has lots of problems with stripping, so just don't
 
 build: build-arch build-indep
 build-arch: build-stamp
