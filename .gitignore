@@ -9,5 +9,6 @@ src
 *.log
 *.bkp
 *.substvars
+*.swp
 */debian/files
 *_ppa_ok

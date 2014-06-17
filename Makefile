@@ -1,5 +1,5 @@
 DEFINED_VERSION=precise
-VERSIONS=precise trusty
+VERSIONS=precise trusty wheezy
 SHELL=/bin/bash
 
 comma:= ,
@@ -22,16 +22,22 @@ all:
 clean:
 	git clean -dfX
 
+_setup_golang:
+	wget https://godeb.s3.amazonaws.com/godeb-amd64.tar.gz -O /tmp/godeb-amd64.tar.gz
+	pushd /tmp
+	tar xzvf godeb-amd64.tar.gz
+	chmod +x /tmp/godeb
+	/tmp/godeb install 1.2.2
+	popd
+
 local_setup:
 	sudo apt-get update
-	sudo apt-get install -y python-software-properties
-	sudo apt-add-repository -y ppa:tsuru/golang
-	sudo apt-get update
-	sudo apt-get install golang debhelper devscripts git mercurial ubuntu-dev-tools cowbuilder gnupg-agent -y
-	if [ ! -d /tmp/gopath ]; then mkdir /tmp/gopath; fi
+	@if [ `go version 2>/dev/null | sed "s/go version[^0-9]*\([0-9.]*\).*/\1/"` \< 1.1.0 ]; then make _setup_golang; fi
+	sudo apt-get install python-software-properties debhelper devscripts git mercurial ubuntu-dev-tools cowbuilder gnupg-agent -y
+	@if [ ! -d /tmp/gopath ]; then mkdir /tmp/gopath; fi
 	GOPATH=/tmp/gopath go get github.com/kr/godep
 	sudo mv /tmp/gopath/bin/godep /usr/bin
-	rm -rf /tmp/gopath
+	@rm -rf /tmp/gopath
 
 cowbuilder_create:
 	if [ -f /tmp/ppa.sh ]; then rm /tmp/ppa.sh; fi
