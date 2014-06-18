@@ -92,7 +92,7 @@ _pre_check_launchpad:
 tsuru-server: 
 	make TAG=$$TAG TARGET=$@ _pre_tarball
 	make TAG=$$TAG TARGET=$@ PPA=$$PPA _pre_check_launchpad
-	$(eval PPA_SRC_OK := $(shell [[ -f $(TARGET)_ppa_ok ]]; echo $$?))
+	$(eval PPA_SRC_OK := $(shell [[ -f $(TARGET)_ppa_ok || $$NO_SRC_CHECK == 1 ]]; echo $$?))
 	@if [ "$(PPA_SRC_OK)" == "1" ] ; then pushd . && cd tsuru-server-$$TAG && pushd . && \
 	export GOPATH=$$PWD && go get -v -u -d github.com/tsuru/tsuru/... && \
 	export GOPATH=$$PWD && cd src/github.com/tsuru/tsuru && git checkout $$TAG && godep restore ./... && \
@@ -103,7 +103,7 @@ tsuru-server:
 tsuru-node-agent:
 	make TAG=$$TAG TARGET=$@ PPA=$$PPA _pre_check_launchpad
 	make TAG=$$TAG TARGET=$@ PPA=$$PPA _pre_tarball
-	$(eval PPA_SRC_OK := $(shell [[ -f $(TARGET)_ppa_ok ]]; echo $$?))
+	$(eval PPA_SRC_OK := $(shell [[ -f $(TARGET)_ppa_ok || $$NO_SRC_CHECK == 1 ]]; echo $$?))
 	@if [ "$(PPA_SRC_OK)" == "1" ] ; then pushd . && cd tsuru-node-agent-$$TAG && pushd . && \
 	export GOPATH=$$PWD && go get -v -u -d github.com/tsuru/tsuru-node-agent/... && \
 	export GOPATH=$$PWD && cd src/github.com/tsuru/tsuru-node-agent && git checkout $$TAG && godep restore ./... && \
@@ -113,7 +113,7 @@ tsuru-node-agent:
 serf:
 	make TAG=$$TAG TARGET=$@ PPA=$$PPA _pre_check_launchpad
 	make TAG=$$TAG TARGET=$@ PPA=$$PPA _pre_tarball
-	$(eval PPA_SRC_OK := $(shell [[ -f $(TARGET)_ppa_ok ]]; echo $$?))
+	$(eval PPA_SRC_OK := $(shell [[ -f $(TARGET)_ppa_ok || $$NO_SRC_CHECK == 1 ]]; echo $$?))
 	@if [ "$(PPA_SRC_OK)" == "1" ] ; then pushd . && cd serf-$$TAG && pushd . && \
 	export GOPATH=$$PWD && go get -v -u -d github.com/hashicorp/serf/... && \
 	export GOPATH=$$PWD && cd src/github.com/hashicorp/serf && git checkout v$$TAG && popd && \
@@ -123,7 +123,7 @@ serf:
 gandalf-server:
 	make TAG=$$TAG TARGET=$@ PPA=$$PPA _pre_check_launchpad
 	make TAG=$$TAG TARGET=$@ PPA=$$PPA _pre_tarball
-	$(eval PPA_SRC_OK := $(shell [[ -f $(TARGET)_ppa_ok ]]; echo $$?))
+	$(eval PPA_SRC_OK := $(shell [[ -f $(TARGET)_ppa_ok || $$NO_SRC_CHECK == 1 ]]; echo $$?))
 	@if [ "$(PPA_SRC_OK)" == "1" ] ; then pushd . && cd gandalf-server-$$TAG && pushd . && \
 	export GOPATH=$$PWD && go get -v -u -d github.com/globocom/gandalf/... && cd src/github.com/globocom/gandalf && \
 	git checkout $$TAG && godep restore ./... && popd && make TAG=$$TAG TARGET=$@ _post_tarball ; fi
@@ -132,7 +132,7 @@ gandalf-server:
 hipache-hchecker:
 	make TAG=$$TAG TARGET=$@ PPA=$$PPA _pre_check_launchpad
 	make TAG=$$TAG TARGET=$@ PPA=$$PPA _pre_tarball
-	$(eval PPA_SRC_OK := $(shell [[ -f $(TARGET)_ppa_ok ]]; echo $$?))
+	$(eval PPA_SRC_OK := $(shell [[ -f $(TARGET)_ppa_ok || $$NO_SRC_CHECK == 1 ]]; echo $$?))
 	@if [ "$(PPA_SRC_OK)" == "1" ] ; then pushd . && cd hipache-hchecker-$$TAG && pushd . && \
 	export GOPATH=$$PWD && go get -v -u -d github.com/morpheu/hipache-hchecker/... && cd src/github.com/morpheu/hipache-hchecker && \
 	git checkout $$TAG && godep restore ./... && popd && make TAG=$$TAG TARGET=$@ _post_tarball ; fi
@@ -147,7 +147,7 @@ node-hipache:
 docker-registry:
 	make TAG=$$TAG TARGET=$@ PPA=$$PPA _pre_check_launchpad
 	make TAG=$$TAG TARGET=$@ _pre_tarball
-	$(eval PPA_SRC_OK := $(shell [[ -f $(TARGET)_ppa_ok ]]; echo $$?))
+	$(eval PPA_SRC_OK := $(shell [[ -f $(TARGET)_ppa_ok || $$NO_SRC_CHECK == 1 ]]; echo $$?))
 	@if [ "$(PPA_SRC_OK)" == "1" ] ; then pushd . && cd docker-registry-$$TAG && pushd . && \
 	export GOPATH=$$PWD && go get -v -u -d github.com/fsouza/docker-registry/contrib/golang_impl && cd src/github.com/fsouza/docker-registry/contrib/golang_impl && git checkout $$TAG && popd && make TAG=$$TAG TARGET=$@ _post_tarball ; fi
 	make TARGET=$@ _do
@@ -161,7 +161,7 @@ lxc-docker:
 	if [ -d lxc-docker-$$TAG ]; then rm -rf lxc-docker-$$TAG; fi 
 	if [ -d docker-$$TAG ]; then rm -rf docker-$$TAG; fi
 	make TAG=$$TAG TARGET=$@ PPA=$$PPA _pre_check_launchpad
-	$(eval PPA_SRC_OK := $(shell [[ -f $(TARGET)_ppa_ok ]]; echo $$?))
+	$(eval PPA_SRC_OK := $(shell [[ -f $(TARGET)_ppa_ok || $$NO_SRC_CHECK == 1 ]]; echo $$?))
 	@if [ "$(PPA_SRC_OK)" == "1" ] ; then curl -L -o lxc-docker-$$TAG.orig.tar.gz https://github.com/dotcloud/docker/archive/v$$TAG.tar.gz && \
 	tar zxvf lxc-docker-$$TAG.orig.tar.gz && rm lxc-docker-$$TAG.orig.tar.gz && \
 	mv docker-$$TAG lxc-docker-$$TAG && \
@@ -174,7 +174,7 @@ lvm2:
 	if [ ! $$TAG ]; then echo "TAG env var must be set... use: TAG=<value> make $(TARGET)"; exit 1; fi
 	if [ -f lvm2_$${TAG//_/.}.orig.tar.gz ]; then rm lvm2_$${TAG//_/.}.orig.tar.gz; fi
 	make TAG=$$TAG TARGET=$@ PPA=$$PPA _pre_check_launchpad
-	$(eval PPA_SRC_OK := $(shell [[ -f $(TARGET)_ppa_ok ]]; echo $$?))
+	$(eval PPA_SRC_OK := $(shell [[ -f $(TARGET)_ppa_ok || $$NO_SRC_CHECK == 1 ]]; echo $$?))
 	@if [ "$(PPA_SRC_OK)" == "1" ] ; then curl -L -o lvm2_$${TAG//_/.}.orig.tar.gz https://git.fedorahosted.org/cgit/lvm2.git/snapshot/lvm2-$$TAG.tar.gz; fi
 	make TARGET=$@ _do
 
