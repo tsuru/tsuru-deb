@@ -75,7 +75,7 @@ _build:
 	mv debian/changelog.bkp debian/changelog
 
 _do:
-	for version in $(VERSIONS); do make VERSION=$$version CMD=$(TARGET) -C $(TARGET)-deb -f ../Makefile _build; done
+	for version in $(VERSIONS); do for exp in $$EXCEPT; do if [ "$$version" == "$$exp" ]; then ignore_version=1 ; fi ; done ; [[ $$ignore_version != 1 ]] && make VERSION=$$version CMD=$(TARGET) -C $(TARGET)-deb -f ../Makefile _build ; unset ignore_version; done
 
 _pre_check_launchpad:
 	@if [ ! $$PPA ]; then \
@@ -169,8 +169,7 @@ lxc-docker:
 	pushd . && cd lxc-docker-$$TAG/src/github.com/dotcloud/docker && git fetch --tags && git checkout v$$TAG && popd && \
 	pushd . && cd lxc-docker-$$TAG && find . \( -iname ".git*" -o -iname "*.bzr" -o -iname "*.hg" \) | xargs rm -rf \{} && popd && \
 	tar zcvf lxc-docker_$$TAG.orig.tar.gz lxc-docker-$$TAG && rm -rf lxc-docker-$$TAG ; fi
-	make TARGET=$@ _do
-
+	make TARGET=$@ EXCEPT=precise _do
 lvm2:
 	if [ ! $$TAG ]; then echo "TAG env var must be set... use: TAG=<value> make $(TARGET)"; exit 1; fi
 	if [ -f lvm2_$${TAG//_/.}.orig.tar.gz ]; then rm lvm2_$${TAG//_/.}.orig.tar.gz; fi
