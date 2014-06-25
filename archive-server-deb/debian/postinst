@@ -6,3 +6,4 @@ then
 	echo "Creating user \"$user\" within group \"$user\""...
 	useradd -m --system $user
 fi
+chown -R ${user}:${user} /var/lib/archive-server
