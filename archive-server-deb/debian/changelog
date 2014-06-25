@@ -1,0 +1,5 @@
+archive-server (0.1.0-0~precise1) precise; urgency=medium
+
+  * First version of the package.
+
+ -- Francisco Souza <fss@corp.globo.com>  Wed, 25 Jun 2014 14:40:00 -0300

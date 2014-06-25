@@ -129,6 +129,15 @@ gandalf-server:
 	git checkout $$TAG && godep restore ./... && popd && make TAG=$$TAG TARGET=$@ _post_tarball ; fi
 	make TARGET=$@ _do
 
+archive-server:
+	make TAG=$$TAG TARGET=$@ PPA=$$PPA _pre_check_launchpad
+	make TAG=$$TAG TARGET=$@ PPA=$$PPA _pre_tarball
+	$(eval PPA_SRC_OK := $(shell [[ -f $(TARGET)_ppa_ok || $$NO_SRC_CHECK == 1 ]]; echo $$?))
+	@if [ "$(PPA_SRC_OK)" == "1" ] ; then pushd archive-server-$$TAG && \
+	export GOPATH=$$PWD && go get -v -u -d github.com/tsuru/archive-server && cd src/github.com/tsuru/archive-server && \
+	git checkout $$TAG && cd - && popd && make TAG=$$TAG TARGET=$@ _post_tarball ; fi
+	make TARGET=$@ _do
+
 hipache-hchecker:
 	make TAG=$$TAG TARGET=$@ PPA=$$PPA _pre_check_launchpad
 	make TAG=$$TAG TARGET=$@ PPA=$$PPA _pre_tarball
@@ -148,7 +157,7 @@ docker-registry:
 	make TAG=$$TAG TARGET=$@ PPA=$$PPA _pre_check_launchpad
 	make TAG=$$TAG TARGET=$@ _pre_tarball
 	$(eval PPA_SRC_OK := $(shell [[ -f $(TARGET)_ppa_ok || $$NO_SRC_CHECK == 1 ]]; echo $$?))
-	@if [ "$(PPA_SRC_OK)" == "1" ] ; then pushd . && cd docker-registry-$$TAG && pushd . && \
+	@if [ "$(PPA_SRC_OK)" == "1" ] ; then pushd . && pushd docker-registry-$$TAG && \
 	export GOPATH=$$PWD && go get -v -u -d github.com/fsouza/docker-registry/contrib/golang_impl && cd src/github.com/fsouza/docker-registry/contrib/golang_impl && git checkout $$TAG && popd && make TAG=$$TAG TARGET=$@ _post_tarball ; fi
 	make TARGET=$@ _do
 

@@ -1,0 +1,1 @@
+export ARCHIVE_SERVER_OPTS="-dir=/var/lib/archive-server/archives -read-http=0.0.0.0:3232 -write-http=127.0.0.1:3131"

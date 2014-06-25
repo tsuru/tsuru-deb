@@ -1,0 +1,13 @@
+Source: archive-server
+Section: devel
+Priority: extra
+Maintainer: Globo.com <tsuru@corp.globo.com>
+Build-Depends: debhelper (>= 7.0.50~), golang (>= 2:1.1.1~)
+Standards-Version: 3.9.3
+Homepage: https://github.com/tsuru/archive-server
+
+Package: archive-server
+Architecture: amd64
+Depends: ${misc:Depends}
+Description: archive-server is an HTTP server used for storing git-archives.
+ It can generate new git archives on demand, and serve they on unique requests.
