@@ -10,3 +10,4 @@ src
 *.bkp
 *.substvars
 */debian/files
+*_ppa_ok
