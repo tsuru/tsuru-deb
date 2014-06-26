@@ -1,6 +1,7 @@
 tsuru-server (0.5.0-0~precise1) precise; urgency=medium
 
   * New upstream release
+  * Remove admin startup scripts - main tsr api now handle admin requests
 
  -- Paulo Sousa <paulo.sousa@corp.globo.com>  Thu, 26 Jun 2014 17:33:30 -0300
 
