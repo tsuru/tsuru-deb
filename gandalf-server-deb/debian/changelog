@@ -1,3 +1,9 @@
+gandalf-server (0.4.0-0~precise1) precise; urgency=medium
+
+  * New upstream release
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Thu, 26 Jun 2014 18:33:25 -0300
+
 gandalf-server (0.3.0-0ubuntu1ppa1~precise1) precise; urgency=medium
 
   * New upstream release

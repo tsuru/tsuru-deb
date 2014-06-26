@@ -93,10 +93,10 @@ tsuru-server:
 	make TAG=$$TAG TARGET=$@ _pre_tarball
 	make TAG=$$TAG TARGET=$@ PPA=$$PPA _pre_check_launchpad
 	$(eval PPA_SRC_OK := $(shell [[ -f $(@)_ppa_ok || $$NO_SRC_CHECK == 1 ]]; echo $$?))
-	@if [ "$(PPA_SRC_OK)" == "1" ] ; then pushd . && cd tsuru-server-$$TAG && pushd . && \
+	@if [ "$(PPA_SRC_OK)" == "1" ] ; then pushd tsuru-server-$$TAG && \
 	export GOPATH=$$PWD && go get -v -u -d github.com/tsuru/tsuru/... && \
 	export GOPATH=$$PWD && cd src/github.com/tsuru/tsuru && git checkout $$TAG && godep restore ./... && \
-	rm -rf src/github.com/tsuru/tsuru/src && popd && make TAG=$$TAG TARGET=$@ PPA=$$PPA _post_tarball ; fi
+	rm -rf src/github.com/tsuru/tsuru/src && cd - && popd && make TAG=$$TAG TARGET=$@ PPA=$$PPA _post_tarball ; fi
 	make TARGET=$@ _do
 
 
@@ -124,16 +124,15 @@ gandalf-server:
 	make TAG=$$TAG TARGET=$@ PPA=$$PPA _pre_tarball
 	make TAG=$$TAG TARGET=$@ PPA=$$PPA _pre_check_launchpad
 	$(eval PPA_SRC_OK := $(shell [[ -f $(@)_ppa_ok || $$NO_SRC_CHECK == 1 ]]; echo $$?))
-	@if [ "$(PPA_SRC_OK)" == "1" ] ; then pushd . && cd gandalf-server-$$TAG && pushd . && \
+	@if [ "$(PPA_SRC_OK)" == "1" ] ; then pushd gandalf-server-$$TAG && \
 	export GOPATH=$$PWD && go get -v -u -d github.com/globocom/gandalf/... && cd src/github.com/globocom/gandalf && \
-	git checkout $$TAG && godep restore ./... && popd && make TAG=$$TAG TARGET=$@ _post_tarball ; fi
+	git checkout $$TAG && godep restore ./... && cd - && popd && make TAG=$$TAG TARGET=$@ _post_tarball ; fi
 	make TARGET=$@ _do
 
 archive-server:
 	make TAG=$$TAG TARGET=$@ PPA=$$PPA _pre_tarball
 	make TAG=$$TAG TARGET=$@ PPA=$$PPA _pre_check_launchpad
 	$(eval PPA_SRC_OK := $(shell [[ -f $(@)_ppa_ok || $$NO_SRC_CHECK == 1 ]]; echo $$?))
-	echo $(PPA_SRC_OK)
 	@if [ "$(PPA_SRC_OK)" == "1" ] ; then pushd archive-server-$$TAG && \
 	export GOPATH=$$PWD && go get -v -u -d github.com/tsuru/archive-server && cd src/github.com/tsuru/archive-server && \
 	git checkout $$TAG && cd - && popd && make TAG=$$TAG TARGET=$@ _post_tarball ; fi
