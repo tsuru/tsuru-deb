@@ -1,3 +1,9 @@
+gandalf-server (0.4.1-0~precise1) precise; urgency=medium
+
+  * New upstream release
+
+ -- Francisco Souza <fss@corp.globo.com>  Fri, 27 Jun 2014 13:57:07 -0300
+
 gandalf-server (0.4.0-0~precise1) precise; urgency=medium
 
   * New upstream release
