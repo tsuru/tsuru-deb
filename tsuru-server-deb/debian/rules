@@ -45,7 +45,6 @@ install_tsuru-server:
 	dh_installdirs
 	dh_install
 	dh_installinit --no-start --name=tsuru-server-api
-	dh_installinit --no-start --name=tsuru-server-collector
 	dh_installinit --no-start --name=tsuru-ssh-agent
 	dh_installinit --no-start --name=tsuru-server
 	cp $(GOPATH)/debian/etc/tsuru.conf.yaml $(PKGDIR)/etc/tsuru/tsuru.conf

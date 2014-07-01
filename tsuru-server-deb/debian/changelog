@@ -1,3 +1,11 @@
+tsuru-server (0.5.1-0~precise1) precise; urgency=medium
+
+  * New upstream release 
+  * Remove upstart file and configuration for collector
+  * Add the config check to the upstart file of the API
+
+ -- Francisco Souza <fss@corp.globo.com>  Tue, 01 Jul 2014 18:20:06 -0300
+
 tsuru-server (0.5.0-0~precise1) precise; urgency=medium
 
   * New upstream release
