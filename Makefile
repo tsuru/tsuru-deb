@@ -90,15 +90,14 @@ _pre_check_launchpad:
 	fi
 
 tsuru-server: 
-	make TAG=$$TAG TARGET=$@ _pre_tarball
+	make TAG=$$TAG TARGET=$@ PPA=$$PPA _pre_tarball
 	make TAG=$$TAG TARGET=$@ PPA=$$PPA _pre_check_launchpad
 	$(eval PPA_SRC_OK := $(shell [[ -f $(@)_ppa_ok || $$NO_SRC_CHECK == 1 ]]; echo $$?))
 	@if [ "$(PPA_SRC_OK)" == "1" ] ; then pushd tsuru-server-$$TAG && \
 	export GOPATH=$$PWD && go get -v -u -d github.com/tsuru/tsuru/... && \
-	export GOPATH=$$PWD && cd src/github.com/tsuru/tsuru && git checkout $$TAG && godep restore ./... && \
+	cd src/github.com/tsuru/tsuru && git checkout $$TAG && godep restore ./... && \
 	rm -rf src/github.com/tsuru/tsuru/src && cd - && popd && make TAG=$$TAG TARGET=$@ PPA=$$PPA _post_tarball ; fi
 	make TARGET=$@ _do
-
 
 tsuru-node-agent:
 	make TAG=$$TAG TARGET=$@ PPA=$$PPA _pre_check_launchpad
