@@ -1,0 +1,14 @@
+Source: tsuru-admin
+Section: devel
+Priority: extra
+Maintainer: Globo.com <tsuru@corp.globo.com>
+Build-Depends: debhelper (>= 7.0.50~), golang (>= 2:1.1.1~)
+Standards-Version: 3.9.3
+Homepage: http://tsuru.io
+
+Package: tsuru-admin
+Architecture: amd64 i386
+Depends: ${misc:Depends}
+Description: tsuru-admin is the command line interface used by cloud admins
+ Tsuru is an open source platform as a service software. This package installs
+ the client used by cloud administrators to communicate with tsuru server.

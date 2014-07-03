@@ -1,0 +1,5 @@
+tsuru-admin (0.4.3-0~precise1) precise; urgency=medium
+
+  * First release of the deb package, following our new packaging pattern.
+
+ -- Francisco Souza <fss@corp.globo.com>  Thu, 03 Jul 2014 20:28:02 -0300
