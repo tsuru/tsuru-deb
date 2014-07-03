@@ -1,3 +1,9 @@
+tsuru-client (0.10.2-1~precise1) precise; urgency=medium
+
+  * Fix bug in the name of a file in the source package.
+
+ -- Francisco Souza <fss@corp.globo.com>  Thu, 03 Jul 2014 20:30:41 -0300
+
 tsuru-client (0.10.2-0~precise1) precise; urgency=medium
 
   * First release of the deb package, following our new packaging pattern.
