@@ -146,6 +146,15 @@ crane:
 	git checkout $$TAG && cd - && popd && make TAG=$$TAG TARGET=$@ _post_tarball ; fi
 	make TARGET=$@ _do
 
+tsuru-client:
+	make TAG=$$TAG TARGET=$@ PPA=$$PPA _pre_tarball
+	make TAG=$$TAG TARGET=$@ PPA=$$PPA _pre_check_launchpad
+	$(eval PPA_SRC_OK := $(shell [[ -f $(@)_ppa_ok || $$NO_SRC_CHECK == 1 ]]; echo $$?))
+	@if [ "$(PPA_SRC_OK)" == "1" ] ; then pushd tsuru-client-$$TAG && \
+	export GOPATH=$$PWD && go get -v -u -d github.com/tsuru/tsuru-client/... && cd src/github.com/tsuru/tsuru-client && \
+	git checkout $$TAG && cd - && popd && make TAG=$$TAG TARGET=$@ _post_tarball ; fi
+	make TARGET=$@ _do
+
 hipache-hchecker:
 	make TAG=$$TAG TARGET=$@ PPA=$$PPA _pre_tarball
 	make TAG=$$TAG TARGET=$@ PPA=$$PPA _pre_check_launchpad
