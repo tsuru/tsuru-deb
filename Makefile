@@ -137,6 +137,15 @@ archive-server:
 	git checkout $$TAG && cd - && popd && make TAG=$$TAG TARGET=$@ _post_tarball ; fi
 	make TARGET=$@ _do
 
+crane:
+	make TAG=$$TAG TARGET=$@ PPA=$$PPA _pre_tarball
+	make TAG=$$TAG TARGET=$@ PPA=$$PPA _pre_check_launchpad
+	$(eval PPA_SRC_OK := $(shell [[ -f $(@)_ppa_ok || $$NO_SRC_CHECK == 1 ]]; echo $$?))
+	@if [ "$(PPA_SRC_OK)" == "1" ] ; then pushd crane-$$TAG && \
+	export GOPATH=$$PWD && go get -v -u -d github.com/tsuru/crane && cd src/github.com/tsuru/crane && \
+	git checkout $$TAG && cd - && popd && make TAG=$$TAG TARGET=$@ _post_tarball ; fi
+	make TARGET=$@ _do
+
 hipache-hchecker:
 	make TAG=$$TAG TARGET=$@ PPA=$$PPA _pre_tarball
 	make TAG=$$TAG TARGET=$@ PPA=$$PPA _pre_check_launchpad

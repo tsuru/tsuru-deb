@@ -7,7 +7,7 @@ Standards-Version: 3.9.3
 Homepage: http://tsuru.io
 
 Package: crane
-Architecture: any
+Architecture: amd64 i386
 Depends: ${misc:Depends}
 Description: crane is the command line interface for the tsuru server, used by service administrators
  Tsuru is an open source platform as a service software. This package installs

@@ -1,3 +1,9 @@
+crane (0.5.3-0~precise1) precise; urgency=medium
+
+  * New upstream release 
+
+ -- Francisco Souza <fss@corp.globo.com>  Thu, 03 Jul 2014 20:08:02 -0300
+
 crane (0.5.1-3ppa1~precise1) precise; urgency=low
 
   * Build no multiple architectures.

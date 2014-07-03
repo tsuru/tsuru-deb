@@ -7,23 +7,18 @@
 export GOPATH=$(CURDIR)
 
 PKGDIR=debian/crane
-VERSION:=0.5.1
-
-%:
-	dh $@ 
 
 clean:
 	dh_clean
 	rm -rf $(GOPATH)/bin/* $(GOPATH)/pkg/*
 
-binary-arch: clean
+build-stamp:
+	go install github.com/tsuru/crane
+
+binary-stamp:
 	dh_prep
 	dh_installdirs
-	go install github.com/tsuru/tsuru/cmd/crane
-	mkdir -p $(PKGDIR)/usr/bin
-	mkdir -p $(PKGDIR)/etc/bash-completion.d
-	cp $(GOPATH)/bin/* $(PKGDIR)/usr/bin/
-	cp $(GOPATH)/src/github.com/tsuru/tsuru/misc/bash-completion.d/crane $(PKGDIR)/etc/bash-completion.d
+	dh_install
 	dh_strip
 	dh_compress
 	dh_fixperms
@@ -32,4 +27,10 @@ binary-arch: clean
 	dh_md5sums
 	dh_builddeb
 
-binary: binary-arch
+build: build-arch build-indep
+build-arch: build-stamp
+build-indep: build-stamp
+
+binary: binary-arch binary-indep
+binary-arch: binary-stamp
+binary-indep: binary-stamp
