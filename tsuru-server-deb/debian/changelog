@@ -1,3 +1,10 @@
+tsuru-server (0.5.1-1~precise1) precise; urgency=low
+
+  * Remove tsuru client from the package. tsuru server and client are now in
+    different source packages.
+
+ -- Francisco Souza <fss@corp.globo.com>  Thu, 03 Jul 2014 19:57:30 -0300
+
 tsuru-server (0.5.1-0~precise1) precise; urgency=medium
 
   * New upstream release 

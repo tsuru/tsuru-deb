@@ -13,10 +13,3 @@ Description: tsuru-server is the server side of the Tsuru PaaS.
  This package includes two services: Tsuru API and Tsuru SSH agent. All jobs
  are disabled by default, to enable any of them, edit the file
  /etc/default/tsuru-server.
-
-Package: tsuru
-Architecture: amd64 i386
-Depends: ${misc:Depends}
-Description: tsuru is the command line interface for the tsuru server
- Tsuru is an open source platform as a service software. This package installs
- the client used by application developers to communicate with tsuru server.

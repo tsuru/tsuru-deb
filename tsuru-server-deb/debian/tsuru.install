@@ -1,2 +1,0 @@
-bin/tsuru usr/bin
-src/github.com/tsuru/tsuru/misc/bash-completion.d/tsuru etc/bash-completion.d

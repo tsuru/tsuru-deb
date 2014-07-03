@@ -12,9 +12,6 @@ PKGDIR=debian/tsuru-server
 VERSION_COMPLETE := $(shell dpkg-parsechangelog | sed -ne 's,^Version: *\(.*\)$$,\1,p')
 VERSION_UPSTREAM := $(shell echo "$(VERSION_COMPLETE)" | sed -e 's,^[0-9]*:,,' -e 's,-[^-]*$$,,')
 VERSION_DEBIAN := $(shell echo "$(VERSION_COMPLETE)" | sed -e 's,^[^-]*-,,')
-TSURU_CLIENT_VERSION_FILE = "src/github.com/tsuru/tsuru/cmd/tsuru/main.go"
-TSURU_CLIENT_VERSION := $(shell sed -ne 's,^[\ \t]\+version\ =\ "\([^"]\+\)".*$$,\1,p' $(TSURU_CLIENT_VERSION_FILE))
-TSURU_CLIENT_VERSION_DEBIAN = $(TSURU_CLIENT_VERSION)-$(VERSION_DEBIAN)
 
 clean:
 	dh_testdir
@@ -23,7 +20,6 @@ clean:
 
 build:
 	go install github.com/tsuru/tsuru/cmd/tsr
-	go install github.com/tsuru/tsuru/cmd/tsuru
 
 install-base-prep:
 	dh_testdir
@@ -50,15 +46,8 @@ install_tsuru-server:
 	cp $(GOPATH)/debian/etc/tsuru.conf.yaml $(PKGDIR)/etc/tsuru/tsuru.conf
 	+$(MAKE_SELF) install-base
 
-install_tsuru: export DH_OPTIONS = -ptsuru
-install_tsuru:
-	+$(MAKE_SELF) install-base-prep
-	dh_installdirs
-	dh_install
-	+$(MAKE_SELF) install-base GENCONTROL_ARGS="-v$(TSURU_CLIENT_VERSION_DEBIAN)"
-
 binary-indep:
-binary-arch: $(addprefix install_, tsuru-server tsuru)
+binary-arch: install_tsuru-server
 binary: binary-indep binary-arch
 
 .PHONY: build clean binary-indep binary-arch binary install configure
