@@ -1,3 +1,9 @@
+tsuru-server (0.5.2-0~precise1) precise; urgency=medium
+
+  * New upstream release, fixing some bugs introduced in the version 0.5.0
+
+ -- Francisco Souza <fss@corp.globo.com>  Mon, 07 Jul 2014 18:06:49 -0300
+
 tsuru-server (0.5.1-1~precise1) precise; urgency=low
 
   * Remove tsuru client from the package. tsuru server and client are now in
