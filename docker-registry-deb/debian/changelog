@@ -1,3 +1,9 @@
+docker-registry (0.1.1-4) unstable; urgency=low
+
+  * Change distribution to unstable
+
+ -- Philip Tzou <philip.npc@gmail.com>  Tue, 15 Jul 2014 05:06:44 +0000
+
 docker-registry (0.1.1-3~precise1) precise; urgency=medium
 
   * Update package structure

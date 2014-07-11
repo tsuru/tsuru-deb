@@ -1,3 +1,9 @@
+nodejs (0.10.26.3-0tsuru1) unstable; urgency=low
+
+  * Change distribution to unstable
+
+ -- Philip Tzou <philip.npc@gmail.com>  Thu, 31 Jul 2014 05:31:36 +0000
+
 nodejs (0.10.26.3-0ubuntu1ppa1~precise1) precise; urgency=medium
 
   * Downgrade npm to 1.4.10 

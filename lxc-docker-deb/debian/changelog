@@ -1,3 +1,9 @@
+lxc-docker (1.1.1-0tsuru1) unstable; urgency=low
+
+  * Change distribution to unstable
+
+ -- Philip Tzou <philip.npc@gmail.com>  Mon, 28 Jul 2014 03:08:14 +0000
+
 lxc-docker (1.1.1-0~precise) precise; urgency=medium
 
   * New upstream release

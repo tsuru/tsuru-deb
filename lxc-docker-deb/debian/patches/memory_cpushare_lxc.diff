@@ -1,7 +1,7 @@
 Index: lxc-docker-0.11.1/daemon/execdriver/lxc/lxc_template.go
 ===================================================================
---- lxc-docker-0.11.1.orig/daemon/execdriver/lxc/lxc_template.go	2013-12-16 15:03:32.000000000 -0200
-+++ lxc-docker-0.11.1/daemon/execdriver/lxc/lxc_template.go	2014-01-17 14:36:10.257688903 -0200
+--- a/daemon/execdriver/lxc/lxc_template.go	2013-12-16 15:03:32.000000000 -0200
++++ b/daemon/execdriver/lxc/lxc_template.go	2014-01-17 14:36:10.257688903 -0200
 @@ -98,9 +98,7 @@
  lxc.cgroup.memory.memsw.limit_in_bytes = {{$memSwap}}
  {{end}}

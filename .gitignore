@@ -1,7 +1,9 @@
 pkg
 src
+tmp
 *.changes
 *.tar.gz
+*.tar.xz
 *.build
 *.dsc
 *.upload
@@ -12,3 +14,9 @@ src
 *.swp
 */debian/files
 *_ppa_ok
+*.builddeb
+*.buildsrc
+variables.local.mk
+localrepo
+builder
+*.tmp

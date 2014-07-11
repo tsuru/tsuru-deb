@@ -4,7 +4,7 @@ Priority: extra
 Maintainer: Globo.com <tsuru@corp.globo.com>
 Build-Depends: debhelper (>= 7.0.50~), golang (>= 2:1.1.1~)
 Standards-Version: 3.9.3
-Homepage: https://github.com/globocom/gandalf
+Homepage: https://github.com/tsuru/gandalf
 
 Package: gandalf-server
 Architecture: amd64

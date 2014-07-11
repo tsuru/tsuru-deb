@@ -1,3 +1,9 @@
+serf (0.4.1-1) unstable; urgency=low
+
+  * Change distribution to unstable
+
+ -- Philip Tzou <philip.npc@gmail.com>  Mon, 14 Jul 2014 08:10:09 +0000
+
 serf (0.4.1-0ubuntu1ppa3~precise1) precise; urgency=medium
 
   * Adding default script 

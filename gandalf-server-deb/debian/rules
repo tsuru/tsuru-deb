@@ -13,7 +13,7 @@ clean:
 	rm -rf $(GOPATH)/bin/* $(GOPATH)/pkg/*
 
 build-stamp:
-	go install github.com/globocom/gandalf/webserver github.com/globocom/gandalf/bin
+	go install github.com/tsuru/gandalf/webserver github.com/tsuru/gandalf/bin
 	mv bin/bin bin/gandalf-ssh
 	mv bin/webserver bin/gandalf-server
 

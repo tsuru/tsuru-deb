@@ -1,3 +1,9 @@
+node-hipache (0.2.5-4) unstable; urgency=low
+
+  * Change distribution to unstable
+
+ -- Philip Tzou <philip.npc@gmail.com>  Thu, 17 Jul 2014 10:33:42 +0000
+
 node-hipache (0.2.5-3~precise1) precise; urgency=medium
 
   * Remove node_modules 

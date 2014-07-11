@@ -1,0 +1,21 @@
+Source: dh-golang
+Section: devel
+Priority: extra
+Maintainer: Michael Stapelberg <stapelberg@debian.org>
+Build-Depends: debhelper (>= 8.0.0), libmodule-install-perl
+Standards-Version: 3.9.4
+Vcs-Git: git://anonscm.debian.org/collab-maint/dh-golang.git
+Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/dh-golang.git;a=summary
+
+Package: dh-golang
+Architecture: all
+Depends: ${perl:Depends}, ${misc:Depends},
+         debhelper,
+         libparse-debcontrol-perl,
+         dpkg (>= 1.16.1)
+Description: debhelper add-on for packaging software written in Go (golang)
+ dh-golang provides a debhelper sequence addon named 'golang', a buildsystem
+ module named 'golang' and a command called dh_golang.
+ .
+ The golang debhelper buildsystem is designed to make packaging programs
+ written in Go very simple.

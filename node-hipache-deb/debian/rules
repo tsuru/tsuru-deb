@@ -9,7 +9,7 @@ clean:
 	dh_clean
 
 build-stamp:
-	cd hipache && npm install --production --cache $(CURDIR)/modules_cache --no-registry --nodedir=/usr/include/nodejs
+	cd hipache && npm install --production --cache $(CURDIR)/modules_cache --nodedir=/usr/include/nodejs
 
 binary-stamp:
 	dh_testdir

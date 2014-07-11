@@ -1,3 +1,9 @@
+tsuru-admin (0.5.1-1) unstable; urgency=low
+
+  * Change distribution to unstable
+
+ -- Phlip Tzou <philip.npc@gmail.com>  Wed, 13 Aug 2014 03:34:38 +0000
+
 tsuru-admin (0.5.1-0~precise1) precise; urgency=low
 
   * New upstream release

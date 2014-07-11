@@ -14,27 +14,33 @@ export DH_GOPKG := github.com/dotcloud/docker
 export DH_GOLANG_INSTALL_ALL := 1
 
 # temporary build path (see http://golang.org/doc/code.html#GOPATH)
-export GOPATH := $(CURDIR)/vendor:$(CURDIR)
+#export GOPATH := $(CURDIR)/.gopath:$(CURDIR)/vendor
 
-DOCKER_VERSION = $(shell cat VERSION)
+.gopath:
+	rm -rf ${CURDIR}/.gopath
+	mkdir -p ${CURDIR}/.gopath/src/github.com/dotcloud
+	ln -sf ${CURDIR} ${CURDIR}/.gopath/src/github.com/dotcloud/docker
+
+DOCKER_BASE = .
+DOCKER_VERSION = $(shell cat $(DOCKER_BASE)/VERSION)
 export DOCKER_GITCOMMIT := $(shell awk '/^$(DOCKER_VERSION):/ { print $$2 }' debian/upstream-version-gitcommits)
 
 clean:
 	dh_clean
-	rm -rf $(GOPATH)/bin/* $(GOPATH)/pkg/*
+	rm -rf $(CURDIR)/bin $(GOPATH)/.gopath
 
-build-stamp:
+build-stamp: .gopath
 	@bash -c '{ [ "$$DOCKER_GITCOMMIT" ]; } || { echo; echo "error: missing DOCKER_GITCOMMIT - see debian/upstream-version-gitcommits"; echo; exit 2; } >&2'
-	./hack/make.sh dynbinary
+	cd $(DOCKER_BASE)/; AUTO_GOPATH=1 hack/make.sh dynbinary
 	mkdir -p debian/bin
-	mv bundles/${DOCKER_VERSION}/dynbinary/docker-${DOCKER_VERSION} debian/bin/docker
-	mv bundles/${DOCKER_VERSION}/dynbinary/dockerinit-${DOCKER_VERSION} debian/bin/dockerinit
+	mv $(DOCKER_BASE)/bundles/${DOCKER_VERSION}/dynbinary/docker-${DOCKER_VERSION} debian/bin/docker
+	mv $(DOCKER_BASE)/bundles/${DOCKER_VERSION}/dynbinary/dockerinit-${DOCKER_VERSION} debian/bin/dockerinit
 
 binary-stamp:
 	dh_prep
 	dh_installdirs
 	dh_install
-	dh_installdocs -a --all CHANGELOG.md
+	dh_installdocs -a --all $(DOCKER_BASE)/CHANGELOG.md
 	dh_installinit --no-start --name=docker
 	dh_compress
 	dh_fixperms

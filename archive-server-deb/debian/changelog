@@ -1,3 +1,9 @@
+archive-server (0.1.1-2) unstable; urgency=low
+
+  * Change distribution to unstable
+
+ -- Phlip Tzou <philip.npc@gmail.com>  Fri, 01 Aug 2014 16:19:53 +0000
+
 archive-server (0.1.1-1~precise1) precise; urgency=low
 
   * New upstream release 

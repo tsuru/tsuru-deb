@@ -1,3 +1,9 @@
+btrfs-tools (3.12-1tsuru1) unstable; urgency=low
+
+  * Change distribution to unstable.
+
+ -- Philip Tzou <philip.npc@gmail.com>  Mon, 28 Jul 2014 03:42:36 +0000
+
 btrfs-tools (3.12-1ppa1~trusty) trusty; urgency=medium
 
   * Backport to trusty release

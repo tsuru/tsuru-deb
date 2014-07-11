@@ -1,3 +1,9 @@
+crane (0.5.4-1) unstable; urgency=medium
+
+  * Change distribution to unstable
+
+ -- Philip Tzou <philip.npc@gmail.com>  Thu, 31 Jul 2014 06:03:34 +0000
+
 crane (0.5.4-0~precise1) precise; urgency=low
 
   * New upstream release

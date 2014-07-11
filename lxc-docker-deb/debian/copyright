@@ -209,7 +209,7 @@ License: Apache-2.0
  limitations under the License.
  
  
-Files: src/github.com/kr/pty/*
+Files: vendor/src/github.com/kr/pty/*
 Copyright: Copyright (c) 2011 Keith Rarick
 License: Expat
  Copyright (c) 2011 Keith Rarick

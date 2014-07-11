@@ -1,3 +1,10 @@
+tsuru-mongoapi (0.2.0-2) unstable; urgency=medium
+
+  * Change distribution to unstable
+  * Install upstart & default scripts implicitly
+
+ -- Philip Tzou <philip.npc@gmail.com>  Tue, 15 Jul 2014 05:33:18 +0000
+
 tsuru-mongoapi (0.2.0-1ppa1~precise1) precise; urgency=low
 
   * Remove all binds from the database when removing the instance.

@@ -1,3 +1,9 @@
+tsuru-client (0.11.2-2) unstable; urgency=medium
+
+  * Change distribution to unstable
+
+ -- Philip Tzou <philip.npc@gmail.com>  Fri, 12 Sep 2014 09:00:28 +0000
+
 tsuru-client (0.11.2-1~precise1) precise; urgency=medium
 
   * New upstream release, fixing another bug with plugins

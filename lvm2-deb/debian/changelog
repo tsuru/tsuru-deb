@@ -1,3 +1,9 @@
+lvm2 (2.02.103-1tsuru1) unstable; urgency=low
+
+  * Change distribution to unstable
+
+ -- Philip Tzou <philip.npc@gmail.com>  Tue, 15 Jul 2014 06:34:13 +0000
+
 lvm2 (2.02.103-1ubuntu1ppa4~precise1) precise; urgency=medium
 
   * Bump to support trusty release
