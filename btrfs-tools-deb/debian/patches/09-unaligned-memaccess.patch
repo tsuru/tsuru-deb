@@ -1,0 +1,68 @@
+Author: Shawn Landen <shawnlandden@gmail.com>
+Description: Fixing unaligned memory accesses (Closes: #656955).
+
+--- a/ctree.h
++++ b/ctree.h
+@@ -19,6 +19,8 @@
+ #ifndef __BTRFS__
+ #define __BTRFS__
+ 
++#include <stdint.h>
++
+ #if BTRFS_FLAT_INCLUDES
+ #include "list.h"
+ #include "kerncompat.h"
+@@ -1171,13 +1173,17 @@ struct btrfs_root {
+ static inline u##bits btrfs_##name(struct extent_buffer *eb)		\
+ {									\
+ 	struct btrfs_header *h = (struct btrfs_header *)eb->data;	\
+-	return le##bits##_to_cpu(h->member);				\
++	uint##bits##_t t;						\
++	memcpy(&t, &h->member, sizeof(h->member));			\
++	return le##bits##_to_cpu(t);					\
+ }									\
+ static inline void btrfs_set_##name(struct extent_buffer *eb,		\
+ 				    u##bits val)			\
+ {									\
+ 	struct btrfs_header *h = (struct btrfs_header *)eb->data;	\
+-	h->member = cpu_to_le##bits(val);				\
++	uint##bits##_t t;						\
++	t = cpu_to_le##bits(val);					\
++	memcpy(&h->member, &t, sizeof(h->member));			\
+ }
+ 
+ #define BTRFS_SETGET_FUNCS(name, type, member, bits)			\
+@@ -1199,11 +1205,15 @@ static inline void btrfs_set_##name(struct extent_buffer *eb,		\
+ #define BTRFS_SETGET_STACK_FUNCS(name, type, member, bits)		\
+ static inline u##bits btrfs_##name(type *s)				\
+ {									\
+-	return le##bits##_to_cpu(s->member);				\
++	uint##bits##_t t;						\
++	memcpy(&t, &s->member, sizeof(s->member));			\
++	return le##bits##_to_cpu(t);					\
+ }									\
+ static inline void btrfs_set_##name(type *s, u##bits val)		\
+ {									\
+-	s->member = cpu_to_le##bits(val);				\
++	uint##bits##_t t;						\
++	t = cpu_to_le##bits(val);					\
++	memcpy(&s->member, &t, sizeof(s->member));			\
+ }
+ 
+ BTRFS_SETGET_FUNCS(device_type, struct btrfs_dev_item, type, 64);
+--- a/volumes.c
++++ b/volumes.c
+@@ -458,10 +458,11 @@ static int find_next_chunk(struct btrfs_root *root, u64 objectid, u64 *offset)
+ 		if (found_key.objectid != objectid)
+ 			*offset = 0;
+ 		else {
++			u64 t;
+ 			chunk = btrfs_item_ptr(path->nodes[0], path->slots[0],
+ 					       struct btrfs_chunk);
+-			*offset = found_key.offset +
+-				btrfs_chunk_length(path->nodes[0], chunk);
++			t = found_key.offset + btrfs_chunk_length(path->nodes[0], chunk);
++			memcpy(offset, &t, sizeof(found_key.offset));
+ 		}
+ 	}
+ 	ret = 0;

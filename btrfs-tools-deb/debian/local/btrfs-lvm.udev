@@ -1,0 +1,6 @@
+SUBSYSTEM!="block", GOTO="btrfs_lvm_end"
+ENV{DM_UUID}!="LVM-?*", GOTO="btrfs_lvm_end"
+RUN+="/sbin/modprobe btrfs"
+RUN+="/sbin/btrfs device scan $env{DEVNAME}"
+
+LABEL="btrfs_lvm_end"

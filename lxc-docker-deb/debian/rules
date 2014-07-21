@@ -14,7 +14,7 @@ export DH_GOPKG := github.com/dotcloud/docker
 export DH_GOLANG_INSTALL_ALL := 1
 
 # temporary build path (see http://golang.org/doc/code.html#GOPATH)
-export GOPATH := $(CURDIR)
+export GOPATH := $(CURDIR)/vendor:$(CURDIR)
 
 DOCKER_VERSION = $(shell cat VERSION)
 export DOCKER_GITCOMMIT := $(shell awk '/^$(DOCKER_VERSION):/ { print $$2 }' debian/upstream-version-gitcommits)

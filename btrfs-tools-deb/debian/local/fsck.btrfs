@@ -1,0 +1,23 @@
+#!/bin/sh -f
+
+AUTO=false
+while getopts ":aApy" c
+do
+	case $c in
+	a|A|p|y)	AUTO=true;;
+	esac
+done
+eval DEV=\${$#}
+if [ ! -e $DEV ]; then
+	echo "$0: $DEV does not exist"
+	exit 8
+fi
+if $AUTO; then
+	echo "$0: Btrfs file system."
+else
+	echo "If you wish to check the consistency of an unmounted"
+	echo "btrfs filesystem or recover files from or repair a"
+        echo "damaged filesystem, see btrfs check and btrfs restore help"
+	echo "output."
+fi
+exit 0

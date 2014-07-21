@@ -1,0 +1,582 @@
+btrfs-tools (3.12-1ppa1~trusty) trusty; urgency=medium
+
+  * Backport to trusty release
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Mon, 21 Jul 2014 13:49:01 -0300
+
+btrfs-tools (3.12-1) unstable; urgency=low
+
+  [ Julien Muchembled ]
+  * New upstream release. (Closes: #732075, #732533)
+  * Drop patches merged upstream:
+    - 07-manpage2.patch
+    - 10-soname.patch
+    - Btrfs-progs-fix-wrong-arg-sb_bytenr-for-btrfs_scan_fs_devices.patch
+  * Refresh patches. (Closes: #719072)
+
+  [ Dimitri John Ledkov ]
+  * Add watch file.
+  * Bump standards version to 3.9.5.
+
+ -- Dimitri John Ledkov <xnox@ubuntu.com>  Wed, 01 Jan 2014 01:52:43 +0000
+
+btrfs-tools (0.19+20130705-3) unstable; urgency=low
+
+  * Import patch by Shilong Wang to resolve btrfs-convert (Closes:
+    #724265) (LP: #1228302)
+
+ -- Dmitrijs Ledkovs <xnox@ubuntu.com>  Fri, 18 Oct 2013 23:47:16 +0100
+
+btrfs-tools (0.19+20130705-2) unstable; urgency=low
+
+  * Copy btrfs-zero-log into initramfs, useful for recovering (Closes: #721857)
+
+ -- Dmitrijs Ledkovs <dmitrij.ledkov@ubuntu.com>  Mon, 16 Sep 2013 14:54:54 +0100
+
+btrfs-tools (0.19+20130705-1) unstable; urgency=low
+
+  * New upstream snapshot. (Closes: #720932)
+  * Refresh patches.
+  * btrfsctl is gone, and calc-size is prefixed with btrfs- upstream now.
+  * Enable verbose build-log.
+
+ -- Dmitrijs Ledkovs <dmitrij.ledkov@ubuntu.com>  Mon, 26 Aug 2013 19:14:51 +0100
+
+btrfs-tools (0.19+20130315-5) unstable; urgency=low
+
+  * Provide "proper" fsck.btrfs, similar in spirit to fsck.xfs, that
+    redirects users to use `btrfs check` and `btrfs restore` and exits
+    with 0. (Closes: #715242) (Closes: #716989)
+    Ideally, all btrfs mount points should be specified with fs_passno 0
+    in fstab. If fstab is migrated to that, I'd want to consider dropping
+    fsck.btrfs wrapper.
+
+ -- Dmitrijs Ledkovs <xnox@debian.org>  Wed, 31 Jul 2013 14:52:17 +0100
+
+btrfs-tools (0.19+20130315-4) unstable; urgency=low
+
+  * Drop grub.d hacks, as initscripts correctly skips btrfs volumes for
+    now. See bug #701956. And force remove hack on upgrade.
+  * Conditionally include fsck.btrfs, if there is no generic fsck hook (Closes: 717867)
+  * Install libraries in a multi-arch location. (Closes: #717868)
+  * Drop dh_builddeb compression override to xz, use dpkg default instead,
+    which is xz now anyway.
+
+ -- Dmitrijs Ledkovs <xnox@debian.org>  Mon, 29 Jul 2013 14:51:19 +0100
+
+btrfs-tools (0.19+20130315-3) unstable; urgency=low
+
+  * New maintainer (Closes: #717564)
+    - Thanks a lot to Luk and Daniel for previous
+      maintainership. Co-maintainance is welcome!
+  * Include fsck.btrfs in the initramfs
+  * Use correct compiler, when cross-compiling
+  * Default to act like fsck. (Closes: #712078)
+  * Apply a gross hack to set fastboot for grub, if root is on btrfs
+    because of bug 701936. One still needs to manually run update-grub.
+
+ -- Dmitrijs Ledkovs <xnox@debian.org>  Tue, 23 Jul 2013 16:12:29 +0100
+
+btrfs-tools (0.19+20130315-2) unstable; urgency=low
+
+  * Fix unaligned access issue thanks to Holger Fischer.
+
+ -- Luk Claes <luk@debian.org>  Mon, 20 May 2013 11:01:16 +0200
+
+btrfs-tools (0.19+20130315-1) experimental; urgency=low
+
+  * New upstream version.
+    - Drop 01-labels.patch
+    - Update patches
+    - Drop 05-gzip.patch
+    - Drop 06-armel.patch
+    - Drop 08-fsck.patch
+    - Drop 10-loop.patch
+  * Add build dependency on libblkid-dev and liblzo2-dev.
+  * Add lintian overrides as it does not make sense to split this
+    small a package.
+  * Set soname in 10-soname.patch.
+  * Uploading to experimental as the unaligned access issue still
+    needs to be fixed.
+
+ -- Luk Claes <luk@debian.org>  Tue, 14 May 2013 15:23:45 +0200
+
+btrfs-tools (0.19+20130131-3+really20121004-1) unstable; urgency=low
+
+  * Taking over maintenance with maintainer's consent.
+  * Reverting to previous upstream (Closes: #701936).
+
+ -- Luk Claes <luk@debian.org>  Sun, 10 Mar 2013 22:28:39 +0100
+
+btrfs-tools (0.19+20130131-3) unstable; urgency=low
+
+  * Also ignoring fsck options -y, -C, and -V in btrfs check.
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Fri, 08 Mar 2013 13:31:09 +0100
+
+btrfs-tools (0.19+20130131-2) unstable; urgency=low
+
+  * Replacing fsck.btrfs with wrapper arround 'btrfs check' to avoid
+    different behaviour based on the filename btrfs is copied to (Closes:
+    #701776).
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Wed, 27 Feb 2013 18:36:05 +0100
+
+btrfs-tools (0.19+20130131-1) unstable; urgency=low
+
+  * Merging upstream version 0.19+20130131.
+  * Updating copyright file for new upstream version.
+  * Updating years in copyright file.
+  * Prefixing patches with four digits.
+  * Trimming diff headers in patches.
+  * Dropping dpkg-source compression levels.
+  * Moving udev rules from 60-btrfs.rules to 70-btrfs.rules (Closes:
+    #701642).
+  * Dropping lables.patch, included upstream.
+  * Rediffing manpage.patch.
+  * Rediffing linker.patch.
+  * Dropping gzip.patch, not needed anymore.
+  * Dropping armel.patch, included upstream.
+  * Rediffing manpage2.patch.
+  * Dropping fsck.patch, not needed anymore.
+  * Rediffing unaligned-memaccess.patch.
+  * Dropping loop.patch, included upstream.
+  * Renumbering patches.
+  * Adding libblkid-dev to build-depends.
+  * Including show-blocks.
+  * Including bcp.
+  * Adding suggests to python.
+  * Adding lintian overrides.
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Tue, 26 Feb 2013 12:12:39 +0100
+
+btrfs-tools (0.19+20121004-2) unstable; urgency=low
+
+  * Adding dpkg-source local options.
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Tue, 11 Dec 2012 21:17:43 +0100
+
+btrfs-tools (0.19+20121004-1) unstable; urgency=low
+
+  * Updating standards version to 3.9.4.
+  * Merging upstream version 0.19+20121004.
+  * Rediffing linker.patch.
+  * Rediffing manpage2.patch.
+  * Rediffing fsck.patch.
+  * Adding patch from Nirbheek Chauhan <nirbheek.chauhan@collabora.co.uk>
+    to avoid truncating filenames in loopdevice images (Closes: #691235).
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Mon, 10 Dec 2012 11:09:05 +0100
+
+btrfs-tools (0.19+20120328-8) unstable; urgency=low
+
+  * Adding udev rule for btrfs on lvm, thanks to Daniel Pocock
+    <daniel@pocock.com.au> for testing (Closes: #685311).
+  * Adding postrm to rebuild initrd without btrfs on remove.
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Tue, 21 Aug 2012 11:49:31 +0200
+
+btrfs-tools (0.19+20120328-7) unstable; urgency=low
+
+  * Using official package-type for udeb packages in control now.
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Fri, 29 Jun 2012 17:56:44 +0200
+
+btrfs-tools (0.19+20120328-6) unstable; urgency=low
+
+  * Harmonize coding style for error redirection in initramfs-tools
+    local-premount script.
+  * Switching to xz compression.
+  * Updating GPL boilerplate in copyright file.
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Fri, 29 Jun 2012 03:48:36 +0200
+
+btrfs-tools (0.19+20120328-5) unstable; urgency=low
+
+  * Adding postinst for updating initramfs (Closes: #678967).
+  * Adding updated patch from Shawn Landen <shawnlandden@gmail.com> to
+    fix unaligned memory accesses (Closes: #656955).
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Mon, 25 Jun 2012 23:09:09 +0200
+
+btrfs-tools (0.19+20120328-4) unstable; urgency=low
+
+  * Adding patch from Shawn Landen <shawnlandden@gmail.com> to fix
+    unaligned memory accesses (Closes: #656955).
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Thu, 21 Jun 2012 13:05:12 +0200
+
+btrfs-tools (0.19+20120328-3) unstable; urgency=low
+
+  * Adding udev rule to automatically call 'btrfs scan' upon discovering
+    btrfs devices in order to allow using btrfs raid devices
+    automatically (Closes: #585568, #634658, #653632).
+  * Adding patch to update btrfs manpage to match /sbin/btrfs (Closes:
+    #638778, #642302).
+  * Also including /sbin/btrfs in udeb.
+  * Adding patch from Sten Heinze <shze@gmx.de> to ignore all arguments
+    starting with -a in btrfsck for the time being (Closes: #567681,
+    #571300, #612809, #668832).
+  * Adding back symlink for fsck.btrfs.
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Wed, 13 Jun 2012 16:00:13 +0200
+
+btrfs-tools (0.19+20120328-2) unstable; urgency=low
+
+  * Updating compression handling for udeb with newer debhelper (Closes:
+    #673283).
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Fri, 18 May 2012 07:50:12 +0200
+
+btrfs-tools (0.19+20120328-1) unstable; urgency=low
+
+  * Including ioctl.h in btrfs-tools (Closes: #658471).
+  * Merging upstream version 0.19+20120328.
+  * Updating to debhelper version 9.
+  * Updating to standards version 3.9.3.
+  * Updating copyright file machine-readable format version 1.0.
+  * Shortening manual build targets now that upstreams makefile has been
+    updated.
+  * Adding patch from Donald Gordon <don@dis.org.nz> to correct getopt
+    (Closes: #665434).
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Mon, 16 Apr 2012 08:59:50 +0000
+
+btrfs-tools (0.19+20111105-2) unstable; urgency=low
+
+  * Using btrfs instead of btrfsctl in initramfs (Closes: #650614).
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Sat, 10 Dec 2011 10:33:06 +0100
+
+btrfs-tools (0.19+20111105-1) unstable; urgency=low
+
+  * Switching architecture fields to linux-any.
+  * Adding patch to call gzip with full path when creating manpages to
+    fix FTBFS on squeeze.
+  * Using compression level 9 also for binary packages.
+  * Merging upstream version 0.19+20111105.
+  * Updating year in copyright file.
+  * Sorting overrides in rules alphabetically.
+  * Prefixing variables in rules to avoid clashes.
+  * Rediffing labels.patch.
+  * Rediffing ftbfs.patch.
+  * Rediffing linker.patch.
+  * Removing gcc-4.6.patch, not required anymore.
+  * Renumbering patches.
+  * Avoid polluting namespace by prefixing some tools with btrfs.
+  * Updating list of additional tools to be built.
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Sat, 19 Nov 2011 03:15:21 +0100
+
+btrfs-tools (0.19+20101101-2) unstable; urgency=low
+
+  * Updating maintainer and uploaders fields.
+  * Removing vcs fields.
+  * Removing references to my old email address.
+  * Updating year in copyright file.
+  * Updating to standards version 3.9.2.
+  * Compacting copyright file.
+  * Dropping btrfs.modules, went into initramfs-tools (Closes: #612642).
+  * Adding patch from Luk Claes <luk@debian.org> to fix FTBFS with --no-
+    add-needed (Closes: #554059).
+  * Adding patch from Jonathan Nieder <jrnieder@gmail.com> to fix FTBFS
+    with gcc-4.6 (Closes: #616296).
+  * Simplfying build and install overrides in rules.
+  * Applying slightly modified patch from Jonathan Nieder
+    <jrnieder@gmail.com> to fix CFLAGS handling in rules, see #616296.
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Sun, 28 Aug 2011 09:31:25 +0200
+
+btrfs-tools (0.19+20101101-1) experimental; urgency=low
+
+  * Merging upstream version 0.19+20101101.
+  * Switching to source format 3.0 (quilt).
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Sat, 20 Nov 2010 14:27:29 +0100
+
+btrfs-tools (0.19+20100909-2) experimental; urgency=low
+
+  * Update references to btrfs-tools instead of btrfs-progs (upstream name)
+    in manpages (Closes: #599111).
+  * Removing warnings about experimental status.
+  * Updating package to debhelper 8.
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Mon, 04 Oct 2010 21:28:58 +0200
+
+btrfs-tools (0.19+20100909-1) experimental; urgency=low
+
+  * Correcting credits for glibc.patch in patch file and changelog entry
+    to David Sugar <david.sugar@canonical.com>.
+  * Updating standards version to 3.9.0.
+  * Merging upstream version 0.19+20100909.
+  * Removing glibc.patch, merged upstream.
+  * Updating standards version to 3.9.1.
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Sat, 25 Sep 2010 18:59:07 +0200
+
+btrfs-tools (0.19+20100601-3) unstable; urgency=low
+
+  * Updating year in copyright file.
+  * Adding overrides for clean target to make sure package builds twice
+    in a row (Closes: #585074).
+  * Sorting dh call in rules to more common order.
+  * Adding patch from David Sugar <david.sugar@canonical.com> to fix FTBFS
+    with glibc 2.12 (Closes: #586111).
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Sun, 20 Jun 2010 21:22:57 +0200
+
+btrfs-tools (0.19+20100601-2) unstable; urgency=low
+
+  * Updating ftbfs.patch, thanks to Alexander Kurtz
+    <kurtz.alex@googlemail.com> (Closes: #583768).
+  * Adding two more casts in ftbfs.patch and fixing wrapping in previous
+    ones.
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Sat, 05 Jun 2010 08:50:05 +0200
+
+btrfs-tools (0.19+20100601-1) unstable; urgency=low
+
+  * Updating patch to fix FTBFS on alpha and ia64, thanks to Alexander
+    Kurtz <kurtz.alex@googlemail.com> (Closes: #583768).
+  * Renumbering patches.
+  * Merging upstream version 0.19+20100601 (Closes: #583793).
+  * Removing upstream patches.
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Tue, 01 Jun 2010 07:27:38 +0200
+
+btrfs-tools (0.19-12) unstable; urgency=low
+
+  * Setting section for udeb to debian-installer.
+  * Disabling valgrind patch, seems to make troubles on armel (Closes:
+    #582438).
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Mon, 24 May 2010 12:57:36 +0200
+
+btrfs-tools (0.19-11) unstable; urgency=low
+
+  * Removing fsck.btrfs symlink to circumvent that btrfsck doesn't
+    support -a.
+  * Adding initramfs-tools integration (Closes: #559710).
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Sun, 04 Apr 2010 17:42:30 +0200
+
+btrfs-tools (0.19-10) unstable; urgency=low
+
+  * Updating to standards 3.8.4.
+  * Including btrfsctl into udeb.
+  * Adding upstream patches to add support for deleting snapshots and
+    subvolumes (Closes: #567171).
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Sat, 06 Feb 2010 08:49:55 +0100
+
+btrfs-tools (0.19-9) unstable; urgency=low
+
+  * Adding explicit source version 1.0 until switch to 3.0.
+  * Updating year in copyright file.
+  * Adding patch from Joey Hess <joeyh@debian.org> to add btrfs-tools-
+    udeb (Closes: #567075).
+  * Adding patch from Joey Hess <joeyh@debian.org> to improve package
+    short-descriptions.
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Wed, 27 Jan 2010 05:31:57 +0100
+
+btrfs-tools (0.19-8) unstable; urgency=low
+
+  * Adding patch from Josef Bacik <jbacik@redhat.com> to fix memory
+    leaks and segfaults.
+  * Simplifying shell commands in rules.
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Sat, 05 Dec 2009 17:20:06 +0100
+
+btrfs-tools (0.19-7) unstable; urgency=low
+
+  * Moving tools from /usr/bin to /sbin (Closes: #559477).
+  * Making build-depends on quilt versioned.
+  * Cosmetically improve shell commands in rules.
+  * Updating README.source.
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Fri, 04 Dec 2009 20:54:42 +0100
+
+btrfs-tools (0.19-6) unstable; urgency=low
+
+  * Correcting wrong vcs-browser field.
+  * Updating package long-description (Closes: #552553).
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Wed, 28 Oct 2009 20:24:25 +0100
+
+btrfs-tools (0.19-5) unstable; urgency=low
+
+  * Adding debug package.
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Fri, 02 Oct 2009 19:40:09 +0200
+
+btrfs-tools (0.19-4) unstable; urgency=low
+
+  * Updating maintainer field.
+  * Updating vcs fields.
+  * Sorting build-depends and depends.
+  * Updating package to standards version 3.8.3.
+  * Bumping versioned build-depends on debhelper.
+  * Updating years in copyright file.
+  * Adding README.source.
+  * Adding maintainer homepage in copyright.
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Fri, 02 Oct 2009 19:06:02 +0200
+
+btrfs-tools (0.19-3) unstable; urgency=low
+
+  * Minimizing rules file.
+  * Adding patch from Luca Bruno <lucab@debian.org> to properly cast and
+    avoiding compiler warnings. Fixes FTBFS on alpha and ia64 (Closes:
+    #539433).
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Sun, 02 Aug 2009 12:08:49 +0200
+
+btrfs-tools (0.19-2) unstable; urgency=low
+
+  * Building and installing alternative utilities (Closes: #536058).
+  * Adding symlink from btrfsck to fsck.btrfs.
+  * Correcting spelling typo in package long-description.
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Tue, 07 Jul 2009 14:56:40 +0200
+
+btrfs-tools (0.19-1) unstable; urgency=low
+
+  * Merging upstream version 0.19.
+  * Removing ftbfs.patch, went upstream.
+  * Updating standards version to 3.8.2.
+  * Updating rules to cope with new upstream manpage makefiles.
+  * Workaround upstream makefiles wrt/ manpage compression.
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Mon, 06 Jul 2009 14:22:03 +0200
+
+btrfs-tools (0.18-4) unstable; urgency=low
+
+  * Using correct rfc-2822 date formats in changelog.
+  * Including btrfs-convert, thanks to Uwe Kleine-König <u.kleine-
+    koenig@pengutronix.de> (Closes: #529168).
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Sun, 17 May 2009 22:18:27 +0200
+
+btrfs-tools (0.18-3) unstable; urgency=low
+
+  * Tidy rules file.
+  * Adding patch from upstream to allow /'s in labels.
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Fri, 17 Apr 2009 21:02:00 +0200
+
+btrfs-tools (0.18-2) unstable; urgency=medium
+
+  * Adding patch from Luca Bruno <lucab@debian.org> to fix FTBFS on
+    alpha and ia64 (Closes: #519913).
+  * Updating rules file to current state of the art.
+  * Updating standards version to 3.8.1.
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Tue, 17 Mar 2009 08:22:00 +0100
+
+btrfs-tools (0.18-1) unstable; urgency=low
+
+  * Merging upstream version 0.18.
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Sat, 24 Jan 2009 15:59:00 +0100
+
+btrfs-tools (0.17-1) unstable; urgency=low
+
+  * Updating vcs fields in control file.
+  * Replacing obsolete dh_clean -k with dh_prep.
+  * Merging upstream version 0.17.
+  * Removing notes about not finalized on disk format.
+  * Prefixing debhelper files with package name.
+  * Updating year in copyright file.
+  * Adding zlib to build-depends.
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Sat, 24 Jan 2009 15:50:00 +0100
+
+btrfs-tools (0.16-1) unstable; urgency=low
+
+  * Removing cflags handling in rules, not required anymore.
+  * Merging upstream version 0.16.
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Mon, 25 Aug 2008 01:04:00 +0200
+
+btrfs-tools (0.15-2) unstable; urgency=medium
+
+  * Building on all architectures again since FTBFS on ia64 is gone.
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Tue, 01 Jul 2008 15:07:00 +0200
+
+btrfs-tools (0.15-1) unstable; urgency=low
+
+  * Merging upstream version 0.15.
+  * Updating to standards 3.8.0.
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Mon, 09 Jun 2008 15:01:00 +0200
+
+btrfs-tools (0.14-1) unstable; urgency=low
+
+  * Reordering rules file.
+  * Rewriting copyright file in machine-interpretable format.
+  * Updated warnings about early state of btrfs.
+  * Adding vcs fields in control file.
+  * Updating homepage field in control file.
+  * Upgrading package to debhelper 7.
+  * Merging upstream version 0.14.
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Sun, 04 May 2008 10:04:00 +0200
+
+btrfs-tools (0.13-2) unstable; urgency=medium
+
+  * Excluding alpha and ia64 from architectures, doesn't build there
+    (Closes: #465128).
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Fri, 07 Mar 2008 12:04:00 +0100
+
+btrfs-tools (0.13-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Mon, 25 Feb 2008 20:39:00 +0100
+
+btrfs-tools (0.12-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Fri, 08 Feb 2008 17:52:00 +0100
+
+btrfs-tools (0.11-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Mon, 28 Jan 2008 12:58:00 +0100
+
+btrfs-tools (0.10-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Thu, 17 Jan 2008 16:23:00 +0100
+
+btrfs-tools (0.9-1) unstable; urgency=low
+
+  * New upstream release.
+  * Updated standards.
+  * Removing watch file (Closes: #450102).
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Thu, 20 Dec 2007 08:10:00 +0100
+
+btrfs-tools (0.8-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Fri, 14 Sep 2007 11:07:00 +0200
+
+btrfs-tools (0.6-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Wed, 08 Aug 2007 20:33:00 +0200
+
+btrfs-tools (0.5-1) unstable; urgency=low
+
+  * Initial release (Closes: #432697).
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Sun, 29 Jul 2007 12:19:00 +0200

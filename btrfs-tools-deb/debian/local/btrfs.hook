@@ -1,0 +1,29 @@
+#!/bin/sh
+
+set -e
+
+PREREQ=""
+
+prereqs()
+{
+	echo "${PREREQ}"
+}
+
+case "${1}" in
+	prereqs)
+		prereqs
+		exit 0
+		;;
+esac
+
+. /usr/share/initramfs-tools/hook-functions
+
+if [ -x /sbin/btrfs ]
+then
+	copy_exec /sbin/btrfs /sbin
+	copy_exec /sbin/btrfs-zero-log
+	if [ ! -x /usr/share/initramfs-tools/hooks/fsck ] && [ ! -x /etc/initramfs-tools/hooks/fsck ]
+	then
+	    copy_exec /sbin/fsck.btrfs /sbin
+	fi
+fi

@@ -39,6 +39,7 @@ cowbuilder_create:
 	echo "/usr/bin/add-apt-repository -y ppa:tsuru/ppa" >> /tmp/ppa.sh
 	echo "/usr/bin/add-apt-repository -y ppa:tsuru/lvm2" >> /tmp/ppa.sh
 	echo "/usr/bin/add-apt-repository -y ppa:tsuru/golang" >> /tmp/ppa.sh
+	echo "/usr/bin/add-apt-repository -y ppa:tsuru/docker" >> /tmp/ppa.sh
 	for version in $(VERSIONS); do \
 	    cowbuilder-dist $$version create --updates-only && \
 	    cowbuilder-dist $$version execute --save --override-config --updates-only /tmp/ppa.sh && \
@@ -204,13 +205,21 @@ lxc-docker:
 	pushd . && cd lxc-docker-$$TAG/src/github.com/dotcloud/docker && git fetch --tags && git checkout v$$TAG && popd && \
 	pushd . && cd lxc-docker-$$TAG && find . \( -iname ".git*" -o -iname "*.bzr" -o -iname "*.hg" \) | xargs rm -rf \{} && popd && \
 	tar zcvf lxc-docker_$$TAG.orig.tar.gz lxc-docker-$$TAG && rm -rf lxc-docker-$$TAG ; fi
-	make TARGET=$@ EXCEPT=precise _do
+	make TARGET=$@ _do
 lvm2:
 	if [ ! $$TAG ]; then echo "TAG env var must be set... use: TAG=<value> make $(TARGET)"; exit 1; fi
 	if [ -f lvm2_$${TAG//_/.}.orig.tar.gz ]; then rm lvm2_$${TAG//_/.}.orig.tar.gz; fi
 	make TAG=$$TAG TARGET=$@ PPA=$$PPA _pre_check_launchpad
 	$(eval PPA_SRC_OK := $(shell [[ -f $(@)_ppa_ok || $$NO_SRC_CHECK == 1 ]]; echo $$?))
 	@if [ "$(PPA_SRC_OK)" == "1" ] ; then curl -L -o lvm2_$${TAG//_/.}.orig.tar.gz https://git.fedorahosted.org/cgit/lvm2.git/snapshot/lvm2-$$TAG.tar.gz; fi
+	make TARGET=$@ _do
+
+btrfs-tools:
+	if [ ! $$TAG ]; then echo "TAG env var must be set... use: TAG=<value> make $(TARGET)"; exit 1; fi
+	if [ -f btrfs-tools_$${TAG}.orig.tar.gz ]; then rm btrfs-tools_$${TAG}.orig.tar.gz; fi
+	make TAG=$$TAG TARGET=$@ PPA=$$PPA _pre_check_launchpad
+	$(eval PPA_SRC_OK := $(shell [[ -f $(@)_ppa_ok || $$NO_SRC_CHECK == 1 ]]; echo $$?))
+	@if [ "$(PPA_SRC_OK)" == "1" ] ; then curl -L -o btrfs-tools_$${TAG}.orig.tar.xz https://launchpad.net/ubuntu/+archive/primary/+files/btrfs-tools_${TAG}.orig.tar.xz; fi
 	make TARGET=$@ _do
 
 golang:

@@ -1,3 +1,9 @@
+lxc-docker (1.1.1-0~precise) precise; urgency=medium
+
+  * New upstream release
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Fri, 18 Jul 2014 14:17:44 -0300
+
 lxc-docker (1.0.0-0~precise) precise; urgency=medium
 
   * New upstream release

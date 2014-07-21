@@ -4,7 +4,7 @@ Priority: extra
 Maintainer: Tsuru Team <tsuru@corp.globo.com> 
 Build-Depends: debhelper,
 	       autotools-dev,
-               btrfs-tools,
+               btrfs-tools (>= 3.12),
                devscripts,
                golang (>= 2:1.2),
                dh-golang (>= 1.1),
