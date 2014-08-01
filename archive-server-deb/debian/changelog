@@ -1,3 +1,9 @@
+archive-server (0.1.1-1~precise1) precise; urgency=low
+
+  * New upstream release 
+
+ -- Francisco Souza <fss@corp.globo.com>  Fri, 01 Aug 2014 11:09:32 -0300
+
 archive-server (0.1.0-1~precise1) precise; urgency=medium
 
   * Fix bug with permission in the /var/lib/archive-server directory.
