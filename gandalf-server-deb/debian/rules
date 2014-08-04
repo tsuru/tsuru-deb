@@ -21,6 +21,7 @@ binary-stamp:
 	dh_prep
 	dh_installdirs
 	dh_install
+	dh_installexamples
 	dh_installinit --no-start --name=gandalf-server
 	dh_installinit --no-start --name=git-daemon
 	dh_strip

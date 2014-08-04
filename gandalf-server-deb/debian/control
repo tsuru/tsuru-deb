@@ -8,7 +8,7 @@ Homepage: https://github.com/tsuru/gandalf
 
 Package: gandalf-server
 Architecture: amd64
-Depends: ${misc:Depends}, git (>= 1:1.7.9.5~)
+Depends: ${misc:Depends}, git (>= 1:1.7.9.5~), git-daemon-sysvinit (>= 1:1.7.9.5~)
 Description: Gandalf is a Git repositories manager.
  Gandalf manages Git access to repositories, by handling users, keys and
  repositories.
