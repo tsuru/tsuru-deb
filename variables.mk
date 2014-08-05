@@ -1,7 +1,7 @@
 TMP = tmp
 GOBASE := $(TMP)/gobase
-GITBASE := $(TMP)gitbase
-NODEBASE := $(TMP)nodebase
+GITBASE := $(TMP)/gitbase
+NODEBASE := $(TMP)/nodebase
 
 VERSIONS=precise trusty wheezy
 
