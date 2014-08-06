@@ -1,3 +1,9 @@
+tsuru-server (0.6.0-0~precise1) precise; urgency=medium
+
+  * New upstream release
+
+ -- Francisco Souza <fss@corp.globo.com>  Wed, 06 Aug 2014 15:57:54 -0300
+
 tsuru-server (0.5.3-0~precise1) precise; urgency=high
 
   * New upstream release, fixing leak of connections to Redis when used as queue 
