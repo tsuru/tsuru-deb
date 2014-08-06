@@ -1,3 +1,9 @@
+tsuru-client (0.11.0-1~precise1) precise; urgency=low
+
+  * New upstream release
+
+ -- Francisco Souza <fss@corp.globo.com>  Tue, 05 Aug 2014 17:04:12 -0300
+
 tsuru-client (0.10.2-1~precise1) precise; urgency=medium
 
   * Fix bug in the name of a file in the source package.
