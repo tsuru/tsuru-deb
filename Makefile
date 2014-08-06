@@ -7,7 +7,8 @@ empty:=
 space:= $(empty) $(empty)
 pipe:= \|
 
-GOPATH=$(shell echo $$PWD)
+GOPATH := $(shell echo $$PWD)
+DAILY_TAG := $(shell date +'SNAPSHOT%Y%m%d%H%M%S%z')
 
 ifdef DEBEMAIL
 	debsign_opt := "-e$$DEBEMAIL"
@@ -61,7 +62,7 @@ _pre_tarball:
 	@if [ -f $(TARGET)_ppa_ok ]; then rm $(TARGET)_ppa_ok; fi
 	@if [ ! $$TAG ]; then echo "TAG env var must be set... use: TAG=<value> make $(TARGET)"; exit 1; fi
 	@if [ -d $(TARGET)-$$TAG ]; then rm -rf $(TARGET)-$$TAG; fi
-	@if [ -f $(TARGET)_$${TAG}.orig.tar.gz ]; then rm $(TARGET)_$${TAG}.orig.tar.gz; fi
+	@if [ -f $(TARGET)_$${TAG}.orig.tar.gz ]; then rm $(TARGET)_$${TAG}*.orig.tar.gz; fi
 	@mkdir $(TARGET)-$$TAG
 
 _post_tarball:
@@ -71,12 +72,20 @@ _post_tarball:
 
 _build:
 	if [ -f debian/changelog.bkp ]; then rm debian/changelog.bkp; fi
-	sed -i.bkp -e 's/\($(subst $(space),$(pipe),$(VERSIONS))\)/$(VERSION)/g' debian/changelog
+	if [ "$$DAILY_BUILD" ]; then \
+		sed -i.bkp -e 's/\($(subst $(space),$(pipe),$(VERSIONS))\)/$(VERSION)/g' debian/changelog ; sed -i.bkp2 -e '0,/\(-[0-9]\+\)\(ubuntu1ppa[0-9]\+\)\?~$(VERSION)\([0-9]\+\)\?)/s//+1$(DAILY_TAG)\1\2~$(VERSION)\3)/' debian/changelog ; \
+	else \
+		sed -i.bkp -e 's/\($(subst $(space),$(pipe),$(VERSIONS))\)/$(VERSION)/g' debian/changelog ; \
+	fi
 	debuild --no-tgz-check -S -sa -us -uc
 	mv debian/changelog.bkp debian/changelog
+	if [ -f debian/changelog.bkp2 ]; then rm debian/changelog.bkp2; fi
 
 _do:
-	for version in $(VERSIONS); do for exp in $$EXCEPT; do if [ "$$version" == "$$exp" ]; then ignore_version=1 ; fi ; done ; [[ $$ignore_version != 1 ]] && make VERSION=$$version CMD=$(TARGET) -C $(TARGET)-deb -f ../Makefile _build ; unset ignore_version; done
+	if [ "$$DAILY_BUILD" ]; then \
+		mv $(TARGET)_$(TAG).orig.tar.gz $(TARGET)_$(TAG)+1$(DAILY_TAG).orig.tar.gz; \
+	fi
+	for version in $(VERSIONS); do for exp in $$EXCEPT; do if [ "$$version" == "$$exp" ]; then ignore_version=1 ; fi ; done ; [[ $$ignore_version != 1 ]] && make VERSION=$$version DAILY_BUILD=$$DAILY_BUILD CMD=$(TARGET) DAILY_TAG=$(DAILY_TAG) -C $(TARGET)-deb -f ../Makefile _build ; unset ignore_version; done
 
 _pre_check_launchpad:
 	@if [ ! $$PPA ]; then \
@@ -96,7 +105,7 @@ tsuru-server:
 	$(eval PPA_SRC_OK := $(shell [[ -f $(@)_ppa_ok || $$NO_SRC_CHECK == 1 ]]; echo $$?))
 	@if [ "$(PPA_SRC_OK)" == "1" ] ; then pushd tsuru-server-$$TAG && \
 	export GOPATH=$$PWD && go get -v -u -d github.com/tsuru/tsuru/... && \
-	cd src/github.com/tsuru/tsuru && git checkout $$TAG && godep restore ./... && \
+	cd src/github.com/tsuru/tsuru && if [ ! "$$DAILY_BUILD" ]; then git checkout $$TAG ; fi && godep restore ./... && \
 	rm -rf src/github.com/tsuru/tsuru/src && cd - && popd && make TAG=$$TAG TARGET=$@ PPA=$$PPA _post_tarball ; fi
 	make TARGET=$@ _do
 
@@ -126,8 +135,8 @@ gandalf-server:
 	$(eval PPA_SRC_OK := $(shell [[ -f $(@)_ppa_ok || $$NO_SRC_CHECK == 1 ]]; echo $$?))
 	@if [ "$(PPA_SRC_OK)" == "1" ] ; then pushd gandalf-server-$$TAG && \
 	export GOPATH=$$PWD && go get -v -u -d github.com/globocom/gandalf/... && cd src/github.com/globocom/gandalf && \
-	git checkout $$TAG && godep restore ./... && cd - && popd && make TAG=$$TAG TARGET=$@ _post_tarball ; fi
-	make TARGET=$@ _do
+	if [ ! "$$DAILY_BUILD" ]; then git checkout $$TAG ; fi && godep restore ./... && cd - && popd && make TAG=$$TAG TARGET=$@ _post_tarball ; fi
+	make DAILY_BUILD=$$DAILY_BUILD TARGET=$@ _do
 
 archive-server:
 	make TAG=$$TAG TARGET=$@ PPA=$$PPA _pre_tarball
@@ -135,7 +144,7 @@ archive-server:
 	$(eval PPA_SRC_OK := $(shell [[ -f $(@)_ppa_ok || $$NO_SRC_CHECK == 1 ]]; echo $$?))
 	@if [ "$(PPA_SRC_OK)" == "1" ] ; then pushd archive-server-$$TAG && \
 	export GOPATH=$$PWD && go get -v -u -d github.com/tsuru/archive-server && cd src/github.com/tsuru/archive-server && \
-	git checkout $$TAG && cd - && popd && make TAG=$$TAG TARGET=$@ _post_tarball ; fi
+	if [ ! "$$DAILY_BUILD" ]; then git checkout $$TAG ; fi && cd - && popd && make TAG=$$TAG TARGET=$@ _post_tarball ; fi
 	make TARGET=$@ _do
 
 crane:
@@ -144,7 +153,7 @@ crane:
 	$(eval PPA_SRC_OK := $(shell [[ -f $(@)_ppa_ok || $$NO_SRC_CHECK == 1 ]]; echo $$?))
 	@if [ "$(PPA_SRC_OK)" == "1" ] ; then pushd crane-$$TAG && \
 	export GOPATH=$$PWD && go get -v -u -d github.com/tsuru/crane && cd src/github.com/tsuru/crane && \
-	git checkout $$TAG && cd - && popd && make TAG=$$TAG TARGET=$@ _post_tarball ; fi
+	if [ ! "$$DAILY_BUILD" ]; then git checkout $$TAG ; fi && cd - && popd && make TAG=$$TAG TARGET=$@ _post_tarball ; fi
 	make TARGET=$@ _do
 
 tsuru-client:
@@ -153,7 +162,7 @@ tsuru-client:
 	$(eval PPA_SRC_OK := $(shell [[ -f $(@)_ppa_ok || $$NO_SRC_CHECK == 1 ]]; echo $$?))
 	@if [ "$(PPA_SRC_OK)" == "1" ] ; then pushd tsuru-client-$$TAG && \
 	export GOPATH=$$PWD && go get -v -u -d github.com/tsuru/tsuru-client/... && cd src/github.com/tsuru/tsuru-client && \
-	git checkout $$TAG && cd - && popd && make TAG=$$TAG TARGET=$@ _post_tarball ; fi
+	if [ ! "$$DAILY_BUILD" ]; then git checkout $$TAG ; fi && cd - && popd && make TAG=$$TAG TARGET=$@ _post_tarball ; fi
 	make TARGET=$@ _do
 
 tsuru-admin:
@@ -162,7 +171,7 @@ tsuru-admin:
 	$(eval PPA_SRC_OK := $(shell [[ -f $(@)_ppa_ok || $$NO_SRC_CHECK == 1 ]]; echo $$?))
 	@if [ "$(PPA_SRC_OK)" == "1" ] ; then pushd tsuru-admin-$$TAG && \
 	export GOPATH=$$PWD && go get -v -u -d github.com/tsuru/tsuru-admin && cd src/github.com/tsuru/tsuru-admin && \
-	git checkout $$TAG && cd - && popd && make TAG=$$TAG TARGET=$@ _post_tarball ; fi
+	if [ ! "$$DAILY_BUILD" ]; then git checkout $$TAG ; fi && cd - && popd && make TAG=$$TAG TARGET=$@ _post_tarball ; fi
 	make TARGET=$@ _do
 
 hipache-hchecker:
@@ -171,7 +180,7 @@ hipache-hchecker:
 	$(eval PPA_SRC_OK := $(shell [[ -f $(@)_ppa_ok || $$NO_SRC_CHECK == 1 ]]; echo $$?))
 	@if [ "$(PPA_SRC_OK)" == "1" ] ; then pushd . && cd hipache-hchecker-$$TAG && pushd . && \
 	export GOPATH=$$PWD && go get -v -u -d github.com/morpheu/hipache-hchecker/... && cd src/github.com/morpheu/hipache-hchecker && \
-	git checkout $$TAG && godep restore ./... && popd && make TAG=$$TAG TARGET=$@ _post_tarball ; fi
+	if [ ! "$$DAILY_BUILD" ]; then git checkout $$TAG ; fi && godep restore ./... && popd && make TAG=$$TAG TARGET=$@ _post_tarball ; fi
 	make TARGET=$@ _do
 
 nodejs:
