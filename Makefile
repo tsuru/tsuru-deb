@@ -176,9 +176,11 @@ tsuru-server_$(TAG_tsuru-server)$(dtag).orig.tar.gz serf_$(TAG_serf)$(dtag).orig
 	rm -rf $(GOPATH) 2>/dev/null || true
 	mkdir -p $(GOPATH)
 	go get -v -u -d $(or $(GOURL),$(GITPATH)/...)
+	set -e; \
 	if [ ! "$(DAILY_BUILD)" ]; then \
-		git -C $(GOPATH)/src/$(GITPATH) checkout $(or $(GITTAG),$(TAG))
+		git -C $(GOPATH)/src/$(GITPATH) checkout $(or $(GITTAG),$(TAG)); \
 	fi
+	set -e; \
 	if [[ -d $(GOPATH)/src/$(GITPATH)/Godeps ]]; then \
 		cd $(GOPATH)/src/$(GITPATH); \
 		godep restore ./...; \
@@ -206,15 +208,14 @@ dh-golang_$(TAG_dh-golang).orig.tar.gz btrfs-tools_$(TAG_btrfs-tools).orig.tar.x
 
 $(VERSIONS:%=_buildsrc.%):
 	$(eval VERSION := $(@:_buildsrc.%=%))
+	$(eval debver := $(and $(filter-out $(DAILY_BUILD_EXCEPT),$(TARGET)),$(DAILY_BUILD),$(TAG)$(dtag)))
 	cp $(SRCRESULT).tmp/$(TARGET)/debian/changelog /tmp/$(TARGET).changelog.orig
-	$(eval debver := $(shell cd $(SRCRESULT).tmp/$(TARGET); dpkg-parsechangelog --show-field Version)
-	$(eval debver := $(and $(filter-out $(DAILY_BUILD_EXCEPT),$(TARGET)),$(DAILY_BUILD),$(debver)$(dtag))
 	set -e; \
 	cd $(SRCRESULT).tmp/$(TARGET); \
 	if [ $(debver) ]; then \
-		dch $(debver) -v $(debver)$(BUILDSUFFIX_$(VERSION)) -D $(or $(BUILDDIST_$(VERSION)),$(VERSION)) $(BUILDTEXT_$(VERSION)); \
+		dch -v $(debver)-1$(BUILDSUFFIX_$(VERSION))1 -D $(or $(BUILDDIST_$(VERSION)),$(VERSION)) $(BUILDTEXT_$(VERSION)); \
 	else \
-		dch $(debver) -l $(BUILDSUFFIX_$(VERSION)) -D $(or $(BUILDDIST_$(VERSION)),$(VERSION)) $(BUILDTEXT_$(VERSION)); \
+		dch -l $(BUILDSUFFIX_$(VERSION)) -D $(or $(BUILDDIST_$(VERSION)),$(VERSION)) $(BUILDTEXT_$(VERSION)); \
 	fi
 	cd $(SRCRESULT).tmp/$(TARGET); debuild --no-tgz-check -S -sa -us -uc
 	mv /tmp/$(TARGET).changelog.orig $(SRCRESULT).tmp/$(TARGET)/debian/changelog

@@ -17,7 +17,7 @@ BUILDTEXT_trusty = "Build for trusty."
 BUILDSUFFIX_wheezy = ~bpo70+
 BUILDTEXT_wheezy = "Rebuild for wheezy-backports."
 BUILDDIST_wheezy = wheezy-backports
-DAILY_TAG := $(shell date +'SNAPSHOT%Y%m%d%H%M%S%z')
+export DAILY_TAG := $(or $(DAILY_TAG),$(shell date +'SNAPSHOT%Y%m%d%H%M%S%z'))
 export DAILY_BUILD := $(DAILY_BUILD)
 DAILY_BUILD_EXCEPT = dh-golang lvm2 btrfs-tools golang nodejs node-hipache
 
@@ -27,7 +27,7 @@ TAG_gandalf-server = 0.5.0
 TAG_archive-server = 0.1.1
 TAG_crane = 0.5.4
 TAG_tsuru-client = 0.11.2
-TAG_tsuru-admin = 0.5.0
+TAG_tsuru-admin = 0.5.1
 TAG_hipache-hchecker = 0.2.4.2
 TAG_docker-registry = 0.1.1
 TAG_tsuru-mongoapi = 0.2.0

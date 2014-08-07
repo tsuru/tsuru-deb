@@ -1,4 +1,4 @@
-export TARGET := $(shell echo $@ | sed -r "s/(.+)(_[0-9\._-]+\.orig\.tar\.(gz|bz2|xz)|\.build(src|deb)|\.upload)/\1/g")
+export TARGET := $(shell echo $@ | sed -r "s/(.+)(_[0-9\._-]+(\+1SNAPSHOT.+)?\.orig\.tar\.(gz|bz2|xz)|\.build(src|deb)|\.upload)/\1/g")
 export TAG := $(TAG_$(TARGET))
 
 export SRCRESULT := $(CURDIR)/$(TARGET).buildsrc
