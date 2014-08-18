@@ -13,3 +13,6 @@ chown ${user}:${user} $dot_ssh ${dot_ssh}/authorized_keys
 chown -R ${user}:${user} /var/lib/gandalf
 chmod 700 $dot_ssh
 chmod 644 ${dot_ssh}/authorized_keys
+
+# see dh_installdeb(1)
+#DEBHELPER#

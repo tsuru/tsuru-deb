@@ -1,0 +1,5 @@
+#! /bin/sh
+
+chown -R ${user}:${user} /var/lib/archive-server
+
+#DEBHELPER#

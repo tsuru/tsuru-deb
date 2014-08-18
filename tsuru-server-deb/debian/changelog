@@ -1,6 +1,7 @@
 tsuru-server (0.6.2.1-2) unstable; urgency=medium
 
   * Change distribution to unstable
+  * fix #DEBHELPER# support 
 
  -- Philip Tzou <philip.npc@gmail.com>  Fri, 29 Aug 2014 03:33:33 +0000
 

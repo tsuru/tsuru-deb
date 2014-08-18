@@ -23,7 +23,6 @@ binary-stamp:
 	dh_install
 	dh_installexamples
 	dh_installinit --no-start --name=gandalf-server
-	dh_installinit --no-start --name=git-daemon
 	dh_strip
 	dh_compress
 	dh_fixperms

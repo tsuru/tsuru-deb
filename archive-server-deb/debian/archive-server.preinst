@@ -1,3 +1,4 @@
+#! /bin/sh
 user="archiver"
 exists=true
 getent passwd $user > /dev/null 2>&1 || exists=false
@@ -6,4 +7,5 @@ then
 	echo "Creating user \"$user\" within group \"$user\""...
 	useradd -m --system $user
 fi
-chown -R ${user}:${user} /var/lib/archive-server
+
+#DEBHELPER#

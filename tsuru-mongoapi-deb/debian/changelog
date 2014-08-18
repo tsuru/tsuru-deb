@@ -1,3 +1,9 @@
+tsuru-mongoapi (0.2.0-3) unstable; urgency=medium
+
+  * fix #DEBHELPER# support 
+
+ -- Philip Tzou <philip.npc@gmail.com>  Mon, 18 Aug 2014 08:26:13 +0000
+
 tsuru-mongoapi (0.2.0-2) unstable; urgency=medium
 
   * Change distribution to unstable

@@ -149,7 +149,7 @@ $(VERSIONS:%=_builddeb.%):
 	cowbuilder-dist $(VERSION) update --bindmounts $(CURDIR)/localrepo --override-config --updates-only
 	cowbuilder-dist $(VERSION) build $(SRCRESULT)/$(TARGET)_*$(BUILDSUFFIX_$(VERSION))*.dsc --buildresult=$(DEBRESULT).tmp/$(VERSION) --debbuildopts="-sa" --bindmounts=$(CURDIR)/localrepo
 	sudo rm -rf $(PBUILDFOLDER)
-	cd $(CURDIR)/localrepo && ls $(DEBRESULT).tmp/$(VERSION)/*.changes | xargs --verbose -L 1 reprepro include $(or $(BUILDDIST_$(VERSION)),$(VERSION))
+	-cd $(CURDIR)/localrepo && ls $(DEBRESULT).tmp/$(VERSION)/*.changes | xargs --verbose -L 1 reprepro include $(or $(BUILDDIST_$(VERSION)),$(VERSION))
 
 _builddeb: localrepo $(patsubst %,_builddeb.%,$(filter-out $(EXCEPT),$(VERSIONS)))
 

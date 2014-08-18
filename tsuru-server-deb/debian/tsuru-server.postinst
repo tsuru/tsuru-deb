@@ -9,3 +9,6 @@ then
 	ssh-keygen -t rsa -b 4096 -N "" -f /var/lib/$user/.ssh/id_rsa
 	chown -R $user:$user /var/lib/$user/.ssh
 fi
+
+# see dh_installdeb(1)
+#DEBHELPER#
