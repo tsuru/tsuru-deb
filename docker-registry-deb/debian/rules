@@ -20,7 +20,7 @@ binary-stamp:
 	dh_prep
 	dh_installdirs
 	dh_install
-	dh_installinit --no-start --name=docker-registry
+	dh_installinit --name=docker-registry
 	dh_strip
 	dh_compress
 	dh_fixperms

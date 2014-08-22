@@ -1,4 +1,3 @@
-#DEBHELPER#
 user="registry"
 exists=true
 getent passwd $user > /dev/null 2>&1 || exists=false
@@ -8,4 +7,5 @@ then
 	useradd --system $user
 fi
 chown ${user}:${user} /var/run/registry /var/lib/docker-registry
-start docker-registry
+
+#DEBHELPER#
