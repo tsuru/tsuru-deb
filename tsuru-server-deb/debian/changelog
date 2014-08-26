@@ -1,3 +1,9 @@
+tsuru-server (0.6.2.1-0~precise1) precise; urgency=medium
+
+  * New upstream release, fixing the version string
+
+ -- Francisco Souza <fss@corp.globo.com>  Tue, 26 Aug 2014 14:24:27 -0300
+
 tsuru-server (0.6.2-0~precise1) precise; urgency=high
 
   * New upstream release
