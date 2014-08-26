@@ -1,3 +1,9 @@
+tsuru-server (0.6.1-1~precise1) precise; urgency=high
+
+  * Fix bug in the Godeps file
+
+ -- Francisco Souza <fss@corp.globo.com>  Mon, 25 Aug 2014 18:47:33 -0300
+
 tsuru-server (0.6.1-0~precise1) precise; urgency=low
 
   * New upstream release
