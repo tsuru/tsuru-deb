@@ -9,6 +9,7 @@ Homepage: http://tsuru.io
 Package: tsuru-client
 Architecture: amd64 i386
 Depends: ${misc:Depends}
+Replaces: tsuru
 Description: tsuru is the command line interface for the tsuru server
  Tsuru is an open source platform as a service software. This package installs
  the client used by application developers to communicate with tsuru server.
