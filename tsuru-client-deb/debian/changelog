@@ -1,3 +1,9 @@
+tsuru-client (0.11.1-1~precise1) precise; urgency=medium
+
+  * New upstream release, fixing a bug with plugins
+
+ -- Francisco Souza <fss@corp.globo.com>  Thu, 04 Sep 2014 10:08:12 -0300
+
 tsuru-client (0.11.0-2~precise1) precise; urgency=medium
 
   * Replaces old tsuru client package
