@@ -153,7 +153,7 @@ crane:
 	$(eval PPA_SRC_OK := $(shell [[ -f $(@)_ppa_ok || $$NO_SRC_CHECK == 1 ]]; echo $$?))
 	@if [ "$(PPA_SRC_OK)" == "1" ] ; then pushd crane-$$TAG && \
 	export GOPATH=$$PWD && go get -v -u -d github.com/tsuru/crane && cd src/github.com/tsuru/crane && \
-	if [ ! "$$DAILY_BUILD" ]; then git checkout $$TAG ; fi && cd - && popd && make TAG=$$TAG TARGET=$@ _post_tarball ; fi
+	if [ ! "$$DAILY_BUILD" ]; then git checkout $$TAG ; fi && godep restore && cd - && popd && make TAG=$$TAG TARGET=$@ _post_tarball ; fi
 	make TARGET=$@ _do
 
 tsuru-client:
@@ -162,7 +162,7 @@ tsuru-client:
 	$(eval PPA_SRC_OK := $(shell [[ -f $(@)_ppa_ok || $$NO_SRC_CHECK == 1 ]]; echo $$?))
 	@if [ "$(PPA_SRC_OK)" == "1" ] ; then pushd tsuru-client-$$TAG && \
 	export GOPATH=$$PWD && go get -v -u -d github.com/tsuru/tsuru-client/... && cd src/github.com/tsuru/tsuru-client && \
-	if [ ! "$$DAILY_BUILD" ]; then git checkout $$TAG ; fi && cd - && popd && make TAG=$$TAG TARGET=$@ _post_tarball ; fi
+	if [ ! "$$DAILY_BUILD" ]; then git checkout $$TAG ; fi && godep restore ./... && cd - && popd && make TAG=$$TAG TARGET=$@ _post_tarball ; fi
 	make TARGET=$@ _do
 
 tsuru-admin:
@@ -171,7 +171,7 @@ tsuru-admin:
 	$(eval PPA_SRC_OK := $(shell [[ -f $(@)_ppa_ok || $$NO_SRC_CHECK == 1 ]]; echo $$?))
 	@if [ "$(PPA_SRC_OK)" == "1" ] ; then pushd tsuru-admin-$$TAG && \
 	export GOPATH=$$PWD && go get -v -u -d github.com/tsuru/tsuru-admin && cd src/github.com/tsuru/tsuru-admin && \
-	if [ ! "$$DAILY_BUILD" ]; then git checkout $$TAG ; fi && cd - && popd && make TAG=$$TAG TARGET=$@ _post_tarball ; fi
+	if [ ! "$$DAILY_BUILD" ]; then git checkout $$TAG ; fi && godep restore && cd - && popd && make TAG=$$TAG TARGET=$@ _post_tarball ; fi
 	make TARGET=$@ _do
 
 hipache-hchecker:
