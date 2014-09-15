@@ -154,7 +154,6 @@ $(VERSIONS:%=_builddeb.%):
 _builddeb: localrepo $(patsubst %,_builddeb.%,$(filter-out $(EXCEPT),$(VERSIONS)))
 
 tsuru-server.builddeb serf.builddeb gandalf-server.builddeb archive-server.builddeb crane.builddeb tsuru-client.builddeb tsuru-admin.builddeb hipache-hchecker.builddeb docker-registry.builddeb tsuru-mongoapi.builddeb: golang.builddeb
-lxc-docker.builddeb: golang.builddeb dh-golang.builddeb lvm2.builddeb btrfs-tools.builddeb
 node-hipache.builddeb: nodejs.builddeb
 
 $(patsubst %-deb,%.builddeb,$(wildcard *-deb)): %.builddeb: builder %.buildsrc
@@ -187,19 +186,7 @@ tsuru-server_$(TAG_tsuru-server)$(dtag).orig.tar.gz serf_$(TAG_serf)$(dtag).orig
 	fi
 	tar -zcf $@ -C $(CURDIR)/$(GOBASE) $(TARGET)-$(TAG) --exclude-vcs $(TAR_OPTIONS)
 
-lxc-docker_$(TAG_lxc-docker)$(dtag).orig.tar.gz:
-	$(eval include scopedvars.mk)
-	mkdir -p $(GITBASE)
-	set -e; \
-	if [ -d $(GITBASE)/$(TARGET) ]; then \
-		cd $(GITBASE)/$(TARGET); git fetch; \
-	else \
-		git clone $(GITPATH) $(GITBASE)/$(TARGET); \
-	fi
-	cd $(GITBASE)/$(TARGET); \
-	git archive --output $(abspath $@) --prefix=$(TARGET)-$(TAG)/ $(or $(GITTAG),$(TAG))
-
-dh-golang_$(TAG_dh-golang).orig.tar.gz btrfs-tools_$(TAG_btrfs-tools).orig.tar.xz golang_$(TAG_golang).orig.tar.gz lvm2_$(TAG_lvm2).orig.tar.gz nodejs_$(TAG_nodejs).orig.tar.gz:
+dh-golang_$(TAG_dh-golang).orig.tar.gz golang_$(TAG_golang).orig.tar.gz nodejs_$(TAG_nodejs).orig.tar.gz:
 	$(eval include scopedvars.mk)
 	curl -L -o $@ $(URL)
 
@@ -222,10 +209,9 @@ $(VERSIONS:%=_buildsrc.%):
 
 _buildsrc: $(patsubst %,_buildsrc.%,$(filter-out $(EXCEPT),$(VERSIONS)))
 
-btrfs-tools.buildsrc: btrfs-tools_$(TAG_btrfs-tools).orig.tar.xz
-tsuru-server.buildsrc serf.buildsrc gandalf-server.buildsrc archive-server.buildsrc crane.buildsrc tsuru-client.buildsrc tsuru-admin.buildsrc hipache-hchecker.buildsrc docker-registry.buildsrc tsuru-mongoapi.buildsrc lxc-docker.buildsrc: $$(patsubst %.buildsrc,%,$$@)_$$(TAG_$$(patsubst %.buildsrc,%,$$@))$(dtag).orig.tar.gz
-lvm2.buildsrc golang.buildsrc dh-golang.buildsrc nodejs.buildsrc: $$(patsubst %.buildsrc,%,$$@)_$$(TAG_$$(patsubst %.buildsrc,%,$$@)).orig.tar.gz
-btrfs-tools.buildsrc tsuru-server.buildsrc serf.buildsrc gandalf-server.buildsrc archive-server.buildsrc crane.buildsrc tsuru-client.buildsrc tsuru-admin.buildsrc hipache-hchecker.buildsrc docker-registry.buildsrc tsuru-mongoapi.buildsrc lxc-docker.buildsrc lvm2.buildsrc golang.buildsrc dh-golang.buildsrc nodejs.buildsrc node-hipache.buildsrc: %.buildsrc: %-deb %-deb/debian
+tsuru-server.buildsrc serf.buildsrc gandalf-server.buildsrc archive-server.buildsrc crane.buildsrc tsuru-client.buildsrc tsuru-admin.buildsrc hipache-hchecker.buildsrc docker-registry.buildsrc tsuru-mongoapi.buildsrc : $$(patsubst %.buildsrc,%,$$@)_$$(TAG_$$(patsubst %.buildsrc,%,$$@))$(dtag).orig.tar.gz
+golang.buildsrc dh-golang.buildsrc nodejs.buildsrc: $$(patsubst %.buildsrc,%,$$@)_$$(TAG_$$(patsubst %.buildsrc,%,$$@)).orig.tar.gz
+tsuru-server.buildsrc serf.buildsrc gandalf-server.buildsrc archive-server.buildsrc crane.buildsrc tsuru-client.buildsrc tsuru-admin.buildsrc hipache-hchecker.buildsrc docker-registry.buildsrc tsuru-mongoapi.buildsrc golang.buildsrc dh-golang.buildsrc nodejs.buildsrc node-hipache.buildsrc: %.buildsrc: %-deb %-deb/debian
 	$(eval include scopedvars.mk)
 	rm -rf $(SRCRESULT) $(SRCRESULT).tmp/* || true
 	mkdir -p $(SRCRESULT).tmp/$(TARGET)
