@@ -172,6 +172,14 @@ dtag := $(and $(DAILY_BUILD),+1$(DAILY_TAG))
 tsuru-server_$(TAG_tsuru-server)$(dtag).orig.tar.gz serf_$(TAG_serf)$(dtag).orig.tar.gz gandalf-server_$(TAG_gandalf-server)$(dtag).orig.tar.gz archive-server_$(TAG_archive-server)$(dtag).orig.tar.gz crane_$(TAG_crane)$(dtag).orig.tar.gz tsuru-client_$(TAG_tsuru-client)$(dtag).orig.tar.gz tsuru-admin_$(TAG_tsuru-admin)$(dtag).orig.tar.gz hipache-hchecker_$(TAG_hipache-hchecker)$(dtag).orig.tar.gz docker-registry_$(TAG_docker-registry)$(dtag).orig.tar.gz tsuru-mongoapi_$(TAG_tsuru-mongoapi)$(dtag).orig.tar.gz:
 	$(eval include scopedvars.mk)
 	$(eval export GOPATH = $(CURDIR)/$(GOBASE)/$(TARGET)-$(TAG))
+ifeq ($(and $(CHECK_LAUNCHPAD), $(CHECK_LAUNCHPAD_FAIL)), "no_error")
+	wget https://launchpad.net/~$$(echo $(PPA) | cut -d'/' -f1)/+archive/$$(echo $(PPA) | cut -d'/' -f2)/+files/$@ ;  \
+	content_tar_ball=$$(tar -tzf $@ >/dev/null ; echo $$?) ; \
+	if [ "$$content_tar_ball" != "0" ]; then \
+		rm $@; \
+		$(MAKE) CHECK_LAUNCHPAD="" CHECK_LAUNCHPAD_FAIL="yes" $@; \
+	fi
+else
 	rm -rf $(GOPATH) 2>/dev/null || true
 	mkdir -p $(GOPATH)
 	go get -v -u -d $(or $(GOURL),$(GITPATH)/...)
@@ -185,6 +193,7 @@ tsuru-server_$(TAG_tsuru-server)$(dtag).orig.tar.gz serf_$(TAG_serf)$(dtag).orig
 		godep restore ./...; \
 	fi
 	tar -zcf $@ -C $(CURDIR)/$(GOBASE) $(TARGET)-$(TAG) --exclude-vcs $(TAR_OPTIONS)
+endif
 
 dh-golang_$(TAG_dh-golang).orig.tar.gz golang_$(TAG_golang).orig.tar.gz nodejs_$(TAG_nodejs).orig.tar.gz:
 	$(eval include scopedvars.mk)

@@ -21,6 +21,9 @@ export DAILY_TAG := $(or $(DAILY_TAG),$(shell date +'SNAPSHOT%Y%m%d%H%M%S%z'))
 export DAILY_BUILD := $(DAILY_BUILD)
 DAILY_BUILD_EXCEPT = dh-golang golang nodejs node-hipache
 
+export CHECK_LAUNCHPAD := $(PPA)
+export CHECK_LAUNCHPAD_FAIL := "no_error"
+
 TAG_tsuru-server = 0.6.2.1
 TAG_serf = 0.4.1
 TAG_gandalf-server = 0.5.0
