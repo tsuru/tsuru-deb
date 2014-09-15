@@ -3,7 +3,7 @@ GOBASE := $(TMP)/gobase
 GITBASE := $(TMP)/gitbase
 NODEBASE := $(TMP)/nodebase
 
-VERSIONS=precise trusty wheezy
+export VERSIONS := $(or $(VERSIONS),"precise trusty wheezy")
 
 DEBIAN_MIRROR = http://http.debian.net/debian
 UBUNTU_MIRROR = http://archive.ubuntu.com/ubuntu
