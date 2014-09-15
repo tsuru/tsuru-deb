@@ -1,2 +1,0 @@
-debian/bin/docker usr/bin
-debian/bin/dockerinit usr/libexec/docker

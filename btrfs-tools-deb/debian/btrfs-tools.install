@@ -1,4 +1,0 @@
-btrfs-calc-size		/sbin
-btrfs-select-super	/sbin
-debian/local/fsck.btrfs /sbin
-ioctl.h			/usr/include/btrfs
