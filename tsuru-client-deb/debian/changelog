@@ -1,8 +1,12 @@
-tsuru-client (0.11.2-2) unstable; urgency=medium
+tsuru-client (0.12.0-0) unstable; urgency=medium
 
+  [ Philip Tzou ]
   * Change distribution to unstable
 
- -- Philip Tzou <philip.npc@gmail.com>  Fri, 12 Sep 2014 09:00:28 +0000
+  [ Paulo Sousa ]
+  * New upstream release
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Tue, 23 Sep 2014 10:04:18 -0300
 
 tsuru-client (0.11.2-1~precise1) precise; urgency=medium
 
