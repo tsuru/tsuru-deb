@@ -8,7 +8,7 @@ Homepage: http://tsuru.io
 
 Package: tsuru-server
 Architecture: amd64 i386
-Depends: ${misc:Depends}, libsqlite3-0, openssh-client
+Depends: ${misc:Depends}, libsqlite3-0
 Description: tsuru-server is the server side of the Tsuru PaaS.
  This package includes two services: Tsuru API and Tsuru SSH agent. All jobs
  are disabled by default, to enable any of them, edit the file

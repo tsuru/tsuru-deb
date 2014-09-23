@@ -138,7 +138,6 @@ git:
 #    * router: the router to use.
 #    * deploy-cmd: command to run every time user runs deploy. When using
 #                  Tsuru's default images, just uncomment the line.
-#    * ssh-agent-port: the port where Docker SSH agent runs on Docker nodes.
 #    * segregate: indicates whether tsuru should use a scheduler that
 #                  segregates containers among Docker nodes. When using this
 #                  scheduler, each team will have a group of Docker nodes and
@@ -168,7 +167,6 @@ git:
 #   repository-namespace: tsuru
 #   router: hipache
 #   deploy-cmd: /var/lib/tsuru/deploy
-#   ssh-agent-port: 4545
 #   segregate: false
 #   scheduler:
 #     redis-server: 127.0.0.1:6379
