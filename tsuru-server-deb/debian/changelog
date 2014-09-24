@@ -1,3 +1,10 @@
+tsuru-server (0.7.2-0) unstable; urgency=medium
+
+  * New upstream release
+  * Removing stuff related to ssh-agent and admin api
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Wed, 24 Sep 2014 11:09:27 -0300
+
 tsuru-server (0.7.1-0) unstable; urgency=medium
 
   * New upstream release

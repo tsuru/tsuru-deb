@@ -1,3 +1,9 @@
+tsuru-client (0.12.0-1) unstable; urgency=medium
+
+  * Adding bash-completion
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Wed, 24 Sep 2014 14:43:45 -0300
+
 tsuru-client (0.12.0-0) unstable; urgency=medium
 
   [ Philip Tzou ]
