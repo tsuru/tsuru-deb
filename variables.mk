@@ -3,7 +3,7 @@ GOBASE := $(TMP)/gobase
 GITBASE := $(TMP)/gitbase
 NODEBASE := $(TMP)/nodebase
 
-export VERSIONS := $(or $(VERSIONS),"precise trusty wheezy")
+export VERSIONS := $(or $(VERSIONS),precise trusty wheezy)
 
 DEBIAN_MIRROR = http://http.debian.net/debian
 UBUNTU_MIRROR = http://archive.ubuntu.com/ubuntu
@@ -21,7 +21,6 @@ export DAILY_TAG := $(or $(DAILY_TAG),$(shell date +'SNAPSHOT%Y%m%d%H%M%S%z'))
 export DAILY_BUILD := $(DAILY_BUILD)
 DAILY_BUILD_EXCEPT = dh-golang golang nodejs node-hipache
 
-export CHECK_LAUNCHPAD := $(PPA)
 export CHECK_LAUNCHPAD_FAIL := "no_error"
 
 TAG_tsuru-server = 0.7.2
@@ -40,3 +39,5 @@ TAG_nodejs = 0.10.26.3
 TAG_node-hipache = 0.2.5
 
 -include variables.local.mk
+
+export CHECK_LAUNCHPAD := $(PPA)
