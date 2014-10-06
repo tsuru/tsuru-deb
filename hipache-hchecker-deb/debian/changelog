@@ -1,3 +1,9 @@
+hipache-hchecker (0.2.4.3-0) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Mon, 06 Oct 2014 11:11:36 -0300
+
 hipache-hchecker (0.2.4.2-1) unstable; urgency=low
 
   * Change distribution to unstable
