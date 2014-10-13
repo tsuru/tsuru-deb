@@ -1,3 +1,28 @@
+gandalf-server (0.5.0-5) unstable; urgency=medium
+
+  * Removing git-daemon upstart
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Mon, 13 Oct 2014 17:00:04 -0300
+
+gandalf-server (0.5.0-4) unstable; urgency=medium
+
+  * Do not touch on git-daemon init.d
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Mon, 13 Oct 2014 16:29:09 -0300
+
+gandalf-server (0.5.0-3) unstable; urgency=medium
+
+  * Adding git-daemon upstart
+  * Keeping git-daemon.example and git-daemon-sysvinit for debian compliance
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Mon, 13 Oct 2014 15:48:54 -0300
+
+gandalf-server (0.5.0-2) unstable; urgency=medium
+
+  * Move git-daemon.default.example to /etc/default and set disabled by default
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Mon, 13 Oct 2014 15:10:07 -0300
+
 gandalf-server (0.5.0-1) unstable; urgency=medium
 
   * Change distribution to unstable
