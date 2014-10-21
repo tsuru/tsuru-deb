@@ -1,3 +1,9 @@
+tsuru-admin (0.7.0-0) precise; urgency=medium
+
+  * New upstream release
+
+ -- Francisco Souza <fss@corp.globo.com>  Tue, 21 Oct 2014 15:55:23 -0200
+
 tsuru-admin (0.6.0-1) unstable; urgency=medium
 
   * Adding bash-completion
