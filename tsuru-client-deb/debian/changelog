@@ -1,3 +1,9 @@
+tsuru-client (0.13.0-0ubuntu1) precise; urgency=medium
+
+  * New upstream release
+
+ -- Francisco Souza <fss@corp.globo.com>  Tue, 21 Oct 2014 15:23:38 -0200
+
 tsuru-client (0.12.0-1) unstable; urgency=medium
 
   * Adding bash-completion
