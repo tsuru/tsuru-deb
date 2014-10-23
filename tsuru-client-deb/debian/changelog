@@ -1,3 +1,9 @@
+tsuru-client (0.13.2-0) precise; urgency=medium
+
+  * New upstream release
+
+ -- Francisco Souza <fss@corp.globo.com>  Thu, 23 Oct 2014 20:42:12 -0200
+
 tsuru-client (0.13.1-0) precise; urgency=high
 
   * New upstream release, fixing a bug with deprecated commands 
