@@ -1,3 +1,9 @@
+tsuru-server (0.8.1-0) precise; urgency=medium
+
+  * New upstream release
+
+ -- Cezar Sa Espinola <cezarsa@gmail.com>  Mon, 03 Nov 2014 19:34:17 +0000
+
 tsuru-server (0.8.0-0) precise; urgency=medium
 
   * New upstream release 
