@@ -1,3 +1,15 @@
+crane (0.6.1-0) precise; urgency=low
+
+  * New upstream release
+
+ -- Francisco Souza <fss@corp.globo.com>  Thu, 23 Oct 2014 15:48:37 -0200
+
+crane (0.6.0-0ubuntu1) precise; urgency=medium
+
+  * New upstream release
+
+ -- Francisco Souza <fss@corp.globo.com>  Mon, 20 Oct 2014 18:02:09 -0200
+
 crane (0.5.4-1) unstable; urgency=medium
 
   * Change distribution to unstable
