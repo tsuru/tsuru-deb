@@ -17,7 +17,7 @@ all:
 
 clean:
 	rm -rf $(CURDIR)/$(TMP)
-	sudo git --git-dir=$(CURDIR)/.git clean -dfX --e \!variables.local.mk
+	sudo git --git-dir=$(CURDIR)/.git clean -dfX --e \!variables.local.mk --e \!builder --e \!localrepo
 
 prepare:
 	sudo apt-get update -qq

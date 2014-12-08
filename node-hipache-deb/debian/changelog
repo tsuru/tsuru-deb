@@ -1,3 +1,9 @@
+node-hipache (0.2.5-6) unstable; urgency=medium
+
+  * Fix node-http-proxy module - rebuild with previous patch
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Wed, 03 Dec 2014 19:27:52 -0200
+
 node-hipache (0.2.5-5) unstable; urgency=medium
 
   * Fix "can't set headers after they are sent" error - catching and logging exception

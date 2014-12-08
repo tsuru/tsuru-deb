@@ -1,0 +1,28 @@
+#!/bin/bash
+
+read -d '' http_proxy_headers_patch <<"EOF"
+--- package/lib/node-http-proxy/http-proxy.js	2013-06-20 09:54:33.000000000 -0300
++++ package.orig/lib/node-http-proxy/http-proxy.js	2014-12-03 19:23:51.954263410 -0200
+@@ -326,10 +326,14 @@
+     }
+
+     // Set the headers of the client response
+-    Object.keys(response.headers).forEach(function (key) {
+-      res.setHeader(key, response.headers[key]);
+-    });
+-    res.writeHead(response.statusCode);
++    try {
++      Object.keys(response.headers).forEach(function (key) {
++        res.setHeader(key, response.headers[key]);
++      });
++      res.writeHead(response.statusCode);
++    } catch (ex) {
++      console.error("setHeader error: %s - %s", ex.message, util.inspect(response.headers));
++    }
+
+     function ondata(chunk) {
+       if (res.writable) {
+EOF
+
+cd /usr/lib/node_modules/hipache/node_modules/http-proxy/lib
+echo "${http_proxy_headers_patch}" | patch -p2
