@@ -1,4 +1,10 @@
-tsuru-server (0.9.0-0) unstanble; urgency=medium
+tsuru-server (0.9.1-0) precise; urgency=low
+
+  * New upstream release
+
+ -- Francisco Souza <fss@corp.globo.com>  Fri, 05 Dec 2014 15:29:51 -0200
+
+tsuru-server (0.9.0-0) precise; urgency=medium
 
   * New upstream release
 

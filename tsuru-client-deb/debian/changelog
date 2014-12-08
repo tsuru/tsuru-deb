@@ -1,3 +1,9 @@
+tsuru-client (0.14.0-0) precise; urgency=low
+
+  * New upstream release
+
+ -- Francisco Souza <fss@corp.globo.com>  Wed, 03 Dec 2014 15:26:36 -0200
+
 tsuru-client (0.13.2-0) precise; urgency=medium
 
   * New upstream release
