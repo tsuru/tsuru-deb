@@ -37,7 +37,7 @@ endif
 
 ifeq ($(TARGET),golang)
 	export EXCEPT = sid jessie utopic
-	URL := https://launchpad.net/debian/+archive/primary/+files/golang_$(TAG).orig.tar.gz
+	URL := https://github.com/golang/go/archive/go$(TAG:.0=).tar.gz
 endif
 
 ifeq ($(TARGET),hipache-hchecker)

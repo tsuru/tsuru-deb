@@ -34,7 +34,7 @@ TAG_hipache-hchecker = 0.2.4.3
 TAG_docker-registry = 0.1.1
 TAG_tsuru-mongoapi = 0.2.0
 TAG_dh-golang = 1.5
-TAG_golang = 1.2.1
+TAG_golang = 1.4.0
 TAG_nodejs = 0.10.26.3
 TAG_node-hipache = 0.2.5
 
