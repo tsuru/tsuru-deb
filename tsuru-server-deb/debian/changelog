@@ -1,3 +1,9 @@
+tsuru-server (0.9.1-1) unstable; urgency=medium
+
+  * New build dependency - golang >= 1.4.0
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Tue, 16 Dec 2014 10:56:12 -0200
+
 tsuru-server (0.9.1-0) precise; urgency=low
 
   * New upstream release
