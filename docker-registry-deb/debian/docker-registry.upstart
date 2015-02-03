@@ -14,5 +14,5 @@ setgid registry
 script
   DOCKER_REGISTRY_LISTEN=":8080"
   if [ -f /etc/default/docker-registry ]; then . /etc/default/docker-registry; fi
-  exec /usr/bin/docker-registry -l $DOCKER_REGISTRY_LISTEN -d /var/lib/docker-registry -p /var/run/registry/docker-registry.pid
+  exec /usr/bin/docker-registry -l $DOCKER_REGISTRY_LISTEN -d /var/lib/docker-registry -p /var/lib/docker-registry/docker-registry.pid
 end script

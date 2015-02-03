@@ -1,4 +1,3 @@
 usr/bin
 etc
-var/run/registry
 var/lib/docker-registry
