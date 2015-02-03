@@ -1,3 +1,9 @@
+docker-registry (0.1.1-6) precise; urgency=medium
+
+  * Move pid file and prevent failures after reboot
+
+ -- Francisco Souza <fss@corp.globo.com>  Tue, 03 Feb 2015 17:26:48 -0200
+
 docker-registry (0.1.1-5) unstable; urgency=medium
 
   * Add sysvinit script 
