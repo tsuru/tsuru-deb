@@ -1,3 +1,10 @@
+archive-server (0.1.1-5) precise; urgency=low
+
+  * Improve the format of the /etc/default file, easing customization of
+    parameters
+
+ -- Francisco Souza <fss@corp.globo.com>  Fri, 06 Feb 2015 10:42:28 -0200
+
 archive-server (0.1.1-4) unstable; urgency=medium
 
   [ Philip Tzou ]
