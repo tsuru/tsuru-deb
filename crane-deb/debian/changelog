@@ -1,3 +1,9 @@
+crane (0.7.0-0) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Tue, 24 Feb 2015 17:19:36 -0300
+
 crane (0.6.3-0) precise; urgency=low
 
   * New upstream release

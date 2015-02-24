@@ -1,3 +1,9 @@
+tsuru-client (0.15.0-0) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Tue, 24 Feb 2015 17:10:22 -0300
+
 tsuru-client (0.14.1-0) precise; urgency=low
 
   * New upstream release
