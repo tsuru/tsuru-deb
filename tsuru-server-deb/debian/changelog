@@ -1,3 +1,9 @@
+tsuru-server (0.10.0-0) precise; urgency=medium
+
+  * New upstream release
+
+ -- Francisco Souza <fss@corp.globo.com>  Tue, 24 Feb 2015 16:55:29 -0300
+
 tsuru-server (0.9.1-1) unstable; urgency=medium
 
   * New build dependency - golang >= 1.4.0
