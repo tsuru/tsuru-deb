@@ -156,7 +156,7 @@ Variable ``DEBEMAIL`` and ``DEBFULLNAME`` is required if you want to custom the 
 	export DEBEMAIL = johndue@example.com
 	export DEBFULLNAME = John Due 
 
-## Maintainance
+## Maintenance
 
 ### Bump versions
 If a package is old, you can upgrade it following these steps:
