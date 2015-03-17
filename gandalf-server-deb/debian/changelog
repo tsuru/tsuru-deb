@@ -1,3 +1,9 @@
+gandalf-server (0.7.0-0) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Tue, 17 Mar 2015 14:42:06 -0300
+
 gandalf-server (0.6.0-0) precise; urgency=medium
 
   * New upstream release
