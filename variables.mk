@@ -4,6 +4,7 @@ GITBASE := $(TMP)/gitbase
 NODEBASE := $(TMP)/nodebase
 
 export VERSIONS := $(or $(VERSIONS),precise trusty wheezy)
+export EXTRA_VERSIONS_RELEASES := $(or $(EXTRA_VERSIONS_RELEASES),utopic vivid)
 
 DEBIAN_MIRROR = http://http.debian.net/debian
 UBUNTU_MIRROR = http://archive.ubuntu.com/ubuntu
@@ -13,9 +14,9 @@ BUILDTEXT_precise = "Backport to precise."
 BUILDSUFFIX_trusty = ~trusty
 BUILDTEXT_trusty = "Build for trusty."
 BUILDSUFFIX_utopic = ~utopic
-BUILDTEXT_utopic = "Build for trusty."
+BUILDTEXT_utopic = "Build for utopic."
 BUILDSUFFIX_vivid = ~vivid
-BUILDTEXT_vivid= "Build for trusty."
+BUILDTEXT_vivid= "Build for vivid."
 BUILDSUFFIX_wheezy = ~bpo70+
 BUILDTEXT_wheezy = "Rebuild for wheezy-backports."
 BUILDDIST_wheezy = wheezy-backports
