@@ -36,13 +36,13 @@ upload: $(patsubst %-deb,%.upload,$(wildcard *-deb))
 # upload to PPA
 # =============
 
-$(VERSIONS:%=_upload.%):
+$(strip $(VERSIONS:%=_upload.%) $(EXTRA_VERSIONS:%=_upload.%)):
 	$(eval VERSION := $(@:_upload.%=%))
 	$(eval buildsfx := $(BUILDSUFFIX_$(VERSION)))
 	eval $$(gpg-agent --daemon) && debsign -k $(GPGID) $(SRCRESULT).tmp/*$(buildsfx)*.changes 
 	dput ppa:$(PPA) $(SRCRESULT).tmp/*$(buildsfx)*.changes 
 
-_upload: $(patsubst %,_upload.%,$(filter-out $(EXCEPT),$(VERSIONS)))
+_upload: $(patsubst %,_upload.%,$(strip $(filter-out $(EXCEPT),$(VERSIONS)) $(EXTRA_VERSIONS)))
 
 $(patsubst %-deb,%.upload,$(wildcard *-deb)): %.upload: %.buildsrc
 	@if [ ! $(PPA) ]; then \
@@ -67,7 +67,7 @@ $(patsubst %-deb,%.upload,$(wildcard *-deb)): %.upload: %.buildsrc
 # reprepro initialization
 # =======================
 
-$(VERSIONS:%=_distributions.%):
+$(strip $(VERSIONS:%=_distributions.%) $(EXTRA_VERSIONS:%=_distributions.%)):
 	$(eval VERSION := $(@:_distributions.%=%))
 	$(eval dist := $(CURDIR)/localrepo.tmp/conf/distributions)
 	echo "Origin: tsuru-deb" >> $(dist)
@@ -98,7 +98,7 @@ localrepo/conf:
 	sudo apt-get install reprepro gnupg -y
 	rm -rf $(localrepo).tmp 2>/dev/null || true
 	mkdir -p $(localrepo).tmp/conf
-	$(MAKE) $(patsubst %,_distributions.%,$(filter-out $(EXCEPT),$(VERSIONS)))
+	$(MAKE) $(patsubst %,_distributions.%,$(strip $(filter-out $(EXCEPT),$(VERSIONS)) $(EXTRA_VERSIONS)))
 	echo "verbose" >> $(localrepo).tmp/conf/options
 	echo "ask-passphrase" >> $(localrepo).tmp/conf/options
 	echo "basedir ." >> $(localrepo).tmp/conf/options
@@ -111,7 +111,7 @@ localrepo: localrepo/conf
 # cowbuilder initialization
 # =========================
 
-$(VERSIONS:%=builder/%-base.cow):
+$(strip $(VERSIONS:%=builder/%-base.cow) $(EXTRA_VERSIONS:%=builder/%-base.cow)):
 	$(eval VERSION := $(@:builder/%-base.cow=%))
 	$(eval export MIRRORSITE = $(MIRROR_$(VERSION)))
 	$(eval export OTHERMIRROR = $(OTHERMIRROR_$(VERSION)))
@@ -132,13 +132,13 @@ $(VERSIONS:%=builder/%-base.cow):
 	rm /tmp/repo.sh 2>/dev/null || true
 	@sudo touch $@
 
-builder: localrepo/conf $(patsubst %,builder/%-base.cow,$(filter-out $(EXCEPT),$(VERSIONS)))
+builder: localrepo/conf $(patsubst %,builder/%-base.cow,$(strip $(filter-out $(EXCEPT),$(VERSIONS)) $(EXTRA_VERSIONS)))
 	@touch builder
 
 # builddeb-related rules
 # ======================
 
-$(VERSIONS:%=_builddeb.%):
+$(strip $(VERSIONS:%=_builddeb.%) $(EXTRA_VERSIONS:%=_builddeb.%)):
 	$(eval VERSION := $(@:_builddeb.%=%))
 	$(eval export MIRRORSITE = $(MIRROR_$(VERSION)))
 	$(eval export OTHERMIRROR = $(OTHERMIRROR_$(VERSION)))
@@ -151,7 +151,7 @@ $(VERSIONS:%=_builddeb.%):
 	sudo rm -rf $(PBUILDFOLDER)
 	-cd $(CURDIR)/localrepo && ls $(DEBRESULT).tmp/$(VERSION)/*.changes | xargs --verbose -L 1 reprepro include $(or $(BUILDDIST_$(VERSION)),$(VERSION))
 
-_builddeb: localrepo $(patsubst %,_builddeb.%,$(filter-out $(EXCEPT),$(VERSIONS)))
+_builddeb: localrepo $(patsubst %,_builddeb.%,$(strip $(filter-out $(EXCEPT),$(VERSIONS)) $(EXTRA_VERSIONS)))
 
 tsuru-server.builddeb serf.builddeb gandalf-server.builddeb archive-server.builddeb crane.builddeb tsuru-client.builddeb tsuru-admin.builddeb hipache-hchecker.builddeb docker-registry.builddeb tsuru-mongoapi.builddeb: golang.builddeb
 node-hipache.builddeb: nodejs.builddeb
@@ -202,7 +202,7 @@ dh-golang_$(TAG_dh-golang).orig.tar.gz golang_$(TAG_golang).orig.tar.gz nodejs_$
 # buildsrc-related rules
 # ======================
 
-$(VERSIONS:%=_buildsrc.%):
+$(strip $(VERSIONS:%=_buildsrc.%) $(EXTRA_VERSIONS:%=_buildsrc.%)):
 	$(eval VERSION := $(@:_buildsrc.%=%))
 	$(eval debver := $(and $(filter-out $(DAILY_BUILD_EXCEPT),$(TARGET)),$(DAILY_BUILD),$(TAG)$(dtag)))
 	cp $(SRCRESULT).tmp/$(TARGET)/debian/changelog /tmp/$(TARGET).changelog.orig
@@ -216,7 +216,7 @@ $(VERSIONS:%=_buildsrc.%):
 	cd $(SRCRESULT).tmp/$(TARGET); debuild --no-tgz-check -S -sa -us -uc
 	mv /tmp/$(TARGET).changelog.orig $(SRCRESULT).tmp/$(TARGET)/debian/changelog
 
-_buildsrc: $(patsubst %,_buildsrc.%,$(filter-out $(EXCEPT),$(VERSIONS)))
+_buildsrc: $(patsubst %,_buildsrc.%,$(strip $(filter-out $(EXCEPT),$(VERSIONS)) $(EXTRA_VERSIONS)))
 
 tsuru-server.buildsrc serf.buildsrc gandalf-server.buildsrc archive-server.buildsrc crane.buildsrc tsuru-client.buildsrc tsuru-admin.buildsrc hipache-hchecker.buildsrc docker-registry.buildsrc tsuru-mongoapi.buildsrc : $$(patsubst %.buildsrc,%,$$@)_$$(TAG_$$(patsubst %.buildsrc,%,$$@))$(dtag).orig.tar.gz
 golang.buildsrc dh-golang.buildsrc nodejs.buildsrc: $$(patsubst %.buildsrc,%,$$@)_$$(TAG_$$(patsubst %.buildsrc,%,$$@)).orig.tar.gz

@@ -10,10 +10,12 @@ UBUNTU_MIRROR = http://archive.ubuntu.com/ubuntu
 
 BUILDSUFFIX_precise = ~precise
 BUILDTEXT_precise = "Backport to precise."
-BUILDSUFFIX_saucy = ~saucy
-BUILDTEXT_saucy = "Backport to saucy."
 BUILDSUFFIX_trusty = ~trusty
 BUILDTEXT_trusty = "Build for trusty."
+BUILDSUFFIX_utopic = ~utopic
+BUILDTEXT_utopic = "Build for trusty."
+BUILDSUFFIX_vivid = ~vivid
+BUILDTEXT_vivid= "Build for trusty."
 BUILDSUFFIX_wheezy = ~bpo70+
 BUILDTEXT_wheezy = "Rebuild for wheezy-backports."
 BUILDDIST_wheezy = wheezy-backports

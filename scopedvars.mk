@@ -4,6 +4,7 @@ export TAG := $(TAG_$(TARGET))
 export SRCRESULT := $(CURDIR)/$(TARGET).buildsrc
 export DEBRESULT := $(CURDIR)/$(TARGET).builddeb
 export EXCEPT :=
+
 GITTAG :=
 GITPATH :=
 TAR_OPTIONS :=
@@ -17,6 +18,7 @@ endif
 
 ifeq ($(TARGET),crane)
 	GITPATH = github.com/tsuru/crane
+	export EXTRA_VERSIONS = $(EXTRA_VERSIONS_RELEASES)
 	GOURL := $(GITPATH)
 endif
 
@@ -59,11 +61,13 @@ endif
 
 ifeq ($(TARGET),tsuru-admin)
 	GITPATH = github.com/tsuru/tsuru-admin
+	export EXTRA_VERSIONS = $(EXTRA_VERSIONS_RELEASES)
 	GOURL := $(GITPATH)
 endif
 
 ifeq ($(TARGET),tsuru-client)
 	GITPATH = github.com/tsuru/tsuru-client
+	export EXTRA_VERSIONS = $(EXTRA_VERSIONS_RELEASES)
 	GOURL := $(GITPATH)/...
 endif
 
