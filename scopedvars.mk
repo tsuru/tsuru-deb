@@ -38,7 +38,8 @@ ifeq ($(TARGET),gandalf-server)
 endif
 
 ifeq ($(TARGET),golang)
-	export EXCEPT = sid jessie utopic
+	export EXCEPT = sid jessie
+	export EXTRA_VERSIONS = $(EXTRA_VERSIONS_RELEASES)
 	URL := https://github.com/golang/go/archive/go$(TAG:.0=).tar.gz
 endif
 
