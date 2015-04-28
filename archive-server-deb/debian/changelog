@@ -1,3 +1,9 @@
+archive-server (0.1.2-0) precise; urgency=medium
+
+  * New upstream release
+
+ -- Francisco Souza <fss@corp.globo.com>  Tue, 28 Apr 2015 15:03:02 -0300
+
 archive-server (0.1.1-5) precise; urgency=low
 
   * Improve the format of the /etc/default file, easing customization of
