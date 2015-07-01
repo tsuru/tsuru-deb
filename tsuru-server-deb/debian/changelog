@@ -1,3 +1,11 @@
+tsuru-server (0.11.2-3) precise; urgency=medium
+
+  * Add a patch to fix a bug in the Godeps file. I've also pushed a forced
+    update to the upstream repository, but we still need this patch, as the
+    source tarball has already been uploaded to Launchpad.
+
+ -- Francisco Souza <fss@corp.globo.com>  Wed, 01 Jul 2015 13:10:47 -0300
+
 tsuru-server (0.11.2-0) precise; urgency=medium
 
   * New upstream release
