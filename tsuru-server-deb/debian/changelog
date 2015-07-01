@@ -1,3 +1,9 @@
+tsuru-server (0.11.2-0) precise; urgency=medium
+
+  * New upstream release
+
+ -- Francisco Souza <fss@corp.globo.com>  Wed, 01 Jul 2015 11:34:30 -0300
+
 tsuru-server (0.11.1-0) precise; urgency=medium
 
   * New upstream release
