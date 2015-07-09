@@ -12,7 +12,6 @@ setgid tsuru
 
 script
   CONFIG_FILE="/etc/tsuru/tsuru.conf"
-  TSR_API_ENABLED="yes"
   if [ -f /etc/default/tsuru-server ]; then . /etc/default/tsuru-server; fi
-  if [ "x$TSR_API_ENABLED" = "xyes" ]; then exec /usr/bin/tsr api --config=${CONFIG_FILE}; fi
+  if [ "$TSR_API_ENABLED" = "yes" -o "$TSR_API_ENABLED" = "true" ]; then exec /usr/bin/tsr api --config=${CONFIG_FILE}; fi
 end script
