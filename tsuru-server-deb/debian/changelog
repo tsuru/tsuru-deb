@@ -1,3 +1,9 @@
+tsuru-server (0.11.3-0) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Mon, 20 Jul 2015 10:39:39 -0300
+
 tsuru-server (0.11.2-3) precise; urgency=medium
 
   * Add a patch to fix a bug in the Godeps file. I've also pushed a forced
