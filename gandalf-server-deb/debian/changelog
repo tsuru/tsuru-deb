@@ -1,3 +1,12 @@
+gandalf-server (0.7.1-0) precise; urgency=medium
+
+  * New upstream release
+  * Atomically changing the authorized_keys file
+  * Added endpoint for updating keys
+  * Make keys unique by name + user name
+
+ -- Francisco Souza <fss@corp.globo.com>  Wed, 29 Jul 2015 09:44:10 -0300
+
 gandalf-server (0.7.0-0) unstable; urgency=medium
 
   * New upstream release
