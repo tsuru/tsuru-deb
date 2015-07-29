@@ -1,0 +1,125 @@
+Index: gandalf-server-0.7.1/src/gopkg.in/mgo.v2/session.go
+=================================================================================
+--- gandalf-server-0.7.1.orig/src/gopkg.in/mgo.v2/session.go	2015-07-29 10:18:08.267094139 -0300
++++ gandalf-server-0.7.1/src/gopkg.in/mgo.v2/session.go	2015-07-29 10:20:29.503094139 -0300
+@@ -289,6 +289,8 @@
+ 	// distinguish it from a slow server, so the timeout stays relevant.
+ 	FailFast bool
+ 
++	ReplicaSetName string
++
+ 	// Database is the default database name used when the Session.DB method
+ 	// is called with an empty name, and is also used during the intial
+ 	// authenticatoin if Source is unset.
+@@ -408,10 +410,111 @@
+ 	options map[string]string
+ }
+ 
++
++// ParseURL parses a MongoDB URL as accepted by the Dial function and returns
++// a value suitable for providing into DialWithInfo.
++//
++// See Dial for more details on the format of url.
++func ParseURL(url string) (*DialInfo, error) {
++	uinfo, err := extractURL(url)
++	if err != nil {
++		return nil, err
++	}
++	direct := false
++	mechanism := ""
++	service := ""
++	source := ""
++	setName := ""
++	poolLimit := 0
++	for k, v := range uinfo.options {
++		switch k {
++		case "authSource":
++			source = v
++		case "authMechanism":
++			mechanism = v
++		case "gssapiServiceName":
++			service = v
++		case "replicaSet":
++			setName = v
++		case "maxPoolSize":
++			poolLimit, err = strconv.Atoi(v)
++			if err != nil {
++				return nil, errors.New("bad value for maxPoolSize: " + v)
++			}
++		case "connect":
++			if v == "direct" {
++				direct = true
++				break
++			}
++			if v == "replicaSet" {
++				break
++			}
++			fallthrough
++		default:
++			return nil, errors.New("unsupported connection URL option: " + k + "=" + v)
++		}
++	}
++	info := DialInfo{
++		Addrs:          uinfo.addrs,
++		Direct:         direct,
++		Database:       uinfo.db,
++		Username:       uinfo.user,
++		Password:       uinfo.pass,
++		Mechanism:      mechanism,
++		Service:        service,
++		Source:         source,
++		PoolLimit:      poolLimit,
++		ReplicaSetName: setName,
++	}
++	return &info, nil
++}
++
+ func parseURL(s string) (*urlInfo, error) {
+ 	if strings.HasPrefix(s, "mongodb://") {
+ 		s = s[10:]
+ 	}
++	info := &urlInfo{options: make(map[string]string)}
++	if c := strings.Index(s, "?"); c != -1 {
++		for _, pair := range strings.FieldsFunc(s[c+1:], isOptSep) {
++			l := strings.SplitN(pair, "=", 2)
++			if len(l) != 2 || l[0] == "" || l[1] == "" {
++				return nil, errors.New("connection option must be key=value: " + pair)
++			}
++			info.options[l[0]] = l[1]
++		}
++		s = s[:c]
++	}
++	if c := strings.Index(s, "@"); c != -1 {
++		pair := strings.SplitN(s[:c], ":", 2)
++		if len(pair) > 2 || pair[0] == "" {
++			return nil, errors.New("credentials must be provided as user:pass@host")
++		}
++		var err error
++		info.user, err = url.QueryUnescape(pair[0])
++		if err != nil {
++			return nil, fmt.Errorf("cannot unescape username in URL: %q", pair[0])
++		}
++		if len(pair) > 1 {
++			info.pass, err = url.QueryUnescape(pair[1])
++			if err != nil {
++				return nil, fmt.Errorf("cannot unescape password in URL")
++			}
++		}
++		s = s[c+1:]
++	}
++	if c := strings.Index(s, "/"); c != -1 {
++		info.db = s[c+1:]
++		s = s[:c]
++	}
++	info.addrs = strings.Split(s, ",")
++	return info, nil
++}
++
++
++func extractURL(s string) (*urlInfo, error) {
++	if strings.HasPrefix(s, "mongodb://") {
++		s = s[10:]
++	}
+ 	info := &urlInfo{options: make(map[string]string)}
+ 	if c := strings.Index(s, "?"); c != -1 {
+ 		for _, pair := range strings.FieldsFunc(s[c+1:], isOptSep) {
