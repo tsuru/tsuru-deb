@@ -1,8 +1,14 @@
-tsuru-server (0.11.3-1) unstable; urgency=medium
+tsuru-server (0.11.3-2) unstable; urgency=medium
 
-  * Fix respawn limit on upstart - should be unlimited
+  * Fix respawn limit on upstart - should be unlimited.
 
  -- Paulo Sousa <paulo.sousa@corp.globo.com>  Fri, 31 Jul 2015 15:51:31 -0300
+
+tsuru-server (0.11.3-1) unstable; urgency=medium
+
+  * Add a patch to fix version reporting.
+
+ -- Francisco Souza <fss@corp.globo.com>  Fri, 31 Jul 2015 11:33:04 -0300
 
 tsuru-server (0.11.3-0) unstable; urgency=medium
 
