@@ -19,7 +19,7 @@ clean:
 	rm -rf $(GOPATH)/bin/* $(GOPATH)/pkg/*
 
 build:
-	go install github.com/tsuru/tsuru/cmd/tsr
+	go install github.com/tsuru/tsuru/cmd/tsurud
 
 install-base-prep:
 	dh_testdir

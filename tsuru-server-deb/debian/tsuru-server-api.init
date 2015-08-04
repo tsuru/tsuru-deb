@@ -16,7 +16,7 @@ DESC=tsuru-server-api
 PID=/var/run/tsuru-server-api.pid
 USER=tsuru
 GROUP=tsuru
-DAEMON=/usr/bin/tsr
+DAEMON=/usr/bin/tsurud
 CONFIG_FILE="/etc/tsuru/tsuru.conf"
 TSR_API_ENABLED=yes
 
