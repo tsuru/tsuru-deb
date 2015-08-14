@@ -39,32 +39,6 @@ git:
   rw-host: my.gandalf.domain
   ro-host: 10.10.10.10
 
-# S3 Bucket support. When this flag is defined as true, Tsuru will create a S3
-# bucket per application. Bucket creation depends on AWS settings (next
-# section).
-#
-# bucket-support: false
-
-# AWS configuration. Tsuru communicates with AWS to manage user credentials on
-# IAM, load balancers on ELB and buckets on S3.
-#
-# Uncomment these settings if you want to create S3 buckets and manage ELB
-# instances per app.
-#
-# aws:
-#   access-key-id: access-id-here
-#   secret-access-key: secret-very-secret
-#   ec2:
-#     endpoint: https://ec2.us-east-1.amazonaws.com
-#   iam:
-#     endpoint: https://iam.amazonaws.com/
-#   s3:
-#     region-name: us-west-1
-#     endpoint: https://ec2.us-west-1.amazonaws.com
-#     bucketEndpoint: https://s3-us-west-1.amazonaws.com
-#     location-constraint: true
-#     lowercase-bucket: true
-
 # Authentication configuration.
 #
 #    * token-expire-days: this option controls the time (in days) for a token
@@ -80,49 +54,6 @@ git:
 #   token-expire-days: 7
 #   hash-cost: 10
 #   user-registration: false
-
-# Tsuru uses provisioners for creating units per app. There are two
-# provisioners: Docker and Juju. In order to use the Juju provisioner, you need
-# to uncomment the lines below and specify the settings you need.
-#
-# Juju configuration includes the following options:
-#
-#    * charms-path: the path to the local charms distribution. Tsuru's charms
-#                   are hosted at github.com/globocom/charms.
-#    * units-collection: the name of the database collection that Juju
-#                        provisioner will use to store information about its
-#                        units.
-#    * use-elb: when defined as true, Juju provisioner will create ELB
-#               instances when provisioning a new app.
-#    * elb-endpoint: HTTP endpoint to the Elastic Load Balancing API.
-#    * elb-collection: the name of the database collection the Juju provision
-#                      will use to store information about ELB instances.
-#    * elb-avail-zones: list of availability zones for the load balancer. This
-#                       option is not necessary in VPC mode.
-#    * elb-use-vpc: defines whether ELB instances should use VPC or ordinary
-#                   EC2 networking. When in VPC mode, all load balancers will
-#                   be created in internal mode. For more details, check AWS
-#                   docs: https://aws.amazon.com/elasticloadbalancing.
-#    * elb-vpc-subnets: list of subnets to use in VPC mode.
-#    * elb-vpc-secgroups: list of security groups to use in VPC mode.
-#
-# provisioner: juju
-# juju:
-#   bootstrap-collection: juju_bootstrap
-#   charms-path: /home/charms
-#   units-collection: juju_units
-#   use-elb: false
-#   elb-endpoint: https://elasticloadbalancing.amazonaws.com
-#   elb-collection: juju_load_balancers
-#   elb-avail-zones:
-#     - us-west-1a
-#   elb-use-vpc: false
-#   elb-vpc-subnets:
-#     - network1
-#     - network2
-#   elb-vpc-secgroups:
-#     - secgroup1
-#     - secgroup2
 
 # Below are settings for the Docker provisioner. Tsuru uses Docker in a
 # clustered environment, so there are some settings related to the scheduling
@@ -180,12 +111,6 @@ git:
 #     public-key: /home/ubuntu/.ssh/id_rsa.pub
 #     user: ubuntu
 #     sshd-path: /usr/sbin/sshd
-
-# The address of the queue server (beanstalkd). By default, it's
-# 127.0.0.1:11300. Uncomment and change for connecting in a different
-# Beanstalkd instance.
-#
-# queue-server: "127.0.0.1:11300"
 
 # The name of the admin team. When ommited, no team will be able to administrate Tsuru.
 # 
