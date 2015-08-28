@@ -5,7 +5,6 @@ if ! $exists
 then
 	echo "Creating user \"$user\" within group \"$user\""...
 	useradd --system -md /var/lib/$user $user
-	chown -R $user:$user /var/lib/$user/.ssh
 fi
 
 # see dh_installdeb(1)
