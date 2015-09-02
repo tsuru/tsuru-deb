@@ -1,3 +1,9 @@
+archive-server (0.1.2-1) precise; urgency=medium
+
+  * List git in the package dependencies
+
+ -- Francisco Souza <fss@corp.globo.com>  Wed, 02 Sep 2015 12:56:49 -0300
+
 archive-server (0.1.2-0) precise; urgency=medium
 
   * New upstream release
