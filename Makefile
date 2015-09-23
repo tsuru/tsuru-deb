@@ -169,7 +169,7 @@ $(patsubst %-deb,%.builddeb,$(wildcard *-deb)): %.builddeb: builder %.buildsrc
 
 dtag := $(and $(DAILY_BUILD),+1$(DAILY_TAG))
 
-tsuru-server_$(TAG_tsuru-server)$(dtag).orig.tar.gz serf_$(TAG_serf)$(dtag).orig.tar.gz gandalf-server_$(TAG_gandalf-server)$(dtag).orig.tar.gz archive-server_$(TAG_archive-server)$(dtag).orig.tar.gz crane_$(TAG_crane)$(dtag).orig.tar.gz tsuru-client_$(TAG_tsuru-client)$(dtag).orig.tar.gz tsuru-admin_$(TAG_tsuru-admin)$(dtag).orig.tar.gz hipache-hchecker_$(TAG_hipache-hchecker)$(dtag).orig.tar.gz docker-registry_$(TAG_docker-registry)$(dtag).orig.tar.gz tsuru-mongoapi_$(TAG_tsuru-mongoapi)$(dtag).orig.tar.gz deploy-agent_$(TAG_deploy-agent)$(dtag):
+tsuru-server_$(TAG_tsuru-server)$(dtag).orig.tar.gz serf_$(TAG_serf)$(dtag).orig.tar.gz gandalf-server_$(TAG_gandalf-server)$(dtag).orig.tar.gz archive-server_$(TAG_archive-server)$(dtag).orig.tar.gz crane_$(TAG_crane)$(dtag).orig.tar.gz tsuru-client_$(TAG_tsuru-client)$(dtag).orig.tar.gz tsuru-admin_$(TAG_tsuru-admin)$(dtag).orig.tar.gz hipache-hchecker_$(TAG_hipache-hchecker)$(dtag).orig.tar.gz docker-registry_$(TAG_docker-registry)$(dtag).orig.tar.gz tsuru-mongoapi_$(TAG_tsuru-mongoapi)$(dtag).orig.tar.gz deploy-agent_$(TAG_deploy-agent)$(dtag).orig.tar.gz:
 	$(eval include scopedvars.mk)
 	$(eval export GOPATH = $(CURDIR)/$(GOBASE)/$(TARGET)-$(TAG))
 ifeq ($(and $(CHECK_LAUNCHPAD), $(CHECK_LAUNCHPAD_FAIL)), "no_error")
