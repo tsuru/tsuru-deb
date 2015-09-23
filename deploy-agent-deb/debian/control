@@ -1,0 +1,14 @@
+Source: deploy-agent
+Section: devel
+Priority: extra
+Maintainer: Globo.com <tsuru@corp.globo.com>
+Build-Depends: debhelper (>= 7.0.50~), golang (>= 2:1.4~)
+Standards-Version: 3.9.3
+Homepage: http://tsuru.io
+
+Package: deploy-agent
+Architecture: amd64 i386
+Depends: ${misc:Depends}
+Description: deploy-agent is the command line to manage deploys inside build
+ container. It runs deploy commands sended by tsuru and runs build hooks too,
+ then send back to tsuru infos about app's procfile.
