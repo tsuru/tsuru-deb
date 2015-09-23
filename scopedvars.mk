@@ -24,7 +24,7 @@ endif
 
 ifeq ($(TARGET),deploy-agent)
 	GITPATH = github.com/tsuru/deploy-agent
-	GOURL = := $(GITPATH)
+	GOURL := $(GITPATH)
 endif
 
 ifeq ($(TARGET),dh-golang)
