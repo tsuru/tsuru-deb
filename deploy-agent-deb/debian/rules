@@ -17,7 +17,7 @@ build-stamp:
 	cp $(GOPATH)/bin/deploy-agent $(GOPATH)/bin/tsuru_unit_agent
 
 binary-stamp:
-	dh_prep	
+	dh_prep
 	dh_installdirs
 	dh_install
 	dh_strip
