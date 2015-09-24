@@ -1,3 +1,9 @@
+deploy-agent (0.1.1-0) precise; urgency=medium
+
+  * Support tsuru 0.12.x
+
+ -- Tarsis Azevedo <tarsis@corp.globo.com>  Thu, 24 Sep 2015 18:30:39 +0000
+
 deploy-agent (0.1.0-0) precise; urgency=low
 
   * First release of the deb package.
