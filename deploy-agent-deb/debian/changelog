@@ -1,3 +1,9 @@
+deploy-agent (0.1.4-0) precise; urgency=medium
+
+  * Adds restart hooks to tsuru yaml data
+
+ -- Tarsis Azevedo <tarsis@corp.globo.com>  Mon, 28 Sep 2015 18:30:17 +0000
+
 deploy-agent (0.1.3-0) precise; urgency=medium
 
   * Log instead panic
