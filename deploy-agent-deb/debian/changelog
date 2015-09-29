@@ -1,3 +1,9 @@
+deploy-agent (0.1.5-0); urgency=medium
+
+  * Save app envs in file
+
+ -- Tarsis Azevedo <tarsis@corp.globo.com>  Tue, 29 Sep 2015 22:27:13 +0000
+
 deploy-agent (0.1.4-0) precise; urgency=medium
 
   * Adds restart hooks to tsuru yaml data
