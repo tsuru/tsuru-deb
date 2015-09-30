@@ -1,4 +1,4 @@
-deploy-agent (0.1.5-0); urgency=medium
+deploy-agent (0.1.5-0) precise; urgency=medium
 
   * Save app envs in file
 
