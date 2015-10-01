@@ -1,3 +1,9 @@
+deploy-agent (0.1.7-0) precise; urgency=medium
+
+  * Execute commands with system envs
+
+ -- Tarsis Azevedo <tarsis@corp.globo.com>  Thu, 01 Oct 2015 19:34:41 +0000
+
 deploy-agent (0.1.6-0) precise; urgency=medium
 
   * Fix deploy workflow
