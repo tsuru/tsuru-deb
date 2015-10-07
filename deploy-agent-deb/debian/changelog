@@ -1,3 +1,9 @@
+deploy-agent (0.1.8-0) precise; urgency=medium
+
+  * Fix healthcheck execution
+
+ -- Tarsis Azevedo <tarsis@corp.globo.com>  Wed, 07 Oct 2015 17:48:59 +0000
+
 deploy-agent (0.1.7-0) precise; urgency=medium
 
   * Execute commands with system envs
