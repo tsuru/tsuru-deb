@@ -1,0 +1,5 @@
+# Consul enable
+CONSUL_ENABLE=true
+
+# Consul type could be server or client
+CONSUL_TYPE=server

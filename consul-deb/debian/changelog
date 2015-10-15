@@ -1,0 +1,5 @@
+consul (0.5.2-0) unreleased; urgency=low
+
+  * Initial release.
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Wed, 14 Oct 2015 15:35:47 -0300

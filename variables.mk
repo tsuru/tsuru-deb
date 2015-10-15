@@ -26,6 +26,8 @@ export CHECK_LAUNCHPAD_FAIL := "no_error"
 
 TAG_tsuru-server = 0.12.3-rc4
 TAG_serf = 0.4.1
+TAG_consul = 0.5.2
+TAG_consul-template = 0.11.0
 TAG_gandalf-server = 0.7.2
 TAG_archive-server = 0.1.2
 TAG_crane = 0.7.0

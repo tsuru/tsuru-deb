@@ -1,0 +1,5 @@
+consul-template (0.11.0-0) unreleased; urgency=low
+
+  * Initial release.
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Wed, 14 Oct 2015 16:34:47 -0300

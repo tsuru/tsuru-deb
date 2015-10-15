@@ -1,0 +1,14 @@
+Source: consul
+Section: devel
+Priority: extra
+Maintainer: Globo.com <tsuru@corp.globo.com>
+Build-Depends: debhelper (>= 7.0.50~), golang (>= 2:1.4)
+Standards-Version: 3.9.3
+Homepage: https://github.com/hashicorp/consul
+
+Package: consul
+Architecture: amd64
+Depends: ${misc:Depends}
+Description: consul is a tool for service discovery and configuration.
+ Consul is a tool for service discovery and configuration. Consul is
+ distributed, highly available, and extremely scalable.

@@ -1,0 +1,15 @@
+Source: consul-template
+Section: devel
+Priority: extra
+Maintainer: Globo.com <tsuru@corp.globo.com>
+Build-Depends: debhelper (>= 7.0.50~), golang (>= 2:1.4)
+Standards-Version: 3.9.3
+Homepage: http://github.com/hashicorp/consul-template
+
+Package: consul-template
+Architecture: amd64
+Depends: ${misc:Depends}
+Recomends: consul
+Description: consul-template is a convenient way to populate values from Consul into the filesystem.
+ This project provides a convenient way to populate values from Consul into the
+ filesystem using the consul-template daemon.

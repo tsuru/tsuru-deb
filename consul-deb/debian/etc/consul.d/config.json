@@ -1,0 +1,6 @@
+{
+    "data_dir": "/var/lib/consul",
+    "ui_dir": "/usr/share/consul/ui",
+    "log_level": "INFO",
+    "enable_syslog": true
+}

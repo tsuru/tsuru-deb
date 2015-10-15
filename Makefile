@@ -153,7 +153,7 @@ $(strip $(VERSIONS:%=_builddeb.%) $(EXTRA_VERSIONS:%=_builddeb.%)):
 
 _builddeb: localrepo $(patsubst %,_builddeb.%,$(strip $(filter-out $(EXCEPT),$(VERSIONS)) $(EXTRA_VERSIONS)))
 
-tsuru-server.builddeb serf.builddeb gandalf-server.builddeb archive-server.builddeb crane.builddeb tsuru-client.builddeb tsuru-admin.builddeb hipache-hchecker.builddeb docker-registry.builddeb tsuru-mongoapi.builddeb: golang.builddeb
+tsuru-server.builddeb serf.builddeb consul.builddeb consul-template.builddeb gandalf-server.builddeb archive-server.builddeb crane.builddeb tsuru-client.builddeb tsuru-admin.builddeb hipache-hchecker.builddeb docker-registry.builddeb tsuru-mongoapi.builddeb: golang.builddeb
 node-hipache.builddeb: nodejs.builddeb
 
 $(patsubst %-deb,%.builddeb,$(wildcard *-deb)): %.builddeb: builder %.buildsrc
@@ -169,7 +169,7 @@ $(patsubst %-deb,%.builddeb,$(wildcard *-deb)): %.builddeb: builder %.buildsrc
 
 dtag := $(and $(DAILY_BUILD),+1$(DAILY_TAG))
 
-tsuru-server_$(TAG_tsuru-server)$(dtag).orig.tar.gz serf_$(TAG_serf)$(dtag).orig.tar.gz gandalf-server_$(TAG_gandalf-server)$(dtag).orig.tar.gz archive-server_$(TAG_archive-server)$(dtag).orig.tar.gz crane_$(TAG_crane)$(dtag).orig.tar.gz tsuru-client_$(TAG_tsuru-client)$(dtag).orig.tar.gz tsuru-admin_$(TAG_tsuru-admin)$(dtag).orig.tar.gz hipache-hchecker_$(TAG_hipache-hchecker)$(dtag).orig.tar.gz docker-registry_$(TAG_docker-registry)$(dtag).orig.tar.gz tsuru-mongoapi_$(TAG_tsuru-mongoapi)$(dtag).orig.tar.gz:
+tsuru-server_$(TAG_tsuru-server)$(dtag).orig.tar.gz serf_$(TAG_serf)$(dtag).orig.tar.gz consul_$(TAG_consul)$(dtag).orig.tar.gz consul-template_$(TAG_consul-template)$(dtag).orig.tar.gz gandalf-server_$(TAG_gandalf-server)$(dtag).orig.tar.gz archive-server_$(TAG_archive-server)$(dtag).orig.tar.gz crane_$(TAG_crane)$(dtag).orig.tar.gz tsuru-client_$(TAG_tsuru-client)$(dtag).orig.tar.gz tsuru-admin_$(TAG_tsuru-admin)$(dtag).orig.tar.gz hipache-hchecker_$(TAG_hipache-hchecker)$(dtag).orig.tar.gz docker-registry_$(TAG_docker-registry)$(dtag).orig.tar.gz tsuru-mongoapi_$(TAG_tsuru-mongoapi)$(dtag).orig.tar.gz:
 	$(eval include scopedvars.mk)
 	$(eval export GOPATH = $(CURDIR)/$(GOBASE)/$(TARGET)-$(TAG))
 ifeq ($(and $(CHECK_LAUNCHPAD), $(CHECK_LAUNCHPAD_FAIL)), "no_error")
@@ -218,9 +218,9 @@ $(strip $(VERSIONS:%=_buildsrc.%) $(EXTRA_VERSIONS:%=_buildsrc.%)):
 
 _buildsrc: $(patsubst %,_buildsrc.%,$(strip $(filter-out $(EXCEPT),$(VERSIONS)) $(EXTRA_VERSIONS)))
 
-tsuru-server.buildsrc serf.buildsrc gandalf-server.buildsrc archive-server.buildsrc crane.buildsrc tsuru-client.buildsrc tsuru-admin.buildsrc hipache-hchecker.buildsrc docker-registry.buildsrc tsuru-mongoapi.buildsrc : $$(patsubst %.buildsrc,%,$$@)_$$(TAG_$$(patsubst %.buildsrc,%,$$@))$(dtag).orig.tar.gz
+tsuru-server.buildsrc serf.buildsrc consul.buildsrc consul-template.buildsrc gandalf-server.buildsrc archive-server.buildsrc crane.buildsrc tsuru-client.buildsrc tsuru-admin.buildsrc hipache-hchecker.buildsrc docker-registry.buildsrc tsuru-mongoapi.buildsrc : $$(patsubst %.buildsrc,%,$$@)_$$(TAG_$$(patsubst %.buildsrc,%,$$@))$(dtag).orig.tar.gz
 golang.buildsrc dh-golang.buildsrc nodejs.buildsrc: $$(patsubst %.buildsrc,%,$$@)_$$(TAG_$$(patsubst %.buildsrc,%,$$@)).orig.tar.gz
-tsuru-server.buildsrc serf.buildsrc gandalf-server.buildsrc archive-server.buildsrc crane.buildsrc tsuru-client.buildsrc tsuru-admin.buildsrc hipache-hchecker.buildsrc docker-registry.buildsrc tsuru-mongoapi.buildsrc golang.buildsrc dh-golang.buildsrc nodejs.buildsrc node-hipache.buildsrc: %.buildsrc: %-deb %-deb/debian
+tsuru-server.buildsrc serf.buildsrc consul.buildsrc consul-template.buildsrc gandalf-server.buildsrc archive-server.buildsrc crane.buildsrc tsuru-client.buildsrc tsuru-admin.buildsrc hipache-hchecker.buildsrc docker-registry.buildsrc tsuru-mongoapi.buildsrc golang.buildsrc dh-golang.buildsrc nodejs.buildsrc node-hipache.buildsrc: %.buildsrc: %-deb %-deb/debian
 	$(eval include scopedvars.mk)
 	rm -rf $(SRCRESULT) $(SRCRESULT).tmp/* || true
 	mkdir -p $(SRCRESULT).tmp/$(TARGET)

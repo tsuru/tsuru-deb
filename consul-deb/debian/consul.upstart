@@ -1,0 +1,23 @@
+# Consul Agent (Upstart unit)
+description "Consul Agent"
+start on (local-filesystems and net-device-up IFACE!=lo)
+stop on runlevel [06]
+
+kill signal INT    	# Use SIGINT instead of SIGTERM so Consul can depart the cluster.
+respawn limit unlimited # Restart the process if it dies and GOAL was not 'stopping'.
+kill timeout 180   	# Allow 180 seconds for Consul to die before sending SIGKILL.
+
+setuid consul
+setgid consul
+
+env CONSUL=/usr/bin/consul
+env CONSUL_CFG_FOLDER=/etc/consul.d
+
+script
+    if [ -f /etc/default/consul ]; then
+         . /etc/default/consul
+    fi
+    exec $CONSUL agent -config-dir=$CONSUL_CFG_FOLDER
+end script
+
+post-stop exec sleep 10  # Wait ten seconds before respawn attempts.

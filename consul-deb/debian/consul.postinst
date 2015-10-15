@@ -1,0 +1,12 @@
+user="consul"
+exists=true
+getent passwd $user > /dev/null 2>&1 || exists=false
+if ! $exists
+then
+        echo "Creating user \"$user\" within group \"$user\""...
+        useradd --system -md /var/lib/$user $user
+        chown $user /var/lib/$user
+fi
+
+# see dh_installdeb(1)
+#DEBHELPER#

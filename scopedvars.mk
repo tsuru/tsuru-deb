@@ -60,6 +60,18 @@ ifeq ($(TARGET),serf)
 	GOURL := $(GITPATH)/...
 endif
 
+ifeq ($(TARGET),consul)
+	GITTAG := v$(TAG)
+	GITPATH = github.com/hashicorp/consul
+	GOURL := $(GITPATH)/...
+endif
+
+ifeq ($(TARGET),consul-template)
+	GITTAG := v$(TAG)
+	GITPATH = github.com/hashicorp/consul-template
+	GOURL := $(GITPATH)/...
+endif
+
 ifeq ($(TARGET),tsuru-admin)
 	GITPATH = github.com/tsuru/tsuru-admin
 	export EXTRA_VERSIONS = $(EXTRA_VERSIONS_RELEASES)

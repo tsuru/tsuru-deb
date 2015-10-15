@@ -1,0 +1,3 @@
+usr/bin
+var/lib/consul
+usr/share/consul/ui
