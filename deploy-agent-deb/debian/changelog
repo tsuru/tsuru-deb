@@ -1,3 +1,9 @@
+deploy-agent (0.1.9-0) precise; urgency=medium
+
+  * New upstream release 
+
+ -- Francisco Souza <fss@corp.globo.com>  Thu, 15 Oct 2015 21:58:53 +0000
+
 deploy-agent (0.1.8-0) precise; urgency=medium
 
   * Fix healthcheck execution
