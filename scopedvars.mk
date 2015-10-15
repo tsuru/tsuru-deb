@@ -22,6 +22,11 @@ ifeq ($(TARGET),crane)
 	GOURL := $(GITPATH)
 endif
 
+ifeq ($(TARGET),deploy-agent)
+	GITPATH = github.com/tsuru/deploy-agent
+	GOURL := $(GITPATH)
+endif
+
 ifeq ($(TARGET),dh-golang)
 	export EXCEPT = sid jessie saucy trusty utopic
 	URL := https://launchpad.net/debian/+archive/primary/+files/dh-golang_$(TAG).tar.gz

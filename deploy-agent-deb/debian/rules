@@ -1,0 +1,37 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+export GOPATH=$(CURDIR)
+
+PKGDIR=debian/deploy-agent
+
+clean:
+	dh_clean
+	rm -rf $(GOPATH)/bin/* $(GOPATH)/pkg/*
+
+build-stamp:
+	go install github.com/tsuru/deploy-agent
+	cp $(GOPATH)/bin/deploy-agent $(GOPATH)/bin/tsuru_unit_agent
+
+binary-stamp:
+	dh_prep
+	dh_installdirs
+	dh_install
+	dh_strip
+	dh_compress
+	dh_fixperms
+	dh_installdeb
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb
+
+build: build-arch build-indep
+build-arch: build-stamp
+build-indep: build-stamp
+
+binary: binary-arch binary-indep
+binary-arch: binary-stamp
+binary-indep: binary-stamp

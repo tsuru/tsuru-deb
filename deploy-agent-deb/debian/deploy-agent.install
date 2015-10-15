@@ -1,0 +1,2 @@
+bin/deploy-agent /usr/bin/
+bin/tsuru_unit_agent /usr/bin/
