@@ -24,7 +24,7 @@ DAILY_BUILD_EXCEPT = dh-golang golang nodejs node-hipache
 
 export CHECK_LAUNCHPAD_FAIL := "no_error"
 
-TAG_tsuru-server = 0.12.4-rc1
+TAG_tsuru-server = 0.12.4-rc2
 TAG_serf = 0.4.1
 TAG_consul = 0.5.2
 TAG_consul-template = 0.11.0
