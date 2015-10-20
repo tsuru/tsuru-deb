@@ -1,3 +1,9 @@
+consul (0.5.2-1) UNRELEASED; urgency=medium
+
+  * Fix ui generation - miss sass compile 
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Tue, 20 Oct 2015 16:24:07 -0200
+
 consul (0.5.2-0) unreleased; urgency=low
 
   * Initial release.
