@@ -1,0 +1,13 @@
+Source: planb
+Section: devel
+Priority: extra
+Maintainer: Globo.com <tsuru@corp.globo.com>
+Build-Depends: debhelper (>= 7.0.50~), golang (>= 2:1.4)
+Standards-Version: 3.9.3
+Homepage: http://github.com/tsuru/planb
+
+Package: planb
+Architecture: amd64
+Depends: ${misc:Depends}
+Recomends: consul
+Description: PlanB is a HTTP and websocket proxy backed by Redis and inspired by Hipache.

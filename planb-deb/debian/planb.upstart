@@ -1,0 +1,18 @@
+description "PlanB router"
+start on (local-filesystems and net-device-up IFACE!=lo)
+stop on runlevel [06]
+limit nofile 100000 100000
+
+respawn  		    # Restart the process if it dies and GOAL was not 'stopping'.
+kill timeout 180   	# Allow 180 seconds for PlanB to die before sending SIGKILL.
+
+script
+    PLANB=/usr/bin/$UPSTART_JOB
+    PLANB_OPTS=
+    if [ -f /etc/default/$UPSTART_JOB ]; then
+        . /etc/default/$UPSTART_JOB
+    fi
+    exec "$PLANB" $PLANB_OPTS
+end script
+
+post-stop exec sleep 10  # Wait ten seconds before respawn attempts.
