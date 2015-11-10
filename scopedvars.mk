@@ -77,6 +77,12 @@ ifeq ($(TARGET),consul-template)
 	GOURL := $(GITPATH)/...
 endif
 
+ifeq ($(TARGET),planb)
+	GITTAG := $(TAG)
+	GITPATH = github.com/tsuru/planb
+	GOURL := $(GITPATH)/...
+endif
+
 ifeq ($(TARGET),tsuru-admin)
 	GITPATH = github.com/tsuru/tsuru-admin
 	export EXTRA_VERSIONS = $(EXTRA_VERSIONS_RELEASES)
