@@ -60,7 +60,7 @@ $(patsubst %-deb,%.upload,$(wildcard *-deb)): %.upload: %.buildsrc
 	fi
 	$(eval include scopedvars.mk)
 	@rm -rf $(SRCRESULT).tmp 2>/dev/null || true
-	cp -la $(SRCRESULT) $(SRCRESULT).tmp
+	cp -a $(SRCRESULT) $(SRCRESULT).tmp
 	$(MAKE) PPA=$(PPA) _upload
 	rm -rf $(SRCRESULT).tmp
 
