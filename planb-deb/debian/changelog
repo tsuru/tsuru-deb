@@ -1,3 +1,9 @@
+planb (0.1.1-0) unstable; urgency=medium
+
+  * Improved logs and dead backend detection
+
+ -- Cezar Sa Espinola <cezar.sa@corp.globo.com>  Wed, 11 Nov 2015 16:21:10 +0000
+
 planb (0.1.0-0) unstable; urgency=medium
 
   * Initial release
