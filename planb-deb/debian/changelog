@@ -1,3 +1,9 @@
+planb (0.1.2-0) unstable; urgency=medium
+
+  * Added flush interval parameter
+
+ -- Cezar Sa Espinola <cezar.sa@corp.globo.com>  Wed, 25 Nov 2015 19:53:05 +0000
+
 planb (0.1.1-0) unstable; urgency=medium
 
   * Improved logs and dead backend detection

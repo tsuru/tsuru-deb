@@ -41,7 +41,7 @@ TAG_golang = 1.4.0
 TAG_nodejs = 0.10.26.3
 TAG_node-hipache = 0.2.5
 TAG_deploy-agent = 0.2.0
-TAG_planb = 0.1.1
+TAG_planb = 0.1.2
 
 -include variables.local.mk
 
