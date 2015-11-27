@@ -1,3 +1,15 @@
+deploy-agent (0.2.0-4) precise; urgency=medium
+
+  * Fix ordering in links file
+
+ -- Francisco Souza <fss@corp.globo.com>  Fri, 27 Nov 2015 17:41:36 +0000
+
+deploy-agent (0.2.0-3) precise; urgency=medium
+
+  * Invoke dh_link to read contents of the links file
+
+ -- Francisco Souza <fss@corp.globo.com>  Fri, 27 Nov 2015 17:11:31 +0000
+
 deploy-agent (0.2.0-2) precise; urgency=medium
 
   * Proper fix for the symlink
