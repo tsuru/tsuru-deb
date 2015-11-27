@@ -1,3 +1,9 @@
+gandalf-server (0.7.3-1) unstable; urgency=medium
+
+  * Remove git-daemon from the list of dependencies
+
+ -- Francisco Souza <fss@corp.globo.com>  Fri, 27 Nov 2015 16:10:50 +0000
+
 gandalf-server (0.7.3-0) unstable; urgency=medium
 
   * New upstream release
