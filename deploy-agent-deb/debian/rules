@@ -14,7 +14,6 @@ clean:
 
 build-stamp:
 	go install github.com/tsuru/deploy-agent
-	cp $(GOPATH)/bin/deploy-agent $(GOPATH)/bin/tsuru_unit_agent
 
 binary-stamp:
 	dh_prep
