@@ -1,3 +1,9 @@
+tsuru-server (0.13.0-rc6-1) unstable; urgency=medium
+
+  * Change go-lang build requirement version to 1.5.1
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Thu, 03 Dec 2015 10:09:53 -0200
+
 tsuru-server (0.13.0-rc6-0) unstable; urgency=medium
 
   * New upstream release candidate

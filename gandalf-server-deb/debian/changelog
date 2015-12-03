@@ -1,3 +1,9 @@
+gandalf-server (0.7.3-2) unstable; urgency=medium
+
+  * Change go-lang build requirement version to 1.5.1
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Thu, 03 Dec 2015 10:13:39 -0200
+
 gandalf-server (0.7.3-1) unstable; urgency=medium
 
   * Remove git-daemon from the list of dependencies
