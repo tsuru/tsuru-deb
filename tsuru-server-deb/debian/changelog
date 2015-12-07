@@ -1,3 +1,9 @@
+tsuru-server (0.13.0-rc7-0) unstable; urgency=medium
+
+  * New upstream release candidate
+
+ -- Francisco Souza <fss@corp.globo.com>  Mon, 07 Dec 2015 19:54:58 +0000
+
 tsuru-server (0.13.0-rc6-1) unstable; urgency=medium
 
   * Change go-lang build requirement version to 1.5.1
