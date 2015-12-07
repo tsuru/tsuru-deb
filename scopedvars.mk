@@ -53,12 +53,6 @@ ifeq ($(TARGET),hipache-hchecker)
 	GOURL := $(GITPATH)/...
 endif
 
-ifeq ($(TARGET),nodejs)
-	#URL := http://nodejs.org/dist/v$(TAG)/node-v$(TAG).tar.gz
-	export EXCEPT = sid jessie
-	URL := https://launchpad.net/~tsuru/+archive/ubuntu/ppa/+files/nodejs_$(TAG).orig.tar.gz
-endif
-
 ifeq ($(TARGET),serf)
 	GITTAG := v$(TAG)
 	GITPATH = github.com/hashicorp/serf

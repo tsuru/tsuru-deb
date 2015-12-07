@@ -22,7 +22,7 @@ BUILDTEXT_wheezy = "Rebuild for wheezy-backports."
 BUILDDIST_wheezy = wheezy-backports
 export DAILY_TAG := $(or $(DAILY_TAG),$(shell date +'SNAPSHOT%Y%m%d%H%M%S%z'))
 export DAILY_BUILD := $(DAILY_BUILD)
-DAILY_BUILD_EXCEPT = dh-golang golang nodejs node-hipache
+DAILY_BUILD_EXCEPT = dh-golang golang
 
 export CHECK_LAUNCHPAD_FAIL := "no_error"
 
@@ -40,8 +40,6 @@ TAG_docker-registry = 0.1.1
 TAG_tsuru-mongoapi = 0.2.0
 TAG_dh-golang = 1.5
 TAG_golang = 1.4.0
-TAG_nodejs = 0.10.26.3
-TAG_node-hipache = 0.2.5
 TAG_deploy-agent = 0.2.1
 TAG_planb = 0.1.3
 

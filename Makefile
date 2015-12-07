@@ -154,7 +154,6 @@ $(strip $(VERSIONS:%=_builddeb.%) $(EXTRA_VERSIONS:%=_builddeb.%)):
 _builddeb: localrepo $(patsubst %,_builddeb.%,$(strip $(filter-out $(EXCEPT),$(VERSIONS)) $(EXTRA_VERSIONS)))
 
 tsuru-server.builddeb serf.builddeb consul.builddeb consul-template.builddeb planb.builddeb gandalf-server.builddeb archive-server.builddeb crane.builddeb tsuru-client.builddeb tsuru-admin.builddeb hipache-hchecker.builddeb docker-registry.builddeb tsuru-mongoapi.builddeb deploy-agent.builddeb: golang.builddeb
-node-hipache.builddeb: nodejs.builddeb
 
 $(patsubst %-deb,%.builddeb,$(wildcard *-deb)): %.builddeb: builder %.buildsrc
 	$(eval include scopedvars.mk)
@@ -195,7 +194,7 @@ else
 	tar -zcf $@ -C $(CURDIR)/$(GOBASE) $(TARGET)-$(TAG) --exclude-vcs $(TAR_OPTIONS)
 endif
 
-dh-golang_$(TAG_dh-golang).orig.tar.gz golang_$(TAG_golang).orig.tar.gz nodejs_$(TAG_nodejs).orig.tar.gz:
+dh-golang_$(TAG_dh-golang).orig.tar.gz golang_$(TAG_golang).orig.tar.gz:
 	$(eval include scopedvars.mk)
 	curl -L -o $@ $(URL)
 
@@ -219,8 +218,8 @@ $(strip $(VERSIONS:%=_buildsrc.%) $(EXTRA_VERSIONS:%=_buildsrc.%)):
 _buildsrc: $(patsubst %,_buildsrc.%,$(strip $(filter-out $(EXCEPT),$(VERSIONS)) $(EXTRA_VERSIONS)))
 
 tsuru-server.buildsrc serf.buildsrc consul.buildsrc consul-template.buildsrc planb.buildsrc gandalf-server.buildsrc archive-server.buildsrc crane.buildsrc tsuru-client.buildsrc tsuru-admin.buildsrc hipache-hchecker.buildsrc docker-registry.buildsrc tsuru-mongoapi.buildsrc deploy-agent.buildsrc : $$(patsubst %.buildsrc,%,$$@)_$$(TAG_$$(patsubst %.buildsrc,%,$$@))$(dtag).orig.tar.gz
-golang.buildsrc dh-golang.buildsrc nodejs.buildsrc: $$(patsubst %.buildsrc,%,$$@)_$$(TAG_$$(patsubst %.buildsrc,%,$$@)).orig.tar.gz
-tsuru-server.buildsrc serf.buildsrc consul.buildsrc consul-template.buildsrc planb.buildsrc gandalf-server.buildsrc archive-server.buildsrc crane.buildsrc tsuru-client.buildsrc tsuru-admin.buildsrc hipache-hchecker.buildsrc docker-registry.buildsrc tsuru-mongoapi.buildsrc golang.buildsrc dh-golang.buildsrc nodejs.buildsrc node-hipache.buildsrc deploy-agent.buildsrc: %.buildsrc: %-deb %-deb/debian
+golang.buildsrc dh-golang.buildsrc: $$(patsubst %.buildsrc,%,$$@)_$$(TAG_$$(patsubst %.buildsrc,%,$$@)).orig.tar.gz
+tsuru-server.buildsrc serf.buildsrc consul.buildsrc consul-template.buildsrc planb.buildsrc gandalf-server.buildsrc archive-server.buildsrc crane.buildsrc tsuru-client.buildsrc tsuru-admin.buildsrc hipache-hchecker.buildsrc docker-registry.buildsrc tsuru-mongoapi.buildsrc golang.buildsrc dh-golang.buildsrc deploy-agent.buildsrc: %.buildsrc: %-deb %-deb/debian
 	$(eval include scopedvars.mk)
 	rm -rf $(SRCRESULT) $(SRCRESULT).tmp/* || true
 	mkdir -p $(SRCRESULT).tmp/$(TARGET)
