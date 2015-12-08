@@ -26,7 +26,7 @@ DAILY_BUILD_EXCEPT = dh-golang golang
 
 export CHECK_LAUNCHPAD_FAIL := "no_error"
 
-TAG_tsuru-server = 0.13.0-rc7
+TAG_tsuru-server = 0.13.0-rc8
 TAG_serf = 0.4.1
 TAG_consul = 0.5.2
 TAG_consul-template = 0.11.1
