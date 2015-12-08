@@ -1,3 +1,10 @@
+deploy-agent (0.2.2-0) unstable; urgency=medium
+
+  * Fix bug in the interaction with the tsuru API, which caused slash repeating
+    in URLs, resulting in 404 responses in the registerUnit call.
+
+ -- Francisco Souza <fss@corp.globo.com>  Tue, 08 Dec 2015 02:57:45 +0100
+
 deploy-agent (0.2.1-0) unstable; urgency=medium
 
   * New upstream release
