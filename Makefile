@@ -20,8 +20,11 @@ clean:
 	sudo git --git-dir=$(CURDIR)/.git clean -dfX --e \!variables.local.mk --e \!builder --e \!localrepo
 
 prepare:
-	sudo apt-get update -qq
-	sudo apt-get install python-software-properties golang debhelper devscripts git mercurial ubuntu-dev-tools cowbuilder gnupg-agent -y
+	sudo apt-get update
+	sudo apt-get install software-properties-common -y
+	sudo apt-add-repository ppa:tsuru/golang15 -y
+	sudo apt-get update
+	sudo apt-get install golang debhelper devscripts git mercurial ubuntu-dev-tools cowbuilder gnupg-agent -y
 	@if [ ! -d /tmp/gopath ]; then mkdir /tmp/gopath; fi
 	GOPATH=/tmp/gopath go get github.com/kr/godep
 	@sudo mv /tmp/gopath/bin/godep /usr/bin
