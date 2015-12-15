@@ -1,3 +1,9 @@
+tsuru-server (0.13.0-rc12-0) unstable; urgency=medium
+
+  * New upstream release candidate
+
+ -- Francisco Souza <fss@corp.globo.com>  Tue, 15 Dec 2015 17:09:40 +0000
+
 tsuru-server (0.13.0-rc11-0) unstable; urgency=medium
 
   * New upstream release candidate
