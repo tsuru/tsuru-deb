@@ -1,3 +1,11 @@
+archive-server (0.2.0-0) precise; urgency=medium
+
+  * New upstream release, including the ability to upload archives (so the
+    archive-server can handle submodules with tsuru)
+  * Requiring Go 1.5 for building (just because)
+
+ -- Francisco Souza <fss@corp.globo.com>  Fri, 18 Dec 2015 20:08:27 +0000
+
 archive-server (0.1.2-1) precise; urgency=medium
 
   * List git in the package dependencies
