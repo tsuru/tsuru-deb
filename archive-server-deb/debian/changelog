@@ -1,3 +1,9 @@
+archive-server (0.2.1-1) precise; urgency=medium
+
+  * Fix package name (remove the Ubuntu suffix)
+
+ -- Francisco Souza <fss@corp.globo.com>  Sun, 20 Dec 2015 03:22:01 +0100
+
 archive-server (0.2.1-0ubuntu1) precise; urgency=medium
 
   * New upstrea release, fixing backward compatibility with old API
