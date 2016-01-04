@@ -1,3 +1,9 @@
+crane (0.8.0-0) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Francisco Souza <fss@corp.globo.com>  Mon, 04 Jan 2016 13:37:48 +0000
+
 crane (0.7.0-0) unstable; urgency=medium
 
   * New upstream release
