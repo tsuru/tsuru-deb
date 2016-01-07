@@ -6,6 +6,7 @@
 
 export GOPATH=$(CURDIR)
 export PKGDIR=debian/consul
+export GO15VENDOREXPERIMENT=1
 
 clean:
 	dh_testdir

@@ -5,6 +5,7 @@
 #export DH_VERBOSE=1
 
 export GOPATH=$(CURDIR)
+export GO15VENDOREXPERIMENT=1
 
 clean:
 	dh_clean
