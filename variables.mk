@@ -5,6 +5,7 @@ NODEBASE := $(TMP)/nodebase
 
 export VERSIONS := $(or $(VERSIONS),precise trusty wheezy)
 export EXTRA_VERSIONS_RELEASES := $(or $(EXTRA_VERSIONS_RELEASES), vivid)
+export GO15VENDOREXPERMIENT := 1
 
 DEBIAN_MIRROR = http://http.debian.net/debian
 UBUNTU_MIRROR = http://archive.ubuntu.com/ubuntu
