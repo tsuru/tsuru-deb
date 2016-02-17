@@ -184,7 +184,8 @@ ifeq ($(and $(CHECK_LAUNCHPAD), $(CHECK_LAUNCHPAD_FAIL)), "no_error")
 else
 	rm -rf $(GOPATH) 2>/dev/null || true
 	mkdir -p $(GOPATH)
-	go get -v -u -d $(or $(GOURL),$(GITPATH)/...)
+	@if [ ! -d $(GOPATH)/src/$(GITPATH) ]; then mkdir -p $(GOPATH)/src/$(GITPATH) ; fi
+	git clone https://$(GITPATH) $(GOPATH)/src/$(GITPATH)
 	set -e; \
 	if [ ! "$(DAILY_BUILD)" ]; then \
 		git -C $(GOPATH)/src/$(GITPATH) checkout $(or $(GITTAG),$(TAG)); \
