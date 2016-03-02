@@ -42,7 +42,7 @@ TAG_tsuru-mongoapi = 0.2.0
 TAG_dh-golang = 1.5
 TAG_golang = 1.4.0
 TAG_deploy-agent = 0.2.2
-TAG_planb = 0.1.6
+TAG_planb = 0.1.7
 
 -include variables.local.mk
 
