@@ -15,7 +15,6 @@ clean:
 
 build-stamp:
 	go install github.com/hashicorp/consul
-	cd src/github.com/hashicorp/consul/ui && make dist
 
 binary-stamp:
 	dh_testdir

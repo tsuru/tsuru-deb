@@ -1,2 +1,1 @@
 bin/consul usr/bin
-src/github.com/hashicorp/consul/ui/dist/. usr/share/consul/ui

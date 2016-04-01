@@ -1,6 +1,13 @@
-consul (0.5.2-1) UNRELEASED; urgency=medium
+consul (0.6.4-0) unstable; urgency=medium
 
-  * Fix ui generation - miss sass compile 
+  * New upstream release
+  * Remove old consul ui - consul now uses built in UI 
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Fri, 01 Apr 2016 10:38:32 -0300
+
+consul (0.5.2-1) unstable; urgency=medium
+
+  * Fix ui generation - miss sass compile.
 
  -- Paulo Sousa <paulo.sousa@corp.globo.com>  Tue, 20 Oct 2015 16:24:07 -0200
 
