@@ -28,7 +28,7 @@ ifeq ($(TARGET),deploy-agent)
 endif
 
 ifeq ($(TARGET),dh-golang)
-	export EXCEPT = sid jessie saucy trusty utopic vivid wily
+	export EXCEPT = sid jessie saucy trusty utopic wily
 	URL := https://launchpad.net/debian/+archive/primary/+files/dh-golang_$(TAG).tar.gz
 endif
 

@@ -1,3 +1,15 @@
+tsuru-server (1.0.0-rc8-0) UNRELEASED; urgency=medium
+
+  * New upstream release
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Mon, 06 Jun 2016 12:24:06 -0300
+
+tsuru-server (1.0.0-rc7-0) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Mon, 06 Jun 2016 10:25:43 -0300
+
 tsuru-server (1.0.0-rc6-0) unstable; urgency=medium
 
   * New upstream release
