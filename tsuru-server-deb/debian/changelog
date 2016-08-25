@@ -1,3 +1,15 @@
+tsuru-server (1.1.0-rc5-3) UNRELEASED; urgency=medium
+
+  * Fix go binary path
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Thu, 25 Aug 2016 18:40:12 -0300
+
+tsuru-server (1.1.0-rc5-2) unstable; urgency=medium
+
+  * New build dependency - golang >= 1.7
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Thu, 25 Aug 2016 14:10:57 -0300
+
 tsuru-server (1.1.0-rc5-1) unstable; urgency=medium
 
   * Drop support for i386
