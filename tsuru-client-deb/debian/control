@@ -2,12 +2,12 @@ Source: tsuru-client
 Section: devel
 Priority: extra
 Maintainer: Globo.com <tsuru@corp.globo.com>
-Build-Depends: debhelper (>= 7.0.50~), golang (>= 2:1.5.1), bash-completion
+Build-Depends: debhelper (>= 7.0.50~),  golang-1.7, bash-completion
 Standards-Version: 3.9.3
 Homepage: http://tsuru.io
 
 Package: tsuru-client
-Architecture: amd64 i386
+Architecture: amd64
 Depends: ${misc:Depends}
 Replaces: tsuru
 Description: tsuru is the command line interface for the tsuru server

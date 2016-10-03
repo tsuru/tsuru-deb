@@ -1,3 +1,16 @@
+tsuru-client (1.1.0-1) unstable; urgency=medium
+
+  * Remove support for i386
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Mon, 03 Oct 2016 16:42:15 -0300
+
+tsuru-client (1.1.0-0) unstable; urgency=medium
+
+  * New upstream release
+  * New build dependency - golang >= 1.7
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Mon, 03 Oct 2016 16:28:11 -0300
+
 tsuru-client (1.0.1-0) unstable; urgency=medium
 
   * New upstream release
