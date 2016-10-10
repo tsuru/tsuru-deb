@@ -1,3 +1,9 @@
+tsuru-client (1.1.1-0) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Mon, 10 Oct 2016 09:57:58 -0300
+
 tsuru-client (1.1.0-1) unstable; urgency=medium
 
   * Remove support for i386
