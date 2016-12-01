@@ -28,7 +28,6 @@ install-base-prep:
 	dh_prep
 	
 install-base:
-	dh_strip
 	dh_compress
 	dh_fixperms
 	dh_installdeb
@@ -45,6 +44,10 @@ install_tsuru-server:
 	dh_installinit --no-start --name=tsuru-server
 	cp $(GOPATH)/debian/etc/tsuru.conf.yaml $(PKGDIR)/etc/tsuru/tsuru.conf
 	+$(MAKE_SELF) install-base
+
+override_dh_strip:
+	# strip disabled as golang upstream doesn't support it and it makes go
+	# crash. See https://launchpad.net/bugs/1200255.
 
 binary-indep:
 binary-arch: install_tsuru-server
