@@ -1,3 +1,15 @@
+tsuru-server (1.2.0-rc3-0) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Mon, 05 Dec 2016 14:57:30 -0200
+
+tsuru-server (1.2.0-rc2-0) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Thu, 01 Dec 2016 11:15:21 -0200
+
 tsuru-server (1.2.0-rc1-1) unstable; urgency=medium
 
   * Remove dh_strip - See https://launchpad.net/bugs/1200255
