@@ -41,7 +41,7 @@ TAG_docker-registry = 0.1.1
 TAG_tsuru-mongoapi = 0.2.0
 TAG_dh-golang = 1.5
 TAG_golang = 1.4.0
-TAG_deploy-agent = 0.2.2
+TAG_deploy-agent = 0.2.3
 TAG_planb = 0.1.12
 
 -include variables.local.mk

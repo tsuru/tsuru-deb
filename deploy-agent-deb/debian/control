@@ -2,7 +2,7 @@ Source: deploy-agent
 Section: devel
 Priority: extra
 Maintainer: Globo.com <tsuru@corp.globo.com>
-Build-Depends: debhelper (>= 7.0.50~), golang (>= 2:1.5.1)
+Build-Depends: debhelper (>= 7.0.50~), golang-1.7
 Standards-Version: 3.9.3
 Homepage: http://tsuru.io
 

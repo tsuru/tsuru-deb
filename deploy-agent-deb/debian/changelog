@@ -1,3 +1,16 @@
+deploy-agent (0.2.3-1) unstable; urgency=medium
+
+  * Fix go binary path
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Tue, 24 Jan 2017 14:21:47 -0200
+
+deploy-agent (0.2.3-0) unstable; urgency=medium
+
+  * New upstream release
+  * Change go-lang build requirement version to 1.7
+
+ -- Paulo Sousa <paulo.sousa@corp.globo.com>  Mon, 23 Jan 2017 17:06:27 -0200
+
 deploy-agent (0.2.2-0) unstable; urgency=medium
 
   * Fix bug in the interaction with the tsuru API, which caused slash repeating
